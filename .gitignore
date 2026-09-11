@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# database (sqlite dev)
+/prisma/dev.db
+/prisma/dev.db-journal
+/prisma/migrations/dev.db*
+
+# uploaded media (kept out of git; seeded placeholders live in /public/generated)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# office lock files
+~$*

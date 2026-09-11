@@ -1,0 +1,552 @@
+// Drafting Studio — data model.
+//
+// Dev runs on SQLite. To deploy on Postgres, change `provider` to "postgresql"
+// and point DATABASE_URL at your connection string — the schema is written to be
+// portable: enum-like fields are Strings validated against lib/taxonomy.ts, list
+// data that must be filtered uses relations, and display-only structured data
+// uses Json (supported on both engines).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/* --------------------------------------------------------------- */
+/* Auth.js adapter models + application users                      */
+/* --------------------------------------------------------------- */
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?
+  role          String    @default("CLIENT") // ADMIN | STAFF | CLIENT
+  title         String? // job title (staff/client)
+  phone         String?
+
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+
+  accounts Account[]
+  sessions Session[]
+
+  assignedQuotes   Quote[]         @relation("QuoteAssignee")
+  assignedProjects Project[]       @relation("ProjectAssignee")
+  posts            Post[]
+  projectUpdates   ProjectUpdate[]
+  quoteNotes       QuoteNote[]
+  quoteMessages    QuoteMessage[]
+  projectMessages  ProjectMessage[]
+  uploadedFiles    ProjectFile[]
+  mediaAssets      MediaAsset[]
+  auditLogs        AuditLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([role])
+  @@index([companyId])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Company {
+  id       String  @id @default(cuid())
+  name     String
+  slug     String  @unique
+  website  String?
+  phone    String?
+  address  String?
+  city     String?
+  state    String?
+  logo     String?
+  notes    String?
+
+  users    User[]
+  projects Project[]
+  quotes   Quote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/* --------------------------------------------------------------- */
+/* Services taxonomy                                                */
+/* --------------------------------------------------------------- */
+
+model ServiceCategory {
+  id    String @id @default(cuid())
+  slug  String @unique
+  name  String
+  icon  String
+  blurb String?
+  order Int    @default(0)
+
+  services          Service[] @relation("PrimaryCategory")
+  secondaryServices Service[] @relation("SecondaryCategory")
+}
+
+model Service {
+  id        String @id @default(cuid())
+  slug      String @unique
+  name      String
+  shortDesc String
+  heroCopy  String
+  bodyMdx   String @default("")
+
+  categoryId String
+  category   ServiceCategory @relation("PrimaryCategory", fields: [categoryId], references: [id], onDelete: Cascade)
+
+  // Cross-listing: e.g. "Sprinkler Hydraulic Report" appears under both
+  // Fire Protection and Calculations & Reports.
+  secondaryCategoryId String?
+  secondaryCategory   ServiceCategory? @relation("SecondaryCategory", fields: [secondaryCategoryId], references: [id], onDelete: SetNull)
+
+  // Which drafting disciplines this service belongs to (for related-project queries).
+  disciplines Discipline[] @relation("ServiceDisciplines")
+
+  deliverables      Json // string[]
+  documentsRequired Json // string[]
+  notCovered        Json // string[]
+  valuePillars      Json // { title, desc, icon }[]
+  faqs              Json // { q, a }[]
+
+  turnaroundDays Int     @default(5)
+  startingPrice  Int?
+  priceNote      String?
+
+  coverImage String?
+  seoTitle   String?
+  seoDesc    String?
+  order      Int     @default(0)
+  published  Boolean @default(true)
+
+  projects Project[] @relation("ProjectServices")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+}
+
+model Discipline {
+  id    String @id @default(cuid())
+  slug  String @unique // electrical | hvac | plumbing | lighting | fire-protection
+  value String @unique // ELECTRICAL | HVAC | ...
+  label String
+  color String
+  icon  String
+  order Int    @default(0)
+
+  projects Project[] @relation("ProjectDisciplines")
+  services Service[] @relation("ServiceDisciplines")
+}
+
+/* --------------------------------------------------------------- */
+/* Industries                                                       */
+/* --------------------------------------------------------------- */
+
+model Industry {
+  id        String  @id @default(cuid())
+  slug      String  @unique
+  name      String
+  icon      String
+  shortDesc String
+  bodyMdx   String  @default("")
+  heroImage String?
+  painPoints Json?  // string[]
+  stats      Json?  // { value, label }[]
+  seoTitle   String?
+  seoDesc    String?
+  order      Int     @default(0)
+
+  projects Project[]
+  quotes   Quote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/* --------------------------------------------------------------- */
+/* Projects — public sample work AND private client work            */
+/* --------------------------------------------------------------- */
+
+model Project {
+  id      String @id @default(cuid())
+  slug    String @unique
+  title   String
+  summary String
+  bodyMdx String @default("")
+
+  industryId String?
+  industry   Industry? @relation(fields: [industryId], references: [id], onDelete: SetNull)
+
+  disciplines Discipline[] @relation("ProjectDisciplines")
+  services    Service[]    @relation("ProjectServices")
+
+  city      String?
+  state     String?
+  sizeSqft  Int?
+  floors    Int?
+  year      Int?
+  scopeNotes String?
+
+  coverImage String?
+  images     ProjectImage[]
+
+  // Public portfolio flags
+  isPublic Boolean @default(false)
+  featured Boolean @default(false)
+  order    Int     @default(0)
+
+  // Private client-project fields
+  companyId    String?
+  company      Company? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  status       String   @default("ACTIVE") // ACTIVE | ON_HOLD | COMPLETED | ARCHIVED
+  stage        String   @default("KICKOFF") // KICKOFF | DRAFTING | QC | DELIVERED | REVISIONS
+  progress     Int      @default(0)
+  dueDate      DateTime?
+  assignedToId String?
+  assignedTo   User?    @relation("ProjectAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  updates  ProjectUpdate[]
+  files    ProjectFile[]
+  messages ProjectMessage[]
+  quote    Quote?          @relation("QuoteToProject")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([industryId])
+  @@index([isPublic])
+  @@index([companyId])
+}
+
+model ProjectImage {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url       String
+  caption   String?
+  isDrawing Boolean @default(true)
+  order     Int     @default(0)
+}
+
+model ProjectUpdate {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  stage     String
+  note      String
+  authorId  String?
+  author    User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+
+  @@index([projectId])
+}
+
+model ProjectFile {
+  id             String  @id @default(cuid())
+  projectId      String
+  project        Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  name           String
+  url            String
+  sizeBytes      Int     @default(0)
+  mimeType       String?
+  revision       String  @default("R0")
+  visibleToClient Boolean @default(true)
+  uploadedById   String?
+  uploadedBy     User?   @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  createdAt      DateTime @default(now())
+
+  @@index([projectId])
+}
+
+model ProjectMessage {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  authorId  String?
+  author    User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  body      String
+  createdAt DateTime @default(now())
+
+  @@index([projectId])
+}
+
+/* --------------------------------------------------------------- */
+/* Quotes / RFQ pipeline                                            */
+/* --------------------------------------------------------------- */
+
+model Quote {
+  id          String  @id @default(cuid())
+  refNumber   String  @unique // DS-2026-0001
+  status      String  @default("NEW") // NEW | REVIEWING | QUOTED | WON | LOST
+
+  name        String
+  email       String
+  phone       String?
+  companyName String?
+
+  userId    String?
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+
+  industryId String?
+  industry   Industry? @relation(fields: [industryId], references: [id], onDelete: SetNull)
+
+  serviceIds  Json // { slug, name }[] snapshot of requested services
+  projectType String?
+  state       String?
+  sizeSqft    Int?
+  floors      Int?
+  deadline    DateTime?
+  budgetRange String?
+  description String?
+  source      String   @default("website")
+
+  assignedToId String?
+  assignedTo   User?   @relation("QuoteAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+  quotedAmount Int?
+
+  // When an RFQ is converted to a project.
+  convertedProjectId String?  @unique
+  convertedProject   Project? @relation("QuoteToProject", fields: [convertedProjectId], references: [id], onDelete: SetNull)
+
+  files    QuoteFile[]
+  notes    QuoteNote[]
+  messages QuoteMessage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([email])
+}
+
+model QuoteFile {
+  id        String @id @default(cuid())
+  quoteId   String
+  quote     Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  name      String
+  url       String
+  sizeBytes Int    @default(0)
+  mimeType  String?
+  createdAt DateTime @default(now())
+}
+
+model QuoteNote {
+  id        String  @id @default(cuid())
+  quoteId   String
+  quote     Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  authorId  String?
+  author    User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  body      String
+  createdAt DateTime @default(now())
+
+  @@index([quoteId])
+}
+
+model QuoteMessage {
+  id        String  @id @default(cuid())
+  quoteId   String
+  quote     Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  authorId  String?
+  author    User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  body      String
+  fromClient Boolean @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([quoteId])
+}
+
+/* --------------------------------------------------------------- */
+/* Blog                                                             */
+/* --------------------------------------------------------------- */
+
+model Post {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  title       String
+  excerpt     String
+  bodyMdx     String
+  template    String  @default("STANDARD") // STANDARD | TECHNICAL_GUIDE | CASE_STUDY | LISTICLE | EDITORIAL
+  coverImage  String?
+  ogImage     String?
+
+  authorId String?
+  author   User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  tags Tag[] @relation("PostTags")
+
+  status      String    @default("PUBLISHED") // DRAFT | SCHEDULED | PUBLISHED
+  publishedAt DateTime?
+  readMinutes Int       @default(5)
+  featured    Boolean   @default(false)
+  views       Int       @default(0)
+
+  seoTitle String?
+  seoDesc  String?
+
+  meta Json? // template-specific extras: { stats, tocEnabled, gallery, ... }
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([categoryId])
+}
+
+model Category {
+  id          String @id @default(cuid())
+  slug        String @unique
+  name        String
+  description String?
+  color       String @default("#0a1f44")
+  order       Int    @default(0)
+  posts       Post[]
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  slug  String @unique
+  name  String
+  posts Post[] @relation("PostTags")
+}
+
+/* --------------------------------------------------------------- */
+/* Marketing content + CRM                                          */
+/* --------------------------------------------------------------- */
+
+model Testimonial {
+  id       String  @id @default(cuid())
+  author   String
+  role     String?
+  company  String?
+  quote    String
+  avatar   String?
+  rating   Int     @default(5)
+  featured Boolean @default(false)
+  order    Int     @default(0)
+}
+
+model ClientLogo {
+  id    String  @id @default(cuid())
+  name  String
+  logo  String
+  url   String?
+  order Int     @default(0)
+}
+
+model TeamMember {
+  id       String  @id @default(cuid())
+  name     String
+  role     String
+  bio      String?
+  photo    String?
+  linkedin String?
+  order    Int     @default(0)
+}
+
+model Lead {
+  id        String  @id @default(cuid())
+  type      String  @default("CONTACT") // CONTACT | CALLBACK | NEWSLETTER
+  name      String?
+  email     String
+  phone     String?
+  company   String?
+  subject   String?
+  message   String?
+  status    String  @default("NEW") // NEW | CONTACTED | CLOSED
+  source    String  @default("website")
+  createdAt DateTime @default(now())
+
+  @@index([type])
+  @@index([status])
+}
+
+model MediaAsset {
+  id           String  @id @default(cuid())
+  url          String
+  name         String
+  alt          String?
+  mimeType     String?
+  sizeBytes    Int     @default(0)
+  width        Int?
+  height       Int?
+  folder       String  @default("general")
+  uploadedById String?
+  uploadedBy   User?   @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  createdAt    DateTime @default(now())
+
+  @@index([folder])
+}
+
+model SiteSetting {
+  id          String @id @default("singleton")
+  brand       String @default("Drafting Studio")
+  tagline     String?
+  phones      Json? // string[]
+  emails      Json? // string[]
+  offices     Json? // { city, line1, region, phone }[]
+  socials     Json? // { linkedin, facebook, ... }
+  stats       Json? // { value, label }[]
+  footerCols  Json? // { title, links: {label, href}[] }[]
+  analyticsId String?
+  updatedAt   DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String  @id @default(cuid())
+  userId    String?
+  user      User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?
+  meta      Json?
+  createdAt DateTime @default(now())
+
+  @@index([entity])
+}

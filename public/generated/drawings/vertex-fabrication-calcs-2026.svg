@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Vertex Fabrication Plant — Load Calcs &amp; One-Line drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="94" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="108" x2="198.3141065016389" y2="108" stroke="#f6b23d" stroke-width="1.4"/><circle cx="402.1110914554447" cy="108" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="126" x2="274.4509062357247" y2="126" stroke="#f6b23d" stroke-width="1.4"/><circle cx="322.2162804333493" cy="126" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="144" x2="287.07056215498596" y2="144" stroke="#f6b23d" stroke-width="1.4"/><circle cx="270.118557959795" cy="144" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="162" x2="383.8756663957611" y2="162" stroke="#f6b23d" stroke-width="1.4"/><circle cx="360.79923341982067" cy="162" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="180" x2="252.39330236800015" y2="180" stroke="#f6b23d" stroke-width="1.4"/><circle cx="289.047930482775" cy="180" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="198" x2="212.79150168877095" y2="198" stroke="#f6b23d" stroke-width="1.4"/><circle cx="433.25693836901337" cy="198" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="387.40163487847894" cy="269.31772337295115" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="382.40163487847894" y1="269.31772337295115" x2="392.40163487847894" y2="269.31772337295115" stroke="#f6b23d" stroke-width="1.4"/><circle cx="339.7681248188019" cy="313.95168825984" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="334.7681248188019" y1="313.95168825984" x2="344.7681248188019" y2="313.95168825984" stroke="#f6b23d" stroke-width="1.4"/><circle cx="303.4935757564381" cy="259.3169843778014" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="298.4935757564381" y1="259.3169843778014" x2="308.4935757564381" y2="259.3169843778014" stroke="#f6b23d" stroke-width="1.4"/><circle cx="394.84076442196965" cy="325.81628896296024" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="389.84076442196965" y1="325.81628896296024" x2="399.84076442196965" y2="325.81628896296024" stroke="#f6b23d" stroke-width="1.4"/><circle cx="418.72226514853537" cy="329.82893723994493" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="413.72226514853537" y1="329.82893723994493" x2="423.72226514853537" y2="329.82893723994493" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">WIP</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">VERTEX FABRICATION PLANT — LOAD CALCS &amp; ONE-LI</text>
+</svg>

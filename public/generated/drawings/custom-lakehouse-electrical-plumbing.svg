@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Custom Lakehouse — Electrical &amp; Plumbing drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="71" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="85" x2="439.7119020065293" y2="85" stroke="#f6b23d" stroke-width="1.4"/><circle cx="279.24199637491256" cy="85" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="103" x2="394.59820966701955" y2="103" stroke="#f6b23d" stroke-width="1.4"/><circle cx="297.0126857236028" cy="103" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="121" x2="216.49294199422002" y2="121" stroke="#f6b23d" stroke-width="1.4"/><circle cx="217.54101536236703" cy="121" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="139" x2="435.30616918578744" y2="139" stroke="#f6b23d" stroke-width="1.4"/><circle cx="382.30455645825714" cy="139" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="157" x2="331.0762657132" y2="157" stroke="#f6b23d" stroke-width="1.4"/><circle cx="182.7362783299759" cy="157" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="175" x2="394.5785964978859" y2="175" stroke="#f6b23d" stroke-width="1.4"/><circle cx="182.3532719258219" cy="175" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="407.12345047388226" cy="254.1490727197379" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="402.12345047388226" y1="254.1490727197379" x2="412.12345047388226" y2="254.1490727197379" stroke="#f6b23d" stroke-width="1.4"/><circle cx="519.9293677276" cy="345.0851622130722" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="514.9293677276" y1="345.0851622130722" x2="524.9293677276" y2="345.0851622130722" stroke="#f6b23d" stroke-width="1.4"/><circle cx="397.93307572137564" cy="292.4910398107022" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="392.93307572137564" y1="292.4910398107022" x2="402.93307572137564" y2="292.4910398107022" stroke="#f6b23d" stroke-width="1.4"/><circle cx="483.7004317250103" cy="267.9980064649135" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="478.7004317250103" y1="267.9980064649135" x2="488.7004317250103" y2="267.9980064649135" stroke="#f6b23d" stroke-width="1.4"/><circle cx="354.7617943305522" cy="294.95564098469913" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="349.7617943305522" y1="294.95564098469913" x2="359.7617943305522" y2="294.95564098469913" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-201</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">CUSTOM LAKEHOUSE — ELECTRICAL &amp; PLUMBING</text>
+</svg>

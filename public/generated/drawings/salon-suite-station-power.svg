@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Salon Suites — Station Power &amp; Lighting drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="82" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="96" x2="257.1745629189536" y2="96" stroke="#f6b23d" stroke-width="1.4"/><circle cx="359.20927518513054" cy="96" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="114" x2="353.3037048112601" y2="114" stroke="#f6b23d" stroke-width="1.4"/><circle cx="181.5001721959561" cy="114" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="132" x2="237.87645377218723" y2="132" stroke="#f6b23d" stroke-width="1.4"/><circle cx="252.9289832059294" cy="132" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="150" x2="297.5967187574133" y2="150" stroke="#f6b23d" stroke-width="1.4"/><circle cx="271.8293095426634" cy="150" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="168" x2="425.1072241971269" y2="168" stroke="#f6b23d" stroke-width="1.4"/><circle cx="241.48910016287118" cy="168" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="186" x2="267.2435647295788" y2="186" stroke="#f6b23d" stroke-width="1.4"/><circle cx="410.59489285573363" cy="186" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="223.99862707126886" cy="304.6488965395838" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="218.99862707126886" y1="304.6488965395838" x2="228.99862707126886" y2="304.6488965395838" stroke="#f6b23d" stroke-width="1.4"/><circle cx="302.9624817473814" cy="339.9124826490879" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="297.9624817473814" y1="339.9124826490879" x2="307.9624817473814" y2="339.9124826490879" stroke="#f6b23d" stroke-width="1.4"/><circle cx="360.7512193080038" cy="365.8949493151158" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="355.7512193080038" y1="365.8949493151158" x2="365.7512193080038" y2="365.8949493151158" stroke="#f6b23d" stroke-width="1.4"/><circle cx="509.18810430914164" cy="311.35458554141223" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="504.18810430914164" y1="311.35458554141223" x2="514.1881043091416" y2="311.35458554141223" stroke="#f6b23d" stroke-width="1.4"/><circle cx="468.5654464690015" cy="297.6662716921419" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="463.5654464690015" y1="297.6662716921419" x2="473.5654464690015" y2="297.6662716921419" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-601</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">SALON SUITES — STATION POWER &amp; LIGHTING</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Core &amp; Shell — Service &amp; Single Line drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="89" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="103" x2="369.8182197473943" y2="103" stroke="#f6b23d" stroke-width="1.4"/><circle cx="203.19014373701066" cy="103" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="121" x2="340.533874896355" y2="121" stroke="#f6b23d" stroke-width="1.4"/><circle cx="406.9362580170855" cy="121" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="139" x2="197.56179818883538" y2="139" stroke="#f6b23d" stroke-width="1.4"/><circle cx="356.3687381800264" cy="139" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="157" x2="412.9045021859929" y2="157" stroke="#f6b23d" stroke-width="1.4"/><circle cx="365.5122626712546" cy="157" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="175" x2="324.0498605836183" y2="175" stroke="#f6b23d" stroke-width="1.4"/><circle cx="428.97350951097906" cy="175" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="193" x2="416.01748034358025" y2="193" stroke="#f6b23d" stroke-width="1.4"/><circle cx="367.269805832766" cy="193" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="451.10039341263473" cy="273.61892593093216" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="446.10039341263473" y1="273.61892593093216" x2="456.10039341263473" y2="273.61892593093216" stroke="#f6b23d" stroke-width="1.4"/><circle cx="472.7791311731562" cy="313.43440796248615" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="467.7791311731562" y1="313.43440796248615" x2="477.7791311731562" y2="313.43440796248615" stroke="#f6b23d" stroke-width="1.4"/><circle cx="287.60294816922396" cy="279.6676454413682" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="282.60294816922396" y1="279.6676454413682" x2="292.60294816922396" y2="279.6676454413682" stroke="#f6b23d" stroke-width="1.4"/><circle cx="453.1937654875219" cy="339.2049391567707" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="448.1937654875219" y1="339.2049391567707" x2="458.1937654875219" y2="339.2049391567707" stroke="#f6b23d" stroke-width="1.4"/><circle cx="342.84993967041373" cy="271.1009177286178" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="337.84993967041373" y1="271.1009177286178" x2="347.84993967041373" y2="271.1009177286178" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-110</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">CORE &amp; SHELL — SERVICE &amp; SINGLE LINE</text>
+</svg>

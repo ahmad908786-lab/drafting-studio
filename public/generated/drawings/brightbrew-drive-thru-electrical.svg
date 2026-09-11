@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="BrightBrew Coffee — Drive-Thru Electrical Fit-Out drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="80" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="94" x2="409.4647837476805" y2="94" stroke="#f6b23d" stroke-width="1.4"/><circle cx="296.08247267547995" cy="94" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="112" x2="303.87499092146754" y2="112" stroke="#f6b23d" stroke-width="1.4"/><circle cx="354.9265314731747" cy="112" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="130" x2="371.85649022459984" y2="130" stroke="#f6b23d" stroke-width="1.4"/><circle cx="216.6544379107654" cy="130" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="148" x2="255.42444491758943" y2="148" stroke="#f6b23d" stroke-width="1.4"/><circle cx="360.13681762851775" cy="148" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="166" x2="214.3355357646942" y2="166" stroke="#f6b23d" stroke-width="1.4"/><circle cx="274.6547850780189" cy="166" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="184" x2="390.56021850090474" y2="184" stroke="#f6b23d" stroke-width="1.4"/><circle cx="213.94379093311727" cy="184" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="281.8939162231982" cy="279.93179047480226" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="276.8939162231982" y1="279.93179047480226" x2="286.8939162231982" y2="279.93179047480226" stroke="#f6b23d" stroke-width="1.4"/><circle cx="516.1828540544957" cy="301.6948226187378" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="511.1828540544957" y1="301.6948226187378" x2="521.1828540544957" y2="301.6948226187378" stroke="#f6b23d" stroke-width="1.4"/><circle cx="517.9728752048686" cy="316.4221027866006" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="512.9728752048686" y1="316.4221027866006" x2="522.9728752048686" y2="316.4221027866006" stroke="#f6b23d" stroke-width="1.4"/><circle cx="384.54630463849753" cy="251.69861944392323" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="379.54630463849753" y1="251.69861944392323" x2="389.54630463849753" y2="251.69861944392323" stroke="#f6b23d" stroke-width="1.4"/><circle cx="378.5202129557729" cy="279.6992926299572" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="373.5202129557729" y1="279.6992926299572" x2="383.5202129557729" y2="279.6992926299572" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-101</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">BRIGHTBREW COFFEE — DRIVE-THRU ELECTRICAL FIT-</text>
+</svg>

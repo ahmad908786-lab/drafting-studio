@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80">
+  <rect width="220" height="80" fill="none"/>
+  <circle cx="34" cy="40" r="16" fill="none" stroke="hsl(40 45% 55%)" stroke-width="3"/>
+  <circle cx="34" cy="40" r="7" fill="hsl(40 45% 55%)"/>
+  <text x="60" y="47" fill="currentColor" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700">BluePeak Design</text>
+</svg>

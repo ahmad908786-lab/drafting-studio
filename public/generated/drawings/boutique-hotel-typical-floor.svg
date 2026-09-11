@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Boutique Hotel — Typical Floor MEP drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="84" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="98" x2="189.84533230774105" y2="98" stroke="#f6b23d" stroke-width="1.4"/><circle cx="304.173730048351" cy="98" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="116" x2="401.22597818728536" y2="116" stroke="#f6b23d" stroke-width="1.4"/><circle cx="215.20933570805937" cy="116" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="134" x2="421.9399234838784" y2="134" stroke="#f6b23d" stroke-width="1.4"/><circle cx="226.64323404431343" cy="134" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="152" x2="225.95466865226626" y2="152" stroke="#f6b23d" stroke-width="1.4"/><circle cx="425.7122234394774" cy="152" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="170" x2="431.84676971752197" y2="170" stroke="#f6b23d" stroke-width="1.4"/><circle cx="202.17576378025115" cy="170" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="188" x2="362.6065308507532" y2="188" stroke="#f6b23d" stroke-width="1.4"/><circle cx="433.9347098954022" cy="188" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="253.83111937437207" cy="287.90144884958863" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="248.83111937437207" y1="287.90144884958863" x2="258.83111937437207" y2="287.90144884958863" stroke="#f6b23d" stroke-width="1.4"/><circle cx="418.2973747421056" cy="327.5323677714914" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="413.2973747421056" y1="327.5323677714914" x2="423.2973747421056" y2="327.5323677714914" stroke="#f6b23d" stroke-width="1.4"/><circle cx="413.4916777536273" cy="265.86459987796843" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="408.4916777536273" y1="265.86459987796843" x2="418.4916777536273" y2="265.86459987796843" stroke="#f6b23d" stroke-width="1.4"/><circle cx="452.73687213659286" cy="287.63195945881307" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="447.73687213659286" y1="287.63195945881307" x2="457.73687213659286" y2="287.63195945881307" stroke="#f6b23d" stroke-width="1.4"/><circle cx="249.26447356585413" cy="316.55328624881804" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="244.26447356585413" y1="316.55328624881804" x2="254.26447356585413" y2="316.55328624881804" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-701</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">BOUTIQUE HOTEL — TYPICAL FLOOR MEP</text>
+</svg>

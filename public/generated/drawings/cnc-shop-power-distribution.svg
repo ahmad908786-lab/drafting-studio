@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="CNC Machine Shop — Power Distribution drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="80" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="94" x2="362.6731039490551" y2="94" stroke="#f6b23d" stroke-width="1.4"/><circle cx="308.2140784850344" cy="94" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="112" x2="381.2141672382131" y2="112" stroke="#f6b23d" stroke-width="1.4"/><circle cx="203.78172542434186" cy="112" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="130" x2="410.26138392742723" y2="130" stroke="#f6b23d" stroke-width="1.4"/><circle cx="438.76357744447887" cy="130" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="148" x2="216.83561715763062" y2="148" stroke="#f6b23d" stroke-width="1.4"/><circle cx="326.6954105719924" cy="148" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="166" x2="324.40240589436144" y2="166" stroke="#f6b23d" stroke-width="1.4"/><circle cx="286.4834622479975" cy="166" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="184" x2="370.43027106672525" y2="184" stroke="#f6b23d" stroke-width="1.4"/><circle cx="320.29525813646615" cy="184" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="432.8250668756664" cy="363.5540600307286" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="427.8250668756664" y1="363.5540600307286" x2="437.8250668756664" y2="363.5540600307286" stroke="#f6b23d" stroke-width="1.4"/><circle cx="230.59833380859345" cy="278.068652683869" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="225.59833380859345" y1="278.068652683869" x2="235.59833380859345" y2="278.068652683869" stroke="#f6b23d" stroke-width="1.4"/><circle cx="256.0374192940071" cy="343.62780118361115" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="251.03741929400712" y1="343.62780118361115" x2="261.0374192940071" y2="343.62780118361115" stroke="#f6b23d" stroke-width="1.4"/><circle cx="476.83366330340505" cy="281.64313490502536" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="471.83366330340505" y1="281.64313490502536" x2="481.83366330340505" y2="281.64313490502536" stroke="#f6b23d" stroke-width="1.4"/><circle cx="380.4213044513017" cy="328.7624625209719" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="375.4213044513017" y1="328.7624625209719" x2="385.4213044513017" y2="328.7624625209719" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-901</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">CNC MACHINE SHOP — POWER DISTRIBUTION</text>
+</svg>

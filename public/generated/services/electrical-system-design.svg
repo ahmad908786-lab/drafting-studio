@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Electrical System Design drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="78" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="92" x2="291.44878815859556" y2="92" stroke="#f6b23d" stroke-width="1.4"/><circle cx="384.4504014682025" cy="92" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="110" x2="281.8953584693372" y2="110" stroke="#f6b23d" stroke-width="1.4"/><circle cx="327.9391829809174" cy="110" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="128" x2="391.6805889457464" y2="128" stroke="#f6b23d" stroke-width="1.4"/><circle cx="313.18331556394696" cy="128" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="146" x2="252.50235664192587" y2="146" stroke="#f6b23d" stroke-width="1.4"/><circle cx="324.73179244436324" cy="146" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="164" x2="314.048455231823" y2="164" stroke="#f6b23d" stroke-width="1.4"/><circle cx="241.03200554382056" cy="164" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="182" x2="180.08709721267223" y2="182" stroke="#f6b23d" stroke-width="1.4"/><circle cx="238.77365577034652" cy="182" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="393.9746330305934" cy="358.9201912190765" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="388.9746330305934" y1="358.9201912190765" x2="398.9746330305934" y2="358.9201912190765" stroke="#f6b23d" stroke-width="1.4"/><circle cx="499.35594755690545" cy="317.6743425242603" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="494.35594755690545" y1="317.6743425242603" x2="504.35594755690545" y2="317.6743425242603" stroke="#f6b23d" stroke-width="1.4"/><circle cx="494.8768015531823" cy="291.55622352845967" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="489.8768015531823" y1="291.55622352845967" x2="499.8768015531823" y2="291.55622352845967" stroke="#f6b23d" stroke-width="1.4"/><circle cx="399.88092217128724" cy="323.61898958683014" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="394.88092217128724" y1="323.61898958683014" x2="404.88092217128724" y2="323.61898958683014" stroke="#f6b23d" stroke-width="1.4"/><circle cx="284.86854343675077" cy="291.8039901833981" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="279.86854343675077" y1="291.8039901833981" x2="289.86854343675077" y2="291.8039901833981" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">ELECTR</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">ELECTRICAL SYSTEM DESIGN</text>
+</svg>

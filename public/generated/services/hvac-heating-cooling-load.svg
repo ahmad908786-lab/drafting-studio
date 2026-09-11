@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="HVAC Heating &amp; Cooling Load drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="70" y="137.25494466722012" width="440" height="26" fill="none" stroke="#38bdf8" stroke-width="2"/><rect x="120" y="163.25494466722012" width="16" height="76.59581596031785" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="112" y="229.71885281056166" width="32" height="14" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="202" y="163.25494466722012" width="16" height="93.93880640622228" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="194" y="254.3695262297988" width="32" height="14" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="284" y="163.25494466722012" width="16" height="84.05000088270754" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="276" y="277.7710741935298" width="32" height="14" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="366" y="163.25494466722012" width="16" height="115.09969377424568" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="358" y="227.34610776789486" width="32" height="14" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="448" y="163.25494466722012" width="16" height="77.75138444267213" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="440" y="239.54747397825122" width="32" height="14" fill="none" stroke="#38bdf8" stroke-width="1.4"/><rect x="380" y="67.25494466722012" width="80" height="52" fill="none" stroke="#38bdf8" stroke-width="2"/><line x1="380" y1="93.25494466722012" x2="460" y2="93.25494466722012" stroke="#38bdf8" stroke-width="1.2"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#38bdf8" font-family="monospace" font-size="11">HVAC-H</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">HVAC HEATING &amp; COOLING LOAD</text>
+</svg>
