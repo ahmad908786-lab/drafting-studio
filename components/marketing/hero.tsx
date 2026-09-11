@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, CalendarCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/lib/theme";
 
@@ -37,7 +37,7 @@ export function Hero() {
               <Link href="/request-quote">Request a Quote <ArrowRight className="size-4" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white">
-              <Link href="/contact"><CalendarCheck className="size-4" /> Book Your Free Consultation</Link>
+              <Link href="/contact"><Mail className="size-4" /> Email Us</Link>
             </Button>
           </div>
         </div>

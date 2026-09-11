@@ -8,6 +8,7 @@ import { INDUSTRIES } from "@/lib/taxonomy";
 import { brand } from "@/lib/theme";
 import { HeaderNav } from "@/components/site/header-nav";
 import { MobileNav } from "@/components/site/mobile-nav";
+import { BookMeetingDialog } from "@/components/site/book-meeting-dialog";
 import { auth } from "@/auth";
 
 export async function SiteHeader() {
@@ -42,9 +43,7 @@ export async function SiteHeader() {
           <Button asChild variant="ghost" size="sm" className="hidden lg:inline-flex">
             <Link href={dashHref}>{role ? "Dashboard" : "Log in"}</Link>
           </Button>
-          <Button asChild variant="accent" size="sm" className="hidden sm:inline-flex">
-            <Link href="/request-quote">Request a Quote</Link>
-          </Button>
+          <BookMeetingDialog />
           <MobileNav nav={nav} industries={industries} dashHref={dashHref} isLoggedIn={!!role} />
         </div>
       </div>

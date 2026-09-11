@@ -77,3 +77,62 @@ export async function subscribeNewsletter(_prev: ActionResult | null, formData: 
   }
   return { ok: true, message: "You're subscribed — thanks!" };
 }
+
+/**
+ * Meeting request from the header's "Book A Meeting" dialog.
+ *
+ * Stored as a CALLBACK lead so it lands in the existing admin Leads list; the
+ * requested slot and topic are folded into the subject and message, since the
+ * Lead model has no scheduling columns of its own.
+ */
+export async function requestMeeting(_prev: ActionResult | null, formData: FormData): Promise<ActionResult> {
+  const preferredDate = String(formData.get("preferredDate") ?? "").trim();
+  const preferredTime = String(formData.get("preferredTime") ?? "").trim();
+  const topic = String(formData.get("topic") ?? "").trim();
+  const notes = String(formData.get("message") ?? "").trim();
+
+  const when = [preferredDate, preferredTime].filter(Boolean).join(" at ");
+
+  const parsed = leadSchema.safeParse({
+    type: "CALLBACK",
+    name: formData.get("name") || undefined,
+    email: formData.get("email") || "",
+    phone: formData.get("phone") || undefined,
+    company: formData.get("company") || undefined,
+    subject: when ? `Meeting request — ${when}` : "Meeting request",
+    message: [
+      when && `Requested slot: ${when} (client's local time)`,
+      topic && `Topic: ${topic}`,
+      notes && `Notes:\n${notes}`,
+    ]
+      .filter(Boolean)
+      .join("\n\n") || undefined,
+    website: formData.get("website") || undefined, // honeypot
+  });
+
+  if (!parsed.success) {
+    return { ok: false, message: "Please fix the highlighted fields.", errors: zodErrors(parsed.error) };
+  }
+  if (parsed.data.website) return { ok: true, message: "Thanks — we'll be in touch." };
+
+  const { website: _hp, ...data } = parsed.data;
+  await prisma.lead.create({ data });
+
+  await sendMail({
+    to: leadsInbox(),
+    subject: `Meeting request${data.name ? ` from ${data.name}` : ""}${when ? ` — ${when}` : ""}`,
+    text: [
+      data.name && `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      data.phone && `Phone: ${data.phone}`,
+      data.company && `Company: ${data.company}`,
+      when && `Requested slot: ${when}`,
+      topic && `Topic: ${topic}`,
+      notes && `Notes:\n${notes}`,
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  });
+
+  return { ok: true, message: when ? `Request sent for ${when}. We'll confirm by email.` : "Request sent. We'll confirm by email." };
+}
