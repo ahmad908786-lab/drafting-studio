@@ -89,9 +89,11 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
   const preferredDate = String(formData.get("preferredDate") ?? "").trim();
   const preferredTime = String(formData.get("preferredTime") ?? "").trim();
   const topic = String(formData.get("topic") ?? "").trim();
+  const timeZone = String(formData.get("timeZone") ?? "").trim();
   const notes = String(formData.get("message") ?? "").trim();
 
-  const when = [preferredDate, preferredTime].filter(Boolean).join(" at ");
+  const slot = [preferredDate, preferredTime].filter(Boolean).join(" at ");
+  const when = slot && timeZone ? `${slot} (${timeZone})` : slot;
 
   const parsed = leadSchema.safeParse({
     type: "CALLBACK",
@@ -101,7 +103,8 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
     company: formData.get("company") || undefined,
     subject: when ? `Meeting request — ${when}` : "Meeting request",
     message: [
-      when && `Requested slot: ${when} (client's local time)`,
+      slot && `Requested slot: ${slot}`,
+      timeZone && `Time zone: ${timeZone}`,
       topic && `Topic: ${topic}`,
       notes && `Notes:\n${notes}`,
     ]
@@ -126,7 +129,8 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
       `Email: ${data.email}`,
       data.phone && `Phone: ${data.phone}`,
       data.company && `Company: ${data.company}`,
-      when && `Requested slot: ${when}`,
+      slot && `Requested slot: ${slot}`,
+      timeZone && `Time zone: ${timeZone}`,
       topic && `Topic: ${topic}`,
       notes && `Notes:\n${notes}`,
     ]
