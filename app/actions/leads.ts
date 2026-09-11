@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/db";
 import { leadSchema, newsletterSchema } from "@/lib/validations";
 import { sendMail, leadsInbox } from "@/lib/mail";
+import { brand } from "@/lib/theme";
 
 export type ActionResult = { ok: boolean; message: string; errors?: Record<string, string> };
 
@@ -95,6 +96,12 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
   const slot = [preferredDate, preferredTime].filter(Boolean).join(" at ");
   const when = slot && timeZone ? `${slot} (${timeZone})` : slot;
 
+  // Name and phone are optional on leadSchema (the contact form and newsletter
+  // share it), but an appointment needs someone to call, so require them here.
+  const required: Record<string, string> = {};
+  if (!String(formData.get("name") ?? "").trim()) required.name = "Your name is required.";
+  if (!String(formData.get("phone") ?? "").trim()) required.phone = "A phone number is required.";
+
   const parsed = leadSchema.safeParse({
     type: "CALLBACK",
     name: formData.get("name") || undefined,
@@ -113,8 +120,12 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
     website: formData.get("website") || undefined, // honeypot
   });
 
-  if (!parsed.success) {
-    return { ok: false, message: "Please fix the highlighted fields.", errors: zodErrors(parsed.error) };
+  if (!parsed.success || Object.keys(required).length > 0) {
+    return {
+      ok: false,
+      message: "Please fix the highlighted fields.",
+      errors: { ...(parsed.success ? {} : zodErrors(parsed.error)), ...required },
+    };
   }
   if (parsed.data.website) return { ok: true, message: "Thanks — we'll be in touch." };
 
@@ -138,5 +149,41 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
       .join("\n"),
   });
 
-  return { ok: true, message: when ? `Request sent for ${when}. We'll confirm by email.` : "Request sent. We'll confirm by email." };
+  // Confirmation to whoever booked. Never let a mail failure lose the lead —
+  // it is already saved, and the studio has its own copy.
+  const details = [
+    slot && `  Requested slot: ${slot}`,
+    timeZone && `  Time zone: ${timeZone}`,
+    topic && `  Topic: ${topic}`,
+    data.phone && `  Phone: ${data.phone}`,
+    data.company && `  Company: ${data.company}`,
+    notes && `  Your notes: ${notes}`,
+  ].filter((line): line is string => Boolean(line));
+
+  try {
+    await sendMail({
+      to: data.email,
+      subject: `We received your meeting request${when ? ` — ${when}` : ""}`,
+      text: [
+        `Hi ${data.name},`,
+        "",
+        `Thanks for booking time with ${brand.name}. Here's what we have:`,
+        "",
+        ...details,
+        "",
+        "This is a request, not a confirmed booking yet. One of our drafters will",
+        "reply within one business day to confirm the slot or offer the nearest",
+        "alternative, and you'll get a calendar invite once it's set.",
+        "",
+        `Need us sooner? Call ${brand.contact.phonePrimary} or reply to this email.`,
+        "",
+        `— ${brand.name}`,
+        brand.contact.email,
+      ].join("\n"),
+    });
+  } catch (err) {
+    console.error("[requestMeeting] confirmation email failed:", err);
+  }
+
+  return { ok: true, message: when ? `Request sent for ${when}. A confirmation is on its way to ${data.email}.` : `Request sent. A confirmation is on its way to ${data.email}.` };
 }

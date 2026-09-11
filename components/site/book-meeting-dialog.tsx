@@ -82,7 +82,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" variant="accent" disabled={pending} className="w-full">
-      {pending ? "Requesting…" : "Request this slot"}
+      {pending ? "Scheduling…" : "Schedule Appointment"}
     </Button>
   );
 }
@@ -152,8 +152,8 @@ export function BookMeetingDialog() {
 
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1">
-                <Label htmlFor="bm-name">Name</Label>
-                <Input id="bm-name" name="name" placeholder="Your name" />
+                <Label htmlFor="bm-name">Name *</Label>
+                <Input id="bm-name" name="name" placeholder="Your name" required />
                 {state?.errors?.name && <p className="text-xs text-destructive">{state.errors.name}</p>}
               </div>
               <div className="space-y-1">
@@ -162,8 +162,9 @@ export function BookMeetingDialog() {
                 {state?.errors?.email && <p className="text-xs text-destructive">{state.errors.email}</p>}
               </div>
               <div className="space-y-1">
-                <Label htmlFor="bm-phone">Phone</Label>
-                <Input id="bm-phone" name="phone" type="tel" placeholder="(555) 555-5555" />
+                <Label htmlFor="bm-phone">Phone *</Label>
+                <Input id="bm-phone" name="phone" type="tel" placeholder="(555) 555-5555" required />
+                {state?.errors?.phone && <p className="text-xs text-destructive">{state.errors.phone}</p>}
               </div>
               <div className="space-y-1">
                 <Label htmlFor="bm-company">Company</Label>
