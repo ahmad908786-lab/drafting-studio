@@ -139,6 +139,7 @@ export function HeaderNav({ nav, industries }: { nav: NavCategory[]; industries:
         )}
       </div>
 
+      <NavLink href="/projects">Projects</NavLink>
       <NavLink href="/blog">Blog</NavLink>
       <NavLink href="/about">About</NavLink>
       <NavLink href="/contact">Contact</NavLink>

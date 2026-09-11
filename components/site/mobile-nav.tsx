@@ -83,6 +83,8 @@ export function MobileNav({
             </AccordionItem>
           </Accordion>
 
+          <MLink href="/projects" onClick={close}>Projects</MLink>
+
           <MLink href="/blog" onClick={close}>Blog</MLink>
           <MLink href="/about" onClick={close}>About</MLink>
           <MLink href="/contact" onClick={close}>Contact</MLink>

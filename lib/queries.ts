@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { prisma } from "@/lib/db";
+import { parseCsvParam } from "@/lib/utils";
 
 /* Per-request memoized reads. Admin mutations call revalidatePath to refresh. */
 
@@ -91,6 +92,96 @@ export const getLatestPosts = cache(async (take = 3) => {
     orderBy: { publishedAt: "desc" },
     take,
     include: { category: true, author: true },
+  });
+});
+
+/* ------------------------- Projects / portfolio ------------------------- */
+
+export type ProjectFilters = {
+  disciplines?: string[]; // slugs
+  industries?: string[]; // slugs
+  q?: string;
+  sort?: "newest" | "featured" | "size";
+  page?: number;
+  perPage?: number;
+};
+
+export function parseProjectFilters(sp: Record<string, string | string[] | undefined>): ProjectFilters {
+  return {
+    disciplines: parseCsvParam(sp.discipline),
+    industries: parseCsvParam(sp.industry),
+    q: typeof sp.q === "string" ? sp.q : undefined,
+    sort: (sp.sort as ProjectFilters["sort"]) ?? "newest",
+    page: sp.page ? Math.max(1, parseInt(String(sp.page), 10) || 1) : 1,
+  };
+}
+
+function buildProjectWhere(filters: ProjectFilters) {
+  const where: Record<string, unknown> = { isPublic: true };
+  if (filters.disciplines?.length) {
+    where.disciplines = { some: { slug: { in: filters.disciplines } } };
+  }
+  if (filters.industries?.length) {
+    where.industry = { slug: { in: filters.industries } };
+  }
+  if (filters.q) {
+    where.OR = [
+      { title: { contains: filters.q } },
+      { summary: { contains: filters.q } },
+      { city: { contains: filters.q } },
+    ];
+  }
+  return where;
+}
+
+export async function getProjects(filters: ProjectFilters) {
+  const perPage = filters.perPage ?? 12;
+  const page = filters.page ?? 1;
+  const where = buildProjectWhere(filters);
+
+  const orderBy =
+    filters.sort === "featured"
+      ? [{ featured: "desc" as const }, { order: "asc" as const }]
+      : filters.sort === "size"
+        ? [{ sizeSqft: "desc" as const }]
+        : [{ order: "asc" as const }];
+
+  const [items, total] = await Promise.all([
+    prisma.project.findMany({
+      where,
+      orderBy,
+      skip: (page - 1) * perPage,
+      take: perPage,
+      include: { industry: true, disciplines: true },
+    }),
+    prisma.project.count({ where }),
+  ]);
+
+  return { items, total, page, perPage, pageCount: Math.ceil(total / perPage) };
+}
+
+export const getProjectBySlug = cache(async (slug: string) => {
+  return prisma.project.findFirst({
+    where: { slug, isPublic: true },
+    include: {
+      industry: true,
+      disciplines: true,
+      services: { select: { slug: true, name: true, category: { select: { slug: true } } } },
+      images: { orderBy: { order: "asc" } },
+    },
+  });
+});
+
+export const getRelatedProjects = cache(async (disciplineSlugs: string[], excludeSlug: string, take = 3) => {
+  return prisma.project.findMany({
+    where: {
+      isPublic: true,
+      slug: { not: excludeSlug },
+      disciplines: { some: { slug: { in: disciplineSlugs } } },
+    },
+    orderBy: { featured: "desc" },
+    take,
+    include: { industry: true, disciplines: true },
   });
 });
 

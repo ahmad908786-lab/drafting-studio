@@ -11,7 +11,7 @@ export function Hero() {
       <div className="container-page relative grid gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground/85">
-            <span className="size-1.5 rounded-full bg-accent" /> Pure 2D AutoCAD · Nationwide
+            <span className="size-1.5 rounded-full bg-accent" /> MEP Drafting for Permit
           </span>
           {/* Explicit {" "} so the spaces either side of the accent span survive
               JSX formatting and the balanced-text wrap. */}

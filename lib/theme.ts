@@ -56,10 +56,10 @@ export const brand = {
 
   /** Short value props reused across hero + CTA bands. */
   promises: [
-    "Pure 2D AutoCAD — fast, clean, no bloat",
+    "High-Precision MEP Drafting Services",
     "Permit-ready, code-compliant DWG & PDF sets",
-    "Fixed quotes in under 24 hours",
-    "US codes: NEC, IMC, IPC, NFPA 13 & 72, IES",
+    "On-Demand Team Available In 24 Hours",
+    "Local US Building Codes and ADA Standards",
   ],
 } as const;
 
