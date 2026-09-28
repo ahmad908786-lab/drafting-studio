@@ -4,7 +4,7 @@ export function VisionMission() {
       <div className="container-page grid gap-10 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-16">
         <div>
           <h2 className="text-balance font-sans text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            America&rsquo;s Trusted MEP Drafting Experts
+            USA Trusted MEP Drafting Experts
           </h2>
           <span className="mt-4 block h-1 w-56 rounded-full bg-accent" aria-hidden />
           <p className="mt-6 text-lg font-bold text-foreground">Where We Draft Your Vision</p>
