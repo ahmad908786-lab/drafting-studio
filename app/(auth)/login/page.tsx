@@ -20,11 +20,13 @@ export default function LoginPage() {
         Don&apos;t have an account?{" "}
         <Link href="/register" className="font-semibold text-primary hover:underline">Create one</Link>
       </p>
-      <div className="mt-6 rounded-lg border border-border bg-secondary/40 p-3 text-center text-xs text-muted-foreground">
-        <p className="font-semibold text-foreground">Demo accounts</p>
-        <p className="mt-1">Admin: admin@draftingstudio.example / Admin123!</p>
-        <p>Client: client@acme.example / Client123!</p>
-      </div>
+      {process.env.NODE_ENV !== "production" && (
+        <div className="mt-6 rounded-lg border border-border bg-secondary/40 p-3 text-center text-xs text-muted-foreground">
+          <p className="font-semibold text-foreground">Demo accounts</p>
+          <p className="mt-1">Admin: admin@draftingstudio.example / Admin123!</p>
+          <p>Client: client@acme.example / Client123!</p>
+        </div>
+      )}
     </Card>
   );
 }

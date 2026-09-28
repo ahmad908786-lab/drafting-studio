@@ -17,7 +17,9 @@ export type AuthActionResult = { ok: boolean; message: string; errors?: Record<s
 export async function authenticate(_prev: AuthActionResult | null, formData: FormData): Promise<AuthActionResult> {
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
-  const callbackUrl = String(formData.get("callbackUrl") ?? "") || undefined;
+  // Only allow same-origin relative redirects — never bounce to an external URL.
+  const rawCallback = String(formData.get("callbackUrl") ?? "");
+  const callbackUrl = rawCallback.startsWith("/") && !rawCallback.startsWith("//") ? rawCallback : undefined;
 
   const parsed = z.object({ email: z.string().email(), password: z.string().min(1) }).safeParse({ email, password });
   if (!parsed.success) return { ok: false, message: "Enter a valid email and password." };
