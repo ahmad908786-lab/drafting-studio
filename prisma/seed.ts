@@ -9,7 +9,7 @@ import { SERVICES } from "./content/services";
 import { INDUSTRIES } from "./content/industries";
 import { PROJECTS } from "./content/projects";
 import { POSTS, BLOG_CATEGORIES } from "./content/posts";
-import { projectPhoto, industryPhoto } from "./photos";
+import { projectPhoto, industryPhoto, blogPhoto } from "./photos";
 import {
   blueprintSvg,
   heroSvg,
@@ -224,11 +224,15 @@ async function main() {
   });
 
   for (const post of POSTS) {
-    const cover = writeSvg(
-      "blog",
-      post.slug,
-      blogCoverSvg({ seed: post.slug, discipline: post.discipline, kicker: post.category.replace("-", " ") }),
-    );
+    // Prefer a real cover photo when one exists; otherwise fall back to the demo SVG.
+    const photo = blogPhoto(post.slug);
+    const cover =
+      photo ??
+      writeSvg(
+        "blog",
+        post.slug,
+        blogCoverSvg({ seed: post.slug, discipline: post.discipline, kicker: post.category.replace("-", " ") }),
+      );
     await prisma.post.create({
       data: {
         slug: post.slug,

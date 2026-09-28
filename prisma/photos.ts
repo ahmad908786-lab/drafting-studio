@@ -24,3 +24,6 @@ export const projectPhoto = (slug: string) => findPhoto("projects", slug);
 
 /** Industry hero photos: public/generated/industries/<slug>.<ext> */
 export const industryPhoto = (slug: string) => findPhoto("generated/industries", slug);
+
+/** Blog cover photos: public/generated/blog/<slug>.<ext> */
+export const blogPhoto = (slug: string) => findPhoto("generated/blog", slug);

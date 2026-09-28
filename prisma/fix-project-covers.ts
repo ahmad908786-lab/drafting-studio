@@ -6,6 +6,8 @@
  * (a photographed project shows one image), and delete the stale demo SVG.
  * For every industry, if public/generated/industries/<slug>.jpg exists,
  * update its heroImage to that photo and delete the stale demo SVG.
+ * For every blog post, if public/generated/blog/<slug>.jpg exists,
+ * update its coverImage/ogImage to that photo and delete the stale demo SVG.
  * Safe to run on a live DB — it only touches coverImage/heroImage and demo images.
  *
  * Usage:  npx tsx prisma/fix-project-covers.ts
@@ -13,7 +15,7 @@
 import { PrismaClient } from "@prisma/client";
 import { existsSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { projectPhoto, industryPhoto } from "./photos";
+import { projectPhoto, industryPhoto, blogPhoto } from "./photos";
 
 const prisma = new PrismaClient();
 
@@ -39,6 +41,17 @@ async function main() {
     const staleDemo = join(process.cwd(), "public", "generated", "industries", `${ind.slug}.svg`);
     if (existsSync(staleDemo)) rmSync(staleDemo);
     console.log(`updated industry hero: ${ind.slug}`);
+    updated++;
+  }
+
+  const posts = await prisma.post.findMany({ select: { id: true, slug: true, coverImage: true } });
+  for (const post of posts) {
+    const photoPath = blogPhoto(post.slug);
+    if (!photoPath || post.coverImage === photoPath) continue;
+    await prisma.post.update({ where: { id: post.id }, data: { coverImage: photoPath, ogImage: photoPath } });
+    const staleDemo = join(process.cwd(), "public", "generated", "blog", `${post.slug}.svg`);
+    if (existsSync(staleDemo)) rmSync(staleDemo);
+    console.log(`updated blog cover: ${post.slug}`);
     updated++;
   }
 
