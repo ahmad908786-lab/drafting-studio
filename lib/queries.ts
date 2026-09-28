@@ -160,8 +160,16 @@ export async function getProjects(filters: ProjectFilters) {
   return { items, total, page, perPage, pageCount: Math.ceil(total / perPage) };
 }
 
-export const getProjectBySlug = cache(async (slug: string) => {
-  return prisma.project.findFirst({
+export const getFeaturedProjects = cache(async (take = 6) => {
+  return prisma.project.findMany({
+    where: { isPublic: true },
+    orderBy: [{ featured: "desc" }, { order: "asc" }],
+    take,
+    include: { industry: true, disciplines: true },
+  });
+});
+
+export const getProjectBySlug = cache(async (slug: string) => {  return prisma.project.findFirst({
     where: { slug, isPublic: true },
     include: {
       industry: true,

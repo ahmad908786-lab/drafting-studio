@@ -7,7 +7,7 @@ import { parseCsvParam } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Request a Quote",
-  description: "Get a fixed 2D AutoCAD drafting quote in under 24 hours. Tell us your scope and upload your plans.",
+  description: "Get a fixed 2D AutoCAD drafting quote in under 72 hours. Tell us your scope and upload your plans.",
 };
 
 export default async function RequestQuotePage({
@@ -36,12 +36,12 @@ export default async function RequestQuotePage({
     <>
       <PageHero
         eyebrow="Request a Quote"
-        title="Get a fixed quote in under 24 hours"
+        title="Get a fixed quote in under 72 hours"
         description="Tell us what you need and send your plans. We reply with a fixed price and delivery date — no meetings, no obligation."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Request a Quote" }]}
       >
         <div className="flex flex-wrap gap-4 text-sm">
-          <span className="inline-flex items-center gap-2 font-medium text-primary-foreground/90"><Clock className="size-4.5 text-accent" /> 24-hour quote</span>
+          <span className="inline-flex items-center gap-2 font-medium text-primary-foreground/90"><Clock className="size-4.5 text-accent" /> 72-hour quote</span>
           <span className="inline-flex items-center gap-2 font-medium text-primary-foreground/90"><ShieldCheck className="size-4.5 text-accent" /> Fixed pricing</span>
           <span className="inline-flex items-center gap-2 font-medium text-primary-foreground/90"><RefreshCw className="size-4.5 text-accent" /> 2 free revisions</span>
         </div>

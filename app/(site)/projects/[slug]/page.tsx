@@ -112,7 +112,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             <div className="rounded-xl border border-primary/20 bg-primary p-5 text-primary-foreground">
               <h3 className="font-sans text-lg font-bold">Need something similar?</h3>
-              <p className="mt-1.5 text-sm text-primary-foreground/80">Send your scope for a fixed quote in under 24 hours.</p>
+              <p className="mt-1.5 text-sm text-primary-foreground/80">Send your scope for a fixed quote in under 72 hours.</p>
               <Button asChild variant="accent" className="mt-4 w-full">
                 <Link href={`/request-quote?industry=${project.industry?.slug ?? ""}`}>Request a Quote</Link>
               </Button>

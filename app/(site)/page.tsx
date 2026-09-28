@@ -6,6 +6,7 @@ import { LogoMarquee } from "@/components/marketing/logo-marquee";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StatBand } from "@/components/shared/stat-band";
 import { ServiceCard } from "@/components/shared/service-card";
+import { ProjectCard } from "@/components/shared/project-card";
 import { TestimonialCard } from "@/components/shared/testimonial-card";
 import { PostCard } from "@/components/shared/post-card";
 import { CtaBand } from "@/components/shared/cta-band";
@@ -13,6 +14,7 @@ import { Icon } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import {
   getAllServices,
+  getFeaturedProjects,
   getIndustries,
   getTestimonials,
   getClientLogos,
@@ -24,7 +26,7 @@ import {
 import { brand } from "@/lib/theme";
 
 export default async function HomePage() {
-  const [services, categories, industries, testimonials, logos, posts, settings, disciplines] =
+  const [services, categories, industries, testimonials, logos, posts, settings, disciplines, featuredProjects] =
     await Promise.all([
       getAllServices(),
       getServiceCategories(),
@@ -34,6 +36,7 @@ export default async function HomePage() {
       getLatestPosts(3),
       getSettings(),
       getDisciplines(),
+      getFeaturedProjects(6),
     ]);
 
   const stats = (settings?.stats as { value: string; label: string }[]) ?? brand.stats;
@@ -100,7 +103,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 9).map((s) => (
+            {services.map((s) => (
               <ServiceCard
                 key={s.slug}
                 service={{
@@ -129,20 +132,54 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Featured work */}
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading
+              eyebrow="Sample Work"
+              title="Recent drafting projects"
+              description="A slice of the drawing sets we've delivered — power, lighting, fire protection and HVAC across retail, multifamily and industrial work."
+            />
+            <Button asChild variant="outline">
+              <Link href="/projects">All projects <ArrowRight className="size-4" /></Link>
+            </Button>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((p) => (
+              <ProjectCard
+                key={p.slug}
+                project={{
+                  slug: p.slug,
+                  title: p.title,
+                  coverImage: p.coverImage,
+                  city: p.city,
+                  state: p.state,
+                  sizeSqft: p.sizeSqft,
+                  featured: p.featured,
+                  industry: p.industry ? { name: p.industry.name, slug: p.industry.slug } : null,
+                  disciplines: p.disciplines.map((d) => ({ slug: d.slug, label: d.label, color: d.color })),
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Proposal band */}
       <section className="py-16 sm:py-20">
         <div className="container-page">
           <div className="grid items-center gap-8 rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-card)] lg:grid-cols-[1fr_auto] sm:p-10">
             <div>
               <h2 className="text-balance font-sans text-3xl font-extrabold tracking-tight text-foreground">
-                Get pricing on a new drafting proposal in fewer than 24 hours
+                Get pricing on a new drafting proposal in fewer than 72 hours
               </h2>
               <p className="mt-3 max-w-2xl text-muted-foreground">
                 Send us your plans and scope. We reply with a fixed price and a delivery date — no meetings, no runaround. Two free minor revisions are built into every set.
               </p>
               <div className="mt-5 flex flex-wrap gap-4 text-sm">
                 {[
-                  ["Clock", "Under 24h to quote"],
+                  ["Clock", "Under 72h to quote"],
                   ["ShieldCheck", "Code-compliant sets"],
                   ["FileCheck2", "Permit-ready DWG + PDF"],
                 ].map(([icon, label]) => (
@@ -203,8 +240,8 @@ export default async function HomePage() {
       <section className="border-y border-border bg-secondary/40 py-16 sm:py-20">
         <div className="container-page">
           <SectionHeading eyebrow="Client Voices" title="What partners say" align="center" className="mb-10" />
-          <div className="grid gap-5 md:grid-cols-3">
-            {testimonials.slice(0, 3).map((t) => (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.slice(0, 7).map((t) => (
               <TestimonialCard key={t.id} t={t} />
             ))}
           </div>

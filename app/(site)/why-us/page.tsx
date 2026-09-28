@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const reasons = [
   { icon: PenTool, title: "Pure 2D focus", desc: "We do one thing — permit-ready 2D AutoCAD — and we're fast because that's all we do." },
-  { icon: Gauge, title: "Fast turnaround", desc: "Most sets in 3–7 business days, with rush options and a fixed quote in under 24 hours." },
+  { icon: Gauge, title: "Fast turnaround", desc: "Most sets in 3–7 business days, with rush options and a fixed quote in under 72 hours." },
   { icon: Layers, title: "Your CAD standard", desc: "We draft to your title block, layers and sheet order so output drops straight into your set." },
   { icon: Users, title: "An extension of your team", desc: "Scale drafting capacity up and down by the quarter without hiring." },
   { icon: DollarSign, title: "Fixed, transparent pricing", desc: "Know the price before we start. Two free minor revisions on every set." },

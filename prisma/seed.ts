@@ -251,13 +251,15 @@ async function main() {
 
   /* -------------------- Testimonials -------------------- */
   console.log("→ Testimonials, logos, team");
+  // SAMPLE content — replace with real client quotes from the admin dashboard (/admin).
   const testimonials = [
     { author: "Michael Trent", role: "Principal Engineer", company: "Trent MEP Engineering", quote: "Drafting Studio feels like an extension of our office. Sets come back to our CAD standard, on time, and our PEs stamp them with almost no cleanup.", rating: 5, featured: true },
     { author: "Sofia Delgado", role: "Director of Construction", company: "BrightBrew Franchising", quote: "We roll out 20+ locations a year. Their prototype adaptations are consistent to the sheet and hit our open dates every time.", rating: 5, featured: true },
     { author: "Aaron Whitfield", role: "Owner", company: "Whitfield Fire Protection", quote: "The sprinkler layouts and hydraulic reports are fabrication-ready and clear review. That's exactly what we need from a drafting partner.", rating: 5, featured: true },
-    { author: "Rebecca Lin", role: "Project Manager", company: "Northstar General Contractors", quote: "Fast, responsive, and genuinely good at coordination. The restaurant kitchen sets alone have saved us weeks.", rating: 5, featured: false },
-    { author: "James Okoye", role: "Electrical Engineer", company: "Okoye & Associates", quote: "Load calcs and one-lines done right the first time. Their documentation makes my stamp an easy decision.", rating: 5, featured: false },
-    { author: "Danielle Foster", role: "Developer", company: "Foster Urban Living", quote: "Our multifamily 13R packages and unit electrical stacks came back coordinated and permit-ready. Great value.", rating: 5, featured: false },
+    { author: "Rebecca Lin", role: "Project Manager", company: "Northstar General Contractors", quote: "Fast, responsive, and genuinely good at coordination. The restaurant kitchen sets alone have saved us weeks.", rating: 5, featured: true },
+    { author: "James Okoye", role: "Electrical Engineer", company: "Okoye & Associates", quote: "Load calcs and one-lines done right the first time. Their documentation makes my stamp an easy decision.", rating: 5, featured: true },
+    { author: "Danielle Foster", role: "Developer", company: "Foster Urban Living", quote: "Our multifamily 13R packages and unit electrical stacks came back coordinated and permit-ready. Great value.", rating: 5, featured: true },
+    { author: "Priya Nair", role: "Project Architect", company: "Nair Studio Architects", quote: "The lighting layouts and photometric studies coordinated with our architectural backgrounds on the first pass — no rework.", rating: 5, featured: true },
   ];
   for (const [i, t] of testimonials.entries()) {
     await prisma.testimonial.create({

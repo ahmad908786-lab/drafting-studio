@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { brand } from "@/lib/theme";
 
 export function CtaBand({
-  title = "Get a fixed drafting quote in under 24 hours",
+  title = "Get a fixed drafting quote in under 72 hours",
   description = "Send us your architectural plans and scope. We'll come back with a fixed price and a turnaround date — no obligation.",
   primaryLabel = "Request a Quote",
   primaryHref = "/request-quote",
