@@ -133,7 +133,17 @@ async function main() {
   /* -------------------- Industries -------------------- */
   console.log("→ Industries");
   for (const ind of INDUSTRIES) {
-    const hero = writeSvg("industries", ind.slug, heroSvg({ seed: ind.slug, label: ind.name.split(" ")[0] }));
+    // Prefer a real photo when one exists; fall back to the demo SVG.
+    const photoRel = `/generated/industries/${ind.slug}.jpg`;
+    const photoAbs = join(process.cwd(), "public", photoRel);
+    let hero: string;
+    if (existsSync(photoAbs)) {
+      hero = photoRel;
+      const staleDemo = join(process.cwd(), "public", "generated", "industries", `${ind.slug}.svg`);
+      if (existsSync(staleDemo)) rmSync(staleDemo);
+    } else {
+      hero = writeSvg("industries", ind.slug, heroSvg({ seed: ind.slug, label: ind.name.split(" ")[0] }));
+    }
     await prisma.industry.create({
       data: {
         slug: ind.slug,
