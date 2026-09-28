@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/lib/theme";
@@ -42,36 +43,24 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Blueprint panel */}
-        <div className="relative hidden lg:block">
-          <div className="absolute inset-0 rounded-2xl border border-white/15 bg-white/[0.03] shadow-2xl" />
-          <div className="relative flex h-full flex-col justify-between rounded-2xl p-6">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-[11px] uppercase tracking-widest text-primary-foreground/60">
-              <span>Sheet E-101</span><span>2D / AutoCAD</span>
-            </div>
-            <svg viewBox="0 0 460 300" className="my-4 w-full" role="img" aria-label="Sample electrical plan schematic">
-              <g stroke="var(--accent)" strokeWidth="1.4" fill="none" opacity="0.9">
-                <rect x="40" y="40" width="46" height="120" />
-                <line x1="86" y1="60" x2="360" y2="60" /><circle cx="360" cy="60" r="5" />
-                <line x1="86" y1="90" x2="300" y2="90" /><circle cx="300" cy="90" r="5" />
-                <line x1="86" y1="120" x2="330" y2="120" /><circle cx="330" cy="120" r="5" />
-                <line x1="86" y1="150" x2="260" y2="150" /><circle cx="260" cy="150" r="5" />
-              </g>
-              <g stroke="#8fb3ff" strokeWidth="1.2" fill="none" opacity="0.7">
-                <rect x="120" y="200" width="40" height="20" /><rect x="200" y="200" width="40" height="20" /><rect x="280" y="200" width="40" height="20" />
-                <line x1="140" y1="210" x2="140" y2="210" /><circle cx="360" cy="230" r="8" /><line x1="355" y1="230" x2="365" y2="230" />
-              </g>
-              <text x="40" y="285" fill="rgba(255,255,255,0.45)" fontFamily="monospace" fontSize="11">POWER + LIGHTING PLAN — DRAFTING STUDIO</text>
-            </svg>
-            <div className="grid grid-cols-3 gap-3 border-t border-white/10 pt-4 text-center">
-              {[["48h", "Turnaround"], ["NEC", "Code-drawn"], ["DWG", "+ PDF"]].map(([v, l]) => (
-                <div key={l}>
-                  <div className="font-sans text-xl font-extrabold text-accent">{v}</div>
-                  <div className="text-[11px] uppercase tracking-wide text-primary-foreground/60">{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Hero image — oversized and masked so every edge dissolves into the navy
+            rather than ending on a hard border. */}
+        <div className="hidden items-center lg:flex">
+          <Image
+            src="/hero/mep-coordination.webp"
+            alt="MEP coordination drawing set laid out beside a building model"
+            width={1699}
+            height={941}
+            sizes="(max-width: 1024px) 0px, 70vw"
+            className="h-auto w-[132%] max-w-none -translate-x-[4%] scale-105"
+            style={{
+              maskImage:
+                "radial-gradient(ellipse 72% 72% at 50% 50%, #000 42%, rgba(0,0,0,0.75) 62%, transparent 88%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 72% 72% at 50% 50%, #000 42%, rgba(0,0,0,0.75) 62%, transparent 88%)",
+            }}
+            priority
+          />
         </div>
       </div>
     </section>

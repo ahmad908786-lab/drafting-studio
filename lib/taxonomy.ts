@@ -63,8 +63,7 @@ export const INDUSTRIES = [
   { slug: "healthcare", name: "Healthcare", icon: "Stethoscope" },
   { slug: "salon", name: "Salon & Spa", icon: "Scissors" },
   { slug: "hotel", name: "Hotel", icon: "BedDouble" },
-  { slug: "apartments", name: "Apartments", icon: "Building" },
-  { slug: "industrial", name: "Industrial", icon: "Factory" },
+  { slug: "apartments", name: "Apartments", icon: "Building" },
   { slug: "plaza", name: "Plaza", icon: "ShoppingBag" },
   { slug: "offices", name: "Offices", icon: "Briefcase" },
   { slug: "warehouse", name: "Warehouse", icon: "Warehouse" },
@@ -135,3 +134,22 @@ export const US_STATES = [
 ] as const;
 
 export const DELIVERABLE_FORMATS = [".dwg", ".pdf", ".dxf (on request)", ".xlsx / .pdf reports"] as const;
+
+/* ------------------------------------------------------------------ */
+/* Extra quote-form options                                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Catch-all choices offered in the RFQ wizard only — deliberately NOT rows in
+ * the Service table, so they never appear in the nav, the services pages or the
+ * rate sheet. createQuote resolves these slugs from here, since the DB lookup
+ * that snapshots service names cannot find them.
+ */
+export const OTHER_QUOTE_SERVICES = [
+  { slug: "cad-drafting", name: "CAD Drafting", category: "Other" },
+  { slug: "other-scope", name: "Other — tell us below", category: "Other" },
+] as const;
+
+export const OTHER_QUOTE_SERVICE_BY_SLUG: Record<string, string> = Object.fromEntries(
+  OTHER_QUOTE_SERVICES.map((s) => [s.slug, s.name]),
+);

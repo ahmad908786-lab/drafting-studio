@@ -172,26 +172,6 @@ From garden-style to mid-rise, we draft repeatable unit electrical and plumbing,
     ],
   },
   {
-    slug: "industrial",
-    name: "Industrial",
-    icon: "Factory",
-    order: 9,
-    shortDesc: "Plants and process facilities: power distribution, exhaust, process piping.",
-    bodyMdx: `## Power and process, drafted to scale
-
-Manufacturing and process facilities carry big services, motor loads, process exhaust and compressed-air or process piping. We draft the distribution, one-lines, mechanical exhaust and plumbing/process piping in coordinated 2D sets built for the plant floor.`,
-    painPoints: [
-      "Large services and motor loads",
-      "Process exhaust and ventilation",
-      "Compressed-air / process piping",
-      "High-bay lighting and photometrics",
-    ],
-    stats: [
-      { value: "High-bay", label: "Lighting & photometrics" },
-      { value: "One-line", label: "Distribution drafted" },
-    ],
-  },
-  {
     slug: "plaza",
     name: "Plaza & Retail",
     icon: "ShoppingBag",

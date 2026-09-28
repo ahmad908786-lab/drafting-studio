@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/db";
 import { auth } from "@/auth";
 import { quoteSchema } from "@/lib/validations";
+import { OTHER_QUOTE_SERVICE_BY_SLUG } from "@/lib/taxonomy";
 import { sendMail, leadsInbox } from "@/lib/mail";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -35,7 +36,15 @@ export async function createQuote(raw: unknown): Promise<QuoteResult> {
     where: { slug: { in: data.serviceSlugs } },
     select: { slug: true, name: true },
   });
-  const serviceSnapshot = services.map((s) => ({ slug: s.slug, name: s.name }));
+  // Slugs the Service table doesn't know about are the wizard's catch-all
+  // options; resolve their names here so the selection isn't silently dropped.
+  const found = new Set(services.map((s) => s.slug));
+  const serviceSnapshot = [
+    ...services.map((s) => ({ slug: s.slug, name: s.name })),
+    ...data.serviceSlugs
+      .filter((slug) => !found.has(slug) && OTHER_QUOTE_SERVICE_BY_SLUG[slug])
+      .map((slug) => ({ slug, name: OTHER_QUOTE_SERVICE_BY_SLUG[slug] })),
+  ];
 
   // Link to a logged-in user, or an existing account with the same email.
   const session = await auth();

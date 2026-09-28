@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Mercado Plaza — 600A Service Upgrade drawing">
+  <defs>
+    <linearGradient id="bp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1f44"/>
+      <stop offset="1" stop-color="#0c2450"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="400" fill="url(#bp)"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  <rect x="16" y="16" width="568" height="368" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <rect x="24" y="24" width="552" height="352" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <g opacity="0.92"><rect x="60" y="80" width="46" height="120" fill="none" stroke="#f6b23d" stroke-width="2"/><line x1="106" y1="94" x2="304.2929231887683" y2="94" stroke="#f6b23d" stroke-width="1.4"/><circle cx="408.3873217413202" cy="94" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="112" x2="213.9903446054086" y2="112" stroke="#f6b23d" stroke-width="1.4"/><circle cx="349.9761084886268" cy="112" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="130" x2="220.05499793216586" y2="130" stroke="#f6b23d" stroke-width="1.4"/><circle cx="325.291161974892" cy="130" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="148" x2="210.54091916419566" y2="148" stroke="#f6b23d" stroke-width="1.4"/><circle cx="303.63671929575503" cy="148" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="166" x2="334.7916903719306" y2="166" stroke="#f6b23d" stroke-width="1.4"/><circle cx="386.3541622366756" cy="166" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="106" y1="184" x2="287.1298003522679" y2="184" stroke="#f6b23d" stroke-width="1.4"/><circle cx="405.08865259122103" cy="184" r="4" fill="none" stroke="#f6b23d" stroke-width="1.4"/><circle cx="321.3819142943248" cy="253.48694684915245" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="316.3819142943248" y1="253.48694684915245" x2="326.3819142943248" y2="253.48694684915245" stroke="#f6b23d" stroke-width="1.4"/><circle cx="491.3448046008125" cy="337.6686847489327" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="486.3448046008125" y1="337.6686847489327" x2="496.3448046008125" y2="337.6686847489327" stroke="#f6b23d" stroke-width="1.4"/><circle cx="488.47512188833207" cy="336.9970182329416" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="483.47512188833207" y1="336.9970182329416" x2="493.47512188833207" y2="336.9970182329416" stroke="#f6b23d" stroke-width="1.4"/><circle cx="512.8479227703065" cy="299.5955004543066" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="507.84792277030647" y1="299.5955004543066" x2="517.8479227703065" y2="299.5955004543066" stroke="#f6b23d" stroke-width="1.4"/><circle cx="482.4498054618016" cy="313.63758702762425" r="9" fill="none" stroke="#f6b23d" stroke-width="1.4"/><line x1="477.4498054618016" y1="313.63758702762425" x2="487.4498054618016" y2="313.63758702762425" stroke="#f6b23d" stroke-width="1.4"/></g>
+  <!-- title block -->
+  <g>
+    <rect x="360" y="330" width="216" height="46" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    <line x1="360" y1="352" x2="576" y2="352" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <line x1="480" y1="330" x2="480" y2="376" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="368" y="345" fill="#e6edf7" font-family="monospace" font-size="10" letter-spacing="1">DRAFTING STUDIO</text>
+    <text x="368" y="368" fill="#f6b23d" font-family="monospace" font-size="11">E-101</text>
+    <text x="488" y="345" fill="#aebfda" font-family="monospace" font-size="8">SCALE 1/8"=1'</text>
+    <text x="488" y="368" fill="#aebfda" font-family="monospace" font-size="8">2D / AutoCAD</text>
+  </g>
+  <text x="32" y="46" fill="#dbe6f5" font-family="monospace" font-size="13" letter-spacing="0.5">MERCADO PLAZA — 600A SERVICE UPGRADE</text>
+</svg>

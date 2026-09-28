@@ -4,6 +4,7 @@ import { PageHero } from "@/components/shared/page-hero";
 import { QuoteWizard } from "@/components/quote/quote-wizard";
 import { getAllServices, getIndustries, getServiceCategories } from "@/lib/queries";
 import { parseCsvParam } from "@/lib/utils";
+import { OTHER_QUOTE_SERVICES } from "@/lib/taxonomy";
 
 export const metadata: Metadata = {
   title: "Request a Quote",
@@ -23,11 +24,15 @@ export default async function RequestQuotePage({
   ]);
   const catName = new Map(categories.map((c) => [c.slug, c.name]));
 
-  const serviceOpts = services.map((s) => ({
-    slug: s.slug,
-    name: s.name,
-    category: catName.get(s.category.slug) ?? s.category.slug,
-  }));
+  const serviceOpts = [
+    ...services.map((s) => ({
+      slug: s.slug,
+      name: s.name,
+      category: catName.get(s.category.slug) ?? s.category.slug,
+    })),
+    // Catch-alls, kept last so "Other" sits at the bottom of the picker.
+    ...OTHER_QUOTE_SERVICES.map((s) => ({ slug: s.slug, name: s.name, category: s.category })),
+  ];
 
   const initialServices = parseCsvParam(sp.service);
   const initialIndustry = typeof sp.industry === "string" ? sp.industry : "";
