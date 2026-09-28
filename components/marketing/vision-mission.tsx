@@ -9,18 +9,18 @@ export function VisionMission() {
           <span className="mt-4 block h-1 w-56 rounded-full bg-accent" aria-hidden />
           <p className="mt-6 text-lg font-bold text-foreground">Where We Draft Your Vision</p>
           <p className="mt-6 text-base font-bold text-foreground">Mission:</p>
-          <p className="mt-2 leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-justify leading-relaxed text-muted-foreground">
             Drafting Studio&rsquo;s mission is to partner with engineering firms, contractors
             and developers to meet their drafting and documentation needs through reliable,
             high-quality and flexible 2D CAD service.
           </p>
           <p className="mt-6 text-base font-bold text-foreground">Vision:</p>
-          <p className="mt-2 leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-justify leading-relaxed text-muted-foreground">
             Our vision is to be the drafting team AEC firms call first — the partner that
             makes permit-ready drawing sets the easiest part of every project.
           </p>
         </div>
-        <div className="space-y-5 leading-relaxed text-muted-foreground lg:pt-1">
+        <div className="space-y-5 text-justify leading-relaxed text-muted-foreground lg:pt-1">
           <p>
             Drafting Studio is a US-based CAD drafting firm specializing in comprehensive 2D
             electrical and mechanical drafting services for the residential, commercial and
