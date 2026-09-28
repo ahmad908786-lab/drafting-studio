@@ -140,9 +140,9 @@ export default async function HomePage() {
         <div className="container-page">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
-              eyebrow="Sample Work"
+              eyebrow="Our Projects"
               title="Recent drafting projects"
-              description="A slice of the drawing sets we've delivered — power, lighting, fire protection and HVAC across retail, multifamily and industrial work."
+              description="A look at the drawing sets we've delivered — power, lighting, fire protection and HVAC across retail, multifamily and industrial work."
             />
             <Button asChild variant="outline">
               <Link href="/projects">All projects <ArrowRight className="size-4" /></Link>
