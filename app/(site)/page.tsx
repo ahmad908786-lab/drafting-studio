@@ -3,6 +3,7 @@ import { ArrowRight, Building2, HardHat, Clock, ShieldCheck, FileCheck2 } from "
 import { Hero } from "@/components/marketing/hero";
 import { IndustryGrid } from "@/components/marketing/industry-grid";
 import { LogoMarquee } from "@/components/marketing/logo-marquee";
+import { Overview } from "@/components/marketing/overview";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StatBand } from "@/components/shared/stat-band";
 import { ServiceCard } from "@/components/shared/service-card";
@@ -64,6 +65,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <Overview />
 
       {/* Industries */}
       <section className="py-16 sm:py-20">
