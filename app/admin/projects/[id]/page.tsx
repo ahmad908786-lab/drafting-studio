@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
-import { DashHeader } from "@/components/dashboard/ui";
+import { ExternalLink } from "lucide-react";
+import { PageHeader, Panel, StageBadge } from "@/components/dashboard/ui";
+import { Badge } from "@/components/ui/badge";
 import { ProjectForm, type ProjectFormData } from "@/components/admin/project-form";
 import { ProjectManagement } from "@/components/admin/project-management";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
+import { PROJECT_STAGES } from "@/lib/taxonomy";
 
 export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -16,6 +18,7 @@ export default async function EditProjectPage({ params }: { params: Promise<{ id
         disciplines: true,
         services: true,
         industry: true,
+        company: true,
         updates: { orderBy: { createdAt: "desc" }, include: { author: { select: { name: true } } } },
         files: { orderBy: { createdAt: "desc" } },
       },
@@ -50,29 +53,52 @@ export default async function EditProjectPage({ params }: { params: Promise<{ id
     dueDate: project.dueDate ? project.dueDate.toISOString().slice(0, 10) : "",
   };
 
+  const stageLabel = PROJECT_STAGES.find((s) => s.value === project.stage)?.label ?? project.stage;
+  const description = [
+    project.company?.name ?? (project.isPublic ? "Sample work" : "No client assigned"),
+    project.isPublic ? "Public portfolio" : "Client project",
+    project.isPublic ? (project.featured ? "Featured" : "Portfolio") : stageLabel,
+  ].join(" · ");
+
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <Button asChild variant="ghost" size="icon-sm"><Link href="/admin/projects" aria-label="Back"><ArrowLeft className="size-4" /></Link></Button>
-          <DashHeader title={project.title} description={project.isPublic ? "Public sample work" : "Client project"} />
-        </div>
-        {project.isPublic && (
-          <Button asChild variant="outline" size="sm"><Link href={`/projects/${project.slug}`} target="_blank">View live <ExternalLink className="size-4" /></Link></Button>
-        )}
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        title={project.title}
+        description={description}
+        backHref="/admin/projects"
+        backLabel="Projects"
+        actions={
+          <>
+            {project.isPublic ? (
+              project.featured && <Badge variant="accent">Featured</Badge>
+            ) : (
+              <StageBadge stage={project.stage} />
+            )}
+            <Badge variant="secondary">{project.status.replace(/_/g, " ")}</Badge>
+            {project.isPublic && (
+              <Button asChild variant="outline" size="sm">
+                <Link href={`/projects/${project.slug}`} target="_blank">View live <ExternalLink className="size-4" /></Link>
+              </Button>
+            )}
+          </>
+        }
+      />
+
+      <Panel title="Project details">
+        <ProjectForm
+          initial={initial}
+          disciplines={disciplines.map((d) => ({ slug: d.slug, name: d.label, label: d.label }))}
+          services={services}
+          industries={industries}
+          companies={companies}
+        />
+      </Panel>
 
       {!project.isPublic && (
-        <ProjectManagement projectId={project.id} stage={project.stage} updates={project.updates} files={project.files} />
+        <Panel title="Timeline & files">
+          <ProjectManagement projectId={project.id} stage={project.stage} updates={project.updates} files={project.files} />
+        </Panel>
       )}
-
-      <ProjectForm
-        initial={initial}
-        disciplines={disciplines.map((d) => ({ slug: d.slug, name: d.label, label: d.label }))}
-        services={services}
-        industries={industries}
-        companies={companies}
-      />
     </div>
   );
 }
