@@ -32,6 +32,16 @@ function writeSvg(folder: string, name: string, svg: string): string {
   return `/generated/${folder}/${name}.svg`;
 }
 
+/** Real project photos live in public/projects/<slug>.<ext>, committed to the repo. */
+export function projectPhoto(slug: string): string | null {
+  for (const ext of ["webp", "jpg", "jpeg", "png"]) {
+    if (existsSync(join(process.cwd(), "public", "projects", `${slug}.${ext}`))) {
+      return `/projects/${slug}.${ext}`;
+    }
+  }
+  return null;
+}
+
 async function clearDb() {
   // Child-first deletion so FK constraints and implicit m-n joins clear cleanly.
   await prisma.auditLog.deleteMany();
@@ -145,30 +155,32 @@ async function main() {
   console.log("→ Sample-work projects");
   for (const [i, p] of PROJECTS.entries()) {
     // Prefer a real cover photo when one exists; otherwise fall back to the demo blueprint SVG.
-    const photoPath = `/generated/projects/${p.slug}.jpg`;
-    let cover: string;
-    if (existsSync(join(process.cwd(), "public", photoPath))) {
-      cover = photoPath;
-      // Remove the stale demo blueprint for this project, if a previous seed wrote one.
-      const staleDemo = join(PUB, "drawings", `${p.slug}.svg`);
-      if (existsSync(staleDemo)) rmSync(staleDemo);
-    } else {
-      cover = writeSvg(
+    const photo = projectPhoto(p.slug);
+    const cover =
+      photo ??
+      writeSvg(
         "drawings",
         p.slug,
         blueprintSvg({ seed: p.slug, title: p.title, discipline: p.disciplines[0], label: p.sheet }),
       );
+    if (photo) {
+      // Drop the stale demo blueprint for this project, if a previous seed wrote one.
+      const staleDemo = join(PUB, "drawings", `${p.slug}.svg`);
+      if (existsSync(staleDemo)) rmSync(staleDemo);
     }
-    // A couple of extra "sheets" per project for the detail gallery.
-    const extraImages = p.disciplines.slice(0, 3).map((disc, idx) => {
-      const label = `${p.sheet.split("-")[0]}-${100 + idx * 2 + 1}`;
-      const url = writeSvg(
-        "drawings",
-        `${p.slug}-${idx + 1}`,
-        blueprintSvg({ seed: `${p.slug}-${idx}`, title: `${p.title} — ${disc}`, discipline: disc, label }),
-      );
-      return { url, caption: `${disc.replace("-", " ")} — ${label}`, order: idx, isDrawing: true };
-    });
+    // Projects with a real photo show that one image alone. Demo projects get a
+    // couple of extra "sheets" so the detail gallery has something to page through.
+    const extraImages = photo
+      ? []
+      : p.disciplines.slice(0, 3).map((disc, idx) => {
+          const label = `${p.sheet.split("-")[0]}-${100 + idx * 2 + 1}`;
+          const url = writeSvg(
+            "drawings",
+            `${p.slug}-${idx + 1}`,
+            blueprintSvg({ seed: `${p.slug}-${idx}`, title: `${p.title} — ${disc}`, discipline: disc, label }),
+          );
+          return { url, caption: `${disc.replace("-", " ")} — ${label}`, order: idx, isDrawing: true };
+        });
 
     await prisma.project.create({
       data: {
