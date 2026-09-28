@@ -7,7 +7,7 @@ import { getIndustries } from "@/lib/queries";
 export const metadata: Metadata = {
   title: "Industries We Serve",
   description:
-    "2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments, industrial, plaza, offices and warehouse projects.",
+    "2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments, plaza, offices and warehouse projects.",
 };
 
 export default async function IndustriesPage() {

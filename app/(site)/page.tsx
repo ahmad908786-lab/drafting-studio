@@ -142,7 +142,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="Our Projects"
               title="Recent drafting projects"
-              description="A look at the drawing sets we've delivered — power, lighting, fire protection and HVAC across retail, multifamily and industrial work."
+              description="A look at the drawing sets we've delivered — power, lighting, fire protection and HVAC across retail, multifamily and office work."
             />
             <Button asChild variant="outline">
               <Link href="/projects">All projects <ArrowRight className="size-4" /></Link>

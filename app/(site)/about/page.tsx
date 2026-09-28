@@ -48,7 +48,7 @@ export default async function AboutPage() {
             <p>
               Drafting Studio is a US-based CAD drafting firm specializing in comprehensive 2D
               electrical and mechanical drafting services for the residential, commercial and
-              industrial sectors. We deliver clean, permit-ready AutoCAD sets to clients
+              multifamily sectors. We deliver clean, permit-ready AutoCAD sets to clients
               nationwide.
             </p>
             <p>
