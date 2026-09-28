@@ -8,6 +8,9 @@ import { hashPassword } from "@/lib/auth/password";
 import { sendMail } from "@/lib/mail";
 import type { AuthActionResult } from "./auth";
 
+// Re-exported so the reset forms can type their useActionState against this module.
+export type { AuthActionResult };
+
 const TOKEN_BYTES = 32;
 const TOKEN_TTL_MS = 60 * 60 * 1000; // 1 hour
 
