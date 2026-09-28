@@ -7,6 +7,11 @@ import { LoginForm } from "@/components/auth/login-form";
 export const metadata: Metadata = { title: "Log in" };
 
 export default function LoginPage() {
+  // Show demo credentials while testing: set SHOW_DEMO_CREDENTIALS=true in .env,
+  // or run in development. Remove it before going live.
+  const showDemo =
+    process.env.SHOW_DEMO_CREDENTIALS === "true" || process.env.NODE_ENV !== "production";
+
   return (
     <Card className="w-full max-w-md p-8">
       <div className="mb-6 text-center">
@@ -20,7 +25,7 @@ export default function LoginPage() {
         Don&apos;t have an account?{" "}
         <Link href="/register" className="font-semibold text-primary hover:underline">Create one</Link>
       </p>
-      {process.env.NODE_ENV !== "production" && (
+      {showDemo && (
         <div className="mt-6 rounded-lg border border-border bg-secondary/40 p-3 text-center text-xs text-muted-foreground">
           <p className="font-semibold text-foreground">Demo accounts</p>
           <p className="mt-1">Admin: admin@draftingstudio.example / Admin123!</p>
