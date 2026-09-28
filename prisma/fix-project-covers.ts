@@ -13,7 +13,7 @@
 import { PrismaClient } from "@prisma/client";
 import { existsSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { projectPhoto } from "./seed";
+import { projectPhoto, industryPhoto } from "./photos";
 
 const prisma = new PrismaClient();
 
@@ -33,9 +33,8 @@ async function main() {
 
   const industries = await prisma.industry.findMany({ select: { id: true, slug: true, heroImage: true } });
   for (const ind of industries) {
-    const photoPath = `/generated/industries/${ind.slug}.jpg`;
-    if (!existsSync(join(process.cwd(), "public", photoPath))) continue;
-    if (ind.heroImage === photoPath) continue;
+    const photoPath = industryPhoto(ind.slug);
+    if (!photoPath || ind.heroImage === photoPath) continue;
     await prisma.industry.update({ where: { id: ind.id }, data: { heroImage: photoPath } });
     const staleDemo = join(process.cwd(), "public", "generated", "industries", `${ind.slug}.svg`);
     if (existsSync(staleDemo)) rmSync(staleDemo);

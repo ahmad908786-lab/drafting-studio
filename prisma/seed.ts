@@ -9,6 +9,7 @@ import { SERVICES } from "./content/services";
 import { INDUSTRIES } from "./content/industries";
 import { PROJECTS } from "./content/projects";
 import { POSTS, BLOG_CATEGORIES } from "./content/posts";
+import { projectPhoto, industryPhoto } from "./photos";
 import {
   blueprintSvg,
   heroSvg,
@@ -30,16 +31,6 @@ function writeSvg(folder: string, name: string, svg: string): string {
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, `${name}.svg`), svg, "utf8");
   return `/generated/${folder}/${name}.svg`;
-}
-
-/** Real project photos live in public/projects/<slug>.<ext>, committed to the repo. */
-export function projectPhoto(slug: string): string | null {
-  for (const ext of ["webp", "jpg", "jpeg", "png"]) {
-    if (existsSync(join(process.cwd(), "public", "projects", `${slug}.${ext}`))) {
-      return `/projects/${slug}.${ext}`;
-    }
-  }
-  return null;
 }
 
 async function clearDb() {
@@ -134,15 +125,11 @@ async function main() {
   console.log("→ Industries");
   for (const ind of INDUSTRIES) {
     // Prefer a real photo when one exists; fall back to the demo SVG.
-    const photoRel = `/generated/industries/${ind.slug}.jpg`;
-    const photoAbs = join(process.cwd(), "public", photoRel);
-    let hero: string;
-    if (existsSync(photoAbs)) {
-      hero = photoRel;
+    const photo = industryPhoto(ind.slug);
+    const hero = photo ?? writeSvg("industries", ind.slug, heroSvg({ seed: ind.slug, label: ind.name.split(" ")[0] }));
+    if (photo) {
       const staleDemo = join(process.cwd(), "public", "generated", "industries", `${ind.slug}.svg`);
       if (existsSync(staleDemo)) rmSync(staleDemo);
-    } else {
-      hero = writeSvg("industries", ind.slug, heroSvg({ seed: ind.slug, label: ind.name.split(" ")[0] }));
     }
     await prisma.industry.create({
       data: {
