@@ -15,7 +15,7 @@ type IndustryTile = {
 function swatch(slug: string): string {
   const known = [
     "franchise", "residential", "commercial", "restaurant", "healthcare", "salon",
-    "hotel", "apartments", "industrial", "plaza", "offices", "warehouse",
+    "hotel", "apartments", "plaza", "offices", "warehouse",
   ];
   return known.includes(slug) ? `var(--industry-${slug})` : "var(--accent)";
 }
