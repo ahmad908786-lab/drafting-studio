@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PrismaClient } from "@prisma/client";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import bcrypt from "bcryptjs";
 import { DISCIPLINES } from "../lib/taxonomy";
@@ -144,11 +144,21 @@ async function main() {
   /* -------------------- Projects (public sample work) -------------------- */
   console.log("→ Sample-work projects");
   for (const [i, p] of PROJECTS.entries()) {
-    const cover = writeSvg(
-      "drawings",
-      p.slug,
-      blueprintSvg({ seed: p.slug, title: p.title, discipline: p.disciplines[0], label: p.sheet }),
-    );
+    // Prefer a real cover photo when one exists; otherwise fall back to the demo blueprint SVG.
+    const photoPath = `/generated/projects/${p.slug}.jpg`;
+    let cover: string;
+    if (existsSync(join(process.cwd(), "public", photoPath))) {
+      cover = photoPath;
+      // Remove the stale demo blueprint for this project, if a previous seed wrote one.
+      const staleDemo = join(PUB, "drawings", `${p.slug}.svg`);
+      if (existsSync(staleDemo)) rmSync(staleDemo);
+    } else {
+      cover = writeSvg(
+        "drawings",
+        p.slug,
+        blueprintSvg({ seed: p.slug, title: p.title, discipline: p.disciplines[0], label: p.sheet }),
+      );
+    }
     // A couple of extra "sheets" per project for the detail gallery.
     const extraImages = p.disciplines.slice(0, 3).map((disc, idx) => {
       const label = `${p.sheet.split("-")[0]}-${100 + idx * 2 + 1}`;
