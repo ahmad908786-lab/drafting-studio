@@ -175,14 +175,14 @@ export default async function HomePage() {
           <div className="grid items-center gap-8 rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-card)] lg:grid-cols-[1fr_auto] sm:p-10">
             <div>
               <h2 className="text-balance font-sans text-3xl font-extrabold tracking-tight text-foreground">
-                Get pricing on a new drafting proposal in fewer than 72 hours
+                Get pricing on a new drafting proposal in fewer than 24 hours
               </h2>
               <p className="mt-3 max-w-2xl text-muted-foreground">
                 Send us your plans and scope. We reply with a fixed price and a delivery date — no meetings, no runaround. Two free minor revisions are built into every set.
               </p>
               <div className="mt-5 flex flex-wrap gap-4 text-sm">
                 {[
-                  ["Clock", "Under 72h to quote"],
+                  ["Clock", "Under 24h to quote"],
                   ["ShieldCheck", "Code-compliant sets"],
                   ["FileCheck2", "Permit-ready DWG + PDF"],
                 ].map(([icon, label]) => (

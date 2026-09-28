@@ -15,7 +15,7 @@ const FAQS = [
   { q: "Is everything delivered in 2D AutoCAD?", a: "Yes — we work exclusively in 2D AutoCAD and deliver layered DWG plus plotted PDF sets. That focus keeps files portable, turnaround fast, and cost down. For most permit sets, 2D is exactly what the plan reviewer wants." },
   { q: "What files do I receive?", a: "Layered AutoCAD DWG files plus plotted PDFs. DXF is available on request, and calculation reports come as PDF/XLSX." },
   { q: "Can you match our CAD standard?", a: "Yes. Send your title block, layer standard, or a sample sheet and we draft to it so the output drops straight into your set." },
-  { q: "How fast is turnaround?", a: "Most sets are delivered in 3–7 business days depending on scope and size. Rush service is available, and you get a fixed quote and delivery date within 72 hours of sending scope." },
+  { q: "How fast is turnaround?", a: "Most sets are delivered in 3–7 business days depending on scope and size. Rush service is available, and you get a fixed quote and delivery date within 24 hours of sending scope." },
   { q: "How much does it cost?", a: "Every project is priced individually. Send us your scope and we reply with a custom fixed-price offer and a delivery date within one business day — no standard rate card, because no two sets are the same." },
   { q: "What do you need to start?", a: "Typically an architectural floor plan (DWG or PDF), any equipment schedules or selections, and the applicable code / local amendments. Each service page lists its specific document requirements." },
   { q: "Which codes do you draft to?", a: "Current US codes: NEC (NFPA 70), IMC, IPC, NFPA 13 and 72, and IES for lighting — plus your local amendments." },

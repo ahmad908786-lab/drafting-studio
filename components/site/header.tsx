@@ -23,7 +23,7 @@ export async function SiteHeader() {
       <div className="hidden border-b border-border/70 bg-primary text-primary-foreground lg:block">
         <div className="container-page flex h-9 items-center justify-between text-xs">
           <p className="font-medium text-primary-foreground/85">
-            Nationwide 2D AutoCAD drafting · Fixed quotes in under 72 hours
+            Nationwide 2D AutoCAD drafting · Fixed quotes in under 24 hours
           </p>
           <div className="flex items-center gap-5">
             <a href={`mailto:${brand.contact.email}`} className="hover:text-accent">{brand.contact.email}</a>

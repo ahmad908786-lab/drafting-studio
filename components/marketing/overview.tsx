@@ -5,7 +5,7 @@ const points = [
   "Complete 2D drafting across electrical, HVAC, plumbing and fire protection — from redlines to permit sets",
   "Code-compliant drawings built to NEC, IMC, IPC and NFPA standards",
   "Delivered in native AutoCAD DWG + PDF, layered to your CAD standard",
-  "Fixed quote in 72 hours with a confirmed delivery date — no meetings required",
+  "Fixed quote in 24 hours with a confirmed delivery date — no meetings required",
   "QA/QC checks on every sheet before it reaches your desk",
   "Two free minor revisions included with every drawing set",
 ];

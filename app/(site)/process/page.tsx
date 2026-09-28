@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const guarantees = [
-  { icon: Clock, title: "Fixed quote in 72 hours", desc: "Send scope, get a fixed price and delivery date — no meetings required." },
+  { icon: Clock, title: "Fixed quote in 24 hours", desc: "Send scope, get a fixed price and delivery date — no meetings required." },
   { icon: RefreshCw, title: "Two free revisions", desc: "Minor revisions are included so the set lands right." },
   { icon: ShieldCheck, title: "Code-compliant", desc: "Drawn to current US codes and your local amendments." },
   { icon: FileCheck2, title: "Permit-ready output", desc: "Layered DWG + plotted PDF, formatted for AHJ submission." },
