@@ -7,6 +7,8 @@ import { requireUser } from "@/lib/auth/guards";
 import { getPortalQuotes } from "@/lib/portal";
 import { formatCurrency } from "@/lib/utils";
 
+export const metadata = { title: "My Quotes" };
+
 export default async function PortalQuotesPage() {
   const user = await requireUser();
   const quotes = await getPortalQuotes(user);

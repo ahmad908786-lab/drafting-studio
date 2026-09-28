@@ -8,6 +8,8 @@ import { requireUser } from "@/lib/auth/guards";
 import { getPortalQuote } from "@/lib/portal";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
+export const metadata = { title: "Quote Details" };
+
 export default async function PortalQuoteDetail({ params }: { params: Promise<{ id: string }> }) {
   const user = await requireUser();
   const { id } = await params;

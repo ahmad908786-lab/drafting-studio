@@ -8,6 +8,8 @@ import { prisma } from "@/lib/db";
 import { formatCurrency, cn } from "@/lib/utils";
 import { QUOTE_STATUSES } from "@/lib/taxonomy";
 
+export const metadata = { title: "RFQs" };
+
 type SP = Record<string, string | string[] | undefined>;
 
 function timeAgo(d: Date | string) {

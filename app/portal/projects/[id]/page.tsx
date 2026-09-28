@@ -12,6 +12,8 @@ import { getPortalProject } from "@/lib/portal";
 import { formatDate, formatSqft } from "@/lib/utils";
 import { PROJECT_STAGES } from "@/lib/taxonomy";
 
+export const metadata = { title: "Project Details" };
+
 function fileSize(bytes: number): string {
   if (bytes <= 0) return "—";
   const mb = bytes / 1024 / 1024;

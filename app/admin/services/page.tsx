@@ -7,6 +7,8 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@
 import { prisma } from "@/lib/db";
 import { formatCurrency } from "@/lib/utils";
 
+export const metadata = { title: "Services" };
+
 export default async function AdminServicesPage() {
   const services = await prisma.service.findMany({ orderBy: [{ category: { order: "asc" } }, { order: "asc" }], include: { category: true } });
   return (

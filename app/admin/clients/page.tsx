@@ -4,6 +4,8 @@ import { PageHeader, EmptyState, PersonChip } from "@/components/dashboard/ui";
 import { prisma } from "@/lib/db";
 import { formatDate, formatCurrency, initials, cn } from "@/lib/utils";
 
+export const metadata = { title: "Clients" };
+
 const AVATAR_COLORS = [
   "bg-sky-500/10 text-sky-600",
   "bg-violet-500/10 text-violet-600",

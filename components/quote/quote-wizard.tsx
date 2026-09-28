@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
@@ -266,18 +265,33 @@ export function QuoteWizard({
                     {list.map((s) => {
                       const on = state.serviceSlugs.includes(s.slug);
                       return (
-                        <button
+                        <div
                           key={s.slug}
-                          type="button"
+                          role="checkbox"
+                          aria-checked={on}
+                          tabIndex={0}
                           onClick={() => toggleService(s.slug)}
+                          onKeyDown={(e) => {
+                            if (e.key === " " || e.key === "Enter") {
+                              e.preventDefault();
+                              toggleService(s.slug);
+                            }
+                          }}
                           className={cn(
-                            "flex items-center gap-3 rounded-lg border p-3 text-left text-sm transition-colors",
+                            "flex cursor-pointer items-center gap-3 rounded-lg border p-3 text-left text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
                             on ? "border-primary bg-primary/5" : "border-border hover:border-primary/40 hover:bg-secondary",
                           )}
                         >
-                          <Checkbox checked={on} className="pointer-events-none" tabIndex={-1} />
+                          <span
+                            className={cn(
+                              "grid size-4.5 shrink-0 place-items-center rounded-[5px] border shadow-sm transition-colors",
+                              on ? "border-primary bg-primary text-primary-foreground" : "border-input bg-background",
+                            )}
+                          >
+                            {on && <Check className="size-3.5" />}
+                          </span>
                           <span className="flex-1 font-medium text-foreground">{s.name}</span>
-                        </button>
+                        </div>
                       );
                     })}
                   </div>

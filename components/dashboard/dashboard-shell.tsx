@@ -226,11 +226,11 @@ function PortalShell({
       <header className="sticky top-0 z-30 border-b border-border bg-card/95 backdrop-blur-lg">
         <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-3 px-4 sm:px-6">
           <div className="flex items-center gap-6">
-            <Link href="/portal" className="flex items-center gap-2.5">
-              <Logo showText={false} />
-              <span className="font-sans text-[15px] font-extrabold tracking-tight text-foreground">Drafting Studio</span>
+            <div className="flex items-center gap-2.5">
+              <Logo showText={false} href="/portal" />
+              <Link href="/portal" className="font-sans text-[15px] font-extrabold tracking-tight text-foreground">Drafting Studio</Link>
               <span className="hidden rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary sm:inline">Client</span>
-            </Link>
+            </div>
             <nav className="hidden items-center gap-1 md:flex">
               {nav.map((item) => {
                 const active = isActive(pathname, item.href, firstHref);

@@ -10,6 +10,8 @@ import { prisma } from "@/lib/db";
 import { formatDate, cn } from "@/lib/utils";
 import { PROJECT_STAGES } from "@/lib/taxonomy";
 
+export const metadata = { title: "Projects" };
+
 type SP = Record<string, string | string[] | undefined>;
 
 function timeAgo(d: Date | string) {

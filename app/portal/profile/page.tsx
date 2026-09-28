@@ -7,6 +7,8 @@ import { getPortalProjects, getPortalQuotes, getPortalFiles } from "@/lib/portal
 import { prisma } from "@/lib/db";
 import { initials } from "@/lib/utils";
 
+export const metadata = { title: "Profile Settings" };
+
 export default async function PortalProfilePage() {
   const user = await requireUser();
   const [dbUser, company, projects, quotes, files] = await Promise.all([

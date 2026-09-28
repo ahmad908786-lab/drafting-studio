@@ -6,6 +6,8 @@ import { ServiceEditor, type ServiceFormData } from "@/components/admin/service-
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "Edit Service" };
+
 export default async function EditServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = await prisma.service.findUnique({ where: { slug }, include: { category: true } });

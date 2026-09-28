@@ -8,6 +8,8 @@ import { getPortalOverview } from "@/lib/portal";
 import { prisma } from "@/lib/db";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
+export const metadata = { title: "Client Portal" };
+
 function plural(n: number, word: string) {
   return `${n} ${word}${n === 1 ? "" : "s"}`;
 }

@@ -6,6 +6,8 @@ import { IndustryEditor, type IndustryFormData } from "@/components/admin/indust
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "Edit Industry" };
+
 export default async function EditIndustryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const ind = await prisma.industry.findUnique({ where: { slug } });

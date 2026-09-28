@@ -6,6 +6,8 @@ import { QuoteDetailPanel } from "@/components/admin/quote-detail-panel";
 import { prisma } from "@/lib/db";
 import { formatDate } from "@/lib/utils";
 
+export const metadata = { title: "RFQ Details" };
+
 export default async function AdminRfqDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const quote = await prisma.quote.findUnique({

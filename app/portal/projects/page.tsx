@@ -6,6 +6,8 @@ import { requireUser } from "@/lib/auth/guards";
 import { getPortalProjects } from "@/lib/portal";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "My Projects" };
+
 export default async function PortalProjectsPage() {
   const user = await requireUser();
   const projects = await getPortalProjects(user);

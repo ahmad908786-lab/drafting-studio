@@ -8,6 +8,8 @@ import { prisma } from "@/lib/db";
 import { cn } from "@/lib/utils";
 import { LEAD_TYPES } from "@/lib/taxonomy";
 
+export const metadata = { title: "Leads" };
+
 type SP = Record<string, string | string[] | undefined>;
 
 function timeAgo(d: Date | string) {

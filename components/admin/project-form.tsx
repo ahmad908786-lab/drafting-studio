@@ -4,13 +4,12 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
-import { Save, Trash2, Loader2 } from "lucide-react";
+import { Save, Trash2, Loader2, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { FileUploader } from "@/components/admin/file-uploader";
 import { saveProject, deleteProject } from "@/app/actions/admin-projects";
@@ -129,12 +128,30 @@ export function ProjectForm({
 
         <Card title="Services">
           <div className="grid gap-1.5 sm:grid-cols-2">
-            {services.map((s) => (
-              <button key={s.slug} type="button" onClick={() => toggle("serviceSlugs", s.slug)} className={cn("flex items-center gap-2 rounded-lg border p-2 text-left text-sm", data.serviceSlugs.includes(s.slug) ? "border-primary bg-primary/5" : "border-border hover:bg-secondary")}>
-                <Checkbox checked={data.serviceSlugs.includes(s.slug)} className="pointer-events-none" tabIndex={-1} />
-                <span className="text-foreground">{s.name}</span>
-              </button>
-            ))}
+            {services.map((s) => {
+              const checked = data.serviceSlugs.includes(s.slug);
+              return (
+                <div
+                  key={s.slug}
+                  role="checkbox"
+                  aria-checked={checked}
+                  tabIndex={0}
+                  onClick={() => toggle("serviceSlugs", s.slug)}
+                  onKeyDown={(e) => {
+                    if (e.key === " " || e.key === "Enter") {
+                      e.preventDefault();
+                      toggle("serviceSlugs", s.slug);
+                    }
+                  }}
+                  className={cn("flex cursor-pointer items-center gap-2 rounded-lg border p-2 text-left text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring", checked ? "border-primary bg-primary/5" : "border-border hover:bg-secondary")}
+                >
+                  <span className={cn("grid size-4.5 shrink-0 place-items-center rounded-[5px] border shadow-sm transition-colors", checked ? "border-primary bg-primary text-primary-foreground" : "border-input bg-background")}>
+                    {checked && <Check className="size-3.5" />}
+                  </span>
+                  <span className="text-foreground">{s.name}</span>
+                </div>
+              );
+            })}
           </div>
         </Card>
 

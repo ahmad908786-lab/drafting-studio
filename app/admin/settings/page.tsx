@@ -3,6 +3,8 @@ import { SettingsForm } from "@/components/admin/settings-form";
 import { getSettings } from "@/lib/queries";
 import { brand } from "@/lib/theme";
 
+export const metadata = { title: "Settings" };
+
 export default async function AdminSettingsPage() {
   const settings = await getSettings();
   const initial = {

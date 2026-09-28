@@ -5,6 +5,8 @@ import { ProjectForm, type ProjectFormData } from "@/components/admin/project-fo
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "New Project" };
+
 const EMPTY: ProjectFormData = {
   title: "", slug: "", summary: "", bodyMdx: "", industrySlug: "", disciplineSlugs: [], serviceSlugs: [],
   city: "", state: "", sizeSqft: "", floors: "", year: "", coverImage: "", isPublic: true, featured: false,

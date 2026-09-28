@@ -4,6 +4,8 @@ import { DashHeader } from "@/components/dashboard/ui";
 import { Icon } from "@/components/icon";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "Industries" };
+
 export default async function AdminIndustriesPage() {
   const industries = await prisma.industry.findMany({ orderBy: { order: "asc" }, include: { _count: { select: { projects: true } } } });
   return (

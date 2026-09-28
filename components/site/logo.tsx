@@ -2,9 +2,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { brand } from "@/lib/theme";
 
-export function Logo({ className, showText = true }: { className?: string; showText?: boolean }) {
+export function Logo({ className, showText = true, href = "/" }: { className?: string; showText?: boolean; href?: string }) {
   return (
-    <Link href="/" className={cn("flex items-center gap-2.5 font-sans", className)} aria-label={brand.name}>
+    <Link href={href} className={cn("flex items-center gap-2.5 font-sans", className)} aria-label={brand.name}>
       <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm">
         <svg viewBox="0 0 40 40" className="size-9" aria-hidden="true">
           <path d="M11 28 L11 12 L20 12 A8 8 0 0 1 20 28 Z" fill="none" stroke="currentColor" strokeWidth="2.4" />

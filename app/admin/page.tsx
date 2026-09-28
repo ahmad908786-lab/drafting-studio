@@ -7,6 +7,8 @@ import { getAdminOverview } from "@/lib/admin";
 import { formatCurrency } from "@/lib/utils";
 import { QUOTE_STATUSES } from "@/lib/taxonomy";
 
+export const metadata = { title: "Admin Overview" };
+
 function timeAgo(d: Date | string) {
   const s = Math.floor((Date.now() - new Date(d).getTime()) / 1000);
   if (s < 60) return "just now";

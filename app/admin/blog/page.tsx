@@ -8,6 +8,8 @@ import { prisma } from "@/lib/db";
 import { formatDate } from "@/lib/utils";
 import { POST_TEMPLATES } from "@/lib/taxonomy";
 
+export const metadata = { title: "Blog Posts" };
+
 export default async function AdminBlogPage() {
   const posts = await prisma.post.findMany({ orderBy: [{ status: "asc" }, { createdAt: "desc" }], include: { category: true, author: { select: { name: true } } } });
 

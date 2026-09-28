@@ -5,6 +5,8 @@ import { PostEditor, type PostFormData } from "@/components/admin/post-editor";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "New Post" };
+
 const EMPTY: PostFormData = {
   title: "", slug: "", excerpt: "", bodyMdx: "", template: "STANDARD", categorySlug: "", tags: "",
   coverImage: "", status: "DRAFT", featured: false, seoTitle: "", seoDesc: "",

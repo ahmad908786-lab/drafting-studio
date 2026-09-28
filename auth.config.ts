@@ -11,6 +11,10 @@ export const authConfig = {
   pages: {
     signIn: "/login",
   },
+  // Required in production: without this, Auth.js rejects all auth requests
+  // with UntrustedHost on any host that isn't auto-detected (e.g. custom
+  // domains, `next start` on localhost). Equivalent to AUTH_TRUST_HOST=true.
+  trustHost: true,
   session: { strategy: "jwt" },
   providers: [], // populated in auth.ts
   callbacks: {

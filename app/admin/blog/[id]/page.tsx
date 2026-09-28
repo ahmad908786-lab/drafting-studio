@@ -6,6 +6,8 @@ import { PostEditor, type PostFormData } from "@/components/admin/post-editor";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 
+export const metadata = { title: "Edit Post" };
+
 export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const [post, categories] = await Promise.all([

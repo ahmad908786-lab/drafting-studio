@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 import { PROJECT_STAGES } from "@/lib/taxonomy";
 
+export const metadata = { title: "Edit Project" };
+
 export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const [project, disciplines, services, industries, companies] = await Promise.all([

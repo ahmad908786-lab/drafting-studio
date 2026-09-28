@@ -5,6 +5,8 @@ import { requireUser } from "@/lib/auth/guards";
 import { getPortalFiles } from "@/lib/portal";
 import { formatDate } from "@/lib/utils";
 
+export const metadata = { title: "My Files" };
+
 function fileSize(bytes: number): string {
   if (bytes <= 0) return "—";
   const mb = bytes / 1024 / 1024;
