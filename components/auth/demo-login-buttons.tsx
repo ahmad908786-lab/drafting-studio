@@ -3,23 +3,11 @@
 import { useState } from "react";
 import { AlertCircle, Briefcase, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { authenticate } from "@/app/actions/auth";
+import { demoLogin } from "@/app/actions/auth";
 
 const DEMOS = [
-  {
-    key: "admin",
-    label: "Admin panel",
-    email: "admin@draftingstudio.example",
-    password: "Admin123!",
-    icon: ShieldCheck,
-  },
-  {
-    key: "client",
-    label: "Client portal",
-    email: "client@acme.example",
-    password: "Client123!",
-    icon: Briefcase,
-  },
+  { key: "admin", label: "Admin panel", hint: "admin@draftingstudio.example", icon: ShieldCheck },
+  { key: "client", label: "Client portal", hint: "client@acme.example", icon: Briefcase },
 ];
 
 export function DemoLoginButtons() {
@@ -29,11 +17,8 @@ export function DemoLoginButtons() {
   const loginAs = async (demo: (typeof DEMOS)[number]) => {
     setPendingKey(demo.key);
     setError("");
-    const fd = new FormData();
-    fd.set("email", demo.email);
-    fd.set("password", demo.password);
     try {
-      const res = await authenticate(null, fd);
+      const res = await demoLogin(demo.key);
       // Success path redirects (thrown) — only failures return here.
       if (!res.ok) {
         setError(res.message || "Demo login failed. Make sure demo users are seeded.");
@@ -72,7 +57,7 @@ export function DemoLoginButtons() {
               <Icon className="size-5 text-primary" />
               <span className="text-sm font-semibold">{pending ? "Opening…" : demo.label}</span>
               <span className="max-w-full truncate text-[11px] font-normal text-muted-foreground">
-                {demo.email}
+                {demo.hint}
               </span>
             </Button>
           );

@@ -47,6 +47,30 @@ export async function authenticate(_prev: AuthActionResult | null, formData: For
   }
 }
 
+/** Demo accounts for the one-click login buttons. Never sent to the browser. */
+const DEMO_ACCOUNTS: Record<string, { email: string; password: string }> = {
+  admin: { email: "admin@draftingstudio.example", password: "Admin123!" },
+  client: { email: "client@acme.example", password: "Client123!" },
+};
+
+/**
+ * Sign in as a seeded demo account from a key alone, so the passwords stay on
+ * the server instead of shipping in the client bundle. Refuses outright in
+ * production — a one-click admin login must never exist on the live site.
+ */
+export async function demoLogin(key: string): Promise<AuthActionResult> {
+  if (process.env.NODE_ENV === "production") {
+    return { ok: false, message: "Demo logins are disabled here." };
+  }
+  const demo = DEMO_ACCOUNTS[key];
+  if (!demo) return { ok: false, message: "Unknown demo account." };
+
+  const fd = new FormData();
+  fd.set("email", demo.email);
+  fd.set("password", demo.password);
+  return authenticate(null, fd);
+}
+
 export async function registerUser(_prev: AuthActionResult | null, formData: FormData): Promise<AuthActionResult> {
   const parsed = registerSchema.safeParse({
     name: formData.get("name"),

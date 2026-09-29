@@ -17,7 +17,8 @@ export default function LoginPage() {
       <Suspense>
         <LoginForm />
       </Suspense>
-      <DemoLoginButtons />
+      {/* Demo logins are a development convenience — never render them live. */}
+      {process.env.NODE_ENV !== "production" && <DemoLoginButtons />}
       <p className="mt-6 text-center text-sm text-muted-foreground">
         Don&apos;t have an account?{" "}
         <Link href="/register" className="font-semibold text-primary hover:underline">Create one</Link>
