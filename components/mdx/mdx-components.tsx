@@ -1,4 +1,5 @@
 import Link from "next/link";
+import * as React from "react";
 import { Children, isValidElement } from "react";
 import { Info, Lightbulb, AlertTriangle, Check } from "lucide-react";
 import { cn, slugify } from "@/lib/utils";
@@ -24,9 +25,65 @@ function Callout({ type = "note", children }: { type?: "note" | "tip" | "warning
   );
 }
 
-/** Checklist — <Checklist items="a;b;c" /> */
-function Checklist({ items }: { items: string }) {
-  const list = items.split(";").map((s) => s.trim()).filter(Boolean);
+/** Flatten any React subtree to plain text. */
+function flattenText(n: React.ReactNode): string {
+  if (n === null || n === undefined || typeof n === "boolean") return "";
+  if (typeof n === "string" || typeof n === "number") return String(n);
+  if (Array.isArray(n)) return n.map(flattenText).join("");
+  if (React.isValidElement(n)) {
+    const props = n.props as { children?: React.ReactNode };
+    return flattenText(props.children);
+  }
+  return "";
+}
+
+/** Drop a leading bullet and task-list marker: "- [ ] Do the thing" -> "Do the thing". */
+const stripMarker = (s: string) => s.replace(/^\s*[-*+]?\s*\[[ xX]?\]\s*/, "").replace(/^\s*[-*+]\s+/, "").trim();
+
+/**
+ * Pull checklist entries out of children, whichever shape MDX produced.
+ *
+ * With a blank line after the opening tag the content is parsed as markdown and
+ * arrives as <li> elements; without one it stays a single text node holding the
+ * raw lines. Both appear in the posts, so handle each.
+ */
+function listItemText(node: React.ReactNode): string[] {
+  const out: string[] = [];
+  const walk = (n: React.ReactNode): void => {
+    if (Array.isArray(n)) return n.forEach(walk);
+    if (!React.isValidElement(n)) return;
+    const props = n.props as { children?: React.ReactNode };
+    if (n.type === "li") {
+      const t = stripMarker(flattenText(props.children));
+      if (t) out.push(t);
+      return;
+    }
+    walk(props.children);
+  };
+  walk(node);
+  if (out.length > 0) return out;
+
+  return flattenText(node)
+    .split("\n")
+    .map(stripMarker)
+    .filter(Boolean);
+}
+
+/**
+ * Checklist — either <Checklist items="a;b;c" /> or a wrapped task list:
+ *
+ *   <Checklist>
+ *   - [ ] First item
+ *   - [ ] Second item
+ *   </Checklist>
+ *
+ * The wrapped form arrives as a rendered <ul>, so pull the text back out of it.
+ */
+function Checklist({ items, children }: { items?: string; children?: React.ReactNode }) {
+  const list = items
+    ? items.split(";").map((s) => s.trim()).filter(Boolean)
+    : listItemText(children);
+  if (list.length === 0) return null;
   return (
     <ul className="my-6 grid gap-2 not-prose">
       {list.map((item) => (
