@@ -21,15 +21,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
+  const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
+  const ogImage = absoluteUrl(
+    `/api/og?title=${encodeURIComponent(post.title)}&eyebrow=${encodeURIComponent(post.category?.name ?? "Blog")}`
+  );
   return {
     title: post.seoTitle ?? post.title,
     description: post.seoDesc ?? post.excerpt,
+    authors: post.author?.name ? [{ name: post.author.name }] : [],
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.excerpt,
-      images: post.ogImage || post.coverImage ? [post.ogImage ?? post.coverImage!] : [],
+      url: canonicalUrl,
+      images: [ogImage],
       publishedTime: post.publishedAt?.toISOString(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage],
     },
   };
 }
@@ -79,13 +92,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     tags: post.tags.map((t) => ({ slug: t.slug, name: t.name })),
   };
 
+  const authorName = post.author?.name;
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt?.toISOString(),
-    author: { "@type": "Person", name: post.author?.name ?? "Drafting Studio" },
+    dateModified: post.updatedAt.toISOString(),
+    author: authorName
+      ? { "@type": "Person", name: authorName }
+      : { "@type": "Organization", name: "Drafting Studio" },
     publisher: { "@type": "Organization", name: "Drafting Studio" },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
     image: post.coverImage ? [absoluteUrl(post.coverImage)] : [],

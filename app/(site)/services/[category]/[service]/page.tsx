@@ -30,10 +30,28 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
   const { service } = await params;
   const s = await getServiceBySlug(service);
   if (!s) return {};
+  // Primary slug: this page renders under both primary and secondary category slugs;
+  // s.category is the primary category relation, so the canonical always uses it.
+  const canonicalUrl = absoluteUrl(`/services/${s.category.slug}/${s.slug}`);
+  const metaTitle = s.seoTitle ?? `${s.name} Services`;
+  const metaDesc = s.seoDesc ?? s.shortDesc;
+  const images = s.coverImage ? [absoluteUrl(s.coverImage)] : [];
   return {
-    title: s.seoTitle ?? `${s.name} Services`,
-    description: s.seoDesc ?? s.shortDesc,
-    openGraph: { images: s.coverImage ? [s.coverImage] : [] },
+    title: metaTitle,
+    description: metaDesc,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: metaTitle,
+      description: metaDesc,
+      url: canonicalUrl,
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metaTitle,
+      description: metaDesc,
+      images,
+    },
   };
 }
 
@@ -54,6 +72,12 @@ export default async function ServiceDetailPage({
   const notCovered = (s.notCovered as string[]) ?? [];
   const pillars = (s.valuePillars as { title: string; desc: string; icon: string }[]) ?? [];
   const faqs = (s.faqs as { q: string; a: string }[]) ?? [];
+
+  const siblings = await prisma.service.findMany({
+    where: { published: true, categoryId: s.categoryId, id: { not: s.id } },
+    orderBy: { order: "asc" },
+    select: { slug: true, name: true, shortDesc: true },
+  });
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -168,6 +192,39 @@ export default async function ServiceDetailPage({
         <section className="py-14">
           <div className="container-page max-w-3xl">
             <Mdx source={s.bodyMdx} />
+          </div>
+        </section>
+      )}
+
+      {/* Related services */}
+      {siblings.length > 0 && (
+        <section className="border-t border-border bg-secondary/40 py-14">
+          <div className="container-page">
+            <SectionHeading
+              eyebrow="Related services"
+              title={`More ${s.category.name} drafting services`}
+              align="center"
+              className="mb-8"
+            />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {siblings.map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/services/${s.category.slug}/${rel.slug}`}
+                  className="group rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-colors hover:border-primary/40"
+                >
+                  <h3 className="font-sans text-base font-bold text-foreground group-hover:text-primary">
+                    {rel.name} services
+                  </h3>
+                  {rel.shortDesc && (
+                    <p className="mt-1.5 text-sm text-muted-foreground">{rel.shortDesc}</p>
+                  )}
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    View service <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}

@@ -8,7 +8,7 @@ import { OTHER_QUOTE_SERVICES } from "@/lib/taxonomy";
 
 export const metadata: Metadata = {
   title: "Request a Quote",
-  description: "Get a fixed 2D AutoCAD drafting quote in under 24 hours. Tell us your scope and upload your plans.",
+  description: "Request a fixed-price 2D AutoCAD drafting quote in under 24 hours — MEP, electrical, HVAC, plumbing & fire protection. Send your scope, upload plans.",
 };
 
 export default async function RequestQuotePage({

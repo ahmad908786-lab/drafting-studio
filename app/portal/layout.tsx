@@ -1,6 +1,11 @@
 import { DashboardShell, type NavItem } from "@/components/dashboard/dashboard-shell";
 import { requireUser } from "@/lib/auth/guards";
 import { getPortalOverview } from "@/lib/portal";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
   const user = await requireUser("/portal");

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Join Drafting Studio. We're hiring experienced AutoCAD drafters across MEP, fire protection and lighting.",
+  description: "Join Drafting Studio: remote 2D AutoCAD drafter jobs in electrical, HVAC, plumbing, fire protection & lighting. Fast-paced MEP drafting studio hiring now.",
 };
 
 const openings = [

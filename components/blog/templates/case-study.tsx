@@ -18,7 +18,7 @@ export function CaseStudyTemplate({ post, related }: TemplateProps) {
         <div className="absolute inset-0 bg-blueprint-grid opacity-40" aria-hidden />
         {post.coverImage && (
           <div className="absolute inset-0 opacity-20">
-            <Image src={post.coverImage} alt="" fill className="object-cover" />
+            <Image src={post.coverImage} alt={post.title} fill className="object-cover" />
           </div>
         )}
         <div className="container-page relative py-14">

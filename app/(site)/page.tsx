@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, Building2, HardHat, Clock, ShieldCheck, FileCheck2 } from "lucide-react";
 import { Hero } from "@/components/marketing/hero";
 import { IndustryGrid } from "@/components/marketing/industry-grid";
@@ -25,6 +26,12 @@ import {
   getServiceCategories,
 } from "@/lib/queries";
 import { brand } from "@/lib/theme";
+
+export const metadata: Metadata = {
+  title: "MEP Drafting Services | Permit-Ready 2D AutoCAD Drawings",
+  description:
+    "Permit-ready 2D AutoCAD drafting for engineering firms & contractors — MEP, electrical, HVAC, plumbing & fire protection drawings with 48-hour turnaround.",
+};
 
 export default async function HomePage() {
   const [services, categories, industries, testimonials, logos, posts, settings, disciplines, featuredProjects] =

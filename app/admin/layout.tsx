@@ -1,6 +1,11 @@
 import { DashboardShell, type NavGroup } from "@/components/dashboard/dashboard-shell";
 import { requireStaff } from "@/lib/auth/guards";
 import { prisma } from "@/lib/db";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const user = await requireStaff();

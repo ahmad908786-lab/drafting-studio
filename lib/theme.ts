@@ -14,7 +14,7 @@ export const brand = {
   tagline: "2D AutoCAD Drafting for MEP, Fire Protection & Lighting",
   // Used for SEO: the meta description, OpenGraph/Twitter cards and the RSS feed.
   descriptor:
-    "Nationwide 2D AutoCAD design & drafting for engineering firms, contractors, architects and developers. Electrical, HVAC, plumbing, fire protection, lighting — permit-ready plans, fast.",
+    "2D AutoCAD drafting for engineering firms & contractors: MEP, electrical, HVAC, plumbing, fire protection & lighting — permit-ready drawings, fast turnaround.",
   // The paragraph under the homepage hero headline. Kept separate from the
   // descriptor so marketing copy can change without touching SEO metadata.
   heroSubhead:

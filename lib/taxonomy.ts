@@ -43,10 +43,10 @@ export function disciplineLabel(value: string): string {
 /* ------------------------------------------------------------------ */
 
 export const SERVICE_CATEGORIES = [
-  { slug: "electrical-design", name: "Electrical Design", icon: "Zap", blurb: "Power, lighting, site & low-voltage plans." },
-  { slug: "mechanical-design", name: "Mechanical Design", icon: "Wind", blurb: "HVAC and plumbing layouts, ducts & piping." },
-  { slug: "fire-protection", name: "Fire Protection", icon: "Flame", blurb: "Sprinkler layouts, fire alarm & hydraulics." },
-  { slug: "calculations-reports", name: "Calculations & Reports", icon: "Calculator", blurb: "Load calcs, hydraulic & photometric reports." },
+  { slug: "electrical-design", name: "Electrical Design", icon: "Zap", blurb: "Power, lighting, site & low-voltage plans.", seoDesc: "Electrical design drafting in 2D AutoCAD: power plans, lighting design, single-line diagrams, fire alarm & photometrics — permit-ready for AHJ approval." },
+  { slug: "mechanical-design", name: "Mechanical Design", icon: "Wind", blurb: "HVAC and plumbing layouts, ducts & piping.", seoDesc: "Mechanical design drafting in 2D AutoCAD: HVAC ductwork, equipment & controls plus plumbing — water, waste, vent & gas — in coordinated permit-ready sets." },
+  { slug: "fire-protection", name: "Fire Protection", icon: "Flame", blurb: "Sprinkler layouts, fire alarm & hydraulics.", seoDesc: "Fire protection drafting services: NFPA 13 sprinkler layouts, fire alarm system design to NFPA 72 & hydraulic reports — 2D, permit-ready drawing sets." },
+  { slug: "calculations-reports", name: "Calculations & Reports", icon: "Calculator", blurb: "Load calcs, hydraulic & photometric reports.", seoDesc: "MEP calculations & reports: NEC Article 220 electrical load calcs, Manual-J/ASHRAE HVAC loads & IES photometric studies — stamp-ready engineering basis." },
 ] as const;
 
 export type ServiceCategorySlug = (typeof SERVICE_CATEGORIES)[number]["slug"];

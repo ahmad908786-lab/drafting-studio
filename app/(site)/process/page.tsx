@@ -22,7 +22,7 @@ export default function ProcessPage() {
     <>
       <PageHero
         eyebrow="Our Process"
-        title="From plans to permit-ready, five steps"
+        title="Our 5-Step Permit-Ready Drafting Process"
         description="A simple, predictable workflow. You always know the price, the date, and what you'll receive."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Process" }]}
       />

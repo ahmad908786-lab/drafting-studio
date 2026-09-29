@@ -36,7 +36,7 @@ export default function FaqPage() {
       <JsonLd data={jsonLd} />
       <PageHero
         eyebrow="FAQ"
-        title="Frequently asked questions"
+        title="2D CAD Drafting FAQs — Deliverables, Turnaround & Pricing"
         description="Everything you need to know about working with a 2D AutoCAD drafting studio."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "FAQ" }]}
       />

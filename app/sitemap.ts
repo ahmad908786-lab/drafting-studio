@@ -15,9 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticRoutes = ["", "/services", "/industries", "/projects", "/blog", "/about", "/process", "/why-us", "/faq", "/contact", "/careers", "/request-quote", "/privacy", "/terms"];
 
-  const now = new Date();
   const entries: MetadataRoute.Sitemap = [
-    ...staticRoutes.map((r) => ({ url: absoluteUrl(r || "/"), lastModified: now, changeFrequency: "weekly" as const, priority: r === "" ? 1 : 0.7 })),
+    ...staticRoutes.map((r) => ({ url: absoluteUrl(r || "/"), changeFrequency: "weekly" as const, priority: r === "" ? 1 : 0.7 })),
     ...services.map((s) => ({ url: absoluteUrl(`/services/${s.category.slug}/${s.slug}`), lastModified: s.updatedAt, priority: 0.8 })),
     ...industries.map((i) => ({ url: absoluteUrl(`/industries/${i.slug}`), lastModified: i.updatedAt, priority: 0.6 })),
     ...projects.map((p) => ({ url: absoluteUrl(`/projects/${p.slug}`), lastModified: p.updatedAt, priority: 0.6 })),

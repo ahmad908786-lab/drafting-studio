@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { brand } from "@/lib/theme";
@@ -31,18 +31,6 @@ export const metadata: Metadata = {
     template: `%s | ${brand.name}`,
   },
   description: brand.descriptor,
-  keywords: [
-    "2D AutoCAD drafting",
-    "MEP drafting services",
-    "electrical drafting",
-    "HVAC drafting",
-    "plumbing drafting",
-    "fire protection drafting",
-    "sprinkler layout",
-    "single line diagram",
-    "photometric design",
-    "electrical load calculation",
-  ],
   openGraph: {
     type: "website",
     siteName: brand.name,
@@ -60,6 +48,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0a1f44",
+};
+
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -69,6 +61,13 @@ const orgJsonLd = {
   email: brand.contact.email,
   telephone: brand.contact.phonePrimary,
   areaServed: "US",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: brand.contact.phonePrimary,
+    email: brand.contact.email,
+    areaServed: "US",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: brand.contact.addressLine1,

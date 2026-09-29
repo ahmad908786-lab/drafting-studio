@@ -17,7 +17,7 @@ export const INDUSTRIES: IndustrySeed[] = [
     name: "Franchise",
     icon: "Store",
     order: 1,
-    shortDesc: "Prototype-driven MEP, fire and lighting sets rolled out across every location.",
+    shortDesc: "Franchise MEP drafting for multi-location rollouts: prototype electrical, HVAC, plumbing, fire & lighting sets adapted per site — fast and permit-ready.",
     bodyMdx: `## Roll out faster, everywhere
 
 Franchise programs live or die on consistency and speed. We take your prototype and adapt the electrical, HVAC, plumbing, fire protection and lighting drawings to each new site — landlord conditions, local code amendments and jurisdiction quirks — while keeping the brand standard intact.
@@ -39,7 +39,7 @@ Because we work in pure 2D AutoCAD to your CAD standard, every location's set lo
     name: "Residential",
     icon: "Home",
     order: 2,
-    shortDesc: "Single-family and multi-unit electrical, mechanical and plumbing plans for permit.",
+    shortDesc: "Residential MEP drafting for single-family, townhome & ADU projects: electrical, HVAC & plumbing plans with Manual-J and NEC load calcs for permit approval.",
     bodyMdx: `## Homes, permitted without the wait
 
 From custom single-family to townhome and ADU projects, we draft the electrical, HVAC and plumbing plans your build needs to clear permit — including Manual-J loads and NEC load calculations where the AHJ asks for them.`,
@@ -58,7 +58,7 @@ From custom single-family to townhome and ADU projects, we draft the electrical,
     name: "Commercial",
     icon: "Building2",
     order: 3,
-    shortDesc: "Tenant fit-outs and core-and-shell MEP, fire and lighting construction sets.",
+    shortDesc: "Commercial MEP drafting for tenant fit-outs & core-and-shell: coordinated electrical, mechanical, fire protection & lighting construction sets for permit.",
     bodyMdx: `## Commercial fit-outs and shells
 
 Tenant improvements, white-box fit-outs and core-and-shell — we draft the full MEP, fire protection and lighting scope coordinated to the base building and formatted for the plan reviewer.`,
@@ -77,7 +77,7 @@ Tenant improvements, white-box fit-outs and core-and-shell — we draft the full
     name: "Restaurant",
     icon: "UtensilsCrossed",
     order: 4,
-    shortDesc: "Kitchen-heavy electrical, HVAC exhaust, plumbing and fire suppression layouts.",
+    shortDesc: "Restaurant MEP drafting for kitchens & dining: heavy equipment power, Type-I hood exhaust, grease & gas piping, and fire suppression — coordinated for permit.",
     bodyMdx: `## Kitchens are hard — we draft them daily
 
 Restaurants pack heavy electrical loads, Type-I hood exhaust and make-up air, grease and gas piping, and fire suppression into a small footprint. We coordinate all of it into a clean 2D set that survives health-department and building review.`,
@@ -97,7 +97,7 @@ Restaurants pack heavy electrical loads, Type-I hood exhaust and make-up air, gr
     name: "Healthcare",
     icon: "Stethoscope",
     order: 5,
-    shortDesc: "Clinics, dental and medical fit-outs with code-critical MEP and life-safety.",
+    shortDesc: "Healthcare MEP drafting for clinics, dental & medical fit-outs: dedicated power, medical gas, ventilation & life-safety — code-critical and permit-ready.",
     bodyMdx: `## Exacting spaces, drafted precisely
 
 Medical and dental offices, urgent care and clinics carry strict requirements — dedicated circuits and isolated power, medical gas, exhaust and pressure relationships, and life-safety. We draft the MEP, fire and lighting scope to the elevated standard these spaces demand.`,
@@ -117,7 +117,7 @@ Medical and dental offices, urgent care and clinics carry strict requirements �
     name: "Salon & Spa",
     icon: "Scissors",
     order: 6,
-    shortDesc: "Salon, spa and wellness fit-outs with station power, ventilation and plumbing.",
+    shortDesc: "Salon & spa MEP drafting: station power & dedicated circuits, hot water & drainage at every bowl, and chemical-fume ventilation — drafted for permit approval.",
     bodyMdx: `## Stations, water and air — balanced
 
 Salons and spas need station power and dedicated circuits, plenty of hot water and drainage at every bowl, and ventilation that clears chemical fumes. We lay out the electrical, plumbing and HVAC so the space is comfortable, compliant and ready to open.`,
@@ -136,7 +136,7 @@ Salons and spas need station power and dedicated circuits, plenty of hot water a
     name: "Hotel",
     icon: "BedDouble",
     order: 7,
-    shortDesc: "Hospitality MEP, fire and lighting from guest floors to back-of-house.",
+    shortDesc: "Hotel MEP drafting for hospitality: guestroom electrical & plumbing stacks, corridor & amenity lighting, back-of-house mechanical, and full fire alarm coverage.",
     bodyMdx: `## Repeatable floors, coordinated cores
 
 Hotels reward a disciplined, repeatable approach: guestroom electrical and plumbing stacks, corridor and amenity lighting, back-of-house mechanical, and full fire protection and alarm coverage. We draft typical floors once and roll them cleanly through the tower.`,
@@ -156,7 +156,7 @@ Hotels reward a disciplined, repeatable approach: guestroom electrical and plumb
     name: "Apartments",
     icon: "Building",
     order: 8,
-    shortDesc: "Multifamily unit stacks, house panels, risers and full life-safety.",
+    shortDesc: "Multifamily apartment MEP drafting: repeatable unit electrical & plumbing stacks, house & unit metering, risers, ventilation & NFPA 13R/13 life-safety coverage.",
     bodyMdx: `## Multifamily, stacked and permitted
 
 From garden-style to mid-rise, we draft repeatable unit electrical and plumbing, house and unit metering, mechanical ventilation, and the sprinkler and fire-alarm coverage (NFPA 13R/13) multifamily requires — coordinated across the stack.`,
@@ -176,7 +176,7 @@ From garden-style to mid-rise, we draft repeatable unit electrical and plumbing,
     name: "Plaza & Retail",
     icon: "ShoppingBag",
     order: 10,
-    shortDesc: "Strip centers and plazas: multi-tenant power, site lighting and fire.",
+    shortDesc: "Retail plaza MEP drafting for strip centers: multi-tenant metering & power distribution, site & parking photometrics, sign power & shell fire protection.",
     bodyMdx: `## Multi-tenant, one coordinated site
 
 Retail plazas and strip centers need multi-tenant metering and distribution, site and parking photometrics, storefront and sign power, and shell fire protection. We draft the site-wide electrical and the per-tenant scope so leasing and construction move together.`,
@@ -196,7 +196,7 @@ Retail plazas and strip centers need multi-tenant metering and distribution, sit
     name: "Offices",
     icon: "Briefcase",
     order: 11,
-    shortDesc: "Office fit-outs with power, data, lighting controls and comfort HVAC.",
+    shortDesc: "Office MEP drafting for fit-outs: flexible power & data, lighting with daylight & occupancy controls, and zoned comfort HVAC — efficient and permit-ready.",
     bodyMdx: `## Workspaces that just work
 
 Office fit-outs balance flexible power and data, tunable lighting with occupancy and daylight controls, and comfortable, well-zoned HVAC. We draft the electrical, lighting and mechanical scope so the space is efficient, code-compliant and easy to occupy.`,
@@ -216,7 +216,7 @@ Office fit-outs balance flexible power and data, tunable lighting with occupancy
     name: "Warehouse",
     icon: "Warehouse",
     order: 12,
-    shortDesc: "Distribution and storage: high-bay lighting, ESFR sprinkler, power drops.",
+    shortDesc: "Warehouse MEP drafting for distribution & storage: high-bay lighting with photometrics, ESFR sprinkler layouts, dock power drops & large-volume ventilation.",
     bodyMdx: `## Big boxes, drafted right
 
 Warehouses and distribution centers demand high-bay lighting with photometrics, ESFR or in-rack sprinkler protection, equipment and dock power, and ventilation. We draft the electrical, lighting and fire protection to keep the box safe, bright and operational.`,

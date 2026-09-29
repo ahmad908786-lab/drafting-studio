@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/app/(site)/legal/legal-content";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How Drafting Studio collects, uses and protects your information when you request quotes or create an account.",
+  robots: { index: false, follow: true },
+};
 
 export default function PrivacyPage() {
   return (

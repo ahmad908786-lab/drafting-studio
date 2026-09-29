@@ -4,13 +4,45 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { StatBand } from "@/components/shared/stat-band";
 import { CtaBand } from "@/components/shared/cta-band";
 import { VisionMission } from "@/components/marketing/vision-mission";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getSettings } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Drafting Studio is a US-focused 2D AutoCAD drafting studio for engineering firms, contractors, architects and developers.",
+  title: "2D MEP CAD Drafting Studio | About Drafting Studio",
+  description:
+    "US-focused 2D AutoCAD drafting studio for MEP, fire protection & lighting. Engineering firms, contractors & architects trust us for permit-ready drawings.",
 };
+
+const aboutJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Drafting Studio",
+    url: absoluteUrl("/about"),
+    description: "Learn about Drafting Studio, a US-focused 2D AutoCAD drafting studio for MEP, fire protection and lighting.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: brand.name,
+    url: absoluteUrl("/about"),
+    description: brand.descriptor,
+    telephone: brand.contact.phonePrimary,
+    email: brand.contact.email,
+    areaServed: "US",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: brand.contact.addressLine1,
+      addressLocality: brand.contact.city,
+      addressRegion: brand.contact.state,
+      postalCode: brand.contact.zip,
+      addressCountry: "US",
+    },
+    sameAs: [brand.socials.linkedin, brand.socials.facebook, brand.socials.instagram],
+  },
+];
 
 export default async function AboutPage() {
   const settings = await getSettings();
@@ -18,9 +50,10 @@ export default async function AboutPage() {
 
   return (
     <>
+      <JsonLd data={aboutJsonLd} />
       <PageHero
         eyebrow="About"
-        title="A drafting studio, focused on 2D"
+        title="2D MEP CAD Drafting Studio for Engineering Firms"
         description="We're a US-focused design and drafting studio that does one thing exceptionally well: clean, permit-ready 2D AutoCAD sets for MEP, fire protection and lighting."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />

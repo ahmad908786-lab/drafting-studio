@@ -10,7 +10,9 @@ import { Mdx } from "@/components/mdx/mdx";
 import { Icon } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/shared/cta-band";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getIndustryBySlug, getServiceCategories, getTestimonials } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 import { prisma } from "@/lib/db";
 
 export async function generateStaticParams() {
@@ -22,9 +24,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const ind = await getIndustryBySlug(slug);
   if (!ind) return {};
+  const title = ind.seoTitle ?? `${ind.name} Drafting Services`;
+  const description = ind.seoDesc ?? ind.shortDesc ?? undefined;
+  const canonical = absoluteUrl(`/industries/${slug}`);
+  const imageUrl = ind.heroImage ? absoluteUrl(ind.heroImage) : undefined;
+  const images = imageUrl ? [imageUrl] : undefined;
   return {
-    title: ind.seoTitle ?? `${ind.name} Drafting Services`,
-    description: ind.seoDesc ?? ind.shortDesc,
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: { title, description, url: canonical, images },
+    twitter: { card: "summary_large_image", title, description, images },
   };
 }
 
@@ -42,8 +52,18 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const stats = (ind.stats as { value: string; label: string }[]) ?? [];
   const testimonial = testimonials[0];
 
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${ind.name} Drafting Services`,
+    url: absoluteUrl(`/industries/${slug}`),
+    description: ind.seoDesc ?? ind.shortDesc ?? undefined,
+    image: ind.heroImage ? absoluteUrl(ind.heroImage) : undefined,
+  };
+
   return (
     <>
+      <JsonLd data={collectionJsonLd} />
       <PageHero
         eyebrow="Industry"
         title={`${ind.name} Drafting`}

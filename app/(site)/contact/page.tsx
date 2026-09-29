@@ -3,12 +3,35 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getSettings } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with Drafting Studio for 2D AutoCAD drafting. Send a message, request a callback, or start a quote.",
+};
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: brand.name,
+  url: absoluteUrl("/contact"),
+  description: "Contact Drafting Studio — request a fixed-price 2D AutoCAD drafting quote or ask about MEP, fire protection and lighting drafting services.",
+  telephone: brand.contact.phonePrimary,
+  email: brand.contact.email,
+  areaServed: "US",
+  openingHours: "Mo-Fr 08:00-19:00",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: brand.contact.addressLine1,
+    addressLocality: brand.contact.city,
+    addressRegion: brand.contact.state,
+    postalCode: brand.contact.zip,
+    addressCountry: "US",
+  },
+  sameAs: [brand.socials.linkedin, brand.socials.facebook, brand.socials.instagram],
 };
 
 export default async function ContactPage() {
@@ -17,9 +40,10 @@ export default async function ContactPage() {
 
   return (
     <>
+      <JsonLd data={contactJsonLd} />
       <PageHero
         eyebrow="Contact"
-        title="Let's talk about your drafting"
+        title="Contact Drafting Studio — Get a Drafting Quote"
         description="Questions, scope, or a quote — we reply within one business day."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />

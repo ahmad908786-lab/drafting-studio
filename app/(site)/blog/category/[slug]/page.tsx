@@ -8,6 +8,7 @@ import { BlogSidebar } from "@/components/blog/blog-sidebar";
 import { Pagination } from "@/components/shared/pagination";
 import { EmptyState } from "@/components/shared/empty-state";
 import { getPosts, getBlogCategories } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 import { prisma } from "@/lib/db";
 
 export async function generateStaticParams() {
@@ -19,7 +20,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const cat = await prisma.category.findUnique({ where: { slug } });
   if (!cat) return {};
-  return { title: `${cat.name} Articles`, description: cat.description ?? undefined };
+  return {
+    title: `${cat.name} Articles`,
+    description: cat.description ?? undefined,
+    alternates: { canonical: absoluteUrl(`/blog/category/${slug}`) },
+  };
 }
 
 type SP = Record<string, string | string[] | undefined>;
@@ -46,7 +51,7 @@ export default async function CategoryBlogPage({
     <>
       <PageHero
         eyebrow="Blog Category"
-        title={cat.name}
+        title={`${cat.name} Drafting Guides`}
         description={cat.description ?? undefined}
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: cat.name }]}
       />

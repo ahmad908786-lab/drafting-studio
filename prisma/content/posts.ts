@@ -33,21 +33,45 @@ export const POSTS: PostSeed[] = [
     tags: ["AutoCAD", "workflow", "permitting"],
     readMinutes: 6, featured: true, daysAgo: 4,
     excerpt: "Everyone sells modeling. For most permit sets, disciplined 2D AutoCAD is faster, cheaper, and exactly what the plan reviewer wants.",
-    bodyMdx: `The industry spent a decade insisting every drawing had to become a model. For a lot of buildings, that was never true — and pretending otherwise slowed projects down.
+    bodyMdx: `The industry spent a decade insisting every drawing had to become a model. Software vendors, conference keynotes, and RFP checklists all pushed the same message: if your deliverable is not model-based, you are behind. For a lot of buildings, that was never true — and pretending otherwise slowed projects down, raised fees, and delivered files nobody on the review side asked for.
 
 > A plan reviewer does not stamp a model. They stamp sheets. Clean, complete, coordinated sheets.
 
-Most tenant fit-outs, franchise rollouts, and light-commercial projects need a permit set: power plans, panel schedules, a single-line diagram, ductwork, piping, a sprinkler grid. Every one of those is a 2D deliverable. Producing them through a heavy modeling pipeline adds cost and time without changing what lands on the reviewer's desk.
+This is not nostalgia for the drafting board. It is a practical observation about what a permit submittal actually is, who reads it, and what the fastest path through review looks like. For most of the buildings that actually get built — tenant fit-outs, franchise rollouts, restaurants, clinics, light commercial — disciplined 2D AutoCAD is faster, cheaper, and exactly what the plan reviewer wants.
 
-## Focus is a feature
+## What the Reviewer Actually Receives
 
-When a studio commits to 2D AutoCAD, the whole workflow tightens around the thing that matters: correct, legible, code-compliant sheets delivered fast. Layer standards stay disciplined. Files stay small and portable. Your engineer of record opens the DWG, redlines, and stamps — no round-trip through a model nobody asked for.
+Follow a permit submittal through the process. The engineer exports sheets — power plans, panel schedules, a single-line diagram, ductwork layouts, plumbing risers, a sprinkler grid — and uploads PDFs to the AHJ portal. The reviewer opens PDFs. The comments come back as markups on PDFs. At no point in this chain does a model add value, because at no point in this chain does anyone open one.
 
-## Where modeling earns its keep — and where it doesn't
+Every deliverable that matters in a permit review is a 2D artifact: a plan, a schedule, a diagram, a detail. Producing those artifacts through a heavy modeling pipeline means building a model, maintaining it, coordinating it, and then extracting 2D sheets from it — three steps of work to produce the one thing the reviewer reads. Drawing the sheets directly skips the overhead without changing the deliverable.
 
-Complex, heavily coordinated new construction with dozens of trades stacked in a tight plenum can justify a model. A 2,100 sq ft drive-thru does not. The mistake is treating every project like the first case when most are the second.
+## The Cost Math Nobody Runs
 
-The result of choosing 2D deliberately is not a compromise. It is a faster path to a permit, at a lower cost, with a file your whole team can actually use.`,
+Modeling carries real costs that rarely appear in the fee comparison: licenses priced per seat, hardware that can actually run the software, staff training and the productivity dip that comes with it, and the ongoing tax of model maintenance — every design change touched in two places, the model and the sheets. For a 2,100 sq ft drive-thru or a 6,000 sq ft clinic, that overhead can exceed the drafting fee itself.
+
+2D AutoCAD inverts the math. The deliverable is the drawing, so the work is the drawing: correct geometry, disciplined layers, complete schedules, coordinated disciplines. A focused [electrical system](/services/electrical-design/electrical-system-design) set — power plans, panel schedules, single-line — goes from kickoff to submittal in days, not weeks, because there is no model in the middle demanding attention.
+
+## Focus Is a Feature
+
+When a studio commits to 2D AutoCAD, the whole workflow tightens around the thing that matters: correct, legible, code-compliant sheets delivered fast. Layer standards stay disciplined because layers are the entire organization system — there is no model to hide sloppy drafting behind. Files stay small and portable: a layered DWG moves between your team, the landlord's engineer, and the AHJ without friction, opens on any machine, and redlines cleanly.
+
+That portability compounds on multi-site work. A fifty-location franchise rollout lives or dies on file discipline — one prototype, adapted per site, readable by every local engineer of record. Small, layered DWGs make that pace possible in a way that model handoffs, with their version dependencies and linked-file chains, never have.
+
+Your engineer of record opens the DWG, redlines, and stamps. No round-trip through a model nobody asked for. No export surprises. The file your team can actually use is the file you receive.
+
+## The Honest Exceptions
+
+This argument has limits, and naming them is what makes it honest. Complex, heavily coordinated new construction — hospitals, high-rises, labs with dozens of trades stacked in a tight plenum — can justify a model, because the coordination problem is genuinely three-dimensional and the cost of a field clash dwarfs the modeling overhead. Large design teams working concurrently on one building also benefit from a shared model as a coordination database.
+
+But those projects are the exception, not the rule. The mistake is treating every project like a hospital when most are clinics, restaurants, and retail boxes. The right question is never "model or 2D" in the abstract — it is "what does this permit submittal need, and what is the cheapest reliable way to produce it?" For a [mechanical](/services/mechanical-design/mechanical-design) TI set or a [sprinkler layout](/services/fire-protection/sprinkler-layout-plan), the answer is sheets, drawn well.
+
+<Callout type="note">The test we apply to every project: if the permit deliverable is a set of sheets and the coordination fits on a reflected ceiling plan, 2D is the faster path. If the building needs true 3D clash detection across a dozen trades, say so upfront — and price the modeling honestly.</Callout>
+
+## What "Disciplined" Actually Means
+
+The 2D argument only holds if the 2D is good. Sloppy CAD is not an argument against modeling; it is just sloppy. Disciplined 2D means a published layer standard enforced on every sheet, xrefs for backgrounds instead of inserted geometry, title blocks with no blank fields, revision clouds with delta numbers, and a coordination pass across disciplines before anything is issued. That is the unglamorous work that makes a set read as professional — and reviewers issue permits to the professional one.
+
+The result of choosing 2D deliberately is not a compromise. It is a faster path to a permit, at a lower cost, with a file your whole team can actually use. If your next project needs permit-ready sheets without the modeling overhead, [request a quote](/request-quote) — send your scope and see what disciplined 2D drafting delivers.`,
     meta: { pullQuotes: ["A plan reviewer does not stamp a model. They stamp sheets."] },
   },
   {
@@ -94,7 +118,9 @@ Utilities and many AHJs want a load letter: connected load, demand load, and ser
 
 <Checklist items="Inventory every connected load;Apply Article 220 demand factors;Take continuous loads at 125%;Add 25% for the largest motor;Select the next standard service size;Document assumptions and produce the load letter" />
 
-Done in this order, a standard-method calc is fast, defensible, and easy to review.`,
+Done in this order, a standard-method calc is fast, defensible, and easy to review.
+
+Need the calculation behind your next service? Our [electrical load calculation](/services/calculations-reports/electrical-load-calculation) service produces the NEC Article 220 basis — connected and demand loads, panel schedules, and the utility load letter — and the [single-line diagram](/services/electrical-design/single-line-diagram) turns it into the reviewer's roadmap. [Request a quote](/request-quote) with your equipment list and we will size the service.`,
     meta: { downloadable: "NEC 220 Load-Calc Checklist" },
   },
   {
@@ -131,7 +157,9 @@ Plot the system **demand** against the **water supply** curve from your flow tes
 
 ## What you receive
 
-A clean report: the demand/supply graph, node and pipe schedules, the remote-area analysis, and a summary the fire department can accept. Pair it with the sprinkler layout and the set is submission-ready.`,
+A clean report: the demand/supply graph, node and pipe schedules, the remote-area analysis, and a summary the fire department can accept. Pair it with the sprinkler layout and the set is submission-ready.
+
+Our [sprinkler layout](/services/fire-protection/sprinkler-layout-plan) service pairs every head layout with the hydraulic report described above — demand versus supply, node schedules, and the remote-area analysis — so the fire department gets one coordinated package. Where alarm scope rides along, our [fire alarm system design](/services/electrical-design/fire-alarm-system-design) covers devices, risers, and calcs to NFPA 72. [Request a quote](/request-quote) with your flow test data and floor plans.`,
   },
   {
     slug: "franchise-rollout-mep-adaptation-playbook",
@@ -171,7 +199,9 @@ A shared log of what changed and why — across all sites — prevents re-solvin
 
 Small, layered DWGs move between your team, the landlord's engineer, and the AHJ without friction. That portability is what makes a fifty-site pace possible.
 
-Run the program this way and each new site becomes a 48-hour adaptation instead of a fresh design.`,
+Run the program this way and each new site becomes a 48-hour adaptation instead of a fresh design.
+
+We run this playbook for a living: our [electrical system design](/services/electrical-design/electrical-system-design) and [mechanical design](/services/mechanical-design/mechanical-design) teams adapt prototype sets to new sites in as little as 48 hours, drafting to your CAD standard so every location reads identically. [Request a quote](/request-quote) with your prototype set and the next site address.`,
   },
   {
     slug: "urgent-care-clinic-electrical-case-study",
@@ -182,34 +212,49 @@ Run the program this way and each new site becomes a 48-hour adaptation instead 
     discipline: "electrical",
     readMinutes: 7, featured: false, daysAgo: 26,
     excerpt: "How we turned an architectural set into a permit-ready electrical and NFPA 72 fire-alarm package for a 6,400 sq ft urgent care — in six business days.",
-    bodyMdx: `## Challenge
+    bodyMdx: `## Challenge: A Clinic That Could Not Wait
 
-A healthcare developer needed a 6,400 sq ft urgent-care fit-out through permit fast. The scope was code-critical: dedicated and isolated power for medical equipment, complete egress and exit lighting, and a full NFPA 72 fire-alarm design with battery and voltage-drop calculations. Their in-house engineer would stamp — but had no bandwidth to draft.
+A healthcare developer needed a 6,400 sq ft urgent-care fit-out through permit fast. The program was code-critical in a way a standard office TI is not: dedicated and isolated power for medical equipment, complete egress and exit lighting tied to the life-safety plan, and a full NFPA 72 fire-alarm design with battery and voltage-drop calculations. Their in-house engineer would stamp the set — but had no bandwidth to draft it, and the lease clock was already running.
 
-## Solution
+Urgent care is a demanding occupancy for electrical design. Exam rooms carry receptacle densities and dedicated circuits that a standard office plan never sees. Imaging and lab equipment need isolated-ground circuits and clean power. The waiting and triage areas need lighting that is bright, comfortable, and fully on the emergency system. And the fire alarm has to cover a space where patients may be immobile — notification, audibility, and the sequence of operations all get scrutinized harder than in a typical commercial shell.
 
-We took the architectural floor and reflected-ceiling plans and produced the full electrical set:
+## Solution: Full Electrical and Fire-Alarm Package in 6 Days
 
-- Dedicated and isolated circuits for exam and imaging equipment
-- Egress and exit lighting coordinated to the life-safety plan
-- Fire-alarm device layout with candela and spacing to NFPA 72
-- SLC/NAC circuiting, riser, and battery/voltage-drop calculations
-- Panel schedules and a coordinated single-line diagram
+We took the architectural floor and reflected-ceiling plans and produced the complete electrical construction set in 2D AutoCAD, drafted to the firm's CAD standard so their engineer could redline and stamp without cleanup:
 
-Everything was drafted in 2D AutoCAD to the firm's CAD standard so their engineer could redline and stamp without cleanup.
+- **Dedicated and isolated circuits** for exam and imaging equipment, with isolated-ground receptacles and home runs that kept medical loads separate from general loads.
+- **Power and receptacle plans** covering every exam room, the lab, triage, waiting, and back-of-house — device densities matched to the actual equipment list, not a generic office template.
+- **Egress and exit lighting** coordinated to the life-safety plan, with emergency fixtures and exit signs circuited to the emergency source and shown on dedicated life-safety sheets.
+- **Fire-alarm device layout** with candela ratings and spacing verified per NFPA 72, SLC/NAC circuiting drawn and tagged, and a riser diagram tying every device back to the panel.
+- **Battery and voltage-drop calculations** backing the fire-alarm design — standby and alarm loads totaled, battery sized, and the longest NAC run verified for voltage at the last device.
+- **Panel schedules and a coordinated single-line diagram**, built from the same load data so the two sheets agreed exactly.
+
+### Coordination That Made It Stamp-Ready
+
+Two things made the set land cleanly with the stamping engineer. First, everything was drawn on the firm's title block, layer standard, and symbol library — the deliverable looked like their own production, because it was built to their spec. Second, the [fire alarm system design](/services/electrical-design/fire-alarm-system-design) and the electrical scope were drafted as one package, not two: device addresses on the floor plans matched the riser, the riser matched the battery calc, and the candela schedule matched the plans. That internal consistency is what lets an engineer stamp someone else's drafting with confidence.
+
+The lighting scope — general, exam, and egress — was laid out as a coordinated [lighting design](/services/electrical-design/lighting-design) with fixture schedules and controls, so the clinic's lighting read as one system rather than three overlapping ones.
 
 ## Results
-
-The set went to the AHJ and cleared on the first submission. Two minor review comments were resolved inside the included revision window.
 
 | Metric | Result |
 | --- | --- |
 | Turnaround | 6 business days |
-| Review submissions | 1 |
-| Revisions used | 2 (included) |
-| Stamp-ready | Yes |
+| Review submissions | 1 — cleared on first submittal |
+| Revisions used | 2 (included in scope) |
+| Stamp-ready | Yes — engineer stamped without redrafting |
+| Fire alarm basis | NFPA 72, with battery and voltage-drop calcs |
+| Building area | 6,400 sq ft |
 
-The developer has since sent three more clinic locations through the same pipeline.`,
+The set went to the AHJ and cleared on the first submission. The two review comments — both minor, both about labeling — were resolved inside the included revision window without touching the design.
+
+<Callout type="tip">For healthcare fit-outs, draft the fire alarm and the electrical scope as one package from day one. Device addresses, candela ratings, and circuiting that agree across the floor plans, the riser, and the calculations are what make a set stamp-ready for an engineer who did not draft it.</Callout>
+
+## The Pattern Since
+
+The developer has since sent three more clinic locations through the same pipeline: same CAD standard, same [electrical system design](/services/electrical-design/electrical-system-design) and [single-line diagram](/services/electrical-design/single-line-diagram) structure, adapted per site. The first location took six days; the repeat locations take less, because the template is proven and the stamping engineer already trusts it.
+
+Healthcare drafting rewards studios that treat life-safety scope with the same rigor as power scope. If your clinic, dental, or medical office needs a permit-ready electrical and fire-alarm package your engineer can stamp, [request a quote](/request-quote) — send the architectural plans and the equipment list, and we will scope the full set.`,
     meta: { stats: [ { value: "6 days", label: "Turnaround" }, { value: "1", label: "Submission to approve" }, { value: "6,400", label: "Square feet" }, { value: "NFPA 72", label: "Fire alarm basis" } ] },
   },
   {
@@ -243,7 +288,9 @@ Illuminance falls off with the square of distance. The study has to reflect the 
 
 Finally, the plan itself has to be legible: the calc grid, the summary table (avg/min/max, ratios), the fixture schedule with IES types, and the compliance note. A tidy sheet gets read quickly and approved quickly.
 
-Get these five right and a photometric study clears review without a second look.`,
+Get these five right and a photometric study clears review without a second look.
+
+Our [photometric design](/services/electrical-design/photometric-design) service delivers the point-by-point studies reviewers accept — real IES files, uniformity ratios, and property-line trespass checks — and pairs naturally with our [lighting design](/services/electrical-design/lighting-design) layouts. [Request a quote](/request-quote) with your site or floor plan and the fixture IES files.`,
   },
   {
     slug: "hvac-load-calculations-manual-j-vs-ashrae",
@@ -254,28 +301,68 @@ Get these five right and a photometric study clears review without a second look
     discipline: "hvac",
     readMinutes: 7, featured: false, daysAgo: 34,
     excerpt: "Two recognized methods, two use cases. Here's how we pick the right heating and cooling load basis for a building.",
-    bodyMdx: `Sizing HVAC starts with a load calculation — but which method? The two you'll see are Manual-J and the ASHRAE approach. They aren't interchangeable.
+    bodyMdx: `Sizing HVAC starts with a load calculation — but which method? The two you will see on permit submittals are Manual-J and the ASHRAE approach. They are both recognized, both defensible, and they are not interchangeable. Picking the wrong one is one of the fastest ways to earn a correction letter, because the reviewer will check your basis against the building type before they check a single number.
 
-## Manual-J: residential
+## Why the Method Matters
 
-Manual-J is the recognized standard for residential heating and cooling loads. It's room-by-room, envelope-driven, and it's what most residential AHJs expect behind a permit. For single-family, townhomes, and ADUs, this is the basis.
+A load calculation is the engineering basis behind every ton of equipment and every CFM of ductwork on the drawings. The reviewer reads it to answer two questions: did you account for all the heat gains and losses, and did you use a method that fits this building? A Manual-J on a 40,000 sq ft office reads as wrong on sight, and an ASHRAE commercial calculation on a single-family home raises the same flag in reverse. The method is the first thing the reviewer sees and the last thing you want to defend.
 
-## ASHRAE: commercial
+## Manual-J: The Residential Standard
 
-Commercial buildings — offices, retail, healthcare, hospitality — use the ASHRAE method, which handles diversity, ventilation per **ASHRAE 62.1**, and larger, zoned systems more naturally.
+Manual-J is the ACCA-recognized standard for residential heating and cooling loads, and it is what most residential AHJs expect behind a permit. It is room-by-room and envelope-driven: for each space it walks through the walls, roof, windows, doors, floors, and infiltration, then adds internal gains from occupants, lighting, and appliances, and ventilation air. The output is a sensible and latent load per room, a block load for the whole house, and the equipment tonnage and BTU basis.
 
-## What both need from you
+Where Manual-J is non-negotiable:
 
-- Envelope assemblies (R-values, glazing, orientation)
-- Occupancy and internal gains
-- Ventilation requirements
-- Design conditions for the location
+- **Single-family homes** — nearly every residential AHJ names Manual-J (or its local equivalent) as the required basis.
+- **Townhomes and duplexes** — each unit gets its own room-by-room calc; shared walls get the right boundary treatment.
+- **ADUs and additions** — small loads, but the reviewer still wants the basis documented.
 
-## Why right-sizing matters
+The inputs that drive a Manual-J are the envelope: R-values of walls and roof, glazing area and orientation by room, infiltration rate, and the local design conditions. Get the glazing wrong and the cooling load follows it — which is why we ask for the window schedule, not just the floor plan.
 
-Oversized equipment short-cycles, controls humidity poorly, and costs more up front. Undersized equipment can't hold setpoint on a design day. The load calc is what keeps the selection honest — and it feeds straight into the ductwork sizing on the drawings.
+<Callout type="note">Manual-J is occasionally misapplied to small commercial spaces. If the space has commercial occupancy, commercial ventilation rates, or packaged rooftop equipment, the ASHRAE method is the defensible choice even when the building is small.</Callout>
 
-Pick the method to match the building, document the assumptions, and the equipment selection defends itself.`,
+## ASHRAE: The Commercial Method
+
+Commercial buildings — offices, retail, healthcare, hospitality, restaurants — use the ASHRAE load calculation method (the Radiant Time Series / heat-balance family), which handles the things commercial buildings do that houses do not: **diversity** across zones that peak at different times, **ventilation per ASHRAE 62.1** at commercial occupancy densities, large zoned air systems, and internal gains from equipment that dwarf residential loads.
+
+The ASHRAE calc is organized by zone and by hour. Each zone's envelope, solar, occupancy, lighting, and equipment gains are profiled across the design day, and the system block load is the coincident peak — not the sum of the zone peaks. That distinction is where the tonnage savings live: an east office and a west office do not peak together, and the calc knows it.
+
+Where the ASHRAE method is expected:
+
+- **Offices and retail** — zoned systems with real diversity.
+- **Healthcare and hospitality** — strict ventilation and pressure relationships that Manual-J never models.
+- **Restaurants** — kitchen equipment gains that dominate the load.
+
+## Side-by-Side Comparison
+
+| | Manual-J | ASHRAE method |
+| --- | --- | --- |
+| Building type | Residential | Commercial |
+| Granularity | Room-by-room | Zone-by-zone, hourly |
+| Diversity | Minimal | Full zone diversity |
+| Ventilation | Residential rates | ASHRAE 62.1 commercial rates |
+| Typical reviewer | Residential plans examiner | Mechanical plans examiner |
+| Equipment output | Tonnage / BTU per home | Block + zone loads, system CFM |
+
+## What Both Methods Need From You
+
+Whichever method fits, the calculation is only as good as its inputs. Before we run either one, we need:
+
+<Checklist items="Architectural floor plans with room names and areas;Envelope assemblies: wall and roof R-values, glazing type and orientation;Occupancy counts and schedules;Internal gains: lighting, equipment, and process loads;Ventilation requirements per the adopted code;Design conditions: indoor setpoints and ASHRAE outdoor design temperatures" />
+
+The two inputs that cause the most rework are glazing (area and orientation by room, not a building total) and occupancy (the owner's program number, not a guess). Nail those and the calc holds up.
+
+## Why Right-Sizing Matters
+
+Oversized equipment short-cycles: it satisfies the thermostat before it has run long enough to dehumidify, leaving a cold, clammy space and a compressor that dies young. Undersized equipment cannot hold setpoint on a design day, and no amount of ductwork fixes a unit that was never big enough. The load calc is what keeps the selection honest — and it feeds straight into the ductwork sizing on the drawings, because every CFM on the plan traces back to a load in the report.
+
+<Callout type="warning">Rule-of-thumb sizing — "500 sq ft per ton" and its cousins — is the most expensive shortcut in HVAC. It oversizes most buildings, and reviewers who see round-number tonnage with no calculation behind it will ask for the basis.</Callout>
+
+## From Load to Drawings
+
+The load report is the beginning, not the end. Room-by-room or zone-by-zone loads become the airflow schedule on the mechanical plans; the block load becomes the equipment selection; the ventilation numbers become the outdoor-air intakes and the ASHRAE 62.1 compliance table. Our [HVAC heating and cooling load](/services/calculations-reports/hvac-heating-cooling-load) service produces the report, and our [HVAC design](/services/mechanical-design/hvac-design) drafting service carries it straight onto the construction drawings — one continuous chain from basis to permit set.
+
+Pick the method to match the building, document the assumptions, and the equipment selection defends itself. Need the calculation behind your next mechanical permit? [Request a quote](/request-quote) — send the plans and the envelope details, and we will run the right basis for the building.`,
   },
   {
     slug: "single-line-diagram-mistakes-that-fail-review",
@@ -286,29 +373,49 @@ Pick the method to match the building, document the assumptions, and the equipme
     discipline: "electrical",
     readMinutes: 5, featured: false, daysAgo: 40,
     excerpt: "The single-line is the first thing a reviewer reads. These five omissions are the ones that bounce it back.",
-    bodyMdx: `The single-line is the map of your electrical system. Reviewers start here, and these five gaps are the common reasons it comes back.
+    bodyMdx: `The single-line diagram is the map of your electrical system, and it is the first thing a plan reviewer reads. A complete one-line sets the tone for the whole submittal; an incomplete one tells the reviewer to read everything else with suspicion. These five omissions are the ones that bounce a single-line back — and each one is avoidable before the set ever leaves your desk.
 
-## 1. Missing AIC / interrupting ratings
+## 1. Missing AIC / Interrupting Ratings
 
-Overcurrent devices without an interrupting rating — or ratings that don't reflect the available fault current — are an instant comment. Show them.
+Overcurrent devices without an interrupting rating — or ratings that do not reflect the available fault current — are an instant comment. NEC 110.9 requires equipment intended to interrupt current at fault levels to have an interrupting rating sufficient for the available fault current at its line terminals, and the reviewer will check it.
 
-## 2. Unlabeled feeder and conductor sizes
+The fix is a column, not a guess. Show the available fault current at each distribution point alongside the device AIC rating, and make sure the rating exceeds the available current with margin. Copying one AIC value across panels at different fault levels is worse than leaving it blank — it tells the reviewer the fault study was never coordinated with the drawing. Our [single-line diagram](/services/electrical-design/single-line-diagram) service shows fault current and AIC side by side at every device, so the coordination is visible on the sheet.
 
-Every feeder needs its conductor and conduit size. A single-line with unlabeled runs forces the reviewer to guess, and they won't.
+## 2. Unlabeled Feeder and Conductor Sizes
 
-## 3. No grounding and bonding
+Every feeder needs its conductor and conduit size on the one-line. A diagram with unlabeled runs forces the reviewer to cross-reference the panel schedules or guess — and reviewers do not guess in your favor. This is the most common drafting-level omission we see, and it is purely a completeness issue: the sizes were decided during design, they just never made it onto the sheet.
 
-The grounding electrode system and bonding path belong on the single-line. Leaving them off reads as incomplete.
+Label every feeder segment with conductor size, count, and conduit size (e.g., 4#500 kcmil + #1/0 G in 3" C). When a feeder changes size mid-run — a tap or a long run upsized for voltage drop — show the transition point. The one-line should be buildable from the sheet alone.
 
-## 4. Panel hierarchy that doesn't match the schedules
+## 3. No Grounding and Bonding
 
-If the single-line says one thing and the panel schedules say another, the reviewer notices immediately. Keep them in sync in the same file.
+The grounding electrode system and the bonding path belong on the single-line. Grounding electrode conductors, the main bonding jumper location, separately derived system grounding, and the electrode itself (ground rods, concrete-encased electrode, building steel, water pipe) all have a place on the diagram. Leaving them off reads as incomplete because the system is incomplete without them — the reviewer cannot verify a safe installation from a one-line that ends at the main breaker.
 
-## 5. Service and metering ambiguity
+This is also where separately derived systems get drawn explicitly: transformers and generators with their grounding electrode conductor paths shown, so the reviewer can trace the fault path from any point back to the source.
 
-Utility service, metering, and the main have to be unambiguous — configuration, rating, and location. Vagueness here delays the whole set.
+## 4. Panel Hierarchy That Doesn't Match the Schedules
 
-Fix these five and your single-line reads as complete, which is exactly the impression you want a reviewer to start with.`,
+If the single-line says one thing and the panel schedules say another — a 225-amp main on the riser and 200 amps on the schedule, a panel fed from MDP-1 on one sheet and MDP-2 on the other — the reviewer notices immediately, and the correction letter writes itself. Worse, the reviewer now distrusts both sheets and checks everything twice.
+
+<Callout type="warning">The single-line and the panel schedules must be built from the same load data in a single pass. Drafting one from the other, weeks apart, is how the numbers drift.</Callout>
+
+The discipline that prevents this is a coordination pass between the two sheets before issue: every panel on the one-line appears in the schedules with the same rating, the same feeder, and the same upstream source. Our [electrical system design](/services/electrical-design/electrical-system-design) sets are produced this way — one-line and schedules from one data pass, then cross-checked.
+
+## 5. Service and Metering Ambiguity
+
+Utility service, metering, and the main disconnect have to be unambiguous: service configuration (voltage, phase, wire count), service rating, metering arrangement, and the physical location of the service equipment. Vagueness here delays the whole set because everything downstream — the service size, the AIC ratings, the grounding — keys off the service point.
+
+Show the utility point of connection, the service entrance conductors, the meter location and type (self-contained vs. CT-metered), and the main disconnect with its rating. If the utility has issued a service letter, the one-line should reflect it. If the service size is still being negotiated, note it as such rather than drawing a placeholder.
+
+## What a Complete Single-Line Includes
+
+Beyond avoiding the five mistakes, a submission-ready one-line carries a short list of positive content: the utility service and metering, the full distribution hierarchy down to the last panelboard, feeder and conductor sizes on every run, overcurrent device ratings with AIC, the grounding and bonding system, available fault current at key points, and a legend defining every symbol. When all of that is present and the panel schedules agree, the reviewer moves on to the floor plans in a cooperative mood — which is exactly the impression you want them to start with.
+
+## The Load Basis Behind It
+
+A one-line is only as defensible as the numbers behind it. The service size, the feeder sizes, and the panel ratings all trace back to the [electrical load calculation](/services/calculations-reports/electrical-load-calculation) — NEC Article 220, demand factors applied, assumptions documented. When the reviewer can trace a feeder size on your one-line back to a stated load basis in one step, the review moves. When they cannot, you get a correction asking for the basis, and you lose two to three weeks.
+
+Fix these five, keep the schedules in sync, and document the load basis, and your single-line reads as complete. Need a one-line drafted or an existing set cleaned up for resubmittal? [Request a quote](/request-quote) — send your panel schedules and load data, and we will turn them into a reviewer-ready diagram.`,
   },
   {
     slug: "distribution-center-esfr-case-study",
@@ -319,19 +426,42 @@ Fix these five and your single-line reads as complete, which is exactly the impr
     discipline: "fire-protection",
     readMinutes: 8, featured: true, daysAgo: 46,
     excerpt: "An ESFR sprinkler layout, a passing hydraulic report, and a compliant high-bay lighting grid for a big-box distribution center.",
-    bodyMdx: `## Challenge
+    bodyMdx: `## The Brief
 
-A contractor won a 65,000 sq ft distribution center and needed two things fast: an ESFR sprinkler layout with a hydraulic report that would clear the fire department, and a high-bay lighting design with a photometric grid proving adequate footcandles across the racking.
+A general contractor landed a 65,000 sq ft distribution center on a tight build schedule: a 36-foot clear storage height, rack storage running nearly the full height, a dense roof-joist grid, and a fire department that would hold the certificate of occupancy until both the sprinkler system and the lighting were signed off. They needed two deliverables, and they needed them together: an ESFR sprinkler layout with a hydraulic report the fire department would accept, and a high-bay lighting design with a photometric grid proving adequate footcandles across the aisles and rack faces.
 
-## Solution
+The job came to us with eight business days of float before the submittal deadline. We took both scopes in one coordinated pass — because in a warehouse, the sprinkler mains and the high-bay fixtures live in the same ten feet of ceiling, and drawing them separately is how conflicts get built.
 
-We drafted both disciplines in coordinated 2D:
+## Challenge: Storage Height Changes Everything
 
-- ESFR sprinkler head layout to NFPA 13, coordinated to the roof structure and racking
-- A node-by-node hydraulic report comparing demand to the site's flow test
-- High-bay lighting layout with a point-by-point photometric grid at aisle and rack faces
+ESFR (Early Suppression Fast Response) protection is powerful, but it is picky. Heads under a 36-foot ceiling leave no room for improvisation: deflector clearances, maximum spacing, and the exclusion zones around obstructions are all measured in inches. The roof structure was a joist grid at 5-foot centers with chords, bridging, and a forest of small mechanical penetrations — exactly the kind of ceiling that turns a clean head layout into a field reroute if the drafter is not paying attention.
 
-The hydraulic calc initially ran close to the supply curve; we resized two cross-mains to open up margin, then re-ran the calc to confirm.
+The storage arrangement added its own constraints. Rack aisles had to stay clear of drops, flue spaces had to remain unobstructed, and the uprights created a hard grid the head layout had to respect. Commodity classification drove the design criteria, and we confirmed the classification with the engineer of record before a single head was placed — guessing at commodity class is how ESFR submittals die in review.
+
+On the lighting side, the challenge was the mirror image: high-bay fixtures had to deliver uniform footcandles down 36 feet to the aisle floor and the rack faces, with uniformity ratios the owner could accept, while staying clear of the sprinkler branch lines and the deflector exclusion zones. Light the aisles and you light the racks; get the mounting wrong and the racks shadow the aisles.
+
+## Solution: One Coordinated 2D Pass
+
+We drafted both disciplines from the same rack-and-structure background in 2D AutoCAD, in this order:
+
+1. **Shared background.** Racking footprints, aisle widths, joist layout, and obstructions went on one coordinated base so both disciplines designed against the same building.
+2. **ESFR head layout to NFPA 13.** Heads placed for coverage under the 36-foot deck, coordinated to the joist grid, with branch lines routed to avoid flue-space violations and deflector obstructions. Every head got a tag that carried into the hydraulic node schedule.
+3. **High-bay lighting layout.** Fixture rows aligned to the aisles, not the joists — aisles are where the light has to land. Mounting heights and spacing were iterated against the photometric grid until the numbers held.
+4. **Cross-discipline deconfliction.** Sprinkler branch lines versus fixture rows, drops versus fixtures, head deflectors versus high-bay housings. The two systems were checked against each other on the plan, not discovered in the field.
+
+### The Hydraulic Report
+
+The hydraulic calculation ran node by node from the most remote area back to the supply, comparing system demand against the municipal flow test the contractor provided. On the first run, demand sat uncomfortably close to the supply curve — close enough that a hot-day pressure dip could have pushed it over. We resized two cross-mains, re-ran the calc, and opened up a margin the fire department could accept. The final report shipped with the demand/supply graph, the node schedule, and the remote-area analysis — the package our [sprinkler layout service](/services/fire-protection/sprinkler-layout-plan) produces as standard.
+
+### The Photometric Grid
+
+The lighting package paired the layout with a point-by-point [photometric study](/services/electrical-design/photometric-design): footcandle grids at the aisle floor and at the rack faces, average/min/max values, and uniformity ratios. Two fixture spacings were tested; the tighter spacing won on uniformity at a modest fixture-count cost, and the grid proved it before anything was ordered.
+
+### Power Behind the Building
+
+The building's electrical backbone — dock door power, office and restroom panels, equipment drops, and the service distribution — was drafted as a coordinated [electrical system set](/services/electrical-design/electrical-system-design) with panel schedules and a single-line diagram, so the whole building read as one package at review.
+
+<Callout type="tip">In a warehouse, sequence the hydraulic calculation before freezing the sprinkler layout. A pipe resize discovered during the calc is a two-hour CAD change; discovered by the reviewer, it is a two-week correction cycle.</Callout>
 
 ## Results
 
@@ -339,11 +469,18 @@ The hydraulic calc initially ran close to the supply curve; we resized two cross
 | --- | --- |
 | Building area | 65,000 sq ft |
 | Sprinkler basis | ESFR, NFPA 13 |
-| Hydraulic margin | Passed with resized mains |
-| Lighting | Uniform grid at rack faces |
+| Hydraulic margin | Passed after cross-main resize |
+| Lighting | Uniform footcandle grid at aisles and rack faces |
+| Fire department review | Approved, no resubmittal |
 | Turnaround | 9 business days |
 
-Both packages cleared review together, and the contractor kept the aggressive site schedule.`,
+Both packages cleared review together on the first submission, and the contractor kept the aggressive site schedule. The cross-main resize — a two-hour CAD change — is exactly the kind of decision that costs a week when it is discovered by the reviewer instead of the drafter.
+
+## Why It Worked
+
+Three things made this submittal fast. First, the sprinkler and lighting scopes were drafted against the same background, so the deflector zones and the fixture rows never fought. Second, the hydraulic calculation ran before the layout froze, so pipe resizing was a design decision, not a correction response. Third, the photometric grid rode with the submittal instead of arriving as an afterthought — when the reviewer can see the numbers at the rack faces, there is nothing left to ask.
+
+Have a warehouse or distribution project heading for review? [Request a quote](/request-quote) — send the building footprint and storage heights, and we will scope the sprinkler, lighting, and power package together.`,
     meta: { stats: [ { value: "65,000", label: "Square feet" }, { value: "ESFR", label: "Sprinkler basis" }, { value: "9 days", label: "Turnaround" }, { value: "1", label: "Coordinated submission" } ] },
   },
   {
@@ -354,23 +491,53 @@ Both packages cleared review together, and the contractor kept the aggressive si
     tags: ["outsourcing", "engineering firms", "capacity"],
     readMinutes: 6, featured: false, daysAgo: 52,
     excerpt: "Outsourcing isn't about replacing your engineers. It's about giving them their time back.",
-    bodyMdx: `There's a quiet assumption that outsourcing drafting means giving up control. In practice, the firms that outsource well keep more control, not less — because they stop spending senior engineering time on production drafting.
+    bodyMdx: `There's a quiet assumption that outsourcing drafting means giving up control — that the moment production leaves your office, quality, consistency, and institutional knowledge go with it. In practice, the firms that outsource well keep more control, not less. The reason is simple: they stop spending senior engineering time on production drafting, and they replace an informal in-house workflow with a documented standard that any competent studio can execute.
 
 > Your PE's signature is the product. The hours spent moving lines in CAD are not.
 
-## The math of a stamp
+## The Math of a Stamp
 
-An engineer's value is judgment and their stamp. When that person spends a day drafting a panel schedule, you've bought the most expensive drafting in the building. Handing production drafting to a dedicated studio frees that judgment for design, review, and client work.
+An engineer's value is judgment and their stamp. When that person spends a day drafting a panel schedule or routing ductwork, you have bought the most expensive drafting in the building. The work still has to be done — permit sets do not draw themselves — but the question is who does it and at what cost.
 
-## Control is in the standard, not the mouse
+Handing production drafting to a dedicated [electrical](/services/electrical-design/electrical-system-design), [HVAC](/services/mechanical-design/hvac-design), and [plumbing](/services/mechanical-design/plumbing-design) drafting studio frees that judgment for design decisions, review responses, and client work — the things only a licensed engineer can do. The drafting gets done by people who draft all day, every day, which usually means it gets done faster and with fewer errors than by an engineer squeezing it between higher-value tasks.
 
-The fear is that outsourced sets won't match house style. The answer is a CAD standard: title block, layers, details. Draft to the standard and the output is indistinguishable from in-house — because it was made to your spec.
+This is not about replacing your engineers. It is about giving them their time back. The firms that understand this treat drafting as production capacity and engineering as judgment capacity, and they stop confusing the two.
 
-## Capacity that flexes
+## Control Is in the Standard, Not the Mouse
 
-Workload isn't flat. Outsourcing turns a fixed drafting headcount into capacity you scale up for a busy quarter and down when it's quiet, without hiring and layoffs.
+The fear that keeps firms from outsourcing is that outsourced sets will not match house style — different layers, different symbols, a title block that looks like a stranger's. That fear is legitimate, and the answer is not trust. It is a CAD standard.
 
-Done deliberately, outsourcing production drafting is not a loss of control. It's a decision about where your most expensive people should spend their day.`,
+A real standard is a document: title block files, layer naming, text styles, dimension styles, symbol libraries, sheet order, revision protocol. Draft to the standard and the output is indistinguishable from in-house work — because it was made to your spec, not to the studio's habits. The handoff that matters is not the first project; it is the standards package that precedes it. Any studio worth hiring will ask for yours before quoting, and will draft a sample sheet to it before the first real project.
+
+Where firms get burned is skipping this step — sending a PDF and a deadline, then acting surprised when the deliverable does not look like their own work. That is not an outsourcing failure. That is a procurement failure.
+
+## Capacity That Flexes
+
+Workload is not flat. Every firm has a busy quarter and a quiet one, a big project that lands the same week two engineers are on vacation, a rollout client that needs six sites adapted in a month. In-house drafting is a fixed cost against a variable workload: you are either paying drafters to wait or paying engineers to draft.
+
+Outsourcing turns a fixed drafting headcount into capacity you scale up for the busy quarter and down when it is quiet — without hiring, layoffs, or the three-month ramp of a new employee learning your standard. The studio absorbs the peaks; your core team stays focused on the work that needs their license.
+
+## What Stays In-House (and What Shouldn't)
+
+Outsourcing works when the boundary is explicit. Engineering judgment — system selection, load calculation review, code interpretation, the stamp — stays in-house. Production drafting — plans, schedules, risers, details, revisions — goes to the studio. The gray zone is coordination: someone has to own the clash between the ductwork and the sprinkler main, and the contract should say who.
+
+<Callout type="note">The cleanest outsourcing boundary we have seen: the engineer owns every decision, the studio owns every line. Decisions arrive as redlines and narratives; lines arrive as CAD. Nothing in between is ambiguous.</Callout>
+
+## How to Evaluate a Drafting Partner
+
+Not every studio is set up for this relationship. Before you commit a project, check:
+
+<Checklist items="They ask for your CAD standard before quoting — not after;They produce a sample sheet to your standard, not their portfolio style;Turnaround is stated in business days with a rush option, not 'as soon as possible';Revisions are defined in the quote — how many, what counts as minor;They deliver editable DWG files, not just PDFs;They have a QC pass separate from the drafter who produced the set;References from engineering firms, not just end clients" />
+
+The sample sheet is the whole interview. If they cannot match your standard on one sheet, they will not match it on fifty.
+
+## The Firms That Do It Best
+
+The pattern we see in the firms that outsource successfully: they start with one project, not ten. They invest the hour it takes to hand over the CAD standard properly. They keep the engineer of record in the review loop on the first two sets, then step back once the output is proven. And they treat the studio as production capacity with a name and a phone number — a relationship, not a transaction.
+
+Done deliberately, outsourcing production drafting is not a loss of control. It is a decision about where your most expensive people should spend their day — and a good CAD standard is what makes that decision safe.
+
+If your engineers are drafting instead of engineering, [request a quote](/request-quote) — send your CAD standard and a sample project, and we will show you what the production side of your practice looks like when it is someone else's full-time job.`,
     meta: { pullQuotes: ["Your PE's signature is the product. The hours spent moving lines in CAD are not."] },
   },
   {
@@ -382,36 +549,59 @@ Done deliberately, outsourcing production drafting is not a loss of control. It'
     discipline: "hvac",
     readMinutes: 10, featured: false, daysAgo: 58,
     excerpt: "Type-I hoods, make-up air, heavy equipment power, and grease and gas piping — coordinating the hardest 1,500 sq ft in the building.",
-    bodyMdx: `A commercial kitchen packs more MEP conflict per square foot than anywhere else in a building. Here's how we keep it coordinated.
+    bodyMdx: `A commercial kitchen packs more MEP conflict per square foot than anywhere else in a building. In roughly 1,500 square feet you have Type-I hood exhaust moving thousands of CFM, make-up air that must balance it, electrically heavy cooking equipment, grease waste with an interceptor, gas piping sized to the connected load, and fire suppression covering the cooking line — all fighting for the same ceiling plane. Here's how we keep it coordinated, system by system.
 
-## Start with the hood
+## Start With the Hood: Everything Keys Off Exhaust
 
-Everything keys off the Type-I hood. Its exhaust CFM sets the make-up air requirement, and the two must balance — typically 80–90% of exhaust supplied as tempered make-up air so the space doesn't go negative and starve the hood.
+The Type-I hood is the anchor of the kitchen design. Its exhaust CFM — set by the cooking equipment type, the hood style (wall canopy, island, backshelf), and the local code — determines nearly everything downstream. A typical quick-service line might exhaust 3,000–6,000 CFM; a full cooking battery with charbroilers runs higher. The hood schedule on the drawings should state the exhaust CFM per hood section, the static pressure, and the duct size, because every other system sizes itself against that number.
 
-<Callout type="warning">Under-supplying make-up air is the single most common kitchen failure. Balance it on the drawings, not on site.</Callout>
+Grease duct routing deserves early attention: it must run as directly as possible to the exterior, maintain clearances to combustibles (18 inches unless a listed assembly reduces it), and provide cleanout access at every change of direction. A grease duct drawn as an afterthought becomes a field reroute through structure — draw the real path on the plan.
 
-## Power the equipment
+## Balance It With Make-Up Air
 
-Kitchen equipment is electrically heavy and specific: dedicated circuits, correct voltages, and connections that match the equipment schedule exactly. A one-off receptacle in the wrong place stalls the whole line at inspection.
+Exhaust without make-up air is a building trying to breathe through a straw. The make-up air unit (MUA) must supply roughly 80–90% of the exhaust volume as tempered outdoor air; the remaining 10–20% comes from the dining room and building transfer air, which keeps the kitchen slightly negative relative to dining — containing odors and heat where they belong.
+
+<Callout type="warning">Under-supplying make-up air is the single most common kitchen failure. An unbalanced kitchen starves the hood, spills cooking effluent into the dining room, and slams exterior doors. Balance it on the drawings, not on site.</Callout>
+
+The MUA needs tempering — heating in winter, and in many climates cooling or at least ventilation tempering in summer — sized in the [HVAC design](/services/mechanical-design/hvac-design) with its own equipment schedule entry. Show the MUA duct routing to its discharge points (typically a perforated perimeter supply around the hood), and coordinate its location with the exhaust fan: both usually live on the roof, and their separation matters for recirculation.
+
+## Power the Equipment: Dedicated Circuits Per the Schedule
+
+Kitchen equipment is electrically heavy and electrically specific. Fryers, ovens, steamers, and dish machines each need dedicated circuits at the correct voltage and phase, with receptacle or hardwired connections that match the equipment schedule exactly. A one-off receptacle in the wrong place — or at the wrong voltage — stalls the whole line at inspection.
 
 | System | Coordination point |
 | --- | --- |
-| Type-I hood | Exhaust CFM ↔ make-up air |
-| Equipment power | Dedicated circuits per schedule |
-| Grease waste | Interceptor sizing and slope |
-| Gas piping | Load, sizing, and shutoff |
+| Type-I hood | Exhaust CFM ↔ make-up air balance |
+| Equipment power | Dedicated circuits per equipment schedule |
+| Grease waste | Interceptor sizing, slope, and venting |
+| Gas piping | Connected load, sizing, and shutoff locations |
+| Fire suppression | Nozzle coverage over each appliance |
 
-## Route the plumbing
+The electrical scope also carries the kitchen's share of the building load: the [electrical system design](/services/electrical-design/electrical-system-design) includes the panel schedules with the kitchen equipment loads, so the service size reflects the real connected load — not an office-TI guess. Confirm the equipment list early and freeze it; every late equipment swap ripples through the panel schedule, the gas sizing, and the suppression coverage.
 
-Grease waste needs an interceptor, correct slope, and a clear path. Hand sinks, prep sinks, and floor drains all land on the plan. Gas piping is sized to the connected load with an accessible shutoff.
+## Route the Plumbing: Grease, Gas, and Water
 
-## Coordinate the ceiling
+Grease waste needs an interceptor sized to the fixture load and the local code, correct slope on the waste lines, and a clear, vented path to the building drain. Hand sinks, prep sinks, mop sinks, and floor drains all land on the plan with their trap and vent arrangement. The interceptor location matters — it needs service access, and health departments check it.
 
-Hood ductwork, make-up air, sprinkler, lighting, and fire suppression all fight for the same plane. We lay them out together so nothing collides above the line.
+Gas piping is sized to the total connected BTUH load using the longest-run method, with a shutoff at each appliance and the meter capacity verified against the total. The [plumbing design](/services/mechanical-design/plumbing-design) scope carries the gas isometric, the demand table, and the riser — and the gas load feeds back into the building's overall utility coordination, which is why late equipment changes hurt here most.
 
-## The payoff
+Domestic water rounds it out: hot water sizing for the dish machine and prep sinks (recovery rate matters more than tank size for commercial dishwashing), backflow prevention where the jurisdiction requires it, and hose bibbs for washdown.
 
-A kitchen coordinated on paper is a kitchen that passes health and building review together — and opens on schedule.`,
+## Coordinate the Ceiling: The Plane Everything Fights For
+
+Hood ductwork, make-up air ductwork, sprinkler branch lines, lighting, and the fire suppression piping all occupy the same ceiling plane above the cooking line. This is the highest-value coordination drawing in the set. We lay them out together and check:
+
+<Checklist items="Hood outline and grease duct path drawn against the structural framing;Make-up air duct routing coordinated with the exhaust duct — no crossings without clearance;Sprinkler heads placed for coverage with the hood and ducts as obstructions;Lighting fixtures clear of the hood and ductwork, with grease-rated fixtures over the line;Fire suppression piping and nozzles coordinated to the final appliance layout;Access panels and cleanouts reachable — not buried above equipment" />
+
+The fire suppression system deserves its own coordination pass: nozzle aiming points per the appliance layout, the manual pull station in the path of egress (10–20 feet from the equipment, never behind the cooking line), and the fuel shutoff interlocks shown on the drawings. Our [fire alarm system design](/services/electrical-design/fire-alarm-system-design) scope covers the detection and interlock side where the project needs it.
+
+## The Payoff: Health and Building Review Together
+
+A kitchen coordinated on paper is a kitchen that passes health-department and building-department review together — and opens on schedule. The two agencies look at different things (the health reviewer cares about sinks, surfaces, and temperatures; the building reviewer cares about the hood, the gas, and the electrics), but they both read the same drawings. One coordinated set that answers both reviewers is the difference between a smooth opening and a month of corrections.
+
+<Callout type="tip">Freeze the kitchen equipment list before the MEP drawings start. Every appliance swap after drafting ripples through the electrical panel schedule, the gas sizing, the suppression nozzle layout, and the hood CFM — four disciplines, one late change.</Callout>
+
+Opening a restaurant or rolling out a kitchen prototype? [Request a quote](/request-quote) — send the equipment list and the floor plan, and we will draft the coordinated kitchen MEP package.`,
   },
   {
     slug: "reading-a-drawing-set-for-non-engineers",
@@ -421,29 +611,55 @@ A kitchen coordinated on paper is a kitchen that passes health and building revi
     tags: ["basics", "drawing set", "owners"],
     readMinutes: 6, featured: false, daysAgo: 64,
     excerpt: "Owners, GCs, and project managers: a quick orientation to what's in an MEP set and how the sheets fit together.",
-    bodyMdx: `You don't need an engineering degree to get useful information out of an MEP drawing set. Here's a quick orientation.
+    bodyMdx: `You don't need an engineering degree to get useful information out of an MEP drawing set. Owners, general contractors, and project managers review these sets every week — approving scopes, spotting conflicts, and asking the questions that keep projects on track. Here's a practical orientation to what's in the set, how the sheets fit together, and what to look at first.
 
-## The sheet index is the map
+## The Sheet Index Is the Map
 
-Every set opens with a sheet index. Electrical sheets are usually prefixed **E**, mechanical **M**, plumbing **P**, and fire protection **FP**. The index tells you what exists and in what order.
+Every set opens with a sheet index — the table of contents. Electrical sheets are usually prefixed **E**, mechanical **M**, plumbing **P**, and fire protection **FP** (sometimes F or FS). The index tells you what exists and in what order: plans first, then schedules, then details within each discipline.
 
-## Legends and general notes
+If you are new to a set, read the index before anything else. It tells you the scope at a glance: how many electrical sheets (a scope with E-101 through E-601 is a full building, not a TI), whether fire protection is included, and whether there are separate demolition sheets. When a sheet is referenced on another sheet but missing from the index, that is worth a question — it may be a drafting error, or scope that was cut.
 
-Before the plans, you'll find legends (what each symbol means) and general notes (the code basis and standard requirements). When a symbol on a plan confuses you, the legend is the answer.
+## Legends and General Notes: The Rosetta Stone
 
-## The plans themselves
+Before the plans, you'll find legends (what each symbol means) and general notes (the code basis and standard requirements). When a symbol on a plan confuses you, the legend is the answer — every diamond, triangle, and letter code on the plans is defined there.
 
-Plans are scaled top-down views: where devices, ducts, pipes, fixtures, and heads go. Tags and callouts connect items on the plan to the schedules.
+The general notes are worth a skim even for non-engineers, because they state the design basis in plain terms: which code edition the set was drawn to, the design voltages, the plumbing code, the fire protection standard. If your project is in a jurisdiction with strict amendments, the notes will say so. This is also where the drafter states assumptions — and assumptions you disagree with are cheapest to challenge now.
 
-## Schedules and diagrams
+## The Plans: Where Things Go
 
-Schedules are tables — panels, equipment, fixtures — listing sizes and specifications. Diagrams like the single-line and risers show how the system connects vertically and electrically, which a flat plan can't.
+Plans are scaled top-down views showing where devices, ducts, pipes, fixtures, and heads go. A few things help a non-engineer read them:
 
-## How it all ties together
+- **Tags connect plans to schedules.** A diffuser tagged D-12 on the mechanical plan appears as D-12 in the diffuser schedule with its size and airflow. A panel labeled LP-3 on the electrical plan has a full schedule on the electrical sheets. Follow one tag through and the set stops looking like noise.
+- **Line weights carry meaning.** Heavy lines are usually new work; screened (light gray) lines are existing; dashed lines are often demolition or future work. The legend confirms the convention for your set.
+- **Callouts point to details.** A hexagon or circle with a number and a sheet reference ("5/E-401") means the real information lives in a detail on that sheet. Details are enlarged drawings of the tricky parts — and they are where the quality of a set shows.
 
-A device on a plan carries a tag; that tag appears in a schedule with its specification; the schedule ties back to a diagram that shows how it's fed. Follow one item through those three views and the set stops looking like noise.
+## Discipline by Discipline: What You're Looking At
 
-That's enough to review a set with confidence and ask the right questions at the next project meeting.`,
+**Electrical sheets (E).** Power and receptacle plans show outlets, equipment connections, and home runs back to panels. Lighting plans show fixtures and switching. The [electrical system](/services/electrical-design/electrical-system-design) scope also includes panel schedules (tables listing every breaker, load, and spare) and the single-line diagram — the one-page map of the whole electrical distribution from the utility service down.
+
+**Mechanical sheets (M).** HVAC plans show equipment, ductwork routing, diffusers, and thermostats. The equipment schedule lists every unit with its capacity and electrical characteristics. A [mechanical design](/services/mechanical-design/mechanical-design) set covers both the air side (HVAC) and the plumbing side when both are in scope.
+
+**Plumbing sheets (P).** Water, waste, vent, and gas piping plans, plus the riser diagram — a vertical schematic showing how the whole system stacks up floor to floor. The fixture schedule lists every sink, toilet, and water heater.
+
+**Fire protection sheets (FP).** Sprinkler head layouts, the system riser, and hydraulic calculation summaries. If your building needs sprinklers, the [sprinkler layout](/services/fire-protection/sprinkler-layout-plan) sheets show head coverage coordinated to the ceiling — worth a look even for non-engineers, because head locations affect ceiling aesthetics.
+
+## Schedules and Diagrams: The Tables That Matter
+
+Schedules are tables — panels, equipment, fixtures, diffusers — listing sizes, capacities, and specifications. For a non-engineer, schedules are the fastest way to verify scope: count the panels, check the equipment tags against the equipment you bought, confirm the fixture types match what the interior designer specified.
+
+Diagrams like the single-line and the risers show how systems connect vertically and electrically — which a flat plan cannot show. You do not need to understand every symbol; you need to confirm the diagram exists, is labeled, and agrees with the schedules. A panel on the single-line that does not appear in the schedules is a coordination error, and you just caught it without an engineering degree.
+
+## Revision Clouds: What's Changed
+
+Revised sheets carry revision clouds — wavy outlines around changed areas — with a delta number (triangle with a number) tied to a revision block in the title block. When someone tells you "we addressed the review comments," the clouds show you where. Ask for a revision narrative that maps each cloud to the comment it answers; it is the fastest way to verify a resubmittal.
+
+## How It All Ties Together
+
+A device on a plan carries a tag; that tag appears in a schedule with its specification; the schedule ties back to a diagram that shows how it is fed. Follow one item through those three views and you understand the set's logic. Then use that logic to ask good questions:
+
+<Callout type="tip">The three most useful questions a non-engineer can ask about any MEP set: Does the sheet index match what's actually in the set? Do the tags on the plans match the schedules? And what changed since the last version — show me the clouds?</Callout>
+
+That's enough to review a set with confidence, approve scopes, and run a productive project meeting. And when the set needs to be produced in the first place — or revised after review — [request a quote](/request-quote) and we will draft it to your standard.`,
   },
 {
     slug: "what-makes-mep-drawings-permit-ready",
@@ -477,7 +693,9 @@ Plan reviewers approve designs against numbers: NEC Article 220 load calculation
 
 The fastest way to lose a reviewer's confidence is a visible conflict: a duct drawn through a sprinkler main, a panel schedule that does not match the single-line diagram, a diffuser layout that ignores the reflected ceiling plan. Reviewers cross-check disciplines, and every conflict they find makes them look harder for the next one. Before a set leaves our office, it goes through a coordination pass across shared backgrounds — aligned grids, matched equipment tags, one architectural reference. We would rather find the conflict in CAD than have the AHJ find it in review.
 
-<Callout type="tip">Before every submittal, we read the finished set the way the reviewer sees it — full sheets, in order — checking the index, legends, and keyed notes as a stranger would. Ten minutes of cold reading catches what a week of drafting misses.</Callout>`,
+<Callout type="tip">Before every submittal, we read the finished set the way the reviewer sees it — full sheets, in order — checking the index, legends, and keyed notes as a stranger would. Ten minutes of cold reading catches what a week of drafting misses.</Callout>
+
+This is the standard every set we draft is held to — whether it is an [electrical system](/services/electrical-design/electrical-system-design) package, a coordinated [mechanical](/services/mechanical-design/mechanical-design) set, or a [sprinkler layout](/services/fire-protection/sprinkler-layout-plan). [Request a quote](/request-quote) and send your plans; we will return a permit-ready set built the way reviewers read.`,
   },
   {
     slug: "clearing-mep-plan-review-corrections",
@@ -510,7 +728,9 @@ The resubmittal is a package with four parts: the response letter, the revised s
 
 <Callout type="warning">Never resubmit only the changed sheets. Reviewers verify corrections in context, and a partial set almost always triggers a second correction letter asking for the rest — resetting your review clock.</Callout>
 
-<Checklist items="Read the full correction letter and map each comment to a sheet and root cause;Classify every comment as code, coordination, clarification, or administrative;Confirm engineer-of-record sign-off on any design changes;Cloud every change with a delta number and date;Update the revision log mapping each delta to its comment;Run a delta check against the previous submittal;Update the sheet index and title block revision blocks;Write the numbered response letter citing sheet and delta for each comment;Attach updated calcs, cut sheets, and compliance forms;Resubmit the complete set, not just the changed sheets" />`,
+<Checklist items="Read the full correction letter and map each comment to a sheet and root cause;Classify every comment as code, coordination, clarification, or administrative;Confirm engineer-of-record sign-off on any design changes;Cloud every change with a delta number and date;Update the revision log mapping each delta to its comment;Run a delta check against the previous submittal;Update the sheet index and title block revision blocks;Write the numbered response letter citing sheet and delta for each comment;Attach updated calcs, cut sheets, and compliance forms;Resubmit the complete set, not just the changed sheets" />
+
+Staring at a correction letter right now? We clear them for clients every week — clouded revisions, numbered response letters, and resubmittal packages for [electrical](/services/electrical-design/electrical-system-design) and [HVAC](/services/mechanical-design/hvac-design) scope alike. [Request a quote](/request-quote) with the correction letter and the current set.`,
   },
   {
     slug: "pdf-to-cad-conversion-permit-ready",
@@ -540,7 +760,9 @@ Tracing alone produces a CAD file. Cleanup produces a permit set. We rebuild the
 
 The deliverable is a complete DWG set: layered, scaled, editable, and organized to the same standard as a new-construction set. Alongside it, we provide conversion notes documenting what was verified, what was assumed, and what the client should field-verify — because honesty about a decades-old building's as-builts is part of permit readiness. From there, the renovation design proceeds on a reliable background instead of a scanned guess. The permit review starts from a set the reviewer can actually review, which is the entire point.
 
-<Callout type="tip">If you only have scans, provide the earliest-generation original you can find. Every generation of copying adds dimensional drift that has to be corrected by hand — and that correction time shows up in your fee.</Callout>`,
+<Callout type="tip">If you only have scans, provide the earliest-generation original you can find. Every generation of copying adds dimensional drift that has to be corrected by hand — and that correction time shows up in your fee.</Callout>
+
+Have a legacy set that needs to become a permit set? We convert scanned and hand-drafted originals into layered, editable CAD — [electrical](/services/electrical-design/electrical-system-design), [plumbing](/services/mechanical-design/plumbing-design), and full MEP backgrounds — with the sheet index, legends, and keyed notes reviewers expect. [Request a quote](/request-quote) with your scans.`,
   },
   {
     slug: "cad-layer-sheet-standards-multi-discipline",
@@ -582,7 +804,9 @@ Revisions follow one protocol from the first correction letter to the final perm
 
 File names carry project, discipline, content, and version: a name like 24017-M-FP-201_R2 tells anyone — drafter, engineer, or reviewer downloading the submittal — exactly what the file is without opening it. No "final," no "final-final," no prose dates. Version suffixes increment on every issued set, and superseded versions move to an archive folder instead of lingering next to current files. Clean file naming is the cheapest quality control in the office, and it is the first thing a reviewer sees on an electronic submittal portal.
 
-None of these seven standards is difficult on its own. Together, they are the difference between a set that reads as professional and one that reads as improvised — and reviewers issue permits to the professional one.`,
+None of these seven standards is difficult on its own. Together, they are the difference between a set that reads as professional and one that reads as improvised — and reviewers issue permits to the professional one.
+
+These seven standards govern every set that leaves our office, from [electrical](/services/electrical-design/electrical-system-design) packages to coordinated [mechanical](/services/mechanical-design/mechanical-design) sets. Send us your CAD standard and we will draft to it — or adopt ours. [Request a quote](/request-quote) to start your next set.`,
   },
 {
     slug: "electrical-room-layouts-that-pass-plan-review",
@@ -627,7 +851,9 @@ We place the largest equipment first — typically the switchboard or main distr
 
 Before a room layout leaves our desk, it passes this list:
 
-<Checklist items="Working-space depth dimensioned per Table 110.26(A)(1) for each voltage and condition;30-inch minimum width and 6-1/2-foot headroom verified at every lineup;Dedicated space per 110.26(E) held clear of piping, ducts, and foreign systems;Two entrances shown for equipment rated 1,200A or more and over 6 ft wide;Personnel doors swing in the direction of egress with panic hardware noted;Working-space illumination shown with manual control at each entrance;Clearance envelopes drawn as dashed polylines and dimensioned, not assumed" />`,
+<Checklist items="Working-space depth dimensioned per Table 110.26(A)(1) for each voltage and condition;30-inch minimum width and 6-1/2-foot headroom verified at every lineup;Dedicated space per 110.26(E) held clear of piping, ducts, and foreign systems;Two entrances shown for equipment rated 1,200A or more and over 6 ft wide;Personnel doors swing in the direction of egress with panic hardware noted;Working-space illumination shown with manual control at each entrance;Clearance envelopes drawn as dashed polylines and dimensioned, not assumed" />
+
+We draw electrical rooms like this every week as part of our [electrical system design](/services/electrical-design/electrical-system-design) service — clearances dimensioned, dedicated space held, and the [single-line diagram](/services/electrical-design/single-line-diagram) to tie the room back to the service. [Request a quote](/request-quote) with your floor plan and equipment list.`,
     meta: { downloadable: "Electrical Room Layout Checklist" },
   },
   {
@@ -665,7 +891,9 @@ Setbacks, clearances, and equipment pads go on the plan too. The reviewer is che
 
 Beyond the drawings, expect the AHJ to ask for utility confirmation that the service can take the added load, equipment cut sheets for the EVSE with listings to UL 2594, and confirmation of local amendments — some jurisdictions layer EV-capable or EV-ready parking counts on top of the NEC through their energy codes. GFCI protection per 625.54 and proper labeling round out the typical correction list.
 
-<Callout type="tip">Package the cut sheets, load calc, and panel schedules with the drawing set on the first submittal. One complete package beats three rounds of corrections every time.</Callout>`,
+<Callout type="tip">Package the cut sheets, load calc, and panel schedules with the drawing set on the first submittal. One complete package beats three rounds of corrections every time.</Callout>
+
+Adding EVSE to a site? Our [electrical load calculation](/services/calculations-reports/electrical-load-calculation) service sizes the addition at the NEC 125 percent — and where the service cannot take it, our [power upgrade](/services/electrical-design/power-upgrade) drawings document the new service for the same permit. [Request a quote](/request-quote) with your stall count and existing panel schedules.`,
   },
   {
     slug: "panel-schedule-mistakes-that-trigger-plan-review-corrections",
@@ -708,7 +936,9 @@ NEC 240.4 requires conductors to be protected against overcurrent in accordance 
 
 A schedule that lists every load at 100 percent connected kVA with no demand factors applied is technically a load list, not a load calculation. Reviewers need to see Article 220 demand factors — lighting, receptacle, motor, and HVAC diversity — applied and totaled so the service and feeder sizing can be verified. We show connected load, demand factor, and demand load in separate columns with a summary total that feeds the riser.
 
-A clean panel schedule does not just avoid corrections — it shortens review time, because the reviewer spends their effort verifying good work instead of hunting for errors. That is the standard we hold every schedule to before it leaves our desk.`,
+A clean panel schedule does not just avoid corrections — it shortens review time, because the reviewer spends their effort verifying good work instead of hunting for errors. That is the standard we hold every schedule to before it leaves our desk.
+
+Our [electrical system design](/services/electrical-design/electrical-system-design) sets are built schedule-first: panel schedules, [single-line diagram](/services/electrical-design/single-line-diagram), and load calculation from one data pass, cross-checked before issue. [Request a quote](/request-quote) and we will hold your next schedule to this standard.`,
   },
   {
     slug: "emergency-power-drawing-packages-generators-transfer-switches",
@@ -753,7 +983,9 @@ Wiring separation notes per 700.10(B) go on the riser too. Emergency wiring kept
 
 Every emergency power set we issue passes this list first:
 
-<Checklist items="Generator sizing basis on the drawings: connected load, motor starting kVA, margin stated;Selective coordination noted per 700.32 and 701.31 with settings table reference;Each ATS shown with sources, loads grouped by system, transition type, bypass where required;Neutral switching explicit (3-pole vs 4-pole) with grounding notes;Emergency, legally required standby, and optional standby loads on correct transfer equipment;Egress lighting coordinated with the architectural reflected ceiling plan;Exit signs and unit equipment circuited to emergency distribution;Riser shows full source-to-load path with breaker sizes and AIC ratings;Wiring separation per 700.10(B) noted on the riser;Fuel source, runtime, and NFPA 110 remote annunciator located on the plans" />`,
+<Checklist items="Generator sizing basis on the drawings: connected load, motor starting kVA, margin stated;Selective coordination noted per 700.32 and 701.31 with settings table reference;Each ATS shown with sources, loads grouped by system, transition type, bypass where required;Neutral switching explicit (3-pole vs 4-pole) with grounding notes;Emergency, legally required standby, and optional standby loads on correct transfer equipment;Egress lighting coordinated with the architectural reflected ceiling plan;Exit signs and unit equipment circuited to emergency distribution;Riser shows full source-to-load path with breaker sizes and AIC ratings;Wiring separation per 700.10(B) noted on the riser;Fuel source, runtime, and NFPA 110 remote annunciator located on the plans" />
+
+We draft emergency power packages as part of our [electrical system design](/services/electrical-design/electrical-system-design) service — generator sizing notes, ATS configurations, egress coordination, and the [single-line diagram](/services/electrical-design/single-line-diagram) riser that ties it together. [Request a quote](/request-quote) with your generator spec and load list.`,
     meta: { downloadable: "Emergency Power Drawing Checklist" },
   },
 {
@@ -797,7 +1029,9 @@ The sequence table is a matrix: every initiating input down the left column, eve
 
 Most fire alarm review comments trace back to coordination. The FACP location conflicts with the electrical room layout. The annunciator is not at the fire department entrance the AHJ uses. Candela ratings on the plan do not match the schedule. Our drafting checklist catches these before submittal, which is why our packages clear review in fewer rounds.
 
-<Checklist items="Device legend with NFPA 170 symbols and a complete device count schedule;Detector spacing verified against NFPA 72 for the actual ceiling construction;Manual pull stations within 5 ft of exits with 200 ft maximum travel distance;Notification appliance candela ratings and spacing verified per the coverage tables;Riser diagram showing every SLC loop, NAC circuit, and auxiliary power supply;Battery calculations showing 24-hour standby plus 5-minute alarm load;Voltage-drop calculations for the longest NAC run with conductor sizes stated;Sequence of operations table covering every input-output combination;FACP and annunciator locations coordinated with the electrical plans and the fire department entrance" />`,
+<Checklist items="Device legend with NFPA 170 symbols and a complete device count schedule;Detector spacing verified against NFPA 72 for the actual ceiling construction;Manual pull stations within 5 ft of exits with 200 ft maximum travel distance;Notification appliance candela ratings and spacing verified per the coverage tables;Riser diagram showing every SLC loop, NAC circuit, and auxiliary power supply;Battery calculations showing 24-hour standby plus 5-minute alarm load;Voltage-drop calculations for the longest NAC run with conductor sizes stated;Sequence of operations table covering every input-output combination;FACP and annunciator locations coordinated with the electrical plans and the fire department entrance" />
+
+This five-deliverable package is exactly what our [fire alarm system design](/services/electrical-design/fire-alarm-system-design) service produces — device layouts, riser, battery and voltage-drop calcs, and the sequence table — coordinated with the building's [electrical system](/services/electrical-design/electrical-system-design). [Request a quote](/request-quote) with your floor and ceiling plans.`,
     meta: { downloadable: "Fire Alarm Drawing Checklist" },
   },
   {
@@ -845,7 +1079,9 @@ Attics, ceiling plenums, and other concealed spaces with combustible constructio
 
 ## 9. Show Pipe Sizes and Hangers on the Plan
 
-The head layout is only half the drawing. We show branch line pipe sizes from the hydraulic calculations or pipe schedule, mark hanger locations and types per the hanging rules, and dimension the layout so the installing contractor can build from the sheet without interpretation. A beautiful head layout with no pipe sizes is a sketch, not a permit drawing.`,
+The head layout is only half the drawing. We show branch line pipe sizes from the hydraulic calculations or pipe schedule, mark hanger locations and types per the hanging rules, and dimension the layout so the installing contractor can build from the sheet without interpretation. A beautiful head layout with no pipe sizes is a sketch, not a permit drawing.
+
+Our [sprinkler layout](/services/fire-protection/sprinkler-layout-plan) service drafts every one of these nine rules into the plan — head placement, pipe sizes, hangers, and the hydraulic basis behind them — and coordinates with our [fire alarm system design](/services/electrical-design/fire-alarm-system-design) where the AHJ wants both scopes together. [Request a quote](/request-quote) with your reflected ceiling plans and hazard classification.`,
   },
   {
     slug: "standpipe-system-drawings-mid-rise-buildings",
@@ -884,7 +1120,9 @@ The fire department connection must be visible and accessible from the street fr
 
 ## Pressure, Testing, and the Notes Block
 
-Our drawing notes state the required residual pressures, the hydrostatic test pressure of 200 psi held for two hours, and the flow test procedure. These notes are not decoration. They tell the reviewer the system was designed to NFPA 14 end to end, and they give the installing contractor the acceptance criteria before the pipe goes in the wall.`,
+Our drawing notes state the required residual pressures, the hydrostatic test pressure of 200 psi held for two hours, and the flow test procedure. These notes are not decoration. They tell the reviewer the system was designed to NFPA 14 end to end, and they give the installing contractor the acceptance criteria before the pipe goes in the wall.
+
+We draft standpipe packages as part of our [sprinkler layout](/services/fire-protection/sprinkler-layout-plan) scope — floor plans, riser diagrams, and FDC details — coordinated with the building's [fire alarm system](/services/electrical-design/fire-alarm-system-design) where the AHJ wants both. [Request a quote](/request-quote) with your floor plans and water supply data.`,
   },
   {
     slug: "kitchen-hood-suppression-drawings-what-ahjs-check",
@@ -917,7 +1155,9 @@ Detection is shown as fusible links or electric thermal detectors positioned ove
 
 ## Coordinating with the Hood and Duct Drawings
 
-Suppression drawings do not stand alone. We coordinate the hood outline, duct routing, and clearances against the mechanical hood drawings, verifying the 18-inch clearance to combustible construction or the reduced clearance of a listed assembly. Grease duct access panels, the fan location, and the discharge termination all affect where detection and nozzles can physically go. When we find a conflict, such as a duct offset that breaks the nozzle coverage, we resolve it on the drawings before submittal instead of letting the installer discover it with a lift in the kitchen.`,
+Suppression drawings do not stand alone. We coordinate the hood outline, duct routing, and clearances against the mechanical hood drawings, verifying the 18-inch clearance to combustible construction or the reduced clearance of a listed assembly. Grease duct access panels, the fan location, and the discharge termination all affect where detection and nozzles can physically go. When we find a conflict, such as a duct offset that breaks the nozzle coverage, we resolve it on the drawings before submittal instead of letting the installer discover it with a lift in the kitchen.
+
+Our [sprinkler layout](/services/fire-protection/sprinkler-layout-plan) service covers suppression coordination for commercial kitchens — and our [fire alarm system design](/services/electrical-design/fire-alarm-system-design) handles the detection and interlock side. [Request a quote](/request-quote) with your cooking equipment layout.`,
   },
 {
     slug: "multi-site-permit-tracking-across-jurisdictions",
@@ -971,7 +1211,9 @@ And when you find a reviewer who is reasonable and responsive, write their name 
 
 <Callout type="tip">Freeze the prototype, version the jurisdiction layer. Every site-adapted set we issue carries a revision block that separates prototype revisions from jurisdiction-specific changes, so a site correction never contaminates the core set.</Callout>
 
-Multi-site permitting is not about working harder on each submittal. It is about building the machine once — profiles, templates, trackers, relationships — and letting each new site ride on what the last fifty taught you. That is how fifty jurisdictions stop feeling like fifty surprises.`,
+Multi-site permitting is not about working harder on each submittal. It is about building the machine once — profiles, templates, trackers, relationships — and letting each new site ride on what the last fifty taught you. That is how fifty jurisdictions stop feeling like fifty surprises.
+
+We operate this machine for rollout clients: jurisdiction profiles, prototype [electrical](/services/electrical-design/electrical-system-design) and [mechanical](/services/mechanical-design/mechanical-design) templates, and site adaptations that keep the core set clean. [Request a quote](/request-quote) with your market list and prototype drawings.`,
   },
   {
     slug: "tenant-improvement-drawing-checklist-rollout",
@@ -1030,7 +1272,9 @@ Run this on every site before anything is submitted. If an item does not apply, 
 
 Corrections are normal. What kills schedules is treating each correction letter as a surprise. Log every correction by theme, respond completely, and resubmit the package the way that AHJ wants it — some want full sets, some want only revised sheets.
 
-Then feed the pattern back into the prototype. If three jurisdictions in a row flag the same detail, the prototype is wrong, not the examiners. That feedback loop is the difference between a rollout that gets faster with every site and one that makes the same mistakes fifty times.`,
+Then feed the pattern back into the prototype. If three jurisdictions in a row flag the same detail, the prototype is wrong, not the examiners. That feedback loop is the difference between a rollout that gets faster with every site and one that makes the same mistakes fifty times.
+
+We run this checklist on every TI site before submittal — [electrical](/services/electrical-design/electrical-system-design), [mechanical](/services/mechanical-design/mechanical-design), and [sprinkler](/services/fire-protection/sprinkler-layout-plan) scope coordinated into one permit package. [Request a quote](/request-quote) with your site plan and prototype.`,
   },
   {
     slug: "phasing-drawings-occupied-space-rollouts",
@@ -1072,7 +1316,9 @@ Dust and fume separation between construction zones and occupied areas is not ju
 
 Phasing drawings only work if the general contractor actually builds to them. Walk the phasing set with the GC before mobilization, confirm the sequence against their schedule, and make sure the temporary MEP tie-in points match what is really in the ceiling — field-verify, because as-builts lie.
 
-When the inevitable mid-project change hits, revise the phasing plan first and the schedule second. The drawing is the contract for how the work happens around the open business. Occupied-space rollouts reward the team that draws the construction process, not just the finished product. Phase it on paper, and the store stays open.`,
+When the inevitable mid-project change hits, revise the phasing plan first and the schedule second. The drawing is the contract for how the work happens around the open business. Occupied-space rollouts reward the team that draws the construction process, not just the finished product. Phase it on paper, and the store stays open.
+
+Renovating around an open business? We draft phasing sets — temporary [electrical](/services/electrical-design/electrical-system-design) and [fire alarm](/services/electrical-design/fire-alarm-system-design) coverage, life-safety phasing plans, and the finished condition — as one coordinated package. [Request a quote](/request-quote) with your phasing schedule.`,
   },
   {
     slug: "site-adapt-handoff-prototype-set-local-architect",
@@ -1117,7 +1363,9 @@ Third, silence after delivery: the prototype team ships the package and disappea
 
 Write the protocol before the first site. Name the deliverables, the file formats, the decision log, and the support window after delivery — including who answers the local architect's questions during plan check and how fast. Treat the local architect as a partner absorbing your liability, not a vendor executing your drawings.
 
-Get this right and site adaptation becomes the fastest part of your rollout instead of the part everyone dreads. Get it wrong and you will pay for the same missing information fifty times, in fifty cities, with fifty different architects wondering why the prototype team could not be bothered to explain itself.`,
+Get this right and site adaptation becomes the fastest part of your rollout instead of the part everyone dreads. Get it wrong and you will pay for the same missing information fifty times, in fifty cities, with fifty different architects wondering why the prototype team could not be bothered to explain itself.
+
+We build handoff-ready prototype sets: complete MEP narratives, [electrical](/services/electrical-design/electrical-system-design) and [mechanical](/services/mechanical-design/mechanical-design) drawings to your CAD standard, and a clean record of what is prototype-standard versus site-variable. [Request a quote](/request-quote) to scope your rollout program.`,
   },
 {
     slug: "ductwork-layout-drawings-load-calc-to-coordinated-plan",
@@ -1148,7 +1396,9 @@ Every takeoff gets a location, a size, and a balancing damper — not just at th
 
 Ductwork shares the ceiling cavity with structure, plumbing, sprinklers, and lighting. On every layout we verify: bottom-of-steel and beam depths against duct depths plus insulation; sprinkler mains and waste piping crossing the trunk; diffuser locations aligned with the reflected ceiling plan and light fixtures; fire and smoke dampers at every rated partition, with access panels noted. A trunk that fits on the plan but not under a beam becomes a field reroute — draw the critical sections or do not run the duct there.
 
-<Checklist items="Room-by-room supply, return, and outdoor-air CFM schedule shown;Every duct segment labeled with size and CFM;Sizing method and friction rate noted (equal friction or static regain);Diffuser schedule with neck size, throw, and NC rating;Balancing damper at each branch takeoff;Return-air paths shown and coordinated;Fire and smoke dampers at rated partitions with access panels;Critical sections drawn where ducts pass beams or congested zones" />`,
+<Checklist items="Room-by-room supply, return, and outdoor-air CFM schedule shown;Every duct segment labeled with size and CFM;Sizing method and friction rate noted (equal friction or static regain);Diffuser schedule with neck size, throw, and NC rating;Balancing damper at each branch takeoff;Return-air paths shown and coordinated;Fire and smoke dampers at rated partitions with access panels;Critical sections drawn where ducts pass beams or congested zones" />
+
+Our [HVAC design](/services/mechanical-design/hvac-design) service carries the load report straight onto the drawings — sized ductwork, labeled segments, diffuser schedules, and coordinated routing — backed by our [HVAC heating and cooling load](/services/calculations-reports/hvac-heating-cooling-load) calculation. [Request a quote](/request-quote) with your floor plans.`,
     meta: { downloadable: "Ductwork Layout Checklist" },
   },
   {
@@ -1187,7 +1437,9 @@ The riser and the floor plans are two views of one system, and they must agree e
 
 The comments we see most often are avoidable: island-sink vents missing where the local amendment prohibits air-admittance valves; cleanouts shown on the floor plan but absent from the riser; no pipe material schedule, leaving the reviewer to guess; temperature-and-pressure relief discharge termination not shown or not piped to an approved location; expansion tanks missing on water heaters in closed systems; and grease-interceptor sizing notes absent on restaurant work. Each one is a one-line fix on the drawing and a two-week delay if it becomes a review comment.
 
-<Callout type="tip">Draw the riser from the same fixture count as the floor plan. Nothing fails review faster than a riser showing six water closets on a floor where the plan shows eight — the reviewer stops trusting the whole set.</Callout>`,
+<Callout type="tip">Draw the riser from the same fixture count as the floor plan. Nothing fails review faster than a riser showing six water closets on a floor where the plan shows eight — the reviewer stops trusting the whole set.</Callout>
+
+We draft permit-ready risers as part of our [plumbing design](/services/mechanical-design/plumbing-design) service — DWV and water sides together, fixture-unit totals carried down every stack — coordinated within the full [mechanical](/services/mechanical-design/mechanical-design) set. [Request a quote](/request-quote) with your floor plans and fixture schedule.`,
   },
   {
     slug: "gas-piping-drawings-sizing-tables-riser-diagram-ifgc",
@@ -1220,7 +1472,9 @@ Every gas drawing needs an appliance demand table: equipment tag, location, and 
 
 Show a shutoff valve at each appliance — accessible, within 6 feet, per IFGC 409.5 — plus the main service shutoff location. Draw the riser diagram from the meter through every branch to each appliance, with sizes labeled; the riser is where the reviewer traces your longest run. Show line regulators with vent piping routed to the outdoors where required, sediment traps at equipment connections, and seismic shutoff valves where the jurisdiction requires them. Add the bonding note: gas piping bonded per IFGC 310.1 and NEC 250.104. These details are small on the sheet and large in the field — the inspector will check every one.
 
-<Checklist items="Longest-run developed length shown with fitting allowances;Appliance demand table with input BTUH and total connected load;Every segment labeled with size and BTUH served;Meter capacity verified against total connected load;Shutoff at each appliance, within 6 ft and accessible;Regulator vent piping routed to outdoors;Sediment traps at equipment connections;Bonding note per IFGC 310.1 included" />`,
+<Checklist items="Longest-run developed length shown with fitting allowances;Appliance demand table with input BTUH and total connected load;Every segment labeled with size and BTUH served;Meter capacity verified against total connected load;Shutoff at each appliance, within 6 ft and accessible;Regulator vent piping routed to outdoors;Sediment traps at equipment connections;Bonding note per IFGC 310.1 included" />
+
+Our [plumbing design](/services/mechanical-design/plumbing-design) service documents the full gas scope — longest-run sizing, demand tables, and riser diagrams per the IFGC — as part of the coordinated [mechanical](/services/mechanical-design/mechanical-design) set. [Request a quote](/request-quote) with your appliance list and floor plan.`,
     meta: { downloadable: "Gas Piping Drawing Checklist" },
   },
   {
@@ -1253,7 +1507,9 @@ Two inputs draw the most scrutiny. First, Pz: state whether the population comes
 
 Place a short general-note block next to the table, not buried in the specifications: the 62.1 edition and the compliance path; outdoor-air intake locations with minimum separation distances per Section 5; demand-controlled ventilation where required — 62.1 calls for DCV in densely occupied spaces over 500 square feet, so flag those zones; and energy-recovery triggers where the adopted energy code requires them. Notes are cheap; review cycles are not.
 
-<Callout type="note">Keep the ventilation table, the diffuser schedule, and the equipment schedule in agreement. A Vot of 1,200 cfm on the compliance sheet and an outdoor-air intake sized for 800 cfm on the mechanical plan is a guaranteed comment.</Callout>`,
+<Callout type="note">Keep the ventilation table, the diffuser schedule, and the equipment schedule in agreement. A Vot of 1,200 cfm on the compliance sheet and an outdoor-air intake sized for 800 cfm on the mechanical plan is a guaranteed comment.</Callout>
+
+We put the 62.1 math on the drawings as part of our [HVAC design](/services/mechanical-design/hvac-design) service — rate tables, occupancy inputs, and compliance notes — backed by the [HVAC heating and cooling load](/services/calculations-reports/hvac-heating-cooling-load) calculation. [Request a quote](/request-quote) with your floor plans and occupancy program.`,
   },
 {
     slug: "title-24-iecc-lighting-control-drawings",
@@ -1294,7 +1550,9 @@ The sequence narrative is a plain-language table: for each zone, what happens on
 
 Beyond the plans, we assemble the compliance forms the AHJ expects: the lighting power density calculations with the allowed-versus-proposed comparison, the control credits claimed, and the mandatory-measures checklist. These ride with the drawing set on the first submittal. The most common correction we help resolve is a control drawing that is technically correct but unaccompanied by the forms — the reviewer cannot approve what they cannot document.
 
-<Checklist items="Control zone boundaries drawn and tagged on the reflected ceiling plan;Daylight zones shown at perimeter and skylights with multi-level control noted;Occupancy and vacancy sensor schedule with coverage patterns and mounting heights;Manual area controls shown with zone assignments;Sequence of operations table written to be testable;Lighting power density calculations with allowed vs proposed;Acceptance-test note block per Title 24 Part 6;Compliance forms packaged with the first submittal, not added later" />`,
+<Checklist items="Control zone boundaries drawn and tagged on the reflected ceiling plan;Daylight zones shown at perimeter and skylights with multi-level control noted;Occupancy and vacancy sensor schedule with coverage patterns and mounting heights;Manual area controls shown with zone assignments;Sequence of operations table written to be testable;Lighting power density calculations with allowed vs proposed;Acceptance-test note block per Title 24 Part 6;Compliance forms packaged with the first submittal, not added later" />
+
+Our [lighting design](/services/electrical-design/lighting-design) service drafts the full controls package — zoning, sensor schedules, and testable sequences — and our [photometric design](/services/electrical-design/photometric-design) proves the light levels behind it. [Request a quote](/request-quote) with your reflected ceiling plans.`,
     meta: { downloadable: "Lighting Controls Drawing Checklist" },
   },
   {
@@ -1328,7 +1586,9 @@ The 90-minute duration is non-negotiable. Our fixture schedule carries a column 
 
 Egress lighting does not stand alone. Exit signs are part of the same system and appear on the same sheets, circuited to the emergency source. We coordinate fixture locations with the reflected ceiling plan — a recessed emergency fixture drawn over a sprinkler head or a duct is a field conflict the reviewer will spot. Fire alarm notification appliances share the corridors, so we check candela ratings and fixture spacing together rather than letting two disciplines collide in the ceiling.
 
-<Callout type="tip">Show the exit discharge path on the site plan, not just the building plans. Reviewers check that emergency illumination continues from the exit door to the public way, and that segment is the most commonly missed.</Callout>`,
+<Callout type="tip">Show the exit discharge path on the site plan, not just the building plans. Reviewers check that emergency illumination continues from the exit door to the public way, and that segment is the most commonly missed.</Callout>
+
+We draw the egress layer as part of our [lighting design](/services/electrical-design/lighting-design) service — path photometrics, emergency sources, and exit signage — coordinated with the building's [fire alarm system](/services/electrical-design/fire-alarm-system-design). [Request a quote](/request-quote) with your floor plans.`,
   },
   {
     slug: "dark-sky-compliance-site-lighting-ordinances",
@@ -1365,7 +1625,9 @@ Many ordinances impose lighting curfews: after closing or after a set hour, site
 
 ## What We Put on the Plan Set
 
-<Checklist items="Current municipal ordinance verified and section cited on the cover sheet;Every site fixture scheduled with BUG rating, U0 uplight where required;Zero-tilt mounting noted on details; house-side shields where adjacent to residential;Photometric grid extending past property lines with values at the line;Maximum property-line foot-candles verified against the ordinance;Curfew dimming schedule with zones, levels, and times;Color temperature verified against local caps;Cut sheets with IES files packaged with the submittal" />`,
+<Checklist items="Current municipal ordinance verified and section cited on the cover sheet;Every site fixture scheduled with BUG rating, U0 uplight where required;Zero-tilt mounting noted on details; house-side shields where adjacent to residential;Photometric grid extending past property lines with values at the line;Maximum property-line foot-candles verified against the ordinance;Curfew dimming schedule with zones, levels, and times;Color temperature verified against local caps;Cut sheets with IES files packaged with the submittal" />
+
+Our [photometric design](/services/electrical-design/photometric-design) service proves dark-sky compliance — property-line grids, BUG ratings, and curfew schedules — drawn on the [site electrical plan](/services/electrical-design/site-electrical-plan) so the whole exterior reads as one submittal. [Request a quote](/request-quote) with your site plan and the local ordinance.`,
   },
   {
     slug: "fixture-schedule-details-that-prevent-rfis",
@@ -1406,6 +1668,8 @@ For every mounting condition, a detail: pendant mounting with seismic bracing wh
 
 ## 7. The Coordination Pass Before Issue
 
-Before the set goes out, we run the schedule against the plans one final time: every type on the plan in the schedule, every control assignment matching the zoning, every detail reference resolving to a real detail, every lumen value matching the photometrics. Thirty minutes of checking prevents three weeks of RFIs. The schedule is a contract document — treat it like one.`,
+Before the set goes out, we run the schedule against the plans one final time: every type on the plan in the schedule, every control assignment matching the zoning, every detail reference resolving to a real detail, every lumen value matching the photometrics. Thirty minutes of checking prevents three weeks of RFIs. The schedule is a contract document — treat it like one.
+
+Our [lighting design](/services/electrical-design/lighting-design) sets ship with schedules built this way — every type on the plan in the schedule, controls matching the zoning, details resolving — coordinated within the full [electrical system](/services/electrical-design/electrical-system-design) package. [Request a quote](/request-quote) with your fixture selections.`,
   },
 ];

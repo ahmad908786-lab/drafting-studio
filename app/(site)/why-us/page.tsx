@@ -8,7 +8,7 @@ import { Gauge, Layers, Users, DollarSign, MapPin, PenTool } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Why Drafting Studio",
-  description: "Fast, focused, 2D-only AutoCAD drafting to your CAD standard. Here's why firms and contractors partner with us.",
+  description: "Why engineering firms choose Drafting Studio: fast 2D AutoCAD MEP drafting to your CAD standard — permit-ready DWG sets, fixed pricing, 24-hour quotes.",
 };
 
 const reasons = [

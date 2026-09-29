@@ -8,6 +8,8 @@ import { CtaBand } from "@/components/shared/cta-band";
 import { Icon } from "@/components/icon";
 import { getCategoryWithServices } from "@/lib/queries";
 import { prisma } from "@/lib/db";
+import { absoluteUrl } from "@/lib/utils";
+import { SERVICE_CATEGORIES } from "@/lib/taxonomy";
 
 export async function generateStaticParams() {
   const cats = await prisma.serviceCategory.findMany({ select: { slug: true } });
@@ -18,9 +20,25 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const { category } = await params;
   const cat = await getCategoryWithServices(category);
   if (!cat) return {};
+  const tax = SERVICE_CATEGORIES.find((c) => c.slug === category);
+  const metaTitle = `${cat.name} Services`;
+  const metaDesc = tax?.seoDesc ?? cat.blurb ?? `2D AutoCAD ${cat.name.toLowerCase()} drafting services.`;
+  const canonicalUrl = absoluteUrl(`/services/${cat.slug}`);
   return {
-    title: `${cat.name} Services`,
-    description: cat.blurb ?? `2D AutoCAD ${cat.name.toLowerCase()} drafting services.`,
+    title: metaTitle,
+    description: metaDesc,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: metaTitle,
+      description: metaDesc,
+      url: canonicalUrl,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metaTitle,
+      description: metaDesc,
+    },
   };
 }
 

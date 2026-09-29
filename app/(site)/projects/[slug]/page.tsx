@@ -10,9 +10,10 @@ import { Mdx } from "@/components/mdx/mdx";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/shared/cta-band";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getProjectBySlug, getRelatedProjects } from "@/lib/queries";
 import { prisma } from "@/lib/db";
-import { formatSqft } from "@/lib/utils";
+import { absoluteUrl, formatSqft } from "@/lib/utils";
 
 export async function generateStaticParams() {
   const projects = await prisma.project.findMany({ where: { isPublic: true }, select: { slug: true } });
@@ -23,10 +24,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
   if (!project) return {};
+  const title = `${project.title} — Projects`;
+  const description = project.summary ?? undefined;
+  const canonical = absoluteUrl(`/projects/${slug}`);
+  const imageUrl = project.coverImage ? absoluteUrl(project.coverImage) : undefined;
+  const images = imageUrl ? [imageUrl] : undefined;
   return {
-    title: `${project.title} — Projects`,
-    description: project.summary,
-    openGraph: { images: project.coverImage ? [project.coverImage] : [] },
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: { title, description, url: canonical, images },
+    twitter: { card: "summary_large_image", title, description, images },
   };
 }
 
@@ -49,8 +57,26 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     project.year && { icon: Calendar, label: "Year", value: String(project.year) },
   ].filter(Boolean) as { icon: typeof MapPin; label: string; value: string }[];
 
+  const caseStudyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    headline: project.title,
+    url: absoluteUrl(`/projects/${slug}`),
+    description: project.summary ?? undefined,
+    image: project.coverImage ? absoluteUrl(project.coverImage) : undefined,
+    ...(project.year ? { dateCreated: String(project.year) } : {}),
+    ...(project.industry ? { about: { "@type": "Thing", name: project.industry.name } } : {}),
+    provider: {
+      "@type": "Organization",
+      name: "Drafting Studio",
+      url: absoluteUrl(),
+    },
+  };
+
   return (
     <>
+      <JsonLd data={caseStudyJsonLd} />
       <PageHero
         eyebrow={project.industry?.name ?? "Project"}
         title={project.title}
