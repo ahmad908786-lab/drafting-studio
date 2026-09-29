@@ -88,3 +88,30 @@ export async function togglePostFeatured(id: string, featured: boolean) {
   await prisma.post.update({ where: { id }, data: { featured } });
   revalidatePath("/admin/blog");
 }
+
+export async function bulkDeletePosts(ids: string[]): Promise<{ ok: boolean; count: number }> {
+  await requireStaff();
+  if (!ids.length) return { ok: true, count: 0 };
+  const res = await prisma.post.deleteMany({ where: { id: { in: ids } } });
+  revalidatePath("/admin/blog");
+  return { ok: true, count: res.count };
+}
+
+export async function setPostsStatus(ids: string[], status: string): Promise<{ ok: boolean; count: number }> {
+  await requireStaff();
+  if (!ids.length) return { ok: true, count: 0 };
+  if (status === "PUBLISHED") {
+    // Publish: flip status; stamp publishedAt=now only where it was never set.
+    const fresh = await prisma.post.updateMany({ where: { id: { in: ids }, publishedAt: null }, data: { status, publishedAt: new Date() } });
+    const repub = await prisma.post.updateMany({ where: { id: { in: ids }, publishedAt: { not: null } }, data: { status } });
+    revalidatePath("/admin/blog");
+    return { ok: true, count: fresh.count + repub.count };
+  }
+  // DRAFT / SCHEDULED: clear publishedAt only when moving back to draft.
+  const res = await prisma.post.updateMany({
+    where: { id: { in: ids } },
+    data: { status, ...(status === "DRAFT" ? { publishedAt: null } : {}) },
+  });
+  revalidatePath("/admin/blog");
+  return { ok: true, count: res.count };
+}

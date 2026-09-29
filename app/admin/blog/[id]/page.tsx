@@ -1,17 +1,17 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-import { DashHeader } from "@/components/dashboard/ui";
 import { PostEditor, type PostFormData } from "@/components/admin/post-editor";
-import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
+import { formatDate } from "@/lib/utils";
 
 export const metadata = { title: "Edit Post" };
 
 export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const [post, categories] = await Promise.all([
-    prisma.post.findUnique({ where: { id }, include: { category: true, tags: true } }),
+    prisma.post.findUnique({
+      where: { id },
+      include: { category: true, tags: true, author: { select: { name: true } } },
+    }),
     prisma.category.findMany({ orderBy: { order: "asc" }, select: { slug: true, name: true } }),
   ]);
   if (!post) notFound();
@@ -30,15 +30,10 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
     featured: post.featured,
     seoTitle: post.seoTitle ?? "",
     seoDesc: post.seoDesc ?? "",
+    authorName: post.author?.name ?? undefined,
+    createdAt: formatDate(post.createdAt),
+    updatedAt: formatDate(post.updatedAt),
   };
 
-  return (
-    <div>
-      <div className="mb-6 flex items-center gap-3">
-        <Button asChild variant="ghost" size="icon-sm"><Link href="/admin/blog" aria-label="Back"><ArrowLeft className="size-4" /></Link></Button>
-        <DashHeader title="Edit post" />
-      </div>
-      <PostEditor initial={initial} categories={categories} />
-    </div>
-  );
+  return <PostEditor initial={initial} categories={categories} />;
 }

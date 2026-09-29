@@ -1,8 +1,4 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { DashHeader } from "@/components/dashboard/ui";
 import { PostEditor, type PostFormData } from "@/components/admin/post-editor";
-import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 
 export const metadata = { title: "New Post" };
@@ -14,13 +10,5 @@ const EMPTY: PostFormData = {
 
 export default async function NewPostPage() {
   const categories = await prisma.category.findMany({ orderBy: { order: "asc" }, select: { slug: true, name: true } });
-  return (
-    <div>
-      <div className="mb-6 flex items-center gap-3">
-        <Button asChild variant="ghost" size="icon-sm"><Link href="/admin/blog" aria-label="Back"><ArrowLeft className="size-4" /></Link></Button>
-        <DashHeader title="New post" />
-      </div>
-      <PostEditor initial={EMPTY} categories={categories} />
-    </div>
-  );
+  return <PostEditor initial={EMPTY} categories={categories} />;
 }
