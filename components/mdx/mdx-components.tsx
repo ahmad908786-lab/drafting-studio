@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import * as React from "react";
 import { Children, isValidElement } from "react";
 import { Info, Lightbulb, AlertTriangle, Check } from "lucide-react";
@@ -98,13 +99,31 @@ function Checklist({ items, children }: { items?: string; children?: React.React
   );
 }
 
-/** Inline content image — ![caption](src) renders as a figure with caption. */
+/**
+ * Inline content image — ![caption](src) renders as a figure with caption.
+ *
+ * Local sources go through next/image so each reader gets a width suited to
+ * their screen; anything remote falls back to a plain tag, since next/image
+ * only accepts hosts listed in next.config.
+ */
 function FigureImage({ src = "", alt = "", ...props }: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const local = typeof src === "string" && src.startsWith("/");
   return (
     <figure className="my-8">
       <span className="block overflow-hidden rounded-2xl border border-border bg-secondary">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} loading="lazy" className="h-auto w-full object-cover" {...props} />
+        {local ? (
+          <Image
+            src={src}
+            alt={alt}
+            width={1600}
+            height={900}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="h-auto w-full object-cover"
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={src} alt={alt} loading="lazy" className="h-auto w-full object-cover" {...props} />
+        )}
       </span>
       {alt ? (
         <figcaption className="mt-2.5 text-center text-sm text-muted-foreground">{alt}</figcaption>
