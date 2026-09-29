@@ -53,8 +53,20 @@ async function main() {
   for (const post of POSTS) {
     if (existing.has(post.slug)) {
       if (!refresh) continue;
-      const row = await prisma.post.findUnique({ where: { slug: post.slug }, select: { bodyMdx: true } });
-      if (row?.bodyMdx === post.bodyMdx) continue;
+      // Compare every field the update writes — a post can have a reworded
+      // title, excerpt or read time with its body untouched.
+      const row = await prisma.post.findUnique({
+        where: { slug: post.slug },
+        select: { bodyMdx: true, title: true, excerpt: true, template: true, readMinutes: true },
+      });
+      const unchanged =
+        row &&
+        row.bodyMdx === post.bodyMdx &&
+        row.title === post.title &&
+        row.excerpt === post.excerpt &&
+        row.template === post.template &&
+        row.readMinutes === post.readMinutes;
+      if (unchanged) continue;
       await prisma.post.update({
         where: { slug: post.slug },
         data: {
@@ -117,7 +129,7 @@ async function main() {
     added++;
   }
 
-  console.log(`\ndone — ${added} added, ${existing.size} already present, ${await prisma.post.count()} total`);
+  console.log(`\ndone — ${added} added, ${refreshed} refreshed, ${existing.size} already present, ${await prisma.post.count()} total`);
 }
 
 main()
