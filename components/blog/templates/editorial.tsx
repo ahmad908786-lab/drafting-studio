@@ -3,6 +3,7 @@ import { Mdx } from "@/components/mdx/mdx";
 import { ShareBar } from "@/components/blog/share-bar";
 import { RelatedPosts, PostMeta, TagRow } from "@/components/blog/post-parts";
 import { CtaBand } from "@/components/shared/cta-band";
+import { BlogEndCta } from "@/components/blog/blog-end-cta";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
 /** EDITORIAL — wide single column, oversized pull quote, magazine typography, no sidebar. */
@@ -47,6 +48,7 @@ export function EditorialTemplate({ post, related }: TemplateProps) {
         </div>
       </div>
 
+      <BlogEndCta post={post} />
       <RelatedPosts posts={related} />
       <CtaBand />
     </article>

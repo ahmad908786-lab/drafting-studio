@@ -5,6 +5,7 @@ import { ShareBar } from "@/components/blog/share-bar";
 import { RelatedPosts, PostMeta, TagRow } from "@/components/blog/post-parts";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand } from "@/components/shared/cta-band";
+import { BlogEndCta } from "@/components/blog/blog-end-cta";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
 /** LISTICLE — jump-to chip nav + numbered content, per-item accent. */
@@ -59,6 +60,7 @@ export function ListicleTemplate({ post, toc, related }: TemplateProps) {
         </aside>
       </div>
 
+      <BlogEndCta post={post} />
       <RelatedPosts posts={related} />
       <CtaBand />
     </article>

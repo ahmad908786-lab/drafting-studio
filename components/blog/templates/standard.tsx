@@ -5,6 +5,7 @@ import { TableOfContents } from "@/components/blog/table-of-contents";
 import { ShareBar } from "@/components/blog/share-bar";
 import { PostMeta, RelatedPosts, TagRow } from "@/components/blog/post-parts";
 import { CtaBand } from "@/components/shared/cta-band";
+import { BlogEndCta } from "@/components/blog/blog-end-cta";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
 /** STANDARD — cover hero, sticky TOC rail, author card, share bar, related posts. */
@@ -47,6 +48,7 @@ export function StandardTemplate({ post, toc, related }: TemplateProps) {
         </div>
       </div>
 
+      <BlogEndCta post={post} />
       <RelatedPosts posts={related} />
       <CtaBand />
     </article>

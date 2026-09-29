@@ -5,6 +5,7 @@ import { ShareBar } from "@/components/blog/share-bar";
 import { RelatedPosts, PostMeta } from "@/components/blog/post-parts";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand } from "@/components/shared/cta-band";
+import { BlogEndCta } from "@/components/blog/blog-end-cta";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
 /** CASE_STUDY — stats banner, challenge/solution/result, metrics prominent. */
@@ -63,6 +64,7 @@ export function CaseStudyTemplate({ post, related }: TemplateProps) {
         </aside>
       </div>
 
+      <BlogEndCta post={post} />
       <RelatedPosts posts={related} />
       <CtaBand />
     </article>

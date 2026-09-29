@@ -7,6 +7,7 @@ import { PostMeta, RelatedPosts, TagRow } from "@/components/blog/post-parts";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand } from "@/components/shared/cta-band";
+import { BlogEndCta } from "@/components/blog/blog-end-cta";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
 /** TECHNICAL_GUIDE — numbered section nav, documentation feel, download-checklist CTA. */
@@ -76,6 +77,7 @@ export function TechnicalGuideTemplate({ post, toc, related }: TemplateProps) {
         </div>
       </div>
 
+      <BlogEndCta post={post} />
       <RelatedPosts posts={related} />
       <CtaBand />
     </article>
