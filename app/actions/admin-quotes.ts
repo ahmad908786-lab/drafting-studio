@@ -83,5 +83,19 @@ export async function convertQuoteToProject(quoteId: string): Promise<{ ok: bool
 
   revalidatePath(`/admin/rfqs/${quoteId}`);
   revalidatePath("/admin/projects");
+  revalidatePath("/admin/rfqs");
   return { ok: true, projectId: project.id };
+}
+
+/** Bulk delete quotes (files/notes/messages cascade). Returns number deleted. */
+export async function deleteQuotes(ids: string[]): Promise<{ ok: boolean; deleted: number }> {
+  const user = await requireStaff();
+  const clean = [...new Set(ids.filter(Boolean))];
+  if (clean.length === 0) return { ok: true, deleted: 0 };
+  const result = await prisma.quote.deleteMany({ where: { id: { in: clean } } });
+  await prisma.auditLog.create({
+    data: { userId: user.id, action: "quote.bulkDelete", entity: "Quote", meta: { count: result.count } },
+  });
+  revalidatePath("/admin/rfqs");
+  return { ok: true, deleted: result.count };
 }
