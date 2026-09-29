@@ -26,8 +26,10 @@ import {
   getServiceCategories,
 } from "@/lib/queries";
 import { brand } from "@/lib/theme";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/") },
   title: "MEP Drafting Services | Permit-Ready 2D AutoCAD Drawings",
   description:
     "Permit-ready 2D AutoCAD drafting for engineering firms & contractors — MEP, electrical, HVAC, plumbing & fire protection drawings with 48-hour turnaround.",

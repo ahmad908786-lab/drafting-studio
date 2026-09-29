@@ -3,8 +3,10 @@ import { PageHero } from "@/components/shared/page-hero";
 import { CtaBand } from "@/components/shared/cta-band";
 import { IndustryGrid } from "@/components/marketing/industry-grid";
 import { getIndustries } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/industries") },
   title: "Industries We Serve",
   description:
     "2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments, plaza, offices and warehouse projects.",

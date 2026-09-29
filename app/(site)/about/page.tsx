@@ -10,6 +10,7 @@ import { absoluteUrl } from "@/lib/utils";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/about") },
   title: "2D MEP CAD Drafting Studio | About Drafting Studio",
   description:
     "US-focused 2D AutoCAD drafting studio for MEP, fire protection & lighting. Engineering firms, contractors & architects trust us for permit-ready drawings.",

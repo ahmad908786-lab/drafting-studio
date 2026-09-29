@@ -3,10 +3,11 @@ import { Clock, ShieldCheck, RefreshCw } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { QuoteWizard } from "@/components/quote/quote-wizard";
 import { getAllServices, getIndustries, getServiceCategories } from "@/lib/queries";
-import { parseCsvParam } from "@/lib/utils";
+import { parseCsvParam, absoluteUrl } from "@/lib/utils";
 import { OTHER_QUOTE_SERVICES } from "@/lib/taxonomy";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/request-quote") },
   title: "Request a Quote",
   description: "Request a fixed-price 2D AutoCAD drafting quote in under 24 hours — MEP, electrical, HVAC, plumbing & fire protection. Send your scope, upload plans.",
 };

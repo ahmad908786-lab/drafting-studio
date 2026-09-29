@@ -10,9 +10,10 @@ import { Pagination } from "@/components/shared/pagination";
 import { EmptyState } from "@/components/shared/empty-state";
 import { Badge } from "@/components/ui/badge";
 import { getPosts, getFeaturedPost, getBlogCategories } from "@/lib/queries";
-import { formatDate } from "@/lib/utils";
+import { formatDate, absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/blog") },
   title: "Blog — Drafting Guides & Case Studies",
   description: "2D drafting guides, code walkthroughs and case studies for electrical, HVAC, plumbing, fire protection and lighting.",
 };

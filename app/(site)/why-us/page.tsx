@@ -5,8 +5,10 @@ import { CtaBand } from "@/components/shared/cta-band";
 import { TestimonialCard } from "@/components/shared/testimonial-card";
 import { getTestimonials } from "@/lib/queries";
 import { Gauge, Layers, Users, DollarSign, MapPin, PenTool } from "lucide-react";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/why-us") },
   title: "Why Drafting Studio",
   description: "Why engineering firms choose Drafting Studio: fast 2D AutoCAD MEP drafting to your CAD standard — permit-ready DWG sets, fixed pricing, 24-hour quotes.",
 };

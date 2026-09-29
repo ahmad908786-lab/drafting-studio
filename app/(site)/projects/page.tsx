@@ -7,8 +7,10 @@ import { Pagination } from "@/components/shared/pagination";
 import { EmptyState } from "@/components/shared/empty-state";
 import { CtaBand } from "@/components/shared/cta-band";
 import { getProjects, parseProjectFilters } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/projects") },
   title: "Projects — 2D Drafting Portfolio",
   description:
     "Recent 2D AutoCAD projects from Drafting Studio — electrical, HVAC, plumbing, lighting and fire-protection sets across every US building type.",

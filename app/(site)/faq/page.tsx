@@ -4,8 +4,10 @@ import { PageHero } from "@/components/shared/page-hero";
 import { FaqAccordion } from "@/components/marketing/faq-accordion";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CtaBand } from "@/components/shared/cta-band";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/faq") },
   title: "Frequently Asked Questions",
   description: "Answers about Drafting Studio's 2D AutoCAD drafting services — deliverables, turnaround, stamping, pricing and more.",
 };

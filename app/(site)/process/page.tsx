@@ -4,8 +4,10 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { ProcessTimeline } from "@/components/marketing/process-timeline";
 import { CtaBand } from "@/components/shared/cta-band";
 import { Clock, RefreshCw, ShieldCheck, FileCheck2 } from "lucide-react";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/process") },
   title: "Our Process",
   description: "How Drafting Studio turns your plans and scope into a permit-ready 2D AutoCAD set — from upload to delivery.",
 };

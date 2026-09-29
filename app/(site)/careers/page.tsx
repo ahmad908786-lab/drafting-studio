@@ -5,8 +5,10 @@ import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/careers") },
   title: "Careers",
   description: "Join Drafting Studio: remote 2D AutoCAD drafter jobs in electrical, HVAC, plumbing, fire protection & lighting. Fast-paced MEP drafting studio hiring now.",
 };

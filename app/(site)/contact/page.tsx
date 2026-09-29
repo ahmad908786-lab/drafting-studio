@@ -9,6 +9,7 @@ import { absoluteUrl } from "@/lib/utils";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/contact") },
   title: "Contact Us",
   description: "Get in touch with Drafting Studio for 2D AutoCAD drafting. Send a message, request a callback, or start a quote.",
 };

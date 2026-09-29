@@ -7,8 +7,10 @@ import { ServiceCard } from "@/components/shared/service-card";
 import { Icon } from "@/components/icon";
 import { CtaBand } from "@/components/shared/cta-band";
 import { getServiceCategories, getAllServices } from "@/lib/queries";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/services") },
   title: "2D Drafting Services",
   description:
     "13 2D AutoCAD drafting services across electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations & reports.",

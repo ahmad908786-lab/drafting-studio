@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/app/(site)/legal/legal-content";
+import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/privacy") },
   title: "Privacy Policy",
   description: "How Drafting Studio collects, uses and protects your information when you request quotes or create an account.",
   robots: { index: false, follow: true },
