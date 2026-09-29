@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { BUDGET_RANGES } from "@/lib/taxonomy";
-import { createQuote } from "@/app/actions/quotes";
+import { createManualQuote } from "@/app/actions/quotes";
 
 export function NewQuoteForm({ services }: { services: { slug: string; name: string }[] }) {
   const router = useRouter();
@@ -39,7 +39,7 @@ export function NewQuoteForm({ services }: { services: { slug: string; name: str
       description: String(fd.get("description") ?? "").trim() || undefined,
     };
     start(async () => {
-      const res = await createQuote(payload);
+      const res = await createManualQuote(payload);
       if (res.ok) {
         toast.success(`Quote ${res.refNumber} created`);
         router.push("/admin/rfqs?status=NEW");

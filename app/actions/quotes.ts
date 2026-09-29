@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { quoteSchema } from "@/lib/validations";
 import { OTHER_QUOTE_SERVICE_BY_SLUG } from "@/lib/taxonomy";
 import { sendMail, leadsInbox } from "@/lib/mail";
+import { requireStaff } from "@/lib/auth/guards";
 import { absoluteUrl } from "@/lib/utils";
 
 export type QuoteResult =
@@ -18,7 +19,25 @@ async function generateRef(): Promise<string> {
   return `${prefix}${String(count + 1).padStart(4, "0")}`;
 }
 
+/**
+ * Log a quote taken by phone or email from the admin. Same record as the public
+ * form, minus the two things that only make sense for a website submission: the
+ * "we received your request" confirmation to the customer, and the website
+ * source tag.
+ */
+export async function createManualQuote(raw: unknown): Promise<QuoteResult> {
+  await requireStaff();
+  return createQuoteRecord(raw, { source: "manual", confirmToRequester: false });
+}
+
 export async function createQuote(raw: unknown): Promise<QuoteResult> {
+  return createQuoteRecord(raw, { source: "website", confirmToRequester: true });
+}
+
+async function createQuoteRecord(
+  raw: unknown,
+  opts: { source: string; confirmToRequester: boolean },
+): Promise<QuoteResult> {
   const parsed = quoteSchema.safeParse(raw);
   if (!parsed.success) {
     const errors: Record<string, string> = {};
@@ -83,7 +102,7 @@ export async function createQuote(raw: unknown): Promise<QuoteResult> {
       deadline: data.deadline ? new Date(data.deadline) : undefined,
       budgetRange: data.budgetRange,
       description: data.description,
-      source: "website",
+      source: opts.source,
       files: data.fileKeys?.length
         ? { create: data.fileKeys.map((f) => ({ name: f.name, url: f.url, sizeBytes: f.size, mimeType: f.type })) }
         : undefined,
@@ -111,11 +130,15 @@ export async function createQuote(raw: unknown): Promise<QuoteResult> {
     ].filter(Boolean).join("\n"),
   });
 
-  await sendMail({
-    to: data.email,
-    subject: `We received your quote request (${refNumber})`,
-    text: `Hi ${data.name},\n\nThanks for your request. Your reference number is ${refNumber}. We'll reply with a fixed quote within one business day.\n\nTrack it any time by creating an account at ${absoluteUrl("/register")} with this email.\n\n— Drafting Studio`,
-  });
+  // A quote logged from the admin was taken by phone or email, so the customer
+  // is already in the conversation and should not get a website confirmation.
+  if (opts.confirmToRequester) {
+    await sendMail({
+      to: data.email,
+      subject: `We received your quote request (${refNumber})`,
+      text: `Hi ${data.name},\n\nThanks for your request. Your reference number is ${refNumber}. We'll reply with a fixed quote within one business day.\n\nTrack it any time by creating an account at ${absoluteUrl("/register")} with this email.\n\n— Drafting Studio`,
+    });
+  }
 
   return { ok: true, refNumber };
 }
