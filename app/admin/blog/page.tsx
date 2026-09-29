@@ -4,11 +4,12 @@ import { DashHeader } from "@/components/dashboard/ui";
 import { Button } from "@/components/ui/button";
 import { BlogPostTable } from "@/components/admin/blog-post-table";
 import { prisma } from "@/lib/db";
+import { blogPhoto } from "@/prisma/photos";
 
 export const metadata = { title: "Blog Posts" };
 
 export default async function AdminBlogPage() {
-  const posts = await prisma.post.findMany({
+  const raw = await prisma.post.findMany({
     orderBy: [{ status: "asc" }, { createdAt: "desc" }],
     select: {
       id: true,
@@ -24,6 +25,11 @@ export default async function AdminBlogPage() {
       category: { select: { name: true } },
       author: { select: { name: true } },
     },
+  });
+  // Prefer the cover file that actually exists on disk over a stale stored path.
+  const posts = raw.map((p) => {
+    const live = blogPhoto(p.slug);
+    return live && live !== p.coverImage ? { ...p, coverImage: live } : p;
   });
 
   return (

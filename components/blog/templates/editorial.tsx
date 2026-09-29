@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Mdx } from "@/components/mdx/mdx";
 import { ShareBar } from "@/components/blog/share-bar";
 import { AuthorCard, RelatedPosts, PostMeta, TagRow } from "@/components/blog/post-parts";
@@ -27,6 +28,11 @@ export function EditorialTemplate({ post, related }: TemplateProps) {
       </header>
 
       <div className="container-page max-w-2xl py-14">
+        {post.coverImage && (
+          <div className="relative mb-10 aspect-[21/9] overflow-hidden rounded-2xl border border-border bg-secondary">
+            <Image src={post.coverImage} alt={post.title} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" priority />
+          </div>
+        )}
         {pullQuote && (
           <blockquote className="mb-10 border-y border-border py-8 text-center font-sans text-2xl font-bold leading-snug tracking-tight text-foreground sm:text-3xl">
             “{pullQuote}”

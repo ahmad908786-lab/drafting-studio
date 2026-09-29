@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Children, isValidElement } from "react";
 import { Info, Lightbulb, AlertTriangle, Check } from "lucide-react";
 import { cn, slugify } from "@/lib/utils";
 
@@ -40,9 +41,25 @@ function Checklist({ items }: { items: string }) {
   );
 }
 
+/** Inline content image — ![caption](src) renders as a figure with caption. */
+function FigureImage({ src = "", alt = "", ...props }: React.ImgHTMLAttributes<HTMLImageElement>) {
+  return (
+    <figure className="my-8">
+      <span className="block overflow-hidden rounded-2xl border border-border bg-secondary">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} loading="lazy" className="h-auto w-full object-cover" {...props} />
+      </span>
+      {alt ? (
+        <figcaption className="mt-2.5 text-center text-sm text-muted-foreground">{alt}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
 export const mdxComponents = {
   Callout,
   Checklist,
+  img: FigureImage,
   h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2 id={headingId(children)} className="mt-10 scroll-mt-28 font-sans text-2xl font-extrabold tracking-tight text-foreground" {...props}>
       {children}
@@ -56,9 +73,18 @@ export const mdxComponents = {
   h4: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4 className="mt-6 font-sans text-lg font-bold text-foreground" {...props}>{children}</h4>
   ),
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mt-4 text-[16px] leading-relaxed text-foreground/90" {...props} />
-  ),
+  p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
+    // A paragraph that only wraps images becomes a plain wrapper — <figure>
+    // inside <p> is invalid HTML and breaks React hydration.
+    const kids = Children.toArray(children);
+    const hasFigure = kids.some((c) => isValidElement(c) && c.type === FigureImage);
+    if (hasFigure) {
+      return <div {...props}>{children}</div>;
+    }
+    return (
+      <p className="mt-4 text-[16px] leading-relaxed text-foreground/90" {...props}>{children}</p>
+    );
+  },
   a: ({ href = "#", ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <Link href={href} className="font-medium text-primary underline underline-offset-2 hover:text-primary/80" {...props} />
   ),

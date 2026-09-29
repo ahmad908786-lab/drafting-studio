@@ -1,8 +1,19 @@
 import { cache } from "react";
 import { prisma } from "@/lib/db";
 import { parseCsvParam } from "@/lib/utils";
+import { blogPhoto } from "@/prisma/photos";
 
 /* Per-request memoized reads. Admin mutations call revalidatePath to refresh. */
+
+/**
+ * Stored cover paths can go stale (e.g. a DB seeded before the current cover
+ * files existed). Prefer the file that actually exists on disk so covers
+ * never render broken, then fall back to whatever the row stores.
+ */
+function withLiveCover<T extends { slug: string; coverImage: string | null }>(post: T): T {
+  const live = blogPhoto(post.slug);
+  return live && live !== post.coverImage ? { ...post, coverImage: live } : post;
+}
 
 export const getSettings = cache(async () => {
   return prisma.siteSetting.findUnique({ where: { id: "singleton" } });
@@ -207,11 +218,12 @@ export const getBlogCategories = cache(async () => {
 });
 
 export const getFeaturedPost = cache(async () => {
-  return prisma.post.findFirst({
+  const post = await prisma.post.findFirst({
     where: { status: "PUBLISHED", featured: true },
     orderBy: { publishedAt: "desc" },
     include: { category: true, author: true },
   });
+  return post ? withLiveCover(post) : post;
 });
 
 export type PostFilters = { category?: string; q?: string; page?: number; perPage?: number; excludeId?: string };
@@ -228,7 +240,7 @@ export async function getPosts(filters: PostFilters) {
       { excerpt: { contains: filters.q } },
     ];
   }
-  const [items, total] = await Promise.all([
+  const [rawItems, total] = await Promise.all([
     prisma.post.findMany({
       where,
       orderBy: { publishedAt: "desc" },
@@ -238,30 +250,34 @@ export async function getPosts(filters: PostFilters) {
     }),
     prisma.post.count({ where }),
   ]);
+  const items = rawItems.map(withLiveCover);
   return { items, total, page, perPage, pageCount: Math.ceil(total / perPage) };
 }
 
 export const getPostBySlug = cache(async (slug: string) => {
-  return prisma.post.findFirst({
+  const post = await prisma.post.findFirst({
     where: { slug, status: "PUBLISHED" },
     include: { category: true, author: true, tags: true },
   });
+  return post ? withLiveCover(post) : post;
 });
 
 export const getRelatedPosts = cache(async (categoryId: string | null, excludeId: string, take = 3) => {
-  return prisma.post.findMany({
+  const posts = await prisma.post.findMany({
     where: { status: "PUBLISHED", id: { not: excludeId }, ...(categoryId ? { categoryId } : {}) },
     orderBy: { publishedAt: "desc" },
     take,
     include: { category: true, author: true },
   });
+  return posts.map(withLiveCover);
 });
 
 export const getPopularPosts = cache(async (take = 5) => {
-  return prisma.post.findMany({
+  const posts = await prisma.post.findMany({
     where: { status: "PUBLISHED" },
     orderBy: { views: "desc" },
     take,
     include: { category: true },
   });
+  return posts.map(withLiveCover);
 });

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FileDown, BookOpen, Wrench } from "lucide-react";
 import { Mdx } from "@/components/mdx/mdx";
 import { ShareBar } from "@/components/blog/share-bar";
@@ -61,6 +62,11 @@ export function TechnicalGuideTemplate({ post, toc, related }: TemplateProps) {
         </aside>
 
         <div className="max-w-3xl">
+          {post.coverImage && (
+            <div className="relative mb-10 aspect-[21/9] overflow-hidden rounded-2xl border border-border bg-secondary">
+              <Image src={post.coverImage} alt={post.title} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" priority />
+            </div>
+          )}
           <Mdx source={post.bodyMdx} />
           <div className="mt-10 border-t border-border pt-6">
             <TagRow tags={post.tags} />
