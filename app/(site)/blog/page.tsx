@@ -4,12 +4,12 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { ArrowRight, Clock } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
-import { PostCard } from "@/components/shared/post-card";
 import { BlogSidebar } from "@/components/blog/blog-sidebar";
-import { Pagination } from "@/components/shared/pagination";
+import { BlogInfiniteGrid } from "@/components/blog/blog-infinite-grid";
 import { EmptyState } from "@/components/shared/empty-state";
 import { Badge } from "@/components/ui/badge";
 import { getPosts, getFeaturedPost, getBlogCategories } from "@/lib/queries";
+import type { BlogCardItem } from "@/lib/blog-actions";
 import { formatDate, absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -23,16 +23,26 @@ type SP = Record<string, string | string[] | undefined>;
 export default async function BlogPage({ searchParams }: { searchParams: Promise<SP> }) {
   const sp = await searchParams;
   const q = typeof sp.q === "string" ? sp.q : undefined;
-  const page = sp.page ? Math.max(1, parseInt(String(sp.page), 10) || 1) : 1;
-  const showFeatured = page === 1 && !q;
+  const showFeatured = !q;
 
-  const [{ items, pageCount }, featured, categories] = await Promise.all([
-    getPosts({ q, page, perPage: 9 }),
+  const [featured, categories] = await Promise.all([
     showFeatured ? getFeaturedPost() : Promise.resolve(null),
     getBlogCategories(),
   ]);
+  const excludeId = featured?.id ?? undefined;
+  const { items, pageCount } = await getPosts({ q, page: 1, perPage: 9, excludeId });
 
-  const gridItems = featured ? items.filter((p) => p.id !== featured.id) : items;
+  const initialItems: BlogCardItem[] = items.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    coverImage: p.coverImage ?? null,
+    readMinutes: p.readMinutes,
+    publishedAt: p.publishedAt ? new Date(p.publishedAt).toISOString() : null,
+    category: p.category
+      ? { name: p.category.name, slug: p.category.slug, color: p.category.color ?? undefined }
+      : null,
+  }));
 
   return (
     <>
@@ -91,15 +101,14 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
           <div>
             {q && <p className="mb-5 text-sm text-muted-foreground">Results for “<span className="font-semibold text-foreground">{q}</span>”</p>}
-            {gridItems.length > 0 ? (
-              <>
-                <div className="grid gap-5 sm:grid-cols-2">
-                  {gridItems.map((p) => (
-                    <PostCard key={p.slug} post={p} />
-                  ))}
-                </div>
-                <Pagination page={page} pageCount={pageCount} searchParams={sp} basePath="/blog" />
-              </>
+            {initialItems.length > 0 ? (
+              <BlogInfiniteGrid
+                initialItems={initialItems}
+                pageCount={pageCount}
+                q={q}
+                perPage={9}
+                excludeId={excludeId}
+              />
             ) : (
               <EmptyState title="No articles found" description="Try a different search or browse by category." actionLabel="View all articles" actionHref="/blog" />
             )}
