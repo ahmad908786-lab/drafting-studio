@@ -1,4 +1,4 @@
-/** Blog content — 12 posts covering all 5 templates. */
+/** Blog content — 36 posts across 6 categories, all 5 templates. */
 
 export type PostSeed = {
   slug: string;
