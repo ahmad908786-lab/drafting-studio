@@ -6,10 +6,10 @@
  * - Reads captions from ~/workspace/blog-images/captions.json ({slug: caption}).
  * - Expects the inline image at public/generated/blog/inline/<slug>-1.webp.
  * - Rewrites prisma/content/posts.ts (source of truth) via exact string
- *   replacement, then updates DB rows — but ONLY rows whose bodyMdx still
- *   matches the pre-enrichment text (admin-edited posts are left alone and
- *   reported).
- * - Idempotent: posts already containing `/generated/blog/inline/` are skipped.
+ *   replacement when a body lacks the figure.
+ * - Syncs DB rows whose body is the pre-enrichment version (stale seed).
+ *   Rows that look hand-edited in the admin are left alone and reported.
+ * - Idempotent: run it again any time; enriched posts are skipped.
  *
  * Usage: npx tsx prisma/enrich-post-images.ts
  */
@@ -46,6 +46,19 @@ function insertFigure(body: string, slug: string, caption: string): string {
   return `${before}\n${figure}\n${rest}`;
 }
 
+/**
+ * Reverse insertFigure: strip the figure block to recover the pre-enrichment
+ * body, so we can tell a stale (but unedited) DB row apart from an
+ * admin-edited one.
+ */
+function stripFigure(body: string, slug: string): string {
+  const url = `/generated/blog/inline/${slug}-1.webp`;
+  const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return body
+    .replace(new RegExp(`\\n{3}!\\[.*?\\]\\(${escaped}\\)\\n{3}`), "\n\n")
+    .replace(new RegExp(`\\n\\n!\\[.*?\\]\\(${escaped}\\)\\n\\n`), "\n\n");
+}
+
 function countOccurrences(haystack: string, needle: string): number {
   return haystack.split(needle).length - 1;
 }
@@ -65,27 +78,29 @@ async function main() {
       missing.push(post.slug);
       continue;
     }
-    if (post.bodyMdx.includes(INLINE_MARKER)) continue; // already enriched
 
-    const oldBody = post.bodyMdx;
-    const newBody = insertFigure(oldBody, post.slug, caption);
-    if (newBody === oldBody) continue;
-
-    // 1. Rewrite source of truth.
-    const occurrences = countOccurrences(fileText, oldBody);
-    if (occurrences !== 1) {
-      console.error(`REFUSING ${post.slug}: body found ${occurrences}x in posts.ts`);
-      continue;
+    let newBody: string;
+    if (post.bodyMdx.includes(INLINE_MARKER)) {
+      newBody = post.bodyMdx; // already enriched in source
+    } else {
+      const oldBody = post.bodyMdx;
+      newBody = insertFigure(oldBody, post.slug, caption);
+      if (newBody === oldBody) continue;
+      const occurrences = countOccurrences(fileText, oldBody);
+      if (occurrences !== 1) {
+        console.error(`REFUSING ${post.slug}: body found ${occurrences}x in posts.ts`);
+        continue;
+      }
+      fileText = fileText.split(oldBody).join(newBody);
+      fileUpdated++;
     }
-    fileText = fileText.split(oldBody).join(newBody);
-    fileUpdated++;
 
-    // 2. Update DB only if the row still carries the pre-enrichment body
-    // (i.e. nobody edited it in the admin afterwards).
+    // Sync the DB row: update when it carries the stale pre-enrichment body,
+    // skip when it looks hand-edited in the admin.
     const row = await prisma.post.findUnique({ where: { slug: post.slug }, select: { bodyMdx: true } });
     if (!row) continue;
     if (row.bodyMdx.includes(INLINE_MARKER)) continue;
-    if (row.bodyMdx === oldBody) {
+    if (row.bodyMdx === stripFigure(newBody, post.slug)) {
       await prisma.post.update({ where: { slug: post.slug }, data: { bodyMdx: newBody } });
       dbUpdated++;
     } else {
@@ -94,7 +109,7 @@ async function main() {
   }
 
   writeFileSync(POSTS_PATH, fileText, "utf8");
-  console.log(`done — posts.ts: ${fileUpdated} bodies enriched, db: ${dbUpdated} rows updated`);
+  console.log(`done — posts.ts: ${fileUpdated} bodies enriched, db: ${dbUpdated} rows synced`);
   if (skippedEdited.length) console.log(`skipped (edited in admin, update manually): ${skippedEdited.join(", ")}`);
   if (missing.length) console.log(`missing captions: ${missing.join(", ")}`);
 }
