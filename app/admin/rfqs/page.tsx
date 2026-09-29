@@ -33,6 +33,9 @@ export default async function AdminRfqsPage({ searchParams }: { searchParams: Pr
           ],
         }
       : {}),
+    // Reading the clock is the point of the "last N days" filter, and this is a
+    // server component that runs per request rather than a memoized render.
+    // eslint-disable-next-line react-hooks/purity
     ...(days ? { createdAt: { gte: new Date(Date.now() - days * 86_400_000) } } : {}),
   };
 

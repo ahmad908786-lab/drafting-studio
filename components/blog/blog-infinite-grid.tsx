@@ -18,12 +18,14 @@ export function BlogInfiniteGrid({ initialItems, pageCount, q, perPage, excludeI
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const stateRef = useRef({ page: 1, loading: false });
-  stateRef.current = { page, loading };
 
+  // page and loading are read straight from state rather than mirrored into a
+  // ref, which would mean writing during render. The observer effect below
+  // re-subscribes whenever this callback changes, so the guard always sees the
+  // current page.
   const loadNext = useCallback(async () => {
-    const { page: cur, loading: isLoading } = stateRef.current;
-    if (isLoading || cur >= pageCount) return;
+    if (loading || page >= pageCount) return;
+    const cur = page;
     setLoading(true);
     try {
       const res = await loadMorePosts({ q, page: cur + 1, perPage, excludeId });
@@ -35,7 +37,7 @@ export function BlogInfiniteGrid({ initialItems, pageCount, q, perPage, excludeI
     } finally {
       setLoading(false);
     }
-  }, [q, perPage, excludeId, pageCount]);
+  }, [q, perPage, excludeId, pageCount, page, loading]);
 
   useEffect(() => {
     const el = sentinelRef.current;

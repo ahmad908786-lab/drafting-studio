@@ -75,9 +75,14 @@ export function BlogPostTable({ posts }: { posts: BlogPostRow[] }) {
     );
   }, [posts, query, filter]);
 
-  // Reset selection when the underlying list changes.
+  // Reset selection when the underlying list changes. Adjusted during render
+  // rather than in an effect, so the table never paints a stale selection.
   const postIds = React.useMemo(() => posts.map((p) => p.id).join(","), [posts]);
-  React.useEffect(() => setSelected(new Set()), [postIds]);
+  const [seenPostIds, setSeenPostIds] = React.useState(postIds);
+  if (postIds !== seenPostIds) {
+    setSeenPostIds(postIds);
+    setSelected(new Set());
+  }
 
   const allVisibleSelected = filtered.length > 0 && filtered.every((p) => selected.has(p.id));
   const someVisibleSelected = filtered.some((p) => selected.has(p.id));

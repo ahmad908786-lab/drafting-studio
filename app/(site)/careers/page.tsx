@@ -50,7 +50,7 @@ export default function CareersPage() {
             ))}
           </div>
           <div className="mt-8 rounded-xl border border-dashed border-border bg-secondary/40 p-6 text-center">
-            <p className="text-sm text-muted-foreground">Don't see your role? We're always glad to meet skilled drafters.</p>
+            <p className="text-sm text-muted-foreground">Don&apos;t see your role? We&apos;re always glad to meet skilled drafters.</p>
             <Button asChild variant="link"><Link href="/contact">Send us your portfolio →</Link></Button>
           </div>
         </div>

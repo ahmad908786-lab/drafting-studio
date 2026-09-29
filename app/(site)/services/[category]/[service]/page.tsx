@@ -153,7 +153,7 @@ export default async function ServiceDetailPage({
       <section className="border-y border-border bg-secondary/40 py-14">
         <div className="container-page grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
-            <h2 className="font-sans text-2xl font-extrabold tracking-tight text-foreground">What's included</h2>
+            <h2 className="font-sans text-2xl font-extrabold tracking-tight text-foreground">What&apos;s included</h2>
             <p className="mt-2 text-muted-foreground">Every {s.name.toLowerCase()} package is delivered as a layered 2D AutoCAD set.</p>
             <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
               {deliverables.map((d) => (

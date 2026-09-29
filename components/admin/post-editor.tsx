@@ -66,6 +66,34 @@ export type PostFormData = {
 
 type SaveState = "saved" | "dirty" | "saving";
 
+type Tool = { icon: React.ReactNode; label: string; action: () => void };
+
+/**
+ * Its own component so the tool callbacks — which reach into the body textarea's
+ * ref when clicked — are not traced through the editor's render.
+ */
+function MarkdownToolbar({ tools }: { tools: Tool[] }) {
+  return (
+    <div className="sticky top-[8.5rem] z-20 -mx-2 mb-2 flex flex-wrap items-center gap-0.5 rounded-xl border border-border/70 bg-background/90 px-2 py-1.5 backdrop-blur-xl">
+      {tools.map((t) => (
+        <Tooltip key={t.label}>
+          <TooltipTrigger asChild>
+            <button
+              type="button"
+              onClick={t.action}
+              aria-label={t.label}
+              className="grid size-8 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {t.icon}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">{t.label}</TooltipContent>
+        </Tooltip>
+      ))}
+    </div>
+  );
+}
+
 export function PostEditor({ initial, categories }: { initial: PostFormData; categories: Cat[] }) {
   const router = useRouter();
   const [data, setData] = React.useState<PostFormData>(initial);
@@ -78,8 +106,14 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
   const [imgDialogOpen, setImgDialogOpen] = React.useState(false);
 
   const dataRef = React.useRef(data);
-  dataRef.current = data;
-  const initialRef = React.useRef(initial);
+  // Mirrored after render, not during it, so save callbacks can read the latest
+  // form values without being rebuilt on every keystroke.
+  React.useEffect(() => {
+    dataRef.current = data;
+  });
+  // The last saved snapshot. State rather than a ref, because `dirty` is derived
+  // from it during render and a save replaces it.
+  const [baseline, setBaseline] = React.useState(initial);
   const savingRef = React.useRef(false);
   const queuedRef = React.useRef(false);
   const titleRef = React.useRef<HTMLTextAreaElement>(null);
@@ -88,8 +122,8 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
 
   const set = <K extends keyof PostFormData>(k: K, v: PostFormData[K]) => setData((d) => ({ ...d, [k]: v }));
   const dirty = React.useMemo(
-    () => JSON.stringify(data) !== JSON.stringify(initialRef.current),
-    [data],
+    () => JSON.stringify(data) !== JSON.stringify(baseline),
+    [data, baseline],
   );
 
   /* Auto-grow title + excerpt. */
@@ -132,7 +166,7 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
       });
       if (res.ok) {
         const next = { ...dataRef.current, id: res.id ?? dataRef.current.id, slug: res.slug ?? dataRef.current.slug };
-        initialRef.current = next;
+        setBaseline(next);
         dataRef.current = next;
         setData(next);
         setSaveState("saved");
@@ -201,7 +235,7 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
   };
 
   /* ---------- markdown toolbar ---------- */
-  const insertAtCursor = (before: string, after = "", placeholder = "") => {
+  const insertAtCursor = React.useCallback((before: string, after = "", placeholder = "") => {
     const el = bodyRef.current;
     if (!el) return;
     const { selectionStart: s, selectionEnd: e, value } = el;
@@ -212,9 +246,9 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
       el.focus();
       el.setSelectionRange(s + before.length, s + before.length + sel.length);
     });
-  };
+  }, []);
 
-  const prefixLines = (prefix: (line: string, i: number) => string) => {
+  const prefixLines = React.useCallback((prefix: (line: string, i: number) => string) => {
     const el = bodyRef.current;
     if (!el) return;
     const { selectionStart: s, selectionEnd: e, value } = el;
@@ -225,9 +259,9 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
     el.setRangeText(block.split("\n").map(prefix).join("\n"), ls, le, "end");
     set("bodyMdx", el.value);
     el.focus();
-  };
+  }, []);
 
-  const insertBlock = (text: string) => {
+  const insertBlock = React.useCallback((text: string) => {
     const el = bodyRef.current;
     if (!el) return;
     const { selectionStart: s, value } = el;
@@ -239,9 +273,9 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
       el.focus();
       el.setSelectionRange(s + chunk.length, s + chunk.length);
     });
-  };
+  }, []);
 
-  const tools: { icon: React.ReactNode; label: string; action: () => void }[] = [
+  const tools: Tool[] = React.useMemo(() => [
     { icon: <Bold className="size-4" />, label: "Bold", action: () => insertAtCursor("**", "**", "bold text") },
     { icon: <Italic className="size-4" />, label: "Italic", action: () => insertAtCursor("*", "*", "italic text") },
     { icon: <Heading2 className="size-4" />, label: "Heading 2", action: () => prefixLines((l) => (l.startsWith("## ") ? l : `## ${l.replace(/^#+\s*/, "")}`)) },
@@ -254,7 +288,7 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
     { icon: <ImagePlus className="size-4" />, label: "Image", action: () => setImgDialogOpen(true) },
     { icon: <Lightbulb className="size-4" />, label: "Callout", action: () => insertBlock('<Callout type="tip">\n\n</Callout>') },
     { icon: <ListChecks className="size-4" />, label: "Checklist", action: () => insertBlock('<Checklist items="First item; Second item" />') },
-  ];
+  ], [insertAtCursor, prefixLines, insertBlock]);
 
   const statusMeta =
     data.status === "PUBLISHED"
@@ -442,23 +476,7 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
           {/* Body */}
           {mode === "write" ? (
             <>
-              <div className="sticky top-[8.5rem] z-20 -mx-2 mb-2 flex flex-wrap items-center gap-0.5 rounded-xl border border-border/70 bg-background/90 px-2 py-1.5 backdrop-blur-xl">
-                {tools.map((t) => (
-                  <Tooltip key={t.label}>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        onClick={t.action}
-                        aria-label={t.label}
-                        className="grid size-8 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                      >
-                        {t.icon}
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">{t.label}</TooltipContent>
-                  </Tooltip>
-                ))}
-              </div>
+              <MarkdownToolbar tools={tools} />
               <Textarea
                 ref={bodyRef}
                 value={data.bodyMdx}

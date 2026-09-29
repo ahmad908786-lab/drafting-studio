@@ -72,8 +72,8 @@ export default async function AboutPage() {
             </div>
           </div>
           <div className="rounded-2xl border border-border bg-primary p-6 text-primary-foreground bg-blueprint-grid">
-            <h3 className="font-sans text-lg font-bold">What we don't do</h3>
-            <p className="mt-2 text-sm text-primary-foreground/80">We're deliberate about scope. We focus on 2D drafting and calculations so we can be fast and precise. We don't stamp drawings — that's your engineer of record — and we don't do modeling. That focus is the point.</p>
+            <h3 className="font-sans text-lg font-bold">What we don&apos;t do</h3>
+            <p className="mt-2 text-sm text-primary-foreground/80">We&apos;re deliberate about scope. We focus on 2D drafting and calculations so we can be fast and precise. We don&apos;t stamp drawings — that&apos;s your engineer of record — and we don&apos;t do modeling. That focus is the point.</p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               {brand.promises.map((p) => (
                 <div key={p} className="rounded-lg border border-white/10 bg-white/5 p-3 text-sm">{p}</div>

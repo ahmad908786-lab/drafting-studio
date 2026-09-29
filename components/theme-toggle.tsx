@@ -7,8 +7,14 @@ import { Button } from "@/components/ui/button";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  // The server has no theme to resolve, so the icon can only be decided on the
+  // client. Reading "am I hydrated?" as an external store keeps that out of an
+  // effect, which would otherwise set state on every mount.
+  const mounted = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   return (
     <Button

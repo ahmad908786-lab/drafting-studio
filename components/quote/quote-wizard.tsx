@@ -82,6 +82,9 @@ export function QuoteWizard({
       serviceSlugs: Array.from(new Set([...(base.serviceSlugs ?? []), ...initialServices])),
       industrySlug: base.industrySlug || initialIndustry,
     };
+    // localStorage only exists on the client, so the saved draft cannot be read
+    // until after mount — an effect is the only place this can happen.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setState(merged);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -389,7 +392,7 @@ export function QuoteWizard({
         {step === 3 && (
           <div>
             <h2 className="font-sans text-xl font-bold text-foreground">Where should we send the quote?</h2>
-            <p className="mt-1 text-sm text-muted-foreground">We'll reply within one business day.</p>
+            <p className="mt-1 text-sm text-muted-foreground">We&apos;ll reply within one business day.</p>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <Label htmlFor="name">Name *</Label>
