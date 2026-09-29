@@ -3,7 +3,7 @@ import { PageHero } from "@/components/shared/page-hero";
 import { Mdx } from "@/components/mdx/mdx";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { ShareBar } from "@/components/blog/share-bar";
-import { PostMeta, AuthorCard, RelatedPosts, TagRow } from "@/components/blog/post-parts";
+import { PostMeta, RelatedPosts, TagRow } from "@/components/blog/post-parts";
 import { CtaBand } from "@/components/shared/cta-band";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
@@ -17,7 +17,7 @@ export function StandardTemplate({ post, toc, related }: TemplateProps) {
         description={post.excerpt}
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.category?.name ?? "Article" }]}
       >
-        <PostMeta author={post.author} publishedAt={post.publishedAt} readMinutes={post.readMinutes} className="[&_*]:text-primary-foreground/80 [&_.text-foreground]:text-white" />
+        <PostMeta publishedAt={post.publishedAt} readMinutes={post.readMinutes} className="[&_*]:text-primary-foreground/80 [&_.text-foreground]:text-white" />
       </PageHero>
 
       <div className="container-page py-10">
@@ -41,7 +41,6 @@ export function StandardTemplate({ post, toc, related }: TemplateProps) {
               <TagRow tags={post.tags} />
             </div>
             <div className="mt-6 flex items-center justify-between gap-4">
-              <AuthorCard author={post.author} />
               <ShareBar title={post.title} className="lg:hidden" />
             </div>
           </div>

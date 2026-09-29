@@ -12,7 +12,7 @@ export type PostForTemplate = {
   template: string;
   meta: unknown;
   category: { name: string; slug: string; color: string } | null;
-  author: { name: string | null; image: string | null; title: string | null } | null;
+  author: { name: string | null; image: string | null; title: string | null } | null; // kept for API compat; not rendered
   tags: { slug: string; name: string }[];
 };
 

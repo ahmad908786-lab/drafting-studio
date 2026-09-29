@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Mdx } from "@/components/mdx/mdx";
 import { ShareBar } from "@/components/blog/share-bar";
-import { AuthorCard, RelatedPosts, PostMeta, TagRow } from "@/components/blog/post-parts";
+import { RelatedPosts, PostMeta, TagRow } from "@/components/blog/post-parts";
 import { CtaBand } from "@/components/shared/cta-band";
 import type { TemplateProps } from "@/components/blog/templates/types";
 
@@ -22,7 +22,7 @@ export function EditorialTemplate({ post, related }: TemplateProps) {
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-muted-foreground">{post.excerpt}</p>
           <div className="mt-6 flex justify-center">
-            <PostMeta author={post.author} publishedAt={post.publishedAt} readMinutes={post.readMinutes} />
+            <PostMeta publishedAt={post.publishedAt} readMinutes={post.readMinutes} />
           </div>
         </div>
       </header>
@@ -44,7 +44,6 @@ export function EditorialTemplate({ post, related }: TemplateProps) {
         <div className="mt-12 flex flex-col items-center gap-6 border-t border-border pt-8">
           <TagRow tags={post.tags} />
           <ShareBar title={post.title} />
-          <AuthorCard author={post.author} />
         </div>
       </div>
 

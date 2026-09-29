@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: post.seoTitle ?? post.title,
     description: post.seoDesc ?? post.excerpt,
-    authors: post.author?.name ? [{ name: post.author.name }] : [],
+    authors: [],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
@@ -92,7 +92,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     tags: post.tags.map((t) => ({ slug: t.slug, name: t.name })),
   };
 
-  const authorName = post.author?.name;
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -100,9 +99,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     description: post.excerpt,
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
-    author: authorName
-      ? { "@type": "Person", name: authorName }
-      : { "@type": "Organization", name: "Drafting Studio" },
+    author: { "@type": "Organization", name: "Drafting Studio" },
     publisher: { "@type": "Organization", name: "Drafting Studio" },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
     image: post.coverImage ? [absoluteUrl(post.coverImage)] : [],

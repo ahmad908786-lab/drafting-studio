@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FileDown, BookOpen, Wrench } from "lucide-react";
 import { Mdx } from "@/components/mdx/mdx";
 import { ShareBar } from "@/components/blog/share-bar";
-import { PostMeta, AuthorCard, RelatedPosts, TagRow } from "@/components/blog/post-parts";
+import { PostMeta, RelatedPosts, TagRow } from "@/components/blog/post-parts";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand } from "@/components/shared/cta-band";
@@ -24,7 +24,7 @@ export function TechnicalGuideTemplate({ post, toc, related }: TemplateProps) {
           <Badge variant="accent" className="mb-3 gap-1.5"><BookOpen className="size-3.5" /> Technical Guide</Badge>
           <h1 className="max-w-3xl text-balance font-sans text-3xl font-extrabold tracking-tight sm:text-4xl">{post.title}</h1>
           <p className="mt-3 max-w-2xl text-lg text-primary-foreground/80">{post.excerpt}</p>
-          <PostMeta author={post.author} publishedAt={post.publishedAt} readMinutes={post.readMinutes} className="mt-5 [&_*]:text-primary-foreground/80 [&_.text-foreground]:text-white" />
+          <PostMeta publishedAt={post.publishedAt} readMinutes={post.readMinutes} className="mt-5 [&_*]:text-primary-foreground/80 [&_.text-foreground]:text-white" />
         </div>
       </header>
 
@@ -72,7 +72,6 @@ export function TechnicalGuideTemplate({ post, toc, related }: TemplateProps) {
             <TagRow tags={post.tags} />
           </div>
           <div className="mt-6">
-            <AuthorCard author={post.author} />
           </div>
         </div>
       </div>

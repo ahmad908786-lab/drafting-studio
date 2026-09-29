@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Link2 } from "lucide-react";
 import { Mdx } from "@/components/mdx/mdx";
 import { ShareBar } from "@/components/blog/share-bar";
-import { AuthorCard, RelatedPosts, PostMeta } from "@/components/blog/post-parts";
+import { RelatedPosts, PostMeta } from "@/components/blog/post-parts";
 import { Badge } from "@/components/ui/badge";
 import { CtaBand } from "@/components/shared/cta-band";
 import type { TemplateProps } from "@/components/blog/templates/types";
@@ -25,7 +25,7 @@ export function CaseStudyTemplate({ post, related }: TemplateProps) {
           <Badge variant="accent" className="mb-3">Case Study</Badge>
           <h1 className="max-w-3xl text-balance font-sans text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">{post.title}</h1>
           <p className="mt-4 max-w-2xl text-lg text-primary-foreground/85">{post.excerpt}</p>
-          <PostMeta author={post.author} publishedAt={post.publishedAt} readMinutes={post.readMinutes} className="mt-5 [&_*]:text-primary-foreground/80 [&_.text-foreground]:text-white" />
+          <PostMeta publishedAt={post.publishedAt} readMinutes={post.readMinutes} className="mt-5 [&_*]:text-primary-foreground/80 [&_.text-foreground]:text-white" />
         </div>
       </header>
 
@@ -49,7 +49,6 @@ export function CaseStudyTemplate({ post, related }: TemplateProps) {
         </div>
         <aside className="lg:pt-2">
           <div className="sticky top-24 space-y-5">
-            <AuthorCard author={post.author} />
             <div className="rounded-xl border border-border bg-card p-5">
               <ShareBar title={post.title} />
             </div>
