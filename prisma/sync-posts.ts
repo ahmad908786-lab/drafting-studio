@@ -3,9 +3,12 @@
  * without the full reseed a new post would otherwise need.
  *
  * Existing posts are left alone — edits made in the admin are not overwritten.
+ * Pass --refresh to also rewrite the editorial copy of existing posts from the
+ * content file (title, excerpt, body, tags). Publishing state, view counts and
+ * cover images are always preserved, since those are owned elsewhere.
  * Missing categories are created first so a new post's category always resolves.
  *
- * Usage:  npx tsx prisma/sync-posts.ts
+ * Usage:  npx tsx prisma/sync-posts.ts [--refresh]
  */
 import { PrismaClient } from "@prisma/client";
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -42,11 +45,40 @@ async function main() {
     (await prisma.user.findFirst({ where: { role: "ADMIN" }, select: { id: true } }));
   if (!author) throw new Error("No staff or admin user to attribute posts to — seed the database first.");
 
+  const refresh = process.argv.includes("--refresh");
   const existing = new Set((await prisma.post.findMany({ select: { slug: true } })).map((p) => p.slug));
   let added = 0;
+  let refreshed = 0;
 
   for (const post of POSTS) {
-    if (existing.has(post.slug)) continue;
+    if (existing.has(post.slug)) {
+      if (!refresh) continue;
+      const row = await prisma.post.findUnique({ where: { slug: post.slug }, select: { bodyMdx: true } });
+      if (row?.bodyMdx === post.bodyMdx) continue;
+      await prisma.post.update({
+        where: { slug: post.slug },
+        data: {
+          title: post.title,
+          excerpt: post.excerpt,
+          bodyMdx: post.bodyMdx,
+          template: post.template,
+          readMinutes: post.readMinutes,
+          seoTitle: post.title,
+          seoDesc: post.excerpt,
+          meta: (post.meta ?? {}) as never,
+          category: { connect: { slug: post.category } },
+          tags: {
+            set: [],
+            connectOrCreate: post.tags.map((t) => ({
+              where: { slug: slugify(t) },
+              create: { slug: slugify(t), name: t },
+            })),
+          },
+        },
+      });
+      refreshed++;
+      continue;
+    }
     const cover =
       blogPhoto(post.slug) ??
       writeSvg(

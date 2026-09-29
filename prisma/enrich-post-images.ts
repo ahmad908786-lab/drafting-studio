@@ -64,7 +64,15 @@ function countOccurrences(haystack: string, needle: string): number {
 }
 
 async function main() {
-  const captions = JSON.parse(readFileSync(CAPTIONS_PATH, "utf8")) as Record<string, string>;
+  // Captions are only needed to write a figure into posts.ts for the first
+  // time. Once that has happened the captions live in posts.ts itself, so a
+  // checkout without the file can still sync the database.
+  let captions: Record<string, string> = {};
+  try {
+    captions = JSON.parse(readFileSync(CAPTIONS_PATH, "utf8")) as Record<string, string>;
+  } catch {
+    console.log(`No captions at ${CAPTIONS_PATH} — syncing already-enriched posts only.`);
+  }
   let fileText = readFileSync(POSTS_PATH, "utf8");
 
   let fileUpdated = 0;
@@ -74,13 +82,14 @@ async function main() {
 
   for (const post of POSTS) {
     const caption = captions[post.slug];
-    if (!caption) {
+    const alreadyEnriched = post.bodyMdx.includes(INLINE_MARKER);
+    if (!caption && !alreadyEnriched) {
       missing.push(post.slug);
       continue;
     }
 
     let newBody: string;
-    if (post.bodyMdx.includes(INLINE_MARKER)) {
+    if (alreadyEnriched) {
       newBody = post.bodyMdx; // already enriched in source
     } else {
       const oldBody = post.bodyMdx;
