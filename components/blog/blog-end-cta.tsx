@@ -3,9 +3,24 @@ import { ArrowRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { PostForTemplate } from "@/components/blog/templates/types";
 
+/**
+ * Category names are navigation labels, so several of them read badly dropped
+ * into a sentence — "permit-ready Design & Drafting drawings". These are the
+ * same categories phrased as the work itself.
+ */
+const DISCIPLINE_BY_CATEGORY: Record<string, string> = {
+  "design-drafting": "2D AutoCAD",
+  electrical: "electrical",
+  "hvac-plumbing": "HVAC and plumbing",
+  "fire-protection": "fire protection",
+  lighting: "lighting and photometric",
+  franchise: "multi-site rollout",
+};
+
 /** End-of-article CTA: "Need similar drawings?" contextualized to the post's category. */
 export function BlogEndCta({ post }: { post: PostForTemplate }) {
-  const discipline = post.category?.name ?? "MEP";
+  const slug = post.category?.slug;
+  const discipline = (slug && DISCIPLINE_BY_CATEGORY[slug]) || post.category?.name || "MEP";
   return (
     <section className="container-page pb-4">
       <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-muted/40 p-8 text-center sm:p-10">
