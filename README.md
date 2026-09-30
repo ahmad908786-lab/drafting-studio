@@ -141,14 +141,26 @@ npm run db:reset    # wipe and re-seed — destroys all data
 
 ## Deploying
 
-1. Set `datasource.provider = "postgresql"` in `prisma/schema.prisma`.
-2. Point `DATABASE_URL` at Postgres; set a real `AUTH_SECRET` and
-   `NEXT_PUBLIC_SITE_URL` (the latter drives canonicals and OG URLs).
-3. `npx prisma migrate deploy`, then `npm run db:seed` on a fresh database.
-4. Set the SMTP vars. Without them, submissions still persist — the message is
+Production builds run `next build --webpack`. Turbopack panics in some build
+containers when it spawns the Node subprocess for PostCSS; webpack runs PostCSS
+in-process. Dev still uses Turbopack.
+
+1. **Set `NEXT_PUBLIC_SITE_URL` to the live origin before you build.**
+   `NEXT_PUBLIC_*` values are inlined at build time, not read at runtime, so a
+   bundle built with the default bakes `http://localhost:3000` into every
+   canonical tag, OG url and sitemap entry. Nothing errors — the pages just
+   tell Google they live on localhost.
+2. Set `datasource.provider = "postgresql"` in `prisma/schema.prisma` and point
+   `DATABASE_URL` at Postgres. SQLite is a gitignored local file: a fresh
+   deploy has no database at all, and on hosts with an ephemeral filesystem
+   anything written to it is lost on restart.
+3. Generate a real `AUTH_SECRET` (`npx auth secret`) and set `NEXTAUTH_URL` to
+   the live origin. The committed dev secret must not ship.
+4. `npx prisma migrate deploy`, then `npm run db:seed` on a fresh database.
+5. Set the SMTP vars. Without them, submissions still persist — the message is
    logged to the server console instead of sent.
-5. Swap the local `StorageAdapter` in `lib/storage.ts` for S3, Vercel Blob or
-   UploadThing.
+6. Swap the local `StorageAdapter` in `lib/storage.ts` for S3, Vercel Blob or
+   UploadThing. Local disk writes will not survive a redeploy.
 
 ## Notes
 
