@@ -1,12 +1,14 @@
-import { mkdir, writeFile } from "node:fs/promises";
-import { join } from "node:path";
-import { randomUUID } from "node:crypto";
+import { prisma } from "@/lib/db";
 import { MAX_UPLOAD_MB, ALLOWED_EXT } from "@/lib/upload-config";
 
 /**
- * Storage abstraction. The default writes to /public/uploads so the dev app has
- * no external dependency. Swap this implementation for S3 / UploadThing / Vercel
- * Blob in production by implementing the same `put` contract.
+ * Storage abstraction. Uploads are stored in the database (StoredFile +
+ * StoredFileChunk) and served by app/files/[id]/[name]/route.ts.
+ *
+ * Why not disk: Hostinger rebuilds the app into a fresh directory on every
+ * deploy, so anything written under /public is wiped — and Next.js only serves
+ * /public files that existed at build time anyway. The database survives every
+ * build. To move to S3 / R2 later, implement the same `put` contract.
  */
 export interface StorageAdapter {
   put(file: File, folder?: string): Promise<{ url: string; name: string; size: number; type: string }>;
@@ -36,25 +38,39 @@ function extAllowed(name: string): boolean {
   return ALLOWED_EXT.some((e) => lower.endsWith(e));
 }
 
-class LocalStorageAdapter implements StorageAdapter {
+/** Rows stay well under MySQL's max_allowed_packet. */
+const CHUNK_BYTES = 2 * 1024 * 1024;
+
+class DatabaseStorageAdapter implements StorageAdapter {
   async put(file: File, folder = "rfq") {
     if (file.size > MAX_BYTES) throw new Error(`File exceeds ${MAX_UPLOAD_MB}MB limit`);
     if (!ALLOWED.has(file.type) && !extAllowed(file.name)) {
       throw new Error("Unsupported file type");
     }
-    const dir = join(process.cwd(), "public", "uploads", folder);
-    await mkdir(dir, { recursive: true });
-    const id = randomUUID().slice(0, 8);
-    const filename = `${id}-${safeName(file.name)}`;
     const bytes = Buffer.from(await file.arrayBuffer());
-    await writeFile(join(dir, filename), bytes);
+    const mimeType = file.type || "application/octet-stream";
+
+    const stored = await prisma.storedFile.create({
+      data: { name: file.name.slice(0, 190), mimeType, sizeBytes: bytes.length, folder },
+    });
+    try {
+      for (let i = 0, index = 0; i < bytes.length; i += CHUNK_BYTES, index++) {
+        await prisma.storedFileChunk.create({
+          data: { fileId: stored.id, index, data: bytes.subarray(i, i + CHUNK_BYTES) },
+        });
+      }
+    } catch (e) {
+      await prisma.storedFile.delete({ where: { id: stored.id } }).catch(() => {});
+      throw e;
+    }
+
     return {
-      url: `/uploads/${folder}/${filename}`,
+      url: `/files/${stored.id}/${safeName(file.name)}`,
       name: file.name,
       size: file.size,
-      type: file.type || "application/octet-stream",
+      type: mimeType,
     };
   }
 }
 
-export const storage: StorageAdapter = new LocalStorageAdapter();
+export const storage: StorageAdapter = new DatabaseStorageAdapter();
