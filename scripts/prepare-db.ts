@@ -37,6 +37,17 @@ async function main() {
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not set. Add it in Hostinger → Environment variables.");
   }
+  // Placeholders were added in Hostinger first; fail loudly until they're replaced
+  // rather than building with a guessable admin password or a fake auth secret.
+  const placeholders = ["DATABASE_URL", "AUTH_SECRET", "ADMIN_EMAIL", "ADMIN_PASSWORD"].filter((k) =>
+    process.env[k]?.includes("CHANGE_ME"),
+  );
+  if (placeholders.length) {
+    throw new Error(`Replace the CHANGE_ME placeholder in: ${placeholders.join(", ")} (Hostinger → Environment variables).`);
+  }
+  if (process.env.ADMIN_PASSWORD && process.env.ADMIN_PASSWORD.length < 10) {
+    throw new Error("ADMIN_PASSWORD must be at least 10 characters.");
+  }
 
   run("npx prisma db push --skip-generate");
 
