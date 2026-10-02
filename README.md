@@ -10,7 +10,7 @@ A marketing site, client portal and admin dashboard for **Drafting Studio**, a U
 
 - **Next.js 16.3** (App Router, RSC, Server Actions, Turbopack) on **React 19** + TypeScript 5
 - **Tailwind CSS v4** with hand-built shadcn-style components over Radix primitives
-- **Prisma 6** → SQLite in dev, Postgres in production (same schema)
+- **Prisma 6** → MySQL / MariaDB (Hostinger)
 - **Auth.js v5** credentials auth, roles `ADMIN` / `STAFF` / `CLIENT`, enforced in middleware
 - **next-mdx-remote** renders article bodies server-side; **react-markdown** drives the admin editor's live preview
 - **sharp** for image processing, **nodemailer** for mail, **Recharts** for the admin RFQ chart
@@ -19,8 +19,8 @@ A marketing site, client portal and admin dashboard for **Drafting Studio**, a U
 
 ```bash
 npm install
-cp .env.example .env          # then set AUTH_SECRET (npx auth secret)
-npm run db:push               # create the SQLite schema
+cp .env.example .env          # set DATABASE_URL (any MySQL) and AUTH_SECRET
+npm run db:push               # create the schema
 npm run db:seed               # seed content + demo accounts
 npm run dev                   # http://localhost:3000
 ```
@@ -139,28 +139,35 @@ npm run db:studio   # Prisma Studio
 npm run db:reset    # wipe and re-seed — destroys all data
 ```
 
-## Deploying
+## Deploying (Hostinger)
 
-Production builds run `next build --webpack`. Turbopack panics in some build
-containers when it spawns the Node subprocess for PostCSS; webpack runs PostCSS
-in-process. Dev still uses Turbopack.
+Hostinger builds from GitHub on every push to `main`. `npm run build` is
+`db:prepare` + `next build --webpack`:
 
-1. **Set `NEXT_PUBLIC_SITE_URL` to the live origin before you build.**
-   `NEXT_PUBLIC_*` values are inlined at build time, not read at runtime, so a
-   bundle built with the default bakes `http://localhost:3000` into every
-   canonical tag, OG url and sitemap entry. Nothing errors — the pages just
-   tell Google they live on localhost.
-2. Set `datasource.provider = "postgresql"` in `prisma/schema.prisma` and point
-   `DATABASE_URL` at Postgres. SQLite is a gitignored local file: a fresh
-   deploy has no database at all, and on hosts with an ephemeral filesystem
-   anything written to it is lost on restart.
-3. Generate a real `AUTH_SECRET` (`npx auth secret`) and set `NEXTAUTH_URL` to
-   the live origin. The committed dev secret must not ship.
-4. `npx prisma migrate deploy`, then `npm run db:seed` on a fresh database.
-5. Set the SMTP vars. Without them, submissions still persist — the message is
-   logged to the server console instead of sent.
-6. Swap the local `StorageAdapter` in `lib/storage.ts` for S3, Vercel Blob or
-   UploadThing. Local disk writes will not survive a redeploy.
+- `scripts/prepare-db.ts` runs `prisma db push`, seeds **once** if the content
+  tables are empty, and disables the demo logins once `ADMIN_EMAIL` /
+  `ADMIN_PASSWORD` are set. The build needs the DB because
+  `generateStaticParams` queries it.
+- Webpack, not Turbopack: Turbopack panics in Hostinger's build container
+  when it spawns the Node subprocess for PostCSS.
+
+Required env vars (Hostinger → Environment variables; see `.env.example`):
+`DATABASE_URL`, `AUTH_SECRET`, `AUTH_TRUST_HOST`, `NEXTAUTH_URL`,
+`NEXT_PUBLIC_SITE_URL` (inlined at build time — set it before building),
+`ADMIN_EMAIL`, `ADMIN_PASSWORD`. SMTP vars are optional.
+
+The database is the Hostinger MySQL DB with **Remote MySQL** enabled, so the
+build container (and your PC, for `db:studio` or syncs) can reach it.
+
+### Images
+
+- Site images (`public/projects`, `public/generated`, `public/hero`) are
+  committed to git, so every build ships them.
+- **Uploads** (admin media library, RFQ files, portal files) are stored in the
+  database (`StoredFile` / `StoredFileChunk`) and served from
+  `/files/<id>/<name>`. Hostinger rebuilds into a fresh directory on each
+  deploy, so anything written to disk would vanish — never write uploads
+  to `public/`.
 
 ## Notes
 

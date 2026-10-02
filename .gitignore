@@ -51,3 +51,6 @@ next-env.d.ts
 
 # office lock files
 ~$*
+
+# ...except the template, which documents every variable
+!.env.example
