@@ -105,8 +105,7 @@ function AdminShell({
   const SidebarContent = (
     <div className="flex h-full flex-col bg-[#0b1e3f] text-white">
       <div className="flex h-16 shrink-0 items-center border-b border-white/10 px-5">
-        <Logo showText={false} />
-        <span className="ml-2.5 font-sans text-sm font-extrabold tracking-tight">Drafting Studio</span>
+        <Logo tone="light" />
       </div>
       <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-4">
         {groups.map((g, gi) => (
@@ -227,8 +226,7 @@ function PortalShell({
         <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-3 px-4 sm:px-6">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2.5">
-              <Logo showText={false} href="/portal" />
-              <Link href="/portal" className="font-sans text-[15px] font-extrabold tracking-tight text-foreground">Drafting Studio</Link>
+              <Logo href="/portal" />
               <span className="hidden rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary sm:inline">Client</span>
             </div>
             <nav className="hidden items-center gap-1 md:flex">
