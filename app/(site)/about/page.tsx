@@ -32,14 +32,6 @@ const aboutJsonLd = [
     description: brand.descriptor,
     email: brand.contact.email,
     areaServed: "US",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: brand.contact.addressLine1,
-      addressLocality: brand.contact.city,
-      addressRegion: brand.contact.state,
-      postalCode: brand.contact.zip,
-      addressCountry: "US",
-    },
     sameAs: [brand.socials.linkedin, brand.socials.facebook, brand.socials.instagram],
   },
 ];

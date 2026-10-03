@@ -24,20 +24,18 @@ export const brand = {
   contact: {
     phonePrimary: "",
     phoneSecondary: "",
+    whatsapp: "923030143281",
     email: "info@draftingstudio.org",
     supportEmail: "info@draftingstudio.org",
-    addressLine1: "1180 Avenue of the Americas",
-    addressLine2: "Suite 800",
-    city: "New York",
-    state: "NY",
-    zip: "10036",
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
+    state: "",
+    zip: "",
     hours: "Mon–Fri, 8am–7pm ET",
   },
 
-  offices: [
-    { city: "New York", line1: "1180 Avenue of the Americas, Suite 800", region: "New York, NY 10036" },
-    { city: "Miami", line1: "78 SW 7th Street, Floor 5", region: "Miami, FL 33130" },
-  ],
+  offices: [],
 
   socials: {
     linkedin: "https://linkedin.com/company/drafting-studio",

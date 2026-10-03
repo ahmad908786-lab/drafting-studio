@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { JsonLd } from "@/components/seo/json-ld";
-import { getSettings } from "@/lib/queries";
+import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
 import { absoluteUrl } from "@/lib/utils";
+import { whatsappUrl, whatsappDisplay } from "@/lib/whatsapp";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
@@ -23,21 +24,10 @@ const contactJsonLd = {
   email: brand.contact.email,
   areaServed: "US",
   openingHours: "Mo-Fr 08:00-19:00",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: brand.contact.addressLine1,
-    addressLocality: brand.contact.city,
-    addressRegion: brand.contact.state,
-    postalCode: brand.contact.zip,
-    addressCountry: "US",
-  },
   sameAs: [brand.socials.linkedin, brand.socials.facebook, brand.socials.instagram],
 };
 
-export default async function ContactPage() {
-  const settings = await getSettings();
-  const offices = (settings?.offices as { city: string; line1: string; region: string; phone: string }[]) ?? brand.offices;
-
+export default function ContactPage() {
   return (
     <>
       <JsonLd data={contactJsonLd} />
@@ -69,6 +59,17 @@ export default async function ContactPage() {
               <h3 className="mb-3 text-sm font-bold text-foreground">Reach us</h3>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-3">
+                  <WhatsAppIcon className="size-4 text-[#25D366]" />
+                  <a
+                    href={whatsappUrl("Hi Drafting Studio! I need a quote for 2D CAD drafting.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary"
+                  >
+                    WhatsApp: {whatsappDisplay()}
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
                   <Mail className="size-4 text-primary" />
                   <a href={`mailto:${brand.contact.email}`} className="hover:text-primary">{brand.contact.email}</a>
                 </li>
@@ -77,14 +78,6 @@ export default async function ContactPage() {
                 </li>
               </ul>
             </div>
-            {offices.map((o) => (
-              <div key={o.city} className="rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-                  <MapPin className="size-4 text-primary" /> {o.city}
-                </div>
-                <p className="mt-1.5 text-sm text-muted-foreground">{o.line1}<br />{o.region}</p>
-              </div>
-            ))}
           </aside>
         </div>
       </section>

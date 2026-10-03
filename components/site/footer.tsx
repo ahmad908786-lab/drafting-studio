@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { getNavData } from "@/lib/queries";
 import { INDUSTRIES } from "@/lib/taxonomy";
@@ -22,10 +22,6 @@ export async function SiteFooter() {
             <a href={`mailto:${brand.contact.email}`} className="inline-flex items-center gap-2 hover:text-accent">
               <Mail className="size-4" /> {brand.contact.email}
             </a>
-            <span className="inline-flex items-start gap-2">
-              <MapPin className="mt-0.5 size-4 shrink-0" />
-              {brand.contact.addressLine1}, {brand.contact.city}, {brand.contact.state}
-            </span>
           </div>
           <div className="mt-5 flex gap-2">
             <SocialLink href={brand.socials.linkedin} label="LinkedIn">

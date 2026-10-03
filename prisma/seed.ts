@@ -306,10 +306,7 @@ async function main() {
       tagline: "2D AutoCAD Drafting for MEP, Fire Protection & Lighting",
       phones: [] as any,
       emails: ["info@draftingstudio.org"] as any,
-      offices: [
-        { city: "New York", line1: "1180 Avenue of the Americas, Suite 800", region: "New York, NY 10036" },
-        { city: "Miami", line1: "78 SW 7th Street, Floor 5", region: "Miami, FL 33130" },
-      ] as any,
+      offices: [] as any,
       socials: { linkedin: "https://linkedin.com/company/drafting-studio", facebook: "https://facebook.com", instagram: "https://instagram.com" } as any,
       stats: [
         { value: "6,200+", label: "Drawing Sets Delivered" },
