@@ -30,7 +30,6 @@ const aboutJsonLd = [
     name: brand.name,
     url: absoluteUrl("/about"),
     description: brand.descriptor,
-    telephone: brand.contact.phonePrimary,
     email: brand.contact.email,
     areaServed: "US",
     address: {

@@ -304,11 +304,11 @@ async function main() {
       id: "singleton",
       brand: "Drafting Studio",
       tagline: "2D AutoCAD Drafting for MEP, Fire Protection & Lighting",
-      phones: ["(212) 555-0142", "(786) 555-0198"] as any,
-      emails: ["sales@draftingstudio.example", "support@draftingstudio.example"] as any,
+      phones: [] as any,
+      emails: ["info@draftingstudio.org"] as any,
       offices: [
-        { city: "New York", line1: "1180 Avenue of the Americas, Suite 800", region: "New York, NY 10036", phone: "(212) 555-0142" },
-        { city: "Miami", line1: "78 SW 7th Street, Floor 5", region: "Miami, FL 33130", phone: "(786) 555-0198" },
+        { city: "New York", line1: "1180 Avenue of the Americas, Suite 800", region: "New York, NY 10036" },
+        { city: "Miami", line1: "78 SW 7th Street, Floor 5", region: "Miami, FL 33130" },
       ] as any,
       socials: { linkedin: "https://linkedin.com/company/drafting-studio", facebook: "https://facebook.com", instagram: "https://instagram.com" } as any,
       stats: [

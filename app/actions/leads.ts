@@ -175,7 +175,7 @@ export async function requestMeeting(_prev: ActionResult | null, formData: FormD
         "reply within one business day to confirm the slot or offer the nearest",
         "alternative, and you'll get a calendar invite once it's set.",
         "",
-        `Need us sooner? Call ${brand.contact.phonePrimary} or reply to this email.`,
+        `Need us sooner? Email us at ${brand.contact.email} or reply to this email.`,
         "",
         `— ${brand.name}`,
         brand.contact.email,

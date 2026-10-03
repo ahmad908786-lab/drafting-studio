@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -20,7 +20,6 @@ const contactJsonLd = {
   name: brand.name,
   url: absoluteUrl("/contact"),
   description: "Contact Drafting Studio — request a fixed-price 2D AutoCAD drafting quote or ask about MEP, fire protection and lighting drafting services.",
-  telephone: brand.contact.phonePrimary,
   email: brand.contact.email,
   areaServed: "US",
   openingHours: "Mo-Fr 08:00-19:00",
@@ -69,10 +68,6 @@ export default async function ContactPage() {
             <div className="rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
               <h3 className="mb-3 text-sm font-bold text-foreground">Reach us</h3>
               <ul className="space-y-3 text-sm">
-                <li className="flex items-center gap-3">
-                  <Phone className="size-4 text-primary" />
-                  <a href={`tel:${brand.contact.phonePrimary.replace(/[^\d+]/g, "")}`} className="hover:text-primary">{brand.contact.phonePrimary}</a>
-                </li>
                 <li className="flex items-center gap-3">
                   <Mail className="size-4 text-primary" />
                   <a href={`mailto:${brand.contact.email}`} className="hover:text-primary">{brand.contact.email}</a>

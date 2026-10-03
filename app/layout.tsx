@@ -59,12 +59,10 @@ const orgJsonLd = {
   description: brand.descriptor,
   url: absoluteUrl(),
   email: brand.contact.email,
-  telephone: brand.contact.phonePrimary,
   areaServed: "US",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    telephone: brand.contact.phonePrimary,
     email: brand.contact.email,
     areaServed: "US",
   },

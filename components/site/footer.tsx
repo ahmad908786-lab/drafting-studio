@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { getNavData } from "@/lib/queries";
 import { INDUSTRIES } from "@/lib/taxonomy";
@@ -19,9 +19,6 @@ export async function SiteFooter() {
             Nationwide 2D AutoCAD design &amp; drafting for engineering firms, contractors, architects and developers. Electrical, HVAC, plumbing, fire protection and lighting — permit-ready.
           </p>
           <div className="mt-5 flex flex-col gap-2 text-sm text-primary-foreground/80">
-            <a href={`tel:${brand.contact.phonePrimary.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-2 hover:text-accent">
-              <Phone className="size-4" /> {brand.contact.phonePrimary}
-            </a>
             <a href={`mailto:${brand.contact.email}`} className="inline-flex items-center gap-2 hover:text-accent">
               <Mail className="size-4" /> {brand.contact.email}
             </a>

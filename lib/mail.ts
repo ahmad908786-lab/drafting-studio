@@ -33,5 +33,5 @@ export async function sendMail(opts: { to: string; subject: string; text: string
 }
 
 export function leadsInbox(): string {
-  return process.env.LEADS_INBOX || process.env.SMTP_USER || "sales@draftingstudio.example";
+  return process.env.LEADS_INBOX || process.env.SMTP_USER || "info@draftingstudio.org";
 }

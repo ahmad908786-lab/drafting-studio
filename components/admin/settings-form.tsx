@@ -43,7 +43,7 @@ export function SettingsForm({ initial }: { initial: { brand: string; tagline: s
       </Card>
 
       <Card title="Contact">
-        <ListEditor label="Phone numbers" items={phones} setItems={setPhones} placeholder="(212) 555-0142" />
+        <ListEditor label="Phone numbers" items={phones} setItems={setPhones} placeholder="+1 (555) 000-0000" />
         <div className="mt-4"><ListEditor label="Emails" items={emails} setItems={setEmails} placeholder="sales@example.com" /></div>
       </Card>
 

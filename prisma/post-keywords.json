@@ -1,0 +1,636 @@
+[
+ {
+  "slug": "commercial-hvac-design-requirements-2026-usa",
+  "title": "2026 HVAC Design Requirements for Commercial Buildings in the USA",
+  "seoTitle": "2026 HVAC Design Requirements for Commercial Buildings in the USA",
+  "tags": [
+   "IECC",
+   "HVAC",
+   "commercial",
+   "ASHRAE 90.1"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "what-makes-mep-drawings-permit-ready",
+  "title": "What Makes an MEP Drawing Set Truly Permit-Ready?",
+  "seoTitle": "What Makes an MEP Drawing Set Truly Permit-Ready?",
+  "tags": [
+   "mep drafting",
+   "permit sets",
+   "plan review",
+   "drawing standards"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "residential-hvac-cooling-load-calculation",
+  "title": "How to Calculate HVAC Cooling Load for a Residential Building",
+  "seoTitle": "How to Calculate HVAC Cooling Load for a Residential Building",
+  "tags": [
+   "Manual-J",
+   "cooling load",
+   "residential"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "clearing-mep-plan-review-corrections",
+  "title": "How to Clear MEP Plan-Review Corrections Without Losing Weeks",
+  "seoTitle": "How to Clear MEP Plan-Review Corrections Without Losing Weeks",
+  "tags": [
+   "plan review",
+   "corrections",
+   "resubmittal",
+   "permit process"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "manual-j-vs-manual-s-vs-manual-d",
+  "title": "Manual J vs Manual S vs Manual D: Complete Guide",
+  "seoTitle": "Manual J vs Manual S vs Manual D: Complete Guide",
+  "tags": [
+   "Manual-J",
+   "Manual S",
+   "Manual D",
+   "ACCA"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "pdf-to-cad-conversion-permit-ready",
+  "title": "PDF to CAD Conversion: Getting Legacy Drawings Permit-Ready Again",
+  "seoTitle": "PDF to CAD Conversion: Getting Legacy Drawings Permit-Ready Again",
+  "tags": [
+   "pdf to cad",
+   "as-builts",
+   "legacy drawings",
+   "cad conversion"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "heat-pump-vs-gas-furnace-design",
+  "title": "Heat Pump vs Gas Furnace: HVAC Design Considerations",
+  "seoTitle": "Heat Pump vs Gas Furnace: HVAC Design Considerations",
+  "tags": [
+   "heat pump",
+   "furnace",
+   "electrification"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "cad-layer-sheet-standards-multi-discipline",
+  "title": "7 CAD Layer and Sheet Standards That Keep Multi-Discipline Sets Clean",
+  "seoTitle": "7 CAD Layer and Sheet Standards That Keep Multi-Discipline Sets Clean",
+  "tags": [
+   "cad standards",
+   "layer management",
+   "sheet setup",
+   "multi-discipline"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "why-2d-autocad-still-wins-for-permit-drafting",
+  "title": "Why 2D AutoCAD Still Wins for Permit Drafting",
+  "seoTitle": "Why 2D AutoCAD Still Wins for Permit Drafting",
+  "tags": [
+   "AutoCAD",
+   "workflow",
+   "permitting"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "sizing-hvac-system-new-construction-home",
+  "title": "How to Size an HVAC System for a New Construction Home",
+  "seoTitle": "How to Size an HVAC System for a New Construction Home",
+  "tags": [
+   "Manual-J",
+   "system sizing",
+   "new construction"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "electrical-room-layouts-that-pass-plan-review",
+  "title": "Electrical Room Layouts That Pass Plan Review",
+  "seoTitle": "Electrical Room Layouts That Pass Plan Review",
+  "tags": [
+   "plan review",
+   "electrical-room",
+   "nec-110-26"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "hvac-equipment-sizing-iecc-ashrae-90-1",
+  "title": "HVAC Equipment Sizing Requirements Under IECC & ASHRAE 90.1",
+  "seoTitle": "HVAC Equipment Sizing Requirements Under IECC & ASHRAE 90.1",
+  "tags": [
+   "IECC",
+   "ASHRAE 90.1",
+   "equipment sizing"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "ev-charging-permit-drawings-what-ahjs-want-to-see",
+  "title": "EV Charging Permit Drawings: What AHJs Want to See",
+  "seoTitle": "EV Charging Permit Drawings: What AHJs Want to See",
+  "tags": [
+   "ev-charging",
+   "evse",
+   "permit-drawings"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "2024-iecc-vs-ashrae-90-1-mep-guide",
+  "title": "2024 IECC vs ASHRAE 90.1: What MEP Designers Need to Know",
+  "seoTitle": "2024 IECC vs ASHRAE 90.1: What MEP Designers Need to Know",
+  "tags": [
+   "ASHRAE 90.1",
+   "IECC 2024",
+   "energy code"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "panel-schedule-mistakes-that-trigger-plan-review-corrections",
+  "title": "7 Panel Schedule Mistakes That Trigger Plan-Review Corrections",
+  "seoTitle": "7 Panel Schedule Mistakes That Trigger Plan-Review Corrections",
+  "tags": [
+   "plan review",
+   "corrections",
+   "panel-schedule"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "commercial-hvac-rtu-vs-vrf-vs-split",
+  "title": "Commercial HVAC Design: RTU vs VRF vs Split System",
+  "seoTitle": "Commercial HVAC Design: RTU vs VRF vs Split System",
+  "tags": [
+   "commercial",
+   "RTU",
+   "VRF",
+   "split system"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "emergency-power-drawing-packages-generators-transfer-switches",
+  "title": "Emergency Power Drawing Packages: Generators, Transfer Switches, and Egress",
+  "seoTitle": "Emergency Power Drawing Packages: Generators, Transfer Switches, and Egress",
+  "tags": [
+   "emergency-power",
+   "generator",
+   "transfer-switch"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "residential-electrical-load-calculation-nec",
+  "title": "Electrical Load Calculation for Residential Buildings: NEC Guide",
+  "seoTitle": "Electrical Load Calculation for Residential Buildings: NEC Guide",
+  "tags": [
+   "load calculation",
+   "residential",
+   "NEC Article 220"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "ductwork-layout-drawings-load-calc-to-coordinated-plan",
+  "title": "Ductwork Layout Drawings: From Load Calc to Coordinated Plan",
+  "seoTitle": "Ductwork Layout Drawings: From Load Calc to Coordinated Plan",
+  "tags": [
+   "permit-drawings",
+   "ductwork",
+   "hvac design"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "electrical-load-calculation-nec-220-walkthrough",
+  "title": "Electrical Load Calculations: An NEC Article 220 Walkthrough",
+  "seoTitle": "Electrical Load Calculations: An NEC Article 220 Walkthrough",
+  "tags": [
+   "NEC",
+   "load calculation",
+   "service sizing"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "commercial-electrical-load-calculation-nec",
+  "title": "Commercial Electrical Load Calculation: Step-by-Step NEC Guide",
+  "seoTitle": "Commercial Electrical Load Calculation: Step-by-Step NEC Guide",
+  "tags": [
+   "commercial",
+   "NEC 220",
+   "demand factors"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "plumbing-riser-diagrams-what-goes-on-the-sheet",
+  "title": "Plumbing Riser Diagrams: What Goes on the Sheet",
+  "seoTitle": "Plumbing Riser Diagrams: What Goes on the Sheet",
+  "tags": [
+   "permit-drawings",
+   "plumbing",
+   "riser diagram"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "amps-watts-breaker-size-hvac-equipment",
+  "title": "How to Calculate Amps, Watts and Breaker Size for HVAC Equipment",
+  "seoTitle": "How to Calculate Amps, Watts and Breaker Size for HVAC Equipment",
+  "tags": [
+   "MCA",
+   "MOCP",
+   "breaker sizing",
+   "NEC 440"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "gas-piping-drawings-sizing-tables-riser-diagram-ifgc",
+  "title": "Gas Piping Drawings: Sizing Tables and Riser Diagrams per IFGC",
+  "seoTitle": "Gas Piping Drawings: Sizing Tables and Riser Diagrams per IFGC",
+  "tags": [
+   "permit-drawings",
+   "gas piping",
+   "IFGC"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "commercial-electrical-service-upgrade",
+  "title": "Electrical Service Upgrade Requirements for Commercial Buildings",
+  "seoTitle": "Electrical Service Upgrade Requirements for Commercial Buildings",
+  "tags": [
+   "service upgrade",
+   "utility coordination",
+   "NEC 230"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "ashrae-621-ventilation-compliance-on-drawings",
+  "title": "ASHRAE 62.1 Ventilation: Showing Compliance on Your Drawings",
+  "seoTitle": "ASHRAE 62.1 Ventilation: Showing Compliance on Your Drawings",
+  "tags": [
+   "ASHRAE 62.1",
+   "ventilation",
+   "code compliance"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "sizing-electrical-panels-feeders-nec",
+  "title": "How to Size Electrical Panels and Feeders Using NEC",
+  "seoTitle": "How to Size Electrical Panels and Feeders Using NEC",
+  "tags": [
+   "panel sizing",
+   "feeders",
+   "NEC 215"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "fire-alarm-drawings-device-layouts-risers-sequence-tables",
+  "title": "Fire Alarm Drawings: Device Layouts, Risers, and Sequence Tables",
+  "seoTitle": "Fire Alarm Drawings: Device Layouts, Risers, and Sequence Tables",
+  "tags": [
+   "fire alarm",
+   "permit-drawings",
+   "NFPA 72"
+  ],
+  "category": "Fire Protection"
+ },
+ {
+  "slug": "ev-charger-load-calculation-panel-sizing",
+  "title": "EV Charger Electrical Load Calculation and Panel Sizing",
+  "seoTitle": "EV Charger Electrical Load Calculation and Panel Sizing",
+  "tags": [
+   "ev-charging",
+   "NEC 625",
+   "load management"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "9-sprinkler-head-layout-rules-every-drafter-should-know",
+  "title": "9 Sprinkler Head Layout Rules Every Drafter Should Know",
+  "seoTitle": "9 Sprinkler Head Layout Rules Every Drafter Should Know",
+  "tags": [
+   "NFPA 13",
+   "permit-drawings",
+   "sprinklers"
+  ],
+  "category": "Fire Protection"
+ },
+ {
+  "slug": "commercial-plumbing-water-supply-pipe-sizing",
+  "title": "Commercial Plumbing Design: Water Supply Pipe Sizing Guide",
+  "seoTitle": "Commercial Plumbing Design: Water Supply Pipe Sizing Guide",
+  "tags": [
+   "pipe sizing",
+   "IPC",
+   "water supply"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "standpipe-system-drawings-mid-rise-buildings",
+  "title": "Standpipe System Drawings for Mid-Rise Buildings",
+  "seoTitle": "Standpipe System Drawings for Mid-Rise Buildings",
+  "tags": [
+   "permit-drawings",
+   "standpipe",
+   "NFPA 14"
+  ],
+  "category": "Fire Protection"
+ },
+ {
+  "slug": "sprinkler-hydraulic-calculations-explained",
+  "title": "Sprinkler Hydraulic Calculations, Explained Simply",
+  "seoTitle": "Sprinkler Hydraulic Calculations, Explained Simply",
+  "tags": [
+   "NFPA 13",
+   "hydraulics",
+   "sprinkler"
+  ],
+  "category": "Fire Protection"
+ },
+ {
+  "slug": "residential-drainage-vent-piping-sizing",
+  "title": "How to Size Drainage and Vent Piping for Residential Buildings",
+  "seoTitle": "How to Size Drainage and Vent Piping for Residential Buildings",
+  "tags": [
+   "IPC",
+   "DWV",
+   "vent sizing"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "kitchen-hood-suppression-drawings-what-ahjs-check",
+  "title": "Kitchen Hood Suppression Drawings: What AHJs Check",
+  "seoTitle": "Kitchen Hood Suppression Drawings: What AHJs Check",
+  "tags": [
+   "kitchen hood",
+   "suppression systems",
+   "NFPA 96"
+  ],
+  "category": "Fire Protection"
+ },
+ {
+  "slug": "plumbing-fixture-units-calculation",
+  "title": "Plumbing Fixture Requirements and Fixture Unit Calculations",
+  "seoTitle": "Plumbing Fixture Requirements and Fixture Unit Calculations",
+  "tags": [
+   "IPC",
+   "fixture units",
+   "plumbing code"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "title-24-iecc-lighting-control-drawings",
+  "title": "Title 24 and IECC Lighting Controls: What to Show on Drawings",
+  "seoTitle": "Title 24 and IECC Lighting Controls: What to Show on Drawings",
+  "tags": [
+   "code compliance",
+   "lighting controls",
+   "Title 24",
+   "IECC"
+  ],
+  "category": "Lighting & Photometrics"
+ },
+ {
+  "slug": "mep-permit-drawing-requirements-usa",
+  "title": "MEP Permit Drawing Requirements in the USA: Complete Guide",
+  "seoTitle": "MEP Permit Drawing Requirements in the USA: Complete Guide",
+  "tags": [
+   "permit-drawings",
+   "AHJ",
+   "submittal"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "egress-lighting-drawings-what-reviewers-look-for",
+  "title": "Egress Lighting Drawings: What Reviewers Look For",
+  "seoTitle": "Egress Lighting Drawings: What Reviewers Look For",
+  "tags": [
+   "life safety",
+   "egress lighting",
+   "IBC",
+   "NEC 700"
+  ],
+  "category": "Lighting & Photometrics"
+ },
+ {
+  "slug": "mep-requirements-florida-california-texas",
+  "title": "MEP Design Requirements by State: Florida vs California vs Texas",
+  "seoTitle": "MEP Design Requirements by State: Florida vs California vs Texas",
+  "tags": [
+   "Title 24",
+   "Florida Building Code",
+   "Texas"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "dark-sky-compliance-site-lighting-ordinances",
+  "title": "Dark-Sky Compliance: Drawing Site Lighting for Local Ordinances",
+  "seoTitle": "Dark-Sky Compliance: Drawing Site Lighting for Local Ordinances",
+  "tags": [
+   "dark sky",
+   "site lighting",
+   "light pollution",
+   "ordinances"
+  ],
+  "category": "Lighting & Photometrics"
+ },
+ {
+  "slug": "permit-ready-mep-drawings-guide",
+  "title": "How to Prepare Permit-Ready MEP Drawings for U.S. Construction Projects",
+  "seoTitle": "How to Prepare Permit-Ready MEP Drawings for U.S. Construction Projects",
+  "tags": [
+   "coordination",
+   "plan review",
+   "permit-ready"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "fixture-schedule-details-that-prevent-rfis",
+  "title": "Fixture Schedules and Details That Prevent RFIs",
+  "seoTitle": "Fixture Schedules and Details That Prevent RFIs",
+  "tags": [
+   "fixture schedule",
+   "lighting details",
+   "RFIs",
+   "construction documents"
+  ],
+  "category": "Lighting & Photometrics"
+ },
+ {
+  "slug": "franchise-rollout-mep-adaptation-playbook",
+  "title": "The Franchise Rollout Playbook: Adapting One Prototype to Fifty Sites",
+  "seoTitle": "The Franchise Rollout Playbook: Adapting One Prototype to Fifty Sites",
+  "tags": [
+   "franchise",
+   "rollout",
+   "prototype"
+  ],
+  "category": "Franchise & Rollout"
+ },
+ {
+  "slug": "multi-site-permit-tracking-across-jurisdictions",
+  "title": "Multi-Site Permit Management: Tracking 50 Jurisdictions at Once",
+  "seoTitle": "Multi-Site Permit Management: Tracking 50 Jurisdictions at Once",
+  "tags": [
+   "permitting",
+   "jurisdictions",
+   "AHJ",
+   "rollout management"
+  ],
+  "category": "Franchise & Rollout"
+ },
+ {
+  "slug": "tenant-improvement-drawing-checklist-rollout",
+  "title": "Tenant Improvement Drawing Checklists for Fast Rollout Sites",
+  "seoTitle": "Tenant Improvement Drawing Checklists for Fast Rollout Sites",
+  "tags": [
+   "tenant improvement",
+   "permit package",
+   "checklist",
+   "quick-service",
+   "retail"
+  ],
+  "category": "Franchise & Rollout"
+ },
+ {
+  "slug": "phasing-drawings-occupied-space-rollouts",
+  "title": "Phasing Drawings for Occupied-Space Rollouts",
+  "seoTitle": "Phasing Drawings for Occupied-Space Rollouts",
+  "tags": [
+   "phasing",
+   "occupied space",
+   "life safety",
+   "construction sequencing"
+  ],
+  "category": "Franchise & Rollout"
+ },
+ {
+  "slug": "site-adapt-handoff-prototype-set-local-architect",
+  "title": "The Site-Adapt Handoff: What the Local Architect Needs From Your Prototype Set",
+  "seoTitle": "The Site-Adapt Handoff: What the Local Architect Needs From Your Prototype Set",
+  "tags": [
+   "prototype",
+   "site adapt",
+   "architect of record",
+   "handoff"
+  ],
+  "category": "Franchise & Rollout"
+ },
+ {
+  "slug": "urgent-care-clinic-electrical-case-study",
+  "title": "Case Study: Urgent Care Clinic Electrical & Life-Safety in 6 Days",
+  "seoTitle": "Case Study: Urgent Care Clinic Electrical & Life-Safety in 6 Days",
+  "tags": [
+   "healthcare",
+   "fire alarm",
+   "case study"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "photometric-studies-what-ahjs-look-for",
+  "title": "Photometric Studies: What AHJs Actually Look For",
+  "seoTitle": "Photometric Studies: What AHJs Actually Look For",
+  "tags": [
+   "photometrics",
+   "IES",
+   "code"
+  ],
+  "category": "Lighting & Photometrics"
+ },
+ {
+  "slug": "hvac-load-calculations-manual-j-vs-ashrae",
+  "title": "HVAC Load Calculations: Manual-J vs. ASHRAE, and When to Use Each",
+  "seoTitle": "HVAC Load Calculations: Manual-J vs. ASHRAE, and When to Use Each",
+  "tags": [
+   "load calculation",
+   "Manual-J",
+   "ASHRAE"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "single-line-diagram-mistakes-that-fail-review",
+  "title": "5 Single-Line Diagram Mistakes That Fail Plan Review",
+  "seoTitle": "5 Single-Line Diagram Mistakes That Fail Plan Review",
+  "tags": [
+   "single line",
+   "one-line",
+   "review"
+  ],
+  "category": "Electrical"
+ },
+ {
+  "slug": "distribution-center-esfr-case-study",
+  "title": "Case Study: 65,000 sq ft Distribution Center — ESFR & High-Bay Photometrics",
+  "seoTitle": "Case Study: 65,000 sq ft Distribution Center — ESFR & High-Bay Photometrics",
+  "tags": [
+   "case study",
+   "photometrics",
+   "warehouse",
+   "ESFR"
+  ],
+  "category": "Fire Protection"
+ },
+ {
+  "slug": "outsourcing-mep-drafting-when-it-makes-sense",
+  "title": "When Outsourcing MEP Drafting Actually Makes Sense",
+  "seoTitle": "When Outsourcing MEP Drafting Actually Makes Sense",
+  "tags": [
+   "outsourcing",
+   "engineering firms",
+   "capacity"
+  ],
+  "category": "Design & Drafting"
+ },
+ {
+  "slug": "restaurant-kitchen-mep-coordination-guide",
+  "title": "Restaurant Kitchen MEP: A Coordination Guide",
+  "seoTitle": "Restaurant Kitchen MEP: A Coordination Guide",
+  "tags": [
+   "restaurant",
+   "hood exhaust",
+   "coordination"
+  ],
+  "category": "HVAC & Plumbing"
+ },
+ {
+  "slug": "reading-a-drawing-set-for-non-engineers",
+  "title": "How to Read an MEP Drawing Set (For Non-Engineers)",
+  "seoTitle": "How to Read an MEP Drawing Set (For Non-Engineers)",
+  "tags": [
+   "basics",
+   "drawing set",
+   "owners"
+  ],
+  "category": "Design & Drafting"
+ }
+]

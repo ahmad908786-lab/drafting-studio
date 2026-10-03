@@ -19,13 +19,13 @@ export const brand = {
   // descriptor so marketing copy can change without touching SEO metadata.
   heroSubhead:
     "Our pre-vetted, US-trained CAD drafters will take care of detailed MEP CAD drawing and AutoCAD drafting services for you so your design team can concentrate on core work.",
-  domain: "draftingstudio.example",
+  domain: "draftingstudio.org",
 
   contact: {
-    phonePrimary: "(212) 555-0142",
-    phoneSecondary: "(786) 555-0198",
-    email: "sales@draftingstudio.example",
-    supportEmail: "support@draftingstudio.example",
+    phonePrimary: "",
+    phoneSecondary: "",
+    email: "info@draftingstudio.org",
+    supportEmail: "info@draftingstudio.org",
     addressLine1: "1180 Avenue of the Americas",
     addressLine2: "Suite 800",
     city: "New York",
@@ -35,8 +35,8 @@ export const brand = {
   },
 
   offices: [
-    { city: "New York", line1: "1180 Avenue of the Americas, Suite 800", region: "New York, NY 10036", phone: "(212) 555-0142" },
-    { city: "Miami", line1: "78 SW 7th Street, Floor 5", region: "Miami, FL 33130", phone: "(786) 555-0198" },
+    { city: "New York", line1: "1180 Avenue of the Americas, Suite 800", region: "New York, NY 10036" },
+    { city: "Miami", line1: "78 SW 7th Street, Floor 5", region: "Miami, FL 33130" },
   ],
 
   socials: {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/lib/theme";
 
@@ -34,8 +34,8 @@ export function CtaBand({
             variant="outline"
             className="border-white/25 bg-white/5 text-white hover:bg-white/15 hover:text-white"
           >
-            <a href={`tel:${brand.contact.phonePrimary.replace(/[^\d+]/g, "")}`}>
-              <Phone className="size-4" /> {brand.contact.phonePrimary}
+            <a href={`mailto:${brand.contact.email}`}>
+              <Mail className="size-4" /> Email us
             </a>
           </Button>
         </div>

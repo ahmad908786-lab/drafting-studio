@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -27,9 +26,6 @@ export async function SiteHeader() {
           </p>
           <div className="flex items-center gap-5">
             <a href={`mailto:${brand.contact.email}`} className="hover:text-accent">{brand.contact.email}</a>
-            <a href={`tel:${brand.contact.phonePrimary.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-1.5 font-semibold hover:text-accent">
-              <Phone className="size-3.5" /> {brand.contact.phonePrimary}
-            </a>
           </div>
         </div>
       </div>
