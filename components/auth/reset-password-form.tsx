@@ -28,7 +28,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
           <CheckCircle2 className="size-4 shrink-0" /> {state.message}
         </div>
         <Button asChild className="w-full">
-          <Link href="/login">Log in</Link>
+          <Link href="/admin">Log in</Link>
         </Button>
       </div>
     );

@@ -1,6 +1,11 @@
 import { DashboardShell, type NavGroup } from "@/components/dashboard/dashboard-shell";
-import { requireStaff } from "@/lib/auth/guards";
+import { AdminLoginForm } from "@/components/auth/admin-login-form";
+import { getCurrentUser, isStaff } from "@/lib/auth/guards";
+import { signOutAction } from "@/app/actions/auth";
 import { prisma } from "@/lib/db";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ShieldAlert } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,7 +13,33 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const user = await requireStaff();
+  const user = await getCurrentUser();
+
+  // Not signed in → show the admin email+password login right here at /admin.
+  if (!user) {
+    return <AdminLoginForm />;
+  }
+
+  // Signed in but not staff → access denied with a way to sign out.
+  if (!isStaff(user.role)) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-secondary/40 px-4 py-12">
+        <Card className="w-full max-w-md p-8 text-center">
+          <ShieldAlert className="mx-auto size-10 text-destructive" />
+          <h1 className="mt-4 font-sans text-xl font-extrabold text-foreground">Access denied</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            This area is for Drafting Studio administrators only.
+          </p>
+          <form action={signOutAction} className="mt-6">
+            <Button type="submit" variant="outline" className="w-full">
+              Sign out
+            </Button>
+          </form>
+        </Card>
+      </div>
+    );
+  }
+
   const newRfqCount = await prisma.quote.count({ where: { status: "NEW" } });
 
   const nav: NavGroup[] = [
@@ -45,7 +76,6 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       nav={nav}
       user={user}
       title="Admin"
-      variant="admin"
       alertCount={newRfqCount}
       alertHref="/admin/rfqs"
     >

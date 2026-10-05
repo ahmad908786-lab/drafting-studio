@@ -4,9 +4,9 @@ import Script from "next/script";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-RWVNFRS0F6";
 
 /**
- * Google tag (gtag.js). Loaded only on the public site layout — not /admin or
- * /portal, so staff and client sessions don't pollute traffic numbers — and
- * only in production, so `npm run dev` doesn't send hits.
+ * Google tag (gtag.js). Loaded only on the public site layout — not /admin,
+ * so staff sessions don't pollute traffic numbers — and only in production,
+ * so `npm run dev` doesn't send hits.
  */
 export function GoogleAnalytics() {
   if (process.env.NODE_ENV !== "production" || !GA_ID) return null;

@@ -6,7 +6,6 @@ import { quoteSchema } from "@/lib/validations";
 import { OTHER_QUOTE_SERVICE_BY_SLUG } from "@/lib/taxonomy";
 import { sendMail, leadsInbox } from "@/lib/mail";
 import { requireStaff } from "@/lib/auth/guards";
-import { absoluteUrl } from "@/lib/utils";
 
 export type QuoteResult =
   | { ok: true; refNumber: string }
@@ -136,7 +135,7 @@ async function createQuoteRecord(
     await sendMail({
       to: data.email,
       subject: `We received your quote request (${refNumber})`,
-      text: `Hi ${data.name},\n\nThanks for your request. Your reference number is ${refNumber}. We'll reply with a fixed quote within one business day.\n\nTrack it any time by creating an account at ${absoluteUrl("/register")} with this email.\n\n— Drafting Studio`,
+      text: `Hi ${data.name},\n\nThanks for your request. Your reference number is ${refNumber}. We'll reply with a fixed quote within one business day.\n\n— Drafting Studio`,
     });
   }
 

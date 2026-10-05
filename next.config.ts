@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**.public.blob.vercel-storage.com" },
     ],
   },
+  async redirects() {
+    return [
+      // The client portal is retired — old bookmarks land on the admin sign-in.
+      { source: "/portal/:path*", destination: "/admin", permanent: false },
+      { source: "/login", destination: "/admin", permanent: false },
+      { source: "/register", destination: "/admin", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

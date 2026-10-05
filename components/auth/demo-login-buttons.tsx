@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { AlertCircle, Briefcase, ShieldCheck } from "lucide-react";
+import { AlertCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { demoLogin } from "@/app/actions/auth";
 
 const DEMOS = [
   { key: "admin", label: "Admin panel", hint: "admin@draftingstudio.example", icon: ShieldCheck },
-  { key: "client", label: "Client portal", hint: "client@acme.example", icon: Briefcase },
 ];
 
 export function DemoLoginButtons() {

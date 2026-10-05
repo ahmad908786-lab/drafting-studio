@@ -19,7 +19,6 @@ export function DashboardShell({
   nav,
   user,
   title,
-  variant = "admin",
   alertCount = 0,
   alertHref,
   children,
@@ -27,15 +26,10 @@ export function DashboardShell({
   nav: NavItem[] | NavGroup[];
   user: { name?: string | null; email?: string | null; image?: string | null; role: string };
   title: string;
-  variant?: "admin" | "portal";
   alertCount?: number;
   alertHref?: string;
   children: React.ReactNode;
 }) {
-  if (variant === "portal") {
-    const items = (nav as NavItem[]).filter((i) => "href" in i);
-    return <PortalShell nav={items} user={user} title={title} alertCount={alertCount} alertHref={alertHref}>{children}</PortalShell>;
-  }
   const groups: NavGroup[] = Array.isArray(nav) && nav.length > 0 && "items" in (nav[0] as object)
     ? (nav as NavGroup[])
     : [{ items: nav as NavItem[] }];
@@ -193,120 +187,6 @@ function AdminShell({
         </header>
         <main className="mx-auto w-full max-w-[1440px] flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
       </div>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Portal: top nav, banking-app style                                    */
-/* ------------------------------------------------------------------ */
-
-function PortalShell({
-  nav,
-  user,
-  title,
-  alertCount,
-  alertHref,
-  children,
-}: {
-  nav: NavItem[];
-  user: { name?: string | null; email?: string | null; image?: string | null; role: string };
-  title: string;
-  alertCount: number;
-  alertHref?: string;
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname();
-  const [open, setOpen] = React.useState(false);
-  const firstHref = nav[0]?.href ?? "/portal";
-
-  return (
-    <div className="flex min-h-screen flex-col bg-secondary/40">
-      <header className="sticky top-0 z-30 border-b border-border bg-card/95 backdrop-blur-lg">
-        <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-3 px-4 sm:px-6">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2.5">
-              <Logo href="/portal" />
-              <span className="hidden rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary sm:inline">Client</span>
-            </div>
-            <nav className="hidden items-center gap-1 md:flex">
-              {nav.map((item) => {
-                const active = isActive(pathname, item.href, firstHref);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "relative rounded-lg px-3.5 py-2 text-[13.5px] font-semibold transition-colors",
-                      active ? "text-foreground" : "text-muted-foreground hover:bg-secondary hover:text-foreground",
-                    )}
-                  >
-                    {item.label}
-                    {active && <span className="absolute inset-x-3 -bottom-[13px] h-0.5 rounded-full bg-primary" />}
-                    {item.badge != null && item.badge > 0 && (
-                      <span className="ml-1.5 inline-grid min-w-5 place-items-center rounded-full bg-destructive px-1 py-px align-middle font-mono text-[10px] font-bold text-white tabular-nums">
-                        {item.badge > 9 ? "9+" : item.badge}
-                      </span>
-                    )}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <AlertBell count={alertCount} href={alertHref} />
-            <ThemeToggle />
-            <div className="ml-1 hidden sm:block">
-              <UserBlock user={user} />
-            </div>
-            <form action={signOutAction} className="hidden sm:block">
-              <Button type="submit" variant="ghost" size="icon-sm" aria-label="Sign out">
-                <LogOut className="size-4" />
-              </Button>
-            </form>
-            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
-              {open ? <X className="size-5" /> : <Menu className="size-5" />}
-            </Button>
-          </div>
-        </div>
-        {open && (
-          <nav className="border-t border-border px-4 py-2 md:hidden">
-            {nav.map((item) => {
-              const active = isActive(pathname, item.href, firstHref);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold",
-                    active ? "bg-secondary text-foreground" : "text-muted-foreground",
-                  )}
-                >
-                  <Icon name={item.icon} className="size-4.5" />
-                  {item.label}
-                  {item.badge != null && item.badge > 0 && (
-                    <span className="ml-auto grid min-w-5 place-items-center rounded-full bg-destructive px-1.5 py-0.5 font-mono text-[10px] font-bold text-white tabular-nums">
-                      {item.badge}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
-            <form action={signOutAction} className="mt-1 border-t border-border pt-2">
-              <Button type="submit" variant="ghost" size="sm" className="w-full justify-start text-muted-foreground">
-                <LogOut className="size-4" /> Sign out
-              </Button>
-            </form>
-          </nav>
-        )}
-      </header>
-      <main className="mx-auto w-full max-w-[1200px] flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
-      <footer className="border-t border-border py-5">
-        <p className="text-center text-xs text-muted-foreground">
-          {title} · Need help? <Link href="/contact" className="font-semibold text-primary hover:underline">Contact the studio</Link>
-        </p>
-      </footer>
     </div>
   );
 }

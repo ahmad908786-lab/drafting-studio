@@ -41,10 +41,10 @@ export default async function ThankYouPage({
             <div className="mt-8 grid gap-4 text-left sm:grid-cols-2">
               <div className="rounded-xl border border-primary/20 bg-primary p-5 text-primary-foreground">
                 <UserPlus className="mb-2 size-6 text-accent" />
-                <h3 className="font-sans text-base font-bold">Track this request</h3>
-                <p className="mt-1 text-sm text-primary-foreground/80">Create an account with the same email to follow status, message us, and download deliverables.</p>
+                <h3 className="font-sans text-base font-bold">What happens next</h3>
+                <p className="mt-1 text-sm text-primary-foreground/80">We&apos;ll reply with a fixed quote within one business day. Keep your reference number handy.</p>
                 <Button asChild variant="accent" size="sm" className="mt-4">
-                  <Link href="/register">Create account <ArrowRight className="size-4" /></Link>
+                  <Link href="/contact">Contact us <ArrowRight className="size-4" /></Link>
                 </Button>
               </div>
               <div className="rounded-xl border border-border bg-secondary/40 p-5">

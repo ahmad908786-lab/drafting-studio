@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { Logo } from "@/components/site/logo";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getNavData } from "@/lib/queries";
 import { INDUSTRIES } from "@/lib/taxonomy";
@@ -8,13 +6,10 @@ import { brand } from "@/lib/theme";
 import { HeaderNav } from "@/components/site/header-nav";
 import { MobileNav } from "@/components/site/mobile-nav";
 import { BookMeetingDialog } from "@/components/site/book-meeting-dialog";
-import { auth } from "@/auth";
 
 export async function SiteHeader() {
-  const [nav, session] = await Promise.all([getNavData(), auth()]);
+  const nav = await getNavData();
   const industries = INDUSTRIES.map((i) => ({ slug: i.slug, name: i.name, icon: i.icon }));
-  const role = session?.user?.role;
-  const dashHref = role === "ADMIN" || role === "STAFF" ? "/admin" : role === "CLIENT" ? "/portal" : "/login";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur-lg supports-[backdrop-filter]:bg-background/70">
@@ -36,11 +31,8 @@ export async function SiteHeader() {
         <HeaderNav nav={nav} industries={industries} />
         <div className="flex items-center gap-1.5">
           <ThemeToggle className="hidden sm:inline-flex" />
-          <Button asChild variant="ghost" size="sm" className="hidden lg:inline-flex">
-            <Link href={dashHref}>{role ? "Dashboard" : "Log in"}</Link>
-          </Button>
           <BookMeetingDialog />
-          <MobileNav nav={nav} industries={industries} dashHref={dashHref} isLoggedIn={!!role} />
+          <MobileNav nav={nav} industries={industries} />
         </div>
       </div>
     </header>

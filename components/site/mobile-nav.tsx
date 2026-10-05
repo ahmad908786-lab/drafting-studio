@@ -15,13 +15,9 @@ type IndustryLink = { slug: string; name: string; icon: string };
 export function MobileNav({
   nav,
   industries,
-  dashHref,
-  isLoggedIn,
 }: {
   nav: NavCategory[];
   industries: IndustryLink[];
-  dashHref: string;
-  isLoggedIn: boolean;
 }) {
   const [open, setOpen] = React.useState(false);
   const close = () => setOpen(false);
@@ -93,10 +89,7 @@ export function MobileNav({
             <Button asChild variant="accent" size="lg" onClick={close}>
               <Link href="/request-quote">Request a Quote <ArrowRight className="size-4" /></Link>
             </Button>
-            <div className="flex items-center justify-between">
-              <Button asChild variant="outline" size="sm" onClick={close}>
-                <Link href={dashHref}>{isLoggedIn ? "Dashboard" : "Log in"}</Link>
-              </Button>
+            <div className="flex items-center justify-end">
               <ThemeToggle />
             </div>
           </div>
