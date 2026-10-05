@@ -43,7 +43,7 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
               </div>
               <div className="flex gap-1">
                 <TestimonialDialog initial={t} onSaved={() => router.refresh()} />
-                <button onClick={async () => { if (confirm("Delete?")) { await deleteTestimonial(t.id); toast.success("Deleted"); router.refresh(); } }} aria-label="Delete" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-4" /></button>
+                <button onClick={async () => { if (confirm("Delete?")) { await deleteTestimonial(t.id); toast.success("Deleted"); router.refresh(); } }} aria-label="Delete" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-destructive/10 hover:text-destructive"><Trash2 className="size-4" /></button>
               </div>
             </div>
             <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">“{t.quote}”</p>
@@ -72,7 +72,7 @@ function TestimonialDialog({ initial, onSaved }: { initial?: Testimonial; onSave
       <DialogContent>
         <DialogHeader><DialogTitle>{initial ? "Edit" : "New"} testimonial</DialogTitle></DialogHeader>
         <div className="space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="space-y-1.5"><Label>Author</Label><Input value={d.author} onChange={(e) => setD({ ...d, author: e.target.value })} /></div>
             <div className="space-y-1.5"><Label>Role</Label><Input value={d.role} onChange={(e) => setD({ ...d, role: e.target.value })} /></div>
           </div>

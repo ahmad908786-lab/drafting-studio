@@ -54,8 +54,8 @@ export function MediaLibrary({ assets }: { assets: Asset[] }) {
                 <div className="mt-1.5 flex items-center justify-between">
                   <span className="text-[11px] text-muted-foreground">{(a.sizeBytes / 1024).toFixed(0)}KB</span>
                   <div className="flex gap-1">
-                    <button onClick={() => copy(a.url)} aria-label="Copy URL" className="text-muted-foreground hover:text-primary">{copied === a.url ? <Check className="size-3.5 text-success" /> : <Copy className="size-3.5" />}</button>
-                    <button onClick={() => remove(a.id)} aria-label="Delete" className="text-muted-foreground hover:text-destructive"><Trash2 className="size-3.5" /></button>
+                    <button onClick={() => copy(a.url)} aria-label="Copy URL" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-primary/10 hover:text-primary">{copied === a.url ? <Check className="size-3.5 text-success" /> : <Copy className="size-3.5" />}</button>
+                    <button onClick={() => remove(a.id)} aria-label="Delete" className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-destructive/10 hover:text-destructive"><Trash2 className="size-3.5" /></button>
                   </div>
                 </div>
               </div>

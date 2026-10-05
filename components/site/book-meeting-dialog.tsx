@@ -130,11 +130,11 @@ export function BookMeetingDialog() {
       <Button
         variant="accent"
         size="sm"
-        className="hidden sm:inline-flex"
         onClick={openDialog}
         aria-haspopup="dialog"
+        aria-label="Book a meeting"
       >
-        <CalendarCheck className="size-4" /> Book A Meeting
+        <CalendarCheck className="size-4" /> <span className="hidden sm:inline">Book A Meeting</span>
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>

@@ -652,13 +652,13 @@ function SaveIndicator({ state, lastSaved }: { state: SaveState; lastSaved: Date
   if (state === "saving")
     return (
       <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-        <Loader2 className="size-3.5 animate-spin" /> Saving…
+        <Loader2 className="size-3.5 animate-spin" /> <span className="hidden sm:inline">Saving…</span>
       </span>
     );
   if (state === "dirty")
     return (
       <span className="flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
-        <span className="size-1.5 rounded-full bg-amber-500" /> Unsaved
+        <span className="size-1.5 rounded-full bg-amber-500" /> <span className="hidden sm:inline">Unsaved</span>
       </span>
     );
   return (

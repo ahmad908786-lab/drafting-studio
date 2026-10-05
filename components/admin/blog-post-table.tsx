@@ -146,6 +146,7 @@ export function BlogPostTable({ posts }: { posts: BlogPostRow[] }) {
     <div className="space-y-4">
       {/* Toolbar */}
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <div className="-mx-1 overflow-x-auto px-1">
         <Tabs value={filter} onValueChange={(v) => setFilter(v as typeof filter)}>
           <TabsList>
             {STATUS_FILTERS.map((s) => (
@@ -156,10 +157,11 @@ export function BlogPostTable({ posts }: { posts: BlogPostRow[] }) {
             ))}
           </TabsList>
         </Tabs>
-        <div className="flex items-center gap-2">
+        </div>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <div className="relative">
             <Search className="pointer-events-none absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-            <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search posts…" className="w-56 pl-8" />
+            <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search posts…" className="w-full pl-8 sm:w-56" />
           </div>
           <Button asChild>
             <Link href="/admin/blog/new"><Plus className="size-4" /> New post</Link>
