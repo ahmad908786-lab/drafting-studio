@@ -14,7 +14,7 @@ export async function SiteFooter() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-6">
         {/* Brand column */}
         <div className="lg:col-span-2">
-          <Logo tone="light" />
+          <Logo tone="light" className="[&>img]:h-18" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
             Nationwide 2D AutoCAD design &amp; drafting for engineering firms, contractors, architects and developers. Electrical, HVAC, plumbing, fire protection and lighting — permit-ready.
           </p>
