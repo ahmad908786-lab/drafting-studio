@@ -26,7 +26,7 @@ export async function SiteHeader() {
 
       {/* Main bar */}
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Logo />
+        <Logo className="[&>img]:h-12" />
         <HeaderNav nav={nav} industries={industries} />
         <div className="flex items-center gap-1.5">
           <BookMeetingDialog />
