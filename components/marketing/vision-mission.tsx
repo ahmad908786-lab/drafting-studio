@@ -1,6 +1,6 @@
 export function VisionMission() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="border-b border-border bg-secondary/40 py-16 sm:py-20">
       <div className="container-page grid gap-10 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-16">
         <div>
           <h2 className="text-balance font-sans text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
