@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { Menu, X, LogOut, ExternalLink, Bell } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/site/logo";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { cn, initials } from "@/lib/utils";
@@ -179,7 +178,6 @@ function AdminShell({
           </div>
           <div className="flex items-center gap-1.5">
             <AlertBell count={alertCount} href={alertHref} />
-            <ThemeToggle />
             <div className="ml-1 hidden sm:block">
               <UserBlock user={user} />
             </div>

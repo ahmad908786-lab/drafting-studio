@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Icon } from "@/components/icon";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 type NavCategory = { slug: string; name: string; icon: string; services: { slug: string; name: string }[] };
 type IndustryLink = { slug: string; name: string; icon: string };
@@ -89,9 +88,6 @@ export function MobileNav({
             <Button asChild variant="accent" size="lg" onClick={close}>
               <Link href="/request-quote">Request a Quote <ArrowRight className="size-4" /></Link>
             </Button>
-            <div className="flex items-center justify-end">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       </SheetContent>

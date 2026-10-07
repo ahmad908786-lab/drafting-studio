@@ -1,5 +1,4 @@
 import { Logo } from "@/components/site/logo";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { getNavData } from "@/lib/queries";
 import { INDUSTRIES } from "@/lib/taxonomy";
 import { brand } from "@/lib/theme";
@@ -30,7 +29,6 @@ export async function SiteHeader() {
         <Logo />
         <HeaderNav nav={nav} industries={industries} />
         <div className="flex items-center gap-1.5">
-          <ThemeToggle className="hidden sm:inline-flex" />
           <BookMeetingDialog />
           <MobileNav nav={nav} industries={industries} />
         </div>

@@ -292,9 +292,9 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
 
   const statusMeta =
     data.status === "PUBLISHED"
-      ? { label: "Published", cls: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20" }
+      ? { label: "Published", cls: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" }
       : data.status === "SCHEDULED"
-        ? { label: "Scheduled", cls: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20" }
+        ? { label: "Scheduled", cls: "bg-amber-500/10 text-amber-600 border-amber-500/20" }
         : { label: "Draft", cls: "bg-muted text-muted-foreground border-border" };
 
   return (
@@ -465,7 +465,7 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
               className="h-8 w-56 rounded-full border-border bg-muted/50 text-[13px]"
             />
             {data.featured && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400">
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-600">
                 <Star className="size-3 fill-amber-500 text-amber-500" /> Featured
               </span>
             )}
@@ -574,10 +574,10 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
               <section>
                 <SectionLabel>Search appearance</SectionLabel>
                 <div className="mt-3 rounded-xl border border-border bg-muted/30 p-3.5">
-                  <p className="truncate text-[15px] font-medium leading-snug text-[#1a0dab] dark:text-[#8ab4f8]">
+                  <p className="truncate text-[15px] font-medium leading-snug text-[#1a0dab]">
                     {(data.seoTitle || data.title || "Post title").slice(0, 70)}
                   </p>
-                  <p className="truncate text-xs text-[#006621] dark:text-[#bdc1c6]">
+                  <p className="truncate text-xs text-[#006621]">
                     /blog/{data.slug || suggestedSlug || "…"}
                   </p>
                   <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-muted-foreground">
@@ -657,7 +657,7 @@ function SaveIndicator({ state, lastSaved }: { state: SaveState; lastSaved: Date
     );
   if (state === "dirty")
     return (
-      <span className="flex items-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+      <span className="flex items-center gap-1.5 text-xs font-medium text-amber-600">
         <span className="size-1.5 rounded-full bg-amber-500" /> <span className="hidden sm:inline">Unsaved</span>
       </span>
     );

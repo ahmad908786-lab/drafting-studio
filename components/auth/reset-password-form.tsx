@@ -24,7 +24,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
   if (state?.ok) {
     return (
       <div className="space-y-4 text-center">
-        <div className="flex items-center justify-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3 text-sm text-emerald-700 dark:text-emerald-400">
+        <div className="flex items-center justify-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3 text-sm text-emerald-700">
           <CheckCircle2 className="size-4 shrink-0" /> {state.message}
         </div>
         <Button asChild className="w-full">

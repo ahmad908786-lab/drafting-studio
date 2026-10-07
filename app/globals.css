@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* Dark mode driven by a `.dark` class on <html> (see ThemeProvider). */
-@custom-variant dark (&:is(.dark *));
-
 /*
   Drafting Studio design tokens.
   All brand color/typography decisions live here + in lib/theme.ts.
@@ -58,8 +55,8 @@
   --discipline-lighting: #a855f7;
   --discipline-fire: #ef4444;
 
-  /* Industry swatches — the icon tiles on the industry grid. Held at one
-     value for both themes; the tile tints them with color-mix. */
+  /* Industry swatches — the icon tiles on the industry grid.
+     The tile tints them with color-mix. */
   --industry-franchise: #f59e0b;
   --industry-residential: #10b981;
   --industry-commercial: #2563eb;
@@ -71,45 +68,6 @@
   --industry-plaza: #f97316;
   --industry-offices: #0ea5e9;
   --industry-warehouse: #65a30d;
-}
-
-.dark {
-  --background: #060c18;
-  --foreground: #e6edf7;
-
-  --card: #0b1524;
-  --card-foreground: #e6edf7;
-
-  --popover: #0b1524;
-  --popover-foreground: #e6edf7;
-
-  --primary: #4f83d1;
-  --primary-foreground: #06101f;
-
-  --accent: #fbbf24;
-  --accent-foreground: #1a1206;
-
-  --secondary: #13233d;
-  --secondary-foreground: #dbe6f5;
-
-  --muted: #101c30;
-  --muted-foreground: #94a6bf;
-
-  --destructive: #f87171;
-  --destructive-foreground: #1a0606;
-
-  --success: #4ade80;
-  --success-foreground: #05140a;
-
-  --warning: #fbbf24;
-  --info: #60a5fa;
-
-  --border: #1c2c47;
-  --input: #22344f;
-  --ring: #4f83d1;
-
-  --blueprint: #6ea8ff;
-  --blueprint-grid: rgba(120, 160, 220, 0.08);
 }
 
 @theme inline {

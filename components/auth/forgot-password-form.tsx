@@ -26,7 +26,7 @@ export function ForgotPasswordForm() {
         <div
           className={`flex items-center gap-2 rounded-lg border p-3 text-sm ${
             state.ok
-              ? "border-emerald-500/30 bg-emerald-500/5 text-emerald-700 dark:text-emerald-400"
+              ? "border-emerald-500/30 bg-emerald-500/5 text-emerald-700"
               : "border-destructive/30 bg-destructive/5 text-destructive"
           }`}
         >

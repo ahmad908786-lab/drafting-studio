@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { brand } from "@/lib/theme";
 import { absoluteUrl } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -75,15 +74,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${jakarta.variable} ${inter.variable} ${mono.variable} h-full`}
     >
       <body className="min-h-full antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
-        <ThemeProvider>
-          {children}
-          <Toaster position="top-center" richColors />
-        </ThemeProvider>
+        {children}
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
