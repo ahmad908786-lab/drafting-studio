@@ -3,13 +3,11 @@ import type { Metadata } from "next";
 import { ArrowRight, Building2, HardHat, Clock, ShieldCheck, FileCheck2 } from "lucide-react";
 import { Hero } from "@/components/marketing/hero";
 import { IndustryGrid } from "@/components/marketing/industry-grid";
-import { LogoMarquee } from "@/components/marketing/logo-marquee";
 import { VisionMission } from "@/components/marketing/vision-mission";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StatBand } from "@/components/shared/stat-band";
 import { ServiceCard } from "@/components/shared/service-card";
 import { ProjectCard } from "@/components/shared/project-card";
-import { TestimonialCard } from "@/components/shared/testimonial-card";
 import { PostCard } from "@/components/shared/post-card";
 import { CtaBand } from "@/components/shared/cta-band";
 import { Icon } from "@/components/icon";
@@ -18,8 +16,6 @@ import {
   getAllServices,
   getFeaturedProjects,
   getIndustries,
-  getTestimonials,
-  getClientLogos,
   getLatestPosts,
   getSettings,
   getDisciplines,
@@ -36,13 +32,11 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [services, categories, industries, testimonials, logos, posts, settings, disciplines, featuredProjects] =
+  const [services, categories, industries, posts, settings, disciplines, featuredProjects] =
     await Promise.all([
       getAllServices(),
       getServiceCategories(),
       getIndustries(),
-      getTestimonials(true),
-      getClientLogos(),
       getLatestPosts(3),
       getSettings(),
       getDisciplines(),
@@ -150,8 +144,8 @@ export default async function HomePage() {
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               eyebrow="Our Projects"
-              title="Recent drafting projects"
-              description="A look at the drawing sets we've delivered — power, lighting, fire protection and HVAC across retail, multifamily and office work."
+              title="Representative project scopes"
+              description="The kind of drawing sets we deliver — power, lighting, fire protection and HVAC across retail, multifamily and office work."
             />
             <Button asChild variant="outline">
               <Link href="/projects">All projects <ArrowRight className="size-4" /></Link>
@@ -238,27 +232,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Logos */}
-      <section className="py-12">
-        <div className="container-page">
-          <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
-            Trusted by engineering firms, contractors &amp; developers nationwide
-          </p>
-          <LogoMarquee logos={logos.map((l) => ({ name: l.name, logo: l.logo }))} />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="border-y border-border bg-secondary/40 py-16 sm:py-20">
-        <div className="container-page">
-          <SectionHeading eyebrow="Client Voices" title="What partners say" align="center" className="mb-10" />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.slice(0, 7).map((t) => (
-              <TestimonialCard key={t.id} t={t} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Latest posts */}
       {posts.length > 0 && (

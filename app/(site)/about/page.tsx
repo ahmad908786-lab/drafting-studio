@@ -59,7 +59,7 @@ export default async function AboutPage() {
             <div className="space-y-4 text-muted-foreground">
               <p>Most projects — tenant fit-outs, franchise rollouts, light-commercial and residential work — need a permit set, not a model. Power plans, panel schedules, one-lines, ductwork, piping, sprinkler grids: every one is a 2D deliverable.</p>
               <p>By committing to pure 2D AutoCAD, we keep files small and portable, layer standards disciplined, and turnaround fast. Your engineer of record opens the DWG, redlines, and stamps — no round-trip through a model nobody asked for.</p>
-              <p>We work for engineering firms, contractors, architects and developers across all 50 states, drafting to your CAD standard and the current US codes: NEC, IMC, IPC, NFPA 13 &amp; 72, and IES.</p>
+              <p>We work for engineering firms, contractors, architects and developers across the US, drafting to your CAD standard and the current US codes: NEC, IMC, IPC, NFPA 13 &amp; 72, and IES.</p>
             </div>
           </div>
           <div className="rounded-2xl border border-border bg-primary p-6 text-primary-foreground bg-blueprint-grid">

@@ -35,7 +35,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
       <PageHero
         eyebrow="Projects"
         title="2D drafting sets across every building type"
-        description="A cross-section of recent electrical, HVAC, plumbing, lighting and fire-protection work."
+        description="Representative project scopes — the kind of electrical, HVAC, plumbing, lighting and fire-protection work we deliver."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
       />
 

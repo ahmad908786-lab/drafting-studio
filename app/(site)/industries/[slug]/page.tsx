@@ -4,14 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
-import { TestimonialCard } from "@/components/shared/testimonial-card";
 import { StatBand } from "@/components/shared/stat-band";
 import { Mdx } from "@/components/mdx/mdx";
 import { Icon } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/shared/cta-band";
 import { JsonLd } from "@/components/seo/json-ld";
-import { getIndustryBySlug, getServiceCategories, getTestimonials } from "@/lib/queries";
+import { getIndustryBySlug, getServiceCategories } from "@/lib/queries";
 import { absoluteUrl } from "@/lib/utils";
 import { prisma } from "@/lib/db";
 
@@ -43,14 +42,10 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const ind = await getIndustryBySlug(slug);
   if (!ind) notFound();
 
-  const [categories, testimonials] = await Promise.all([
-    getServiceCategories(),
-    getTestimonials(true),
-  ]);
+  const categories = await getServiceCategories();
 
   const painPoints = (ind.painPoints as string[]) ?? [];
   const stats = (ind.stats as { value: string; label: string }[]) ?? [];
-  const testimonial = testimonials[0];
 
   const collectionJsonLd = {
     "@context": "https://schema.org",
@@ -122,15 +117,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       {stats.length > 0 && (
         <section className="border-y border-border bg-secondary/40 py-12">
           <div className="container-page">
-            <StatBand stats={[...stats, { value: "50", label: "States Covered" }, { value: "48 hrs", label: "Typical Turnaround" }].slice(0, 4)} />
-          </div>
-        </section>
-      )}
-
-      {testimonial && (
-        <section className="border-t border-border bg-secondary/40 py-14">
-          <div className="container-page max-w-2xl">
-            <TestimonialCard t={testimonial} />
+            <StatBand stats={[...stats, { value: "48 hrs", label: "Typical Turnaround" }].slice(0, 4)} />
           </div>
         </section>
       )}

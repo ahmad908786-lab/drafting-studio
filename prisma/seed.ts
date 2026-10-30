@@ -262,40 +262,11 @@ async function main() {
     });
   }
 
-  /* -------------------- Testimonials -------------------- */
-  console.log("→ Testimonials, logos, team");
-  // SAMPLE content — replace with real client quotes from the admin dashboard (/admin).
-  const testimonials = [
-    { author: "Michael Trent", role: "Principal Engineer", company: "Trent MEP Engineering", quote: "Drafting Studio feels like an extension of our office. Sets come back to our CAD standard, on time, and our PEs stamp them with almost no cleanup.", rating: 5, featured: true },
-    { author: "Sofia Delgado", role: "Director of Construction", company: "BrightBrew Franchising", quote: "We roll out 20+ locations a year. Their prototype adaptations are consistent to the sheet and hit our open dates every time.", rating: 5, featured: true },
-    { author: "Aaron Whitfield", role: "Owner", company: "Whitfield Fire Protection", quote: "The sprinkler layouts and hydraulic reports are fabrication-ready and clear review. That's exactly what we need from a drafting partner.", rating: 5, featured: true },
-    { author: "Rebecca Lin", role: "Project Manager", company: "Northstar General Contractors", quote: "Fast, responsive, and genuinely good at coordination. The restaurant kitchen sets alone have saved us weeks.", rating: 5, featured: true },
-    { author: "James Okoye", role: "Electrical Engineer", company: "Okoye & Associates", quote: "Load calcs and one-lines done right the first time. Their documentation makes my stamp an easy decision.", rating: 5, featured: true },
-    { author: "Danielle Foster", role: "Developer", company: "Foster Urban Living", quote: "Our multifamily 13R packages and unit electrical stacks came back coordinated and permit-ready. Great value.", rating: 5, featured: true },
-    { author: "Priya Nair", role: "Project Architect", company: "Nair Studio Architects", quote: "The lighting layouts and photometric studies coordinated with our architectural backgrounds on the first pass — no rework.", rating: 5, featured: true },
-  ];
-  for (const [i, t] of testimonials.entries()) {
-    await prisma.testimonial.create({
-      data: { ...t, avatar: writeSvg("avatars", `t-${i}`, avatarSvg(t.author)), order: i },
-    });
-  }
-
-  const logos = ["Trent MEP", "BrightBrew", "Northstar GC", "Whitfield Fire", "Foster Urban", "Okoye & Assoc.", "Summit Retail", "BluePeak Design"];
-  for (const [i, name] of logos.entries()) {
-    await prisma.clientLogo.create({ data: { name, logo: writeSvg("logos", `logo-${i}`, clientLogoSvg(name)), order: i } });
-  }
-
-  const team = [
-    { name: "Daniel Cho", role: "Founder & Managing Drafter", bio: "20+ years drafting MEP, fire and lighting sets for firms across the US.", linkedin: "https://linkedin.com" },
-    { name: "Priya Raman", role: "Lead Drafter — Electrical", bio: "Electrical power, lighting and load-calc specialist.", linkedin: "https://linkedin.com" },
-    { name: "Marcus Bell", role: "Lead Drafter — Fire Protection", bio: "NFPA 13/72 layouts and hydraulic reporting.", linkedin: "https://linkedin.com" },
-    { name: "Elena Vasquez", role: "Lead Drafter — Mechanical", bio: "HVAC and plumbing coordination and load calculations.", linkedin: "https://linkedin.com" },
-  ];
-  for (const [i, m] of team.entries()) {
-    await prisma.teamMember.create({
-      data: { ...m, photo: writeSvg("avatars", `team-${i}`, avatarSvg(m.name)), order: i },
-    });
-  }
+  /* -------------------- Testimonials / logos / team -------------------- */
+  // NOTE (spam audit 2026-10-30): fake sample testimonials, client logos and team
+  // members were removed. They are created only from the admin dashboard (/admin)
+  // with real client data — never seed fabricated reviews, logos or people.
+  console.log("→ Testimonials, logos, team: skipped (real data only, via /admin)");
 
   /* -------------------- Site settings -------------------- */
   console.log("→ Site settings");
@@ -309,10 +280,10 @@ async function main() {
       offices: [] as any,
       socials: { linkedin: "https://linkedin.com/company/drafting-studio", facebook: "https://facebook.com", instagram: "https://instagram.com" } as any,
       stats: [
-        { value: "6,200+", label: "Drawing Sets Delivered" },
+        { value: "4", label: "MEP Disciplines" },
         { value: "48 hrs", label: "Typical Turnaround" },
-        { value: "50", label: "States Covered" },
-        { value: "98%", label: "First-Time Permit Approval" },
+        { value: "5,000", label: "Sq Ft Max Project Size" },
+        { value: "2D", label: "AutoCAD — No BIM Overhead" },
       ] as any,
     },
   });

@@ -96,6 +96,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
       <div className="container-page grid gap-10 py-12 lg:grid-cols-[1fr_320px]">
         <div>
+          <p className="mb-6 rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-muted-foreground">
+            Representative scope example — shown to illustrate the type of work we draft, not a specific client engagement.
+          </p>
           <DrawingGallery cover={project.coverImage} images={project.images} title={project.title} />
           <div className="mt-8">
             <Mdx source={project.bodyMdx} />

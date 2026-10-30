@@ -22,7 +22,7 @@ const FAQS = [
   { q: "What do you need to start?", a: "Typically an architectural floor plan (DWG or PDF), any equipment schedules or selections, and the applicable code / local amendments. Each service page lists its specific document requirements." },
   { q: "Which codes do you draft to?", a: "Current US codes: NEC (NFPA 70), IMC, IPC, NFPA 13 and 72, and IES for lighting — plus your local amendments." },
   { q: "Do you offer revisions?", a: "Yes — two minor revisions are included on every set so it lands right. Larger scope changes are quoted separately." },
-  { q: "What areas do you serve?", a: "All 50 US states. We work remotely with firms, contractors, architects and developers nationwide." },
+  { q: "What areas do you serve?", a: "We work remotely with firms, contractors, architects and developers across the US." },
   { q: "Can you handle multi-location / franchise rollouts?", a: "Absolutely — it's one of our specialties. We lock your prototype and adapt it per site and jurisdiction, keeping every location consistent to the sheet." },
   { q: "Do you provide calculations too?", a: "Yes — electrical load calculations, HVAC heating & cooling loads, sprinkler hydraulic reports, and photometric studies, either standalone or paired with drafting." },
 ];

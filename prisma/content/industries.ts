@@ -68,7 +68,6 @@ Tenant improvements, white-box fit-outs and core-and-shell — we draft the full
       "Multi-discipline coordination on one ceiling",
     ],
     stats: [
-      { value: "98%", label: "First-time approval" },
       { value: "5 days", label: "Typical TI set" },
     ],
   },
