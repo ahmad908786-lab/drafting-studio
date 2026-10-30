@@ -51,7 +51,7 @@ export function SettingsForm({ initial }: { initial: { brand: string; tagline: s
         <div className="space-y-2">
           {stats.map((s, i) => (
             <div key={i} className="flex gap-2">
-              <Input value={s.value} placeholder="48 hrs" onChange={(e) => setStats(stats.map((x, j) => j === i ? { ...x, value: e.target.value } : x))} className="w-28" />
+              <Input value={s.value} placeholder="6,200+" onChange={(e) => setStats(stats.map((x, j) => j === i ? { ...x, value: e.target.value } : x))} className="w-28" />
               <Input value={s.label} placeholder="Drawing sets delivered" onChange={(e) => setStats(stats.map((x, j) => j === i ? { ...x, label: e.target.value } : x))} className="flex-1" />
               <Button variant="ghost" size="icon" onClick={() => setStats(stats.filter((_, j) => j !== i))} aria-label="Remove"><X className="size-4" /></Button>
             </div>

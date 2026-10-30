@@ -209,7 +209,7 @@ Demolition and new work are separated on their own sheets or clearly hatched, co
     faqs: [
       { q: "Can you work from photos if there are no existing drawings?", a: "Often yes. Clear photos of the panel directory, nameplate and service equipment plus a floor plan are usually enough for us to draft existing conditions." },
       { q: "Do you handle the utility application?", a: "We draft the sheets and load basis your utility and AHJ ask for. The application itself is submitted by you or your engineer of record." },
-      { q: "Does this include the load calculation?", a: "A load tabulation supporting the new service size is included. Stamping is done by your licensed engineer — we deliver the calc sheets ready for their review and seal." },
+      { q: "Does this include the load calculation?", a: "A load tabulation supporting the new service size is included. A standalone stamped study is available through our Electrical Load Calculation service." },
       { q: "Can you show demolition separately?", a: "Yes. Demo and new work are delivered on separate sheets, or hatched distinctly on a combined sheet if you prefer." },
     ],
   },

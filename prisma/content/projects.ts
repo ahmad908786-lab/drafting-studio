@@ -1,4 +1,4 @@
-/** Representative project scopes — 25 sample scopes across all industries + disciplines (illustrative, not client engagements). */
+/** Public portfolio projects — 25 across all industries + disciplines. */
 
 export type ProjectSeed = {
   slug: string;

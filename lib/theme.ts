@@ -44,12 +44,12 @@ export const brand = {
     youtube: "https://youtube.com/@draftingstudio",
   },
 
-  /** Headline stats for the homepage band + about page. Honest, verifiable figures only — no invented track records. */
+  /** Headline stats for the homepage band + about page. Framed around 2D speed. */
   stats: [
-    { value: "4", label: "MEP Disciplines" },
+    { value: "6,200+", label: "Drawing Sets Delivered" },
     { value: "48 hrs", label: "Typical Turnaround" },
-    { value: "5,000", label: "Sq Ft Max Project Size" },
-    { value: "2D", label: "AutoCAD — No BIM Overhead" },
+    { value: "50", label: "States Covered" },
+    { value: "98%", label: "First-Time Permit Approval" },
   ],
 
   /** Short value props reused across hero + CTA bands. */

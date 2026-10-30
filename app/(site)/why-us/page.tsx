@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { CtaBand } from "@/components/shared/cta-band";
+import { TestimonialCard } from "@/components/shared/testimonial-card";
+import { getTestimonials } from "@/lib/queries";
 import { Gauge, Layers, Users, DollarSign, MapPin, PenTool } from "lucide-react";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -17,10 +19,11 @@ const reasons = [
   { icon: Layers, title: "Your CAD standard", desc: "We draft to your title block, layers and sheet order so output drops straight into your set." },
   { icon: Users, title: "An extension of your team", desc: "Scale drafting capacity up and down by the quarter without hiring." },
   { icon: DollarSign, title: "Fixed, transparent pricing", desc: "Know the price before we start. Two free minor revisions on every set." },
-  { icon: MapPin, title: "Nationwide + code-fluent", desc: "Remote delivery across the US. NEC, IMC, IPC, NFPA 13 & 72, IES — plus local amendments." },
+  { icon: MapPin, title: "Nationwide + code-fluent", desc: "All 50 states. NEC, IMC, IPC, NFPA 13 & 72, IES — plus local amendments." },
 ];
 
 export default async function WhyUsPage() {
+  const testimonials = await getTestimonials(true);
   return (
     <>
       <PageHero
@@ -40,6 +43,16 @@ export default async function WhyUsPage() {
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+      <section className="border-t border-border bg-secondary/40 py-14">
+        <div className="container-page">
+          <SectionHeading eyebrow="Client voices" title="Partners on the record" align="center" className="mb-10" />
+          <div className="grid gap-5 md:grid-cols-3">
+            {testimonials.slice(0, 3).map((t) => (
+              <TestimonialCard key={t.id} t={t} />
+            ))}
+          </div>
         </div>
       </section>
       <CtaBand />

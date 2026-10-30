@@ -2826,7 +2826,7 @@ The fastest permits go to sets where the sizing documentation is boring — comp
 
 > The goal is not to survive plan review. The goal is a set so well documented that the reviewer has nothing to ask — because every number on the schedule traces back to a calculation.
 
-Whether your project falls under the IECC residential provisions or ASHRAE 90.1 commercial requirements, the workflow is the same: calculate rigorously, select honestly, and document completely. We draft [code-compliant HVAC designs](/services/mechanical-design/hvac-design) backed by full [heating and cooling load calculations](/services/calculations-reports/hvac-heating-cooling-load) that satisfy IECC and 90.1 reviewers nationwide. [Request a quote](/request-quote) to get your project scoped within one business day.`,
+Whether your project falls under the IECC residential provisions or ASHRAE 90.1 commercial requirements, the workflow is the same: calculate rigorously, select honestly, and document completely. Our engineers produce [code-compliant HVAC designs](/services/mechanical-design/hvac-design) backed by full [heating and cooling load calculations](/services/calculations-reports/hvac-heating-cooling-load) that satisfy IECC and 90.1 reviewers nationwide. [Request a quote](/request-quote) to get your project scoped within one business day.`,
     meta: { pullQuotes: ["IECC R403.7 creates a chain of custody for sizing: Manual J establishes the load, Manual S justifies the equipment. Break either link and the compliance argument collapses.", "An oversized selection can push equipment into a stricter efficiency bracket — which is exactly what the sizing provisions exist to prevent."] },
   },
   {
@@ -2991,7 +2991,7 @@ Run the lifecycle math before deciding: first cost, modeled energy cost over 15 
 
 > The right system is the one that fits the building's zones, the owner's maintenance capability, and the local code — in that order. Efficiency ratings only matter after those three are satisfied.
 
-Selecting the system architecture is the first mechanical decision on a commercial project, and everything downstream — duct routing, electrical loads, structural coordination, controls — follows from it. We draft all three approaches and produce [permit-ready commercial HVAC drawings](/services/mechanical-design/hvac-design) with the load calculations, equipment schedules, and code documentation reviewers expect. [Request a quote](/request-quote) and we will help you pick the right system for your building.`,
+Selecting the system architecture is the first mechanical decision on a commercial project, and everything downstream — duct routing, electrical loads, structural coordination, controls — follows from it. Our engineers design all three approaches and produce [permit-ready commercial HVAC drawings](/services/mechanical-design/hvac-design) with the load calculations, equipment schedules, and code documentation reviewers expect. [Request a quote](/request-quote) and we will help you pick the right system for your building.`,
     meta: { pullQuotes: ["Match the system to the load profile, not the brochure. A high-efficiency RTU serving a uniform retail floor will beat a VRF system forced to serve that same uniform load at a 30 percent cost premium.", "The right system is the one that fits the building's zones, the owner's maintenance capability, and the local code — in that order."] },
   },
   {
@@ -3093,7 +3093,7 @@ The optional method is faster but less forgiving: it lands about 25 percent high
 
 A complete residential electrical submittal includes the load calculation sheet (method stated, every line item labeled with its code section), a panel schedule whose demand column matches the calculation, and a single-line diagram showing the service size the calculation justifies. When those three documents agree, the electrical portion of plan review is usually the fastest part of the permit.
 
-If you would rather have the calculation done right the first time, our [electrical load calculation service](/services/calculations-reports/electrical-load-calculation) produces reviewer-ready calc sheets with matching [single-line diagrams](/services/electrical-design/single-line-diagram) for permit submittals across the US. Send your floor plans to [/request-quote](/request-quote) and we will turn a complete electrical package around in days, not weeks.`,
+If you would rather have the calculation done right the first time, our [electrical load calculation service](/services/calculations-reports/electrical-load-calculation) produces stamped, reviewer-ready calc sheets with matching [single-line diagrams](/services/electrical-design/single-line-diagram) for permit submittals in all 50 states. Send your floor plans to [/request-quote](/request-quote) and we will turn a complete electrical package around in days, not weeks.`,
     meta: { pullQuotes: ["The load calculation is the only part of the design the plan reviewer can verify with a calculator.", "A 48-amp EV charger adds more load than the entire general lighting of a typical home — size for it now."] },
   },
   {
@@ -3195,7 +3195,7 @@ Another quiet killer is the receptacle count. Designers routinely underestimate 
 
 A commercial electrical submittal that sails through review contains the load calculation with the method and every code section labeled, panel schedules whose demand columns match the calculation, a riser or [single-line diagram](/services/electrical-design/single-line-diagram) showing the service size the math justifies, and an [electrical system design](/services/electrical-design/electrical-system-design) narrative tying the numbers to the actual equipment. When all four agree, the electrical review becomes a formality.
 
-Our [electrical load calculation service](/services/calculations-reports/electrical-load-calculation) delivers exactly that package — coordinated load calculations, panel schedules, and permit-ready drawings for restaurants, retail, offices, and mixed-use buildings nationwide. Upload your plans at [/request-quote](/request-quote) and get a fixed-fee proposal within one business day.`,
+Our [electrical load calculation service](/services/calculations-reports/electrical-load-calculation) delivers exactly that package — stamped calculations, coordinated panel schedules, and permit-ready drawings for restaurants, retail, offices, and mixed-use buildings nationwide. Upload your plans at [/request-quote](/request-quote) and get a fixed-fee proposal within one business day.`,
     meta: { pullQuotes: ["In commercial work, the load calculation is a financial document as much as an engineering one.", "Count your receptacles honestly — at 180 VA each, the reviewer certainly will."] },
   },
   {
