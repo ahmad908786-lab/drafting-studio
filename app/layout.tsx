@@ -65,7 +65,7 @@ const orgJsonLd = {
     email: brand.contact.email,
     areaServed: "US",
   },
-  sameAs: [brand.socials.linkedin, brand.socials.facebook, brand.socials.instagram],
+  sameAs: [brand.socials.linkedin, brand.socials.facebook],
 };
 
 export default function RootLayout({

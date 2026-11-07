@@ -24,7 +24,7 @@ const contactJsonLd = {
   email: brand.contact.email,
   areaServed: "US",
   openingHours: "Mo-Fr 08:00-19:00",
-  sameAs: [brand.socials.linkedin, brand.socials.facebook, brand.socials.instagram],
+  sameAs: [brand.socials.linkedin, brand.socials.facebook],
 };
 
 export default function ContactPage() {

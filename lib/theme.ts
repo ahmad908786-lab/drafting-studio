@@ -39,8 +39,7 @@ export const brand = {
 
   socials: {
     linkedin: "https://linkedin.com/company/drafting-studio",
-    facebook: "https://facebook.com/draftingstudio",
-    instagram: "https://instagram.com/draftingstudio",
+    facebook: "https://www.facebook.com/61585861761262",
     youtube: "https://youtube.com/@draftingstudio",
   },
 
