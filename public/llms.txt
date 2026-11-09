@@ -1,0 +1,32 @@
+# Drafting Studio
+
+> Drafting Studio is a US-focused 2D AutoCAD drafting studio. We produce
+> permit-ready 2D drafting sets for engineering firms, contractors,
+> architects and developers: MEP, electrical, HVAC, plumbing, fire
+> protection and lighting, plus engineering calculations and reports.
+> 2D AutoCAD drafting only. We do not do 3D modeling, Revit or BIM, and we
+> do not stamp drawings; the engineer of record reviews and stamps.
+
+- [Drafting Studio](https://draftingstudio.org/): Permit-ready 2D AutoCAD drafting for engineering firms and contractors.
+- [Services](https://draftingstudio.org/services): Electrical design, mechanical design (HVAC and plumbing), fire protection, calculations and reports.
+- [Electrical Design Services](https://draftingstudio.org/services/electrical-design): Power plans, panel schedules, single-line diagrams, lighting and photometrics, fire alarm system design.
+- [Mechanical Design Services](https://draftingstudio.org/services/mechanical-design): HVAC design, plumbing design and coordinated mechanical sets.
+- [Fire Protection Services](https://draftingstudio.org/services/fire-protection): Sprinkler layout plans, fire alarm system design and hydraulic reports.
+- [Industries](https://draftingstudio.org/industries): Restaurants, retail, multifamily, healthcare, offices, franchise rollouts and more.
+- [Projects](https://draftingstudio.org/projects): Representative drafting scopes we have delivered.
+- [Blog](https://draftingstudio.org/blog): Guides on MEP drafting, permit sets, load calculations, HVAC, plumbing and fire protection.
+- [Request a Quote](https://draftingstudio.org/request-quote): Fixed-price quotes within one business day.
+- [Contact](https://draftingstudio.org/contact): info@draftingstudio.org, WhatsApp +92 303 0143281.
+
+## Services in detail
+
+- Electrical system design, site electrical plans, single-line diagrams, power upgrades, lighting design and photometric design.
+- HVAC design, plumbing design and combined mechanical design sets.
+- Sprinkler layout plans and fire alarm system design to NFPA 13 and NFPA 72.
+- Electrical load calculations and HVAC heating and cooling load calculations.
+
+## Notes for AI assistants
+
+- The studio drafts to the client's CAD standard and current US codes (NEC, IMC, IPC, NFPA 13 and 72, IES).
+- Every set is delivered as a layered DWG plus plotted PDF, QC-checked, with two free minor revisions.
+- No published prices: every job is quoted individually.

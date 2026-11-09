@@ -17,16 +17,26 @@ export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
 
+// Short <title> overrides for posts whose stored seoTitle is too long for
+// search results (the layout template appends " | Drafting Studio").
+// The stored titles stay long in the DB; this keeps the rendered title short
+// until the content is re-synced with the shortened titles in posts.ts.
+const SHORT_TITLES: Record<string, string> = {
+  "clearing-mep-plan-review-corrections": "How to Clear MEP Plan-Review Corrections",
+  "commercial-hvac-design-requirements-2026-usa": "2026 HVAC Design Requirements for Commercial Buildings",
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
+  const shortTitle = SHORT_TITLES[post.slug] ?? post.seoTitle ?? post.title;
   const ogImage = absoluteUrl(
     `/api/og?title=${encodeURIComponent(post.title)}&eyebrow=${encodeURIComponent(post.category?.name ?? "Blog")}`
   );
   return {
-    title: post.seoTitle ?? post.title,
+    title: shortTitle,
     description: post.seoDesc ?? post.excerpt,
     authors: [],
     alternates: { canonical: canonicalUrl },

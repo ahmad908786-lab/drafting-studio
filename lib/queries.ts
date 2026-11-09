@@ -68,8 +68,10 @@ export const getCategoryWithServices = cache(async (slug: string) => {
   return prisma.serviceCategory.findUnique({
     where: { slug },
     include: {
-      services: { where: { published: true }, orderBy: { order: "asc" }, include: { disciplines: true } },
-      secondaryServices: { where: { published: true }, orderBy: { order: "asc" }, include: { disciplines: true } },
+      services: { where: { published: true }, orderBy: { order: "asc" }, include: { disciplines: true, category: { select: { slug: true } } } },
+      // Secondary (cross-listed) services carry their PRIMARY category so
+      // cards link to the canonical service URL, never the secondary one.
+      secondaryServices: { where: { published: true }, orderBy: { order: "asc" }, include: { disciplines: true, category: { select: { slug: true } } } },
     },
   });
 });

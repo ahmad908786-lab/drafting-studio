@@ -111,7 +111,7 @@ async function main() {
         startingPrice: s.startingPrice ?? undefined,
         priceNote: s.priceNote,
         coverImage: cover,
-        seoTitle: `${s.name} Services`, // layout template appends "| Drafting Studio"
+        seoTitle: s.slug === s.category ? `${s.name} Drafting` : `${s.name} Services`, // layout template appends "| Drafting Studio"; a service sharing its category slug must not duplicate the category page title
         seoDesc: s.shortDesc,
         order: s.order,
         category: { connect: { slug: s.category } },

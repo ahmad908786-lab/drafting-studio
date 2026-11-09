@@ -70,7 +70,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 key={s.slug}
                 service={{
                   slug: s.slug, name: s.name, shortDesc: s.shortDesc, turnaroundDays: s.turnaroundDays,
-                  category: { slug: cat.slug, icon: cat.icon },
+                  // Cross-listed services link to their canonical primary-category
+                  // URL, not this (secondary) category's URL.
+                  category: { slug: s.category.slug, icon: cat.icon },
                   disciplines: s.disciplines.map((d) => ({ slug: d.slug, label: d.label, color: d.color })),
                 }}
               />

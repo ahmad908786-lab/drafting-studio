@@ -24,7 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
   if (!project) return {};
-  const title = `${project.title} — Projects`;
+  // The layout template appends " | Drafting Studio", so the page title is
+  // just the project title on its own; adding " — Projects" pushed long
+  // titles past the search-result limit.
+  const title = project.title;
   const description = project.summary ?? undefined;
   const canonical = absoluteUrl(`/projects/${slug}`);
   const imageUrl = project.coverImage ? absoluteUrl(project.coverImage) : undefined;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { Clock, Check, FileText, ShieldCheck, XCircle, FileStack, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
@@ -33,7 +33,12 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
   // Primary slug: this page renders under both primary and secondary category slugs;
   // s.category is the primary category relation, so the canonical always uses it.
   const canonicalUrl = absoluteUrl(`/services/${s.category.slug}/${s.slug}`);
-  const metaTitle = s.seoTitle ?? `${s.name} Services`;
+  // A service whose seoTitle matches its category page title would duplicate
+  // that title (e.g. "Mechanical Design" the service vs the category page).
+  // Give it a distinct title instead.
+  const categoryTitle = `${s.category.name} Services`;
+  const metaTitle =
+    s.seoTitle && s.seoTitle !== categoryTitle ? s.seoTitle : `${s.name} Drafting`;
   const metaDesc = s.seoDesc ?? s.shortDesc;
   const images = s.coverImage ? [absoluteUrl(s.coverImage)] : [];
   return {
@@ -62,9 +67,12 @@ export default async function ServiceDetailPage({
 }) {
   const { category, service } = await params;
   const s = await getServiceBySlug(service);
-  if (!s || s.category.slug !== category) {
-    // Allow reaching via the secondary (cross-listed) category too.
-    if (!s || s.secondaryCategory?.slug !== category) notFound();
+  if (!s) notFound();
+  // Every service has exactly one canonical URL, under its primary category.
+  // A request under any other category slug (secondary category, stale link,
+  // typo) must never 404 or 500: send it to the canonical URL instead.
+  if (s.category.slug !== category) {
+    redirect(`/services/${s.category.slug}/${s.slug}`);
   }
 
   const deliverables = (s.deliverables as string[]) ?? [];

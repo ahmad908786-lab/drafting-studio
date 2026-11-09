@@ -8,6 +8,21 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**.public.blob.vercel-storage.com" },
     ],
   },
+  async headers() {
+    return [
+      {
+        // HSTS: Semrush flagged both draftingstudio.org and
+        // www.draftingstudio.org as not sending Strict-Transport-Security.
+        source: "/:path*",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // SEO: the canonical host is draftingstudio.org (no www) — sitemap,

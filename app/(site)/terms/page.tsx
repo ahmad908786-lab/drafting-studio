@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/terms") },
   title: "Terms of Service",
   description: "The terms governing Drafting Studio's 2D AutoCAD drafting services, quotes, revisions and deliverables.",
-  robots: { index: false, follow: true },
 };
 
 export default function TermsPage() {

@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/privacy") },
   title: "Privacy Policy",
   description: "How Drafting Studio collects, uses and protects your information when you request quotes or create an account.",
-  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {

@@ -887,7 +887,7 @@ This is the standard every set we draft is held to — whether it is an [electri
   },
   {
     slug: "clearing-mep-plan-review-corrections",
-    title: "How to Clear MEP Plan-Review Corrections Without Losing Weeks",
+    title: "How to Clear MEP Plan-Review Corrections",
     template: "TECHNICAL_GUIDE",
     category: "design-drafting",
     tags: ["plan review", "corrections", "resubmittal", "permit process"],
@@ -2355,7 +2355,7 @@ Our [lighting design](/services/electrical-design/lighting-design) sets ship wit
   },
   {
     slug: "commercial-hvac-design-requirements-2026-usa",
-    title: "2026 HVAC Design Requirements for Commercial Buildings in the USA",
+    title: "2026 HVAC Design Requirements for Commercial Buildings",
     excerpt: "Commercial HVAC design in 2026 sits at the intersection of ASHRAE 90.1-2022, the 2024 IECC, and local amendments. Here is exactly what your permit…",
     template: "TECHNICAL_GUIDE",
     category: "hvac-plumbing",
