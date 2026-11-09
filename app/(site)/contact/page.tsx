@@ -3,7 +3,6 @@ import { Mail, Clock } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { JsonLd } from "@/components/seo/json-ld";
 import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
 import { absoluteUrl } from "@/lib/utils";
 import { whatsappUrl, whatsappDisplay } from "@/lib/whatsapp";
@@ -15,22 +14,9 @@ export const metadata: Metadata = {
   description: "Get in touch with Drafting Studio for 2D AutoCAD drafting. Send a message, request a callback, or start a quote.",
 };
 
-const contactJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: brand.name,
-  url: absoluteUrl("/contact"),
-  description: "Contact Drafting Studio — request a fixed-price 2D AutoCAD drafting quote or ask about MEP, fire protection and lighting drafting services.",
-  email: brand.contact.email,
-  areaServed: "US",
-  openingHours: "Mo-Fr 08:00-19:00",
-  sameAs: [brand.socials.linkedin, brand.socials.facebook],
-};
-
 export default function ContactPage() {
   return (
     <>
-      <JsonLd data={contactJsonLd} />
       <PageHero
         eyebrow="Contact"
         title="Contact Drafting Studio — Get a Drafting Quote"
@@ -79,6 +65,17 @@ export default function ContactPage() {
               </ul>
             </div>
           </aside>
+        </div>
+      </section>
+      <section className="border-t border-border bg-secondary/40 py-14">
+        <div className="container-page max-w-3xl">
+          <h2 className="font-sans text-2xl font-extrabold tracking-tight text-foreground">What happens next</h2>
+          <p className="mt-3 text-muted-foreground">
+            We reply within one business day. If you asked for a quote, we will come back with a fixed price and a delivery date, or with a short list of questions if your scope needs anything else. If you sent a general question, you will get a direct answer from someone who drafts, not a sales script.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            To get the fastest answer, tell us the project type, the size and location, your timeline, and attach the plans you already have. Floor plans in DWG or PDF, equipment selections, and any local amendments all help. Everything you send stays confidential and is used only to prepare your drafting work.
+          </p>
         </div>
       </section>
     </>

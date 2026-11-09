@@ -44,7 +44,16 @@ export default function FaqPage() {
       />
       <section className="py-14">
         <div className="container-page max-w-3xl">
-          <FaqAccordion faqs={FAQS} />
+          <h2 className="font-sans text-2xl font-extrabold tracking-tight text-foreground">How to get an answer fast</h2>
+          <p className="mt-3 text-muted-foreground">
+            Most questions about our drafting service have a short answer. We draft permit-ready 2D AutoCAD sets for engineering firms, contractors, architects and developers across the United States, and every set is delivered as a layered DWG plus a plotted PDF, QC-checked, with two free minor revisions. If you send your scope, you get a fixed price and a delivery date within one business day, with no meeting and no obligation.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            The questions below cover deliverables, turnaround, stamping, pricing and what we need to start. If your question is about a specific project, send the plans and a short description through the contact form or the quote wizard, and we will answer with your scope in mind instead of a generic reply.
+          </p>
+          <div className="mt-8">
+            <FaqAccordion faqs={FAQS} />
+          </div>
           <p className="mt-8 text-center text-sm text-muted-foreground">
             Still have a question?{" "}
             <Link href="/contact" className="font-semibold text-primary hover:underline">Get in touch →</Link>

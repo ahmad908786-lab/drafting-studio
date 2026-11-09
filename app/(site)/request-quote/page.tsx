@@ -63,6 +63,20 @@ export default async function RequestQuotePage({
           />
         </div>
       </section>
+      <section className="border-t border-border bg-secondary/40 py-14">
+        <div className="container-page max-w-3xl">
+          <h2 className="font-sans text-2xl font-extrabold tracking-tight text-foreground">How quoting works</h2>
+          <p className="mt-3 text-muted-foreground">
+            Tell us what you need and send your plans. The wizard above walks through it in three steps: pick the services, describe the project and the building, then upload your files. You can request a quote for one service or a full coordinated MEP set, and you can add the calculation reports alongside the drafting if the permit needs them.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            We reply with a fixed price and a delivery date within one business day, with no meeting and no obligation. Most sets are delivered in 3 to 7 business days depending on scope and size, and every set is delivered as a layered DWG plus a plotted PDF, QC-checked, with two free minor revisions. Everything you upload stays confidential and is used only to prepare your quote and your drafting work.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            To get the most accurate price first time, include the architectural floor plans, any equipment selections or schedules, and the applicable local amendments. If you are not sure what applies, send what you have and we will ask for the rest.
+          </p>
+        </div>
+      </section>
     </>
   );
 }

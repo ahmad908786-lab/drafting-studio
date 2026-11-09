@@ -86,6 +86,20 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         </div>
       </section>
 
+      <section className="border-t border-border bg-secondary/40 py-14">
+        <div className="container-page max-w-3xl">
+          <h2 className="font-sans text-2xl font-extrabold tracking-tight text-foreground">
+            What every {cat.name.toLowerCase()} set includes
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            Every {cat.name.toLowerCase()} package is delivered as a layered 2D AutoCAD set with plotted PDFs, drafted to the current US codes and to your CAD standard, and QC-checked before delivery. You get a fixed price and a delivery date within one business day of sending your scope, and two free minor revisions are included on every set.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            This category covers {services.map((s) => s.name).join(", ")}. Send your plans and scope through the quote wizard, or talk to us first if you are not sure which service fits. We will scope it with you and tell you plainly what is included and what is not.
+          </p>
+        </div>
+      </section>
+
       <CtaBand />
     </>
   );

@@ -24,16 +24,6 @@ const aboutJsonLd = [
     url: absoluteUrl("/about"),
     description: "Learn about Drafting Studio, a US-focused 2D AutoCAD drafting studio for MEP, fire protection and lighting.",
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: brand.name,
-    url: absoluteUrl("/about"),
-    description: brand.descriptor,
-    email: brand.contact.email,
-    areaServed: "US",
-    sameAs: [brand.socials.linkedin, brand.socials.facebook],
-  },
 ];
 
 export default async function AboutPage() {
