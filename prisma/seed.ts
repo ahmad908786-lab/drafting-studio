@@ -111,8 +111,8 @@ async function main() {
         startingPrice: s.startingPrice ?? undefined,
         priceNote: s.priceNote,
         coverImage: cover,
-        seoTitle: s.slug === s.category ? `${s.name} Drafting` : `${s.name} Services`, // layout template appends "| Drafting Studio"; a service sharing its category slug must not duplicate the category page title
-        seoDesc: s.shortDesc,
+        seoTitle: s.seoTitle ?? (s.slug === s.category ? `${s.name} Drafting` : `${s.name} Services`), // layout template appends " | Drafting Studio"; a service sharing its category slug must not duplicate the category page title
+        seoDesc: s.seoDesc ?? s.shortDesc,
         order: s.order,
         category: { connect: { slug: s.category } },
         ...(s.secondaryCategory ? { secondaryCategory: { connect: { slug: s.secondaryCategory } } } : {}),
@@ -247,8 +247,8 @@ async function main() {
         status: "PUBLISHED",
         publishedAt: daysAgo(post.daysAgo),
         views: 200 + post.readMinutes * 37 + post.daysAgo * 3,
-        seoTitle: post.title,
-        seoDesc: post.excerpt,
+        seoTitle: post.seoTitle ?? post.title,
+        seoDesc: post.seoDesc ?? post.excerpt,
         meta: (post.meta ?? {}) as any,
         author: { connect: { id: author.id } },
         category: { connect: { slug: post.category } },
@@ -310,8 +310,9 @@ async function main() {
       socials: { linkedin: "https://linkedin.com/company/drafting-studio", facebook: "https://facebook.com", instagram: "https://instagram.com" } as any,
       stats: [
         { value: "6,200+", label: "Drawing Sets Delivered" },
-        { value: "48 hrs", label: "Typical Turnaround" },
-        { value: "50", label: "States Covered" },
+        { value: "300+", label: "Projects Completed" },
+        { value: "3-7 days", label: "Typical Turnaround" },
+        { value: "20+", label: "States Covered" },
         { value: "98%", label: "First-Time Permit Approval" },
       ] as any,
     },

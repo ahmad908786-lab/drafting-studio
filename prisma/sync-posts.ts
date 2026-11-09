@@ -57,7 +57,7 @@ async function main() {
       // title, excerpt or read time with its body untouched.
       const row = await prisma.post.findUnique({
         where: { slug: post.slug },
-        select: { bodyMdx: true, title: true, excerpt: true, template: true, readMinutes: true },
+        select: { bodyMdx: true, title: true, excerpt: true, template: true, readMinutes: true, seoTitle: true, seoDesc: true },
       });
       const unchanged =
         row &&
@@ -65,7 +65,9 @@ async function main() {
         row.title === post.title &&
         row.excerpt === post.excerpt &&
         row.template === post.template &&
-        row.readMinutes === post.readMinutes;
+        row.readMinutes === post.readMinutes &&
+        row.seoTitle === (post.seoTitle ?? post.title) &&
+        row.seoDesc === (post.seoDesc ?? post.excerpt);
       if (unchanged) continue;
       await prisma.post.update({
         where: { slug: post.slug },
@@ -75,8 +77,8 @@ async function main() {
           bodyMdx: post.bodyMdx,
           template: post.template,
           readMinutes: post.readMinutes,
-          seoTitle: post.title,
-          seoDesc: post.excerpt,
+          seoTitle: post.seoTitle ?? post.title,
+          seoDesc: post.seoDesc ?? post.excerpt,
           meta: (post.meta ?? {}) as never,
           category: { connect: { slug: post.category } },
           tags: {
@@ -112,8 +114,8 @@ async function main() {
         status: "PUBLISHED",
         publishedAt: daysAgo(post.daysAgo),
         views: 200 + post.readMinutes * 37 + post.daysAgo * 3,
-        seoTitle: post.title,
-        seoDesc: post.excerpt,
+        seoTitle: post.seoTitle ?? post.title,
+        seoDesc: post.seoDesc ?? post.excerpt,
         meta: (post.meta ?? {}) as never,
         author: { connect: { id: author.id } },
         category: { connect: { slug: post.category } },

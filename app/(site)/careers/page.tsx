@@ -9,8 +9,8 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/careers") },
-  title: "Careers",
-  description: "Join Drafting Studio: remote 2D AutoCAD drafter jobs in electrical, HVAC, plumbing, fire protection & lighting. Fast-paced MEP drafting studio hiring now.",
+  title: "Remote AutoCAD Drafter Jobs",
+  description: "Remote AutoCAD drafter jobs at Drafting Studio: electrical, HVAC, plumbing, fire protection and lighting roles in a fast-paced MEP drafting studio, hiring now.",
 };
 
 const openings = [

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, Building2, HardHat, Clock, ShieldCheck, FileCheck2 } from "lucide-react";
+import { ArrowRight, Building2, HardHat, ShieldCheck } from "lucide-react";
 import { Hero } from "@/components/marketing/hero";
 import { IndustryGrid } from "@/components/marketing/industry-grid";
 import { LogoMarquee } from "@/components/marketing/logo-marquee";
@@ -30,9 +30,9 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/") },
-  title: "MEP Drafting Services | Permit-Ready 2D AutoCAD Drawings",
+  title: "MEP Drafting Services, 2D AutoCAD Drawings",
   description:
-    "Permit-ready 2D AutoCAD drafting for engineering firms & contractors — MEP, electrical, HVAC, plumbing & fire protection drawings with 48-hour turnaround.",
+    "Permit-ready 2D AutoCAD drafting for firms and contractors: MEP, electrical, HVAC, plumbing and fire protection drawings with a 3-7 business day turnaround.",
 };
 
 export default async function HomePage() {

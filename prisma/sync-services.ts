@@ -46,8 +46,8 @@ async function main() {
       turnaroundDays: s.turnaroundDays,
       startingPrice: s.startingPrice ?? undefined,
       priceNote: s.priceNote,
-      seoTitle: s.slug === s.category ? `${s.name} Drafting` : `${s.name} Services`, // layout template appends the brand; a service sharing its category slug must not duplicate the category page title
-      seoDesc: s.shortDesc,
+      seoTitle: s.seoTitle ?? (s.slug === s.category ? `${s.name} Drafting` : `${s.name} Services`), // layout template appends the brand; a service sharing its category slug must not duplicate the category page title
+      seoDesc: s.seoDesc ?? s.shortDesc,
       order: s.order,
     };
 

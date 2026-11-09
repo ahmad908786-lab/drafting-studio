@@ -7,9 +7,9 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/industries") },
-  title: "Industries We Serve",
+  title: "MEP Drafting Services by Industry",
   description:
-    "2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments, plaza, offices and warehouse projects.",
+    "MEP drafting services by industry: 2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments and offices.",
 };
 
 export default async function IndustriesPage() {

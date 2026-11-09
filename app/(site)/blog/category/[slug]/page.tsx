@@ -21,11 +21,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const cat = await prisma.category.findUnique({ where: { slug } });
   if (!cat) return {};
   return {
-    title: `${cat.name} Articles`,
+    title: CATEGORY_TITLES[slug] ?? `${cat.name} Articles`,
     description: cat.description ?? undefined,
     alternates: { canonical: absoluteUrl(`/blog/category/${slug}`) },
   };
 }
+
+// SEO titles per category, keyed to the mapped primary keyword for each.
+// The description lives in the database (seeded from prisma/content/posts.ts).
+const CATEGORY_TITLES: Record<string, string> = {
+  "design-drafting": "2D AutoCAD Drafting Guides",
+  electrical: "Electrical Drafting Guides",
+  "hvac-plumbing": "HVAC and Plumbing Drafting Guides",
+  "fire-protection": "Fire Protection Drafting Guides",
+  lighting: "Lighting and Photometric Guides",
+  franchise: "Franchise Rollout Drafting Guides",
+};
 
 type SP = Record<string, string | string[] | undefined>;
 

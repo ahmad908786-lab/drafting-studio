@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const cat = await getCategoryWithServices(category);
   if (!cat) return {};
   const tax = SERVICE_CATEGORIES.find((c) => c.slug === category);
-  const metaTitle = `${cat.name} Services`;
+  const metaTitle = tax?.seoTitle ?? `${cat.name} Services`;
   const metaDesc = tax?.seoDesc ?? cat.blurb ?? `2D AutoCAD ${cat.name.toLowerCase()} drafting services.`;
   const canonicalUrl = absoluteUrl(`/services/${cat.slug}`);
   return {

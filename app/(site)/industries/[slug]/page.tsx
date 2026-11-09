@@ -122,7 +122,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       {stats.length > 0 && (
         <section className="border-y border-border bg-secondary/40 py-12">
           <div className="container-page">
-            <StatBand stats={[...stats, { value: "50", label: "States Covered" }, { value: "48 hrs", label: "Typical Turnaround" }].slice(0, 4)} />
+            <StatBand stats={[...stats, { value: "20+", label: "States Covered" }, { value: "3-7 days", label: "Typical Turnaround" }].slice(0, 4)} />
           </div>
         </section>
       )}

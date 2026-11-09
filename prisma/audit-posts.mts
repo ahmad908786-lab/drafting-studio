@@ -63,7 +63,7 @@ for (const l of [...internalLinks].sort()) {
   if (l === "/request-quote") continue;
   const parts = l.split("/").filter(Boolean);
   // map to app dir
-  let base = "app/(site)";
+  const base = "app/(site)";
   let ok = false;
   for (let i = 0; i < parts.length; i++) {
     const p = base + "/" + parts.slice(0, i + 1).join("/");

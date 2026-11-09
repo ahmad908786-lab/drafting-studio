@@ -8,8 +8,8 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/faq") },
-  title: "Frequently Asked Questions",
-  description: "Answers about Drafting Studio's 2D AutoCAD drafting services — deliverables, turnaround, stamping, pricing and more.",
+  title: "2D AutoCAD Drafting FAQs",
+  description: "2D AutoCAD drafting FAQs: answers on deliverables, turnaround, stamping, pricing and file formats for our permit-ready drafting services, all in one place.",
 };
 
 const FAQS = [

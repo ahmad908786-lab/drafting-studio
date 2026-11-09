@@ -9,8 +9,8 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/why-us") },
-  title: "Why Drafting Studio",
-  description: "Why engineering firms choose Drafting Studio: fast 2D AutoCAD MEP drafting to your CAD standard — permit-ready DWG sets, fixed pricing, 24-hour quotes.",
+  title: "MEP Drafting Services USA",
+  description: "MEP drafting services in the USA: fast 2D AutoCAD drafting to your CAD standard, permit-ready DWG sets, fixed pricing and quotes in under 24 hours, nationwide.",
 };
 
 const reasons = [
@@ -19,7 +19,7 @@ const reasons = [
   { icon: Layers, title: "Your CAD standard", desc: "We draft to your title block, layers and sheet order so output drops straight into your set." },
   { icon: Users, title: "An extension of your team", desc: "Scale drafting capacity up and down by the quarter without hiring." },
   { icon: DollarSign, title: "Fixed, transparent pricing", desc: "Know the price before we start. Two free minor revisions on every set." },
-  { icon: MapPin, title: "Nationwide + code-fluent", desc: "All 50 states. NEC, IMC, IPC, NFPA 13 & 72, IES — plus local amendments." },
+  { icon: MapPin, title: "Nationwide + code-fluent", desc: "20+ states. NEC, IMC, IPC, NFPA 13 & 72, IES — plus local amendments." },
 ];
 
 export default async function WhyUsPage() {

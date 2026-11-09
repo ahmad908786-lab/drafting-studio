@@ -8,8 +8,8 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/process") },
-  title: "Our Process",
-  description: "How Drafting Studio turns your plans and scope into a permit-ready 2D AutoCAD set — from upload to delivery.",
+  title: "MEP Drafting Process",
+  description: "Our MEP drafting process turns your plans and scope into a permit-ready 2D AutoCAD set, from upload to delivery, with a fixed price and date up front.",
 };
 
 const guarantees = [

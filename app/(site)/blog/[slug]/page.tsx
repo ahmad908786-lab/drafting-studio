@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 // until the content is re-synced with the shortened titles in posts.ts.
 const SHORT_TITLES: Record<string, string> = {
   "clearing-mep-plan-review-corrections": "How to Clear MEP Plan-Review Corrections",
-  "commercial-hvac-design-requirements-2026-usa": "2026 HVAC Design Requirements for Commercial Buildings",
+  "commercial-hvac-design-requirements-2026-usa": "2026 Commercial HVAC Design Requirements",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

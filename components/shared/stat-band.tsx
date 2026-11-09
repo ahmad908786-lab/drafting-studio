@@ -2,7 +2,7 @@ type Stat = { value: string; label: string };
 
 export function StatBand({ stats }: { stats: Stat[] }) {
   return (
-    <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
+    <div className={`grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border ${stats.length >= 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"}`}>
       {stats.map((s) => (
         <div key={s.label} className="bg-card px-6 py-8 text-center">
           <div className="font-sans text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">

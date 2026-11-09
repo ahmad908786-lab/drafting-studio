@@ -14,8 +14,8 @@ import { formatDate, absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/blog") },
-  title: "Blog — Drafting Guides & Case Studies",
-  description: "2D drafting guides, code walkthroughs and case studies for electrical, HVAC, plumbing, fire protection and lighting.",
+  title: "MEP Drafting Guides and Case Studies",
+  description: "MEP drafting guides, code walkthroughs and case studies for electrical, HVAC, plumbing, fire protection and lighting, written by the drafters who do the work.",
 };
 
 type SP = Record<string, string | string[] | undefined>;

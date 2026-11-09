@@ -6,6 +6,8 @@
 export type ServiceSeed = {
   slug: string;
   name: string;
+  seoTitle?: string;
+  seoDesc?: string;
   category: string; // primary category slug
   secondaryCategory?: string;
   disciplines: string[]; // discipline slugs
@@ -47,6 +49,8 @@ export const SERVICES: ServiceSeed[] = [
     startingPrice: 450,
     priceNote: "Per floor, up to 10,000 sq ft. Larger areas quoted on scope.",
     shortDesc: "Complete 2D AutoCAD electrical design services: power plans, panel schedules, single-line diagrams & device layouts drafted for permit & AHJ approval.",
+    seoTitle: "Electrical System Design Services",
+    seoDesc: "Electrical system design services in 2D AutoCAD: power plans, panel schedules, single-line diagrams and device layouts drafted for permit and AHJ approval.",
     heroCopy:
       "Full electrical construction documents — power plans, panel schedules, riser diagrams and device layouts — drafted in clean, layered AutoCAD and formatted for AHJ submission.",
     bodyMdx: `## What we draft
@@ -93,6 +97,8 @@ We draft to the current **National Electrical Code (NEC / NFPA 70)** and your lo
     startingPrice: 400,
     priceNote: "Per site plan. Complex utility coordination quoted separately.",
     shortDesc: "Site electrical plans drafted in 2D: service entrance, site lighting feeds, EV charger circuits & utility routing coordinated on your civil site plan.",
+    seoTitle: "Site Electrical Plan Drafting",
+    seoDesc: "Site electrical plan drafting in 2D: service entrance, site lighting feeds, EV charger circuits and utility routing coordinated on your civil site plan.",
     heroCopy:
       "Exterior power distribution drafted to scale — service entrance, site lighting feeds, EV and equipment circuits, and utility routing coordinated onto your civil site plan.",
     bodyMdx: `## Site-level electrical, drawn to scale
@@ -133,6 +139,8 @@ Feeder runs are drawn with conduit and conductor callouts, homeruns are tagged, 
     startingPrice: 250,
     priceNote: "Per single line diagram. Multi-service buildings quoted on scope.",
     shortDesc: "Electrical single-line diagrams drafted in AutoCAD: service, metering, distribution, feeders & overcurrent protection — clear, accurate, permit-ready.",
+    seoTitle: "Single Line Diagram Drafting",
+    seoDesc: "Single line diagram drafting in AutoCAD: service, metering, distribution, feeders and overcurrent protection, drafted clear, accurate and permit-ready.",
     heroCopy:
       "A precise electrical single line diagram — service, metering, distribution, feeders and overcurrent protection — drafted in AutoCAD for permit and coordination.",
     bodyMdx: `## The backbone of your electrical set
@@ -173,6 +181,8 @@ We use standard symbols and a logical top-to-bottom hierarchy so ratings, AIC, c
     startingPrice: 550,
     priceNote: "Per service upgrade. Multi-meter and multi-tenant buildings quoted on scope.",
     shortDesc: "Electrical service & panel upgrade drawings: existing-vs-new one-line, feeder routing & NEC load basis — drafted in 2D for permit approval and AHJ submittal.",
+    seoTitle: "Electrical Power Upgrade Drawings",
+    seoDesc: "Electrical power upgrade drawings: existing-vs-new one-line, feeder routing and NEC load basis, drafted in 2D for permit approval, AHJ submittal and field use.",
     heroCopy:
       "Upgrading an existing electrical service? We draft the permit set — existing versus new service, panel replacement, feeder routing and the load basis that justifies the new size.",
     bodyMdx: `## Existing conditions, then the upgrade
@@ -223,6 +233,8 @@ Demolition and new work are separated on their own sheets or clearly hatched, co
     startingPrice: 400,
     priceNote: "Per floor up to 10,000 sq ft. Fixtures specified by client or per allowance.",
     shortDesc: "Interior & exterior lighting design drafted in 2D AutoCAD: fixture layouts, switching, controls & fixture schedules — code-compliant and permit-ready.",
+    seoTitle: "Lighting Design Drafting Services",
+    seoDesc: "Lighting design drafting services in 2D AutoCAD: fixture layouts, switching, controls and fixture schedules, code-compliant and permit-ready for AHJ approval.",
     heroCopy:
       "Lighting layouts that balance code, comfort and cost — fixture placement, switching, controls and a coordinated fixture schedule, drafted in AutoCAD.",
     bodyMdx: `## Lighting laid out right
@@ -264,6 +276,8 @@ Lighting layouts pair naturally with our **Photometric Design** service when you
     startingPrice: 500,
     priceNote: "Per area up to 15,000 sq ft. Delivered per IES standards.",
     shortDesc: "Photometric lighting studies per IES standards: point-by-point footcandle grids, uniformity ratios & dark-sky compliance for interiors, parking lots and sites.",
+    seoTitle: "Photometric Design Services",
+    seoDesc: "Photometric design services per IES standards: point-by-point footcandle grids, uniformity ratios and dark-sky compliance for interiors, parking lots and sites.",
     heroCopy:
       "Point-by-point photometric studies to prove your lighting meets code and design targets — interior, parking, site and facade — delivered as a calc grid and report.",
     bodyMdx: `## Prove the light levels
@@ -316,6 +330,8 @@ Parking lots and garages, building exteriors and facades, sports courts, warehou
     startingPrice: 500,
     priceNote: "Per floor up to 12,000 sq ft. Voice/mass-notification quoted separately.",
     shortDesc: "Fire alarm system design to NFPA 72: device layouts, SLC/NAC circuiting, risers, battery & voltage-drop calcs — drafted in clean 2D for permit submittals.",
+    seoTitle: "Fire Alarm System Design Services",
+    seoDesc: "Fire alarm system design services to NFPA 72: device layouts, SLC/NAC circuiting, risers, battery and voltage-drop calcs, drafted in 2D for permit submittals.",
     heroCopy:
       "Fire alarm device plans, riser diagrams and supporting calculations drafted to NFPA 72 — initiating and notification devices placed, circuited and scheduled.",
     bodyMdx: `## Fire alarm, drawn to NFPA 72
@@ -370,6 +386,8 @@ Device placement is coordinated with the architectural reflected ceiling and egr
     startingPrice: 600,
     priceNote: "Combined HVAC + plumbing scope; per floor up to 10,000 sq ft.",
     shortDesc: "Coordinated mechanical design drafted in 2D AutoCAD: HVAC ductwork plus plumbing — water, waste, vent & gas — in one full permit-ready construction set.",
+    seoTitle: "HVAC and Plumbing Design Drafting",
+    seoDesc: "Mechanical design drafting services in 2D AutoCAD: HVAC ductwork plus plumbing, water, waste, vent and gas, in one full permit-ready construction set.",
     heroCopy:
       "Mechanical is our umbrella for HVAC and plumbing. Get both disciplines drafted and coordinated as one 2D construction set — ductwork, piping, equipment and schedules.",
     bodyMdx: `## One coordinated mechanical set
@@ -412,6 +430,8 @@ Device placement is coordinated with the architectural reflected ceiling and egr
     startingPrice: 500,
     priceNote: "Per floor up to 10,000 sq ft. Load calc available as add-on.",
     shortDesc: "HVAC design drafted in 2D AutoCAD to the IMC: equipment, ductwork, diffusers, exhaust & controls — coordinated to your ceiling plans and permit-ready.",
+    seoTitle: "HVAC Drafting Services",
+    seoDesc: "HVAC drafting services in 2D AutoCAD to the IMC: equipment, ductwork, diffusers, exhaust and controls, coordinated to your ceiling plans and permit-ready.",
     heroCopy:
       "Air-side HVAC drafted in 2D — equipment placement, supply/return ductwork, diffusers, exhaust and controls — coordinated to the ceiling and drawn to the mechanical code.",
     bodyMdx: `## Air-side, fully drafted
@@ -452,6 +472,8 @@ Drawn to the **International Mechanical Code (IMC)** and local amendments, with 
     startingPrice: 500,
     priceNote: "Per floor up to 10,000 sq ft.",
     shortDesc: "Plumbing design drafted in 2D to IPC/UPC: domestic water, sanitary, vent, storm & gas piping with risers, fixture schedules & isometric details for permit.",
+    seoTitle: "Plumbing Drafting Services",
+    seoDesc: "Plumbing drafting services in 2D to IPC/UPC: domestic water, sanitary, vent, storm and gas piping with risers, schedules and isometric details for permit.",
     heroCopy:
       "Plumbing drafted in 2D — domestic water, sanitary and vent, storm and gas — with waste/vent risers, fixture schedules and isometric details to the plumbing code.",
     bodyMdx: `## Water, waste, vent and gas
@@ -494,6 +516,8 @@ Prepared to the **International Plumbing Code (IPC)** / UPC and local amendments
     startingPrice: 500,
     priceNote: "Per floor up to 12,000 sq ft.",
     shortDesc: "Fire sprinkler shop drawings to NFPA 13: head layouts, branch & main routing, hangers & details — drafted in 2D for AHJ approval & fabrication shop use.",
+    seoTitle: "Fire Sprinkler Shop Drawings",
+    seoDesc: "Fire sprinkler shop drawings to NFPA 13: head layouts, branch and main routing, hangers and details, drafted in 2D for AHJ approval and fabrication shop use.",
     heroCopy:
       "Fire sprinkler shop drawings drafted to NFPA 13 — head placement, branch and main routing, hanger and seismic details — ready for AHJ and fabrication.",
     bodyMdx: `## Sprinkler shop drawings, done right
@@ -542,6 +566,8 @@ We draft the fire sprinkler layout to **NFPA 13** (or 13R/13D): head placement b
     startingPrice: 300,
     priceNote: "Per service / building. Multi-tenant quoted per scope.",
     shortDesc: "NEC Article 220 electrical load calculations: connected & demand loads, panel schedules & service sizing — plus the utility load letter your AHJ requires.",
+    seoTitle: "Electrical Load Calculation Services",
+    seoDesc: "Electrical load calculation services per NEC Article 220: connected and demand loads, service sizing, plus the utility load letter for AHJ review and permit.",
     heroCopy:
       "NEC-based load calculations that right-size your service — connected and demand loads, panel schedules, and the load letter your utility or AHJ requires.",
     bodyMdx: `## Size the service with confidence
@@ -592,6 +618,8 @@ New services and upgrades, tenant fit-outs, added equipment or EV charging, and 
     startingPrice: 350,
     priceNote: "Per zone/building up to 10,000 sq ft. Larger scopes quoted.",
     shortDesc: "Manual-J & ASHRAE heating/cooling load calculations: room-by-room loads, equipment sizing & ventilation basis for mechanical permit approval and sizing.",
+    seoTitle: "HVAC Load Calculation Services",
+    seoDesc: "HVAC load calculation services, Manual-J and ASHRAE: room-by-room heating and cooling loads, equipment sizing and ventilation basis for permit approval.",
     heroCopy:
       "Room-by-room heating and cooling load calculations — Manual-J / ASHRAE method — that size your equipment correctly and back up the mechanical permit set.",
     bodyMdx: `## Right-size the equipment

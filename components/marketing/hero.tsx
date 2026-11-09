@@ -18,8 +18,8 @@ export function Hero() {
               JSX formatting and the balanced-text wrap. */}
           <h1 className="mt-5 text-balance font-sans text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
             Expert{" "}
-            <span className="text-accent">CAD Drafting Services</span>{" "}
-            to Cut Down on Repetitive Drafting Time for Permit
+            <span className="text-accent">MEP Drafting Services</span>{" "}
+            in 2D AutoCAD to Cut Down on Repetitive Drafting Time for Permit-Ready Drawings
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-primary-foreground/80">
             {brand.heroSubhead}

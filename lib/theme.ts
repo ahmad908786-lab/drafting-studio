@@ -46,8 +46,9 @@ export const brand = {
   /** Headline stats for the homepage band + about page. Framed around 2D speed. */
   stats: [
     { value: "6,200+", label: "Drawing Sets Delivered" },
-    { value: "48 hrs", label: "Typical Turnaround" },
-    { value: "50", label: "States Covered" },
+    { value: "300+", label: "Projects Completed" },
+    { value: "3-7 days", label: "Typical Turnaround" },
+    { value: "20+", label: "States Covered" },
     { value: "98%", label: "First-Time Permit Approval" },
   ],
 

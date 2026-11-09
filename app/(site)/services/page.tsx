@@ -11,9 +11,9 @@ import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/services") },
-  title: "2D Drafting Services",
+  title: "AutoCAD Drafting Services",
   description:
-    "13 2D AutoCAD drafting services across electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations & reports.",
+    "AutoCAD drafting services: 13 2D drafting services across electrical, mechanical (HVAC and plumbing), fire protection, and engineering calculations and reports.",
 };
 
 export default async function ServicesPage() {
