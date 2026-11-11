@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/services") },
   title: "AutoCAD Drafting Services",
   description:
-    "AutoCAD drafting services: 13 2D drafting services across electrical, mechanical (HVAC and plumbing), fire protection, and engineering calculations and reports.",
+    "AutoCAD drafting services: 13 2D drafting services across electrical, mechanical (HVAC and plumbing), fire protection, and engineering calculations and reports — for new construction and retrofit projects.",
 };
 
 export default async function ServicesPage() {
@@ -29,7 +29,7 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="What We Draft"
         title="2D AutoCAD drafting services"
-        description="Thirteen services across four disciplines — electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations. Every one delivered as a clean, permit-ready 2D set."
+        description="Thirteen services across four disciplines — electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations — for new construction and retrofit projects. Every one delivered as a clean, permit-ready 2D set."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       >
         <div className="flex flex-wrap gap-2">

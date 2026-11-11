@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/") },
   title: "MEP Drafting Services, 2D AutoCAD Drawings",
   description:
-    "Permit-ready 2D AutoCAD drafting for firms and contractors: MEP, electrical, HVAC, plumbing and fire protection drawings with a 3-7 business day turnaround.",
+    "Permit-ready 2D AutoCAD drafting for firms and contractors: MEP, electrical, HVAC, plumbing and fire protection drawings for new construction and retrofit projects, with a 3-7 business day turnaround.",
 };
 
 export default async function HomePage() {
@@ -107,7 +107,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="What We Draft"
               title="13 services across 4 disciplines"
-              description="Electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations — every one delivered as a clean 2D AutoCAD set."
+              description="Electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations for new construction and retrofit projects — every one delivered as a clean 2D AutoCAD set."
             />
             <Button asChild variant="outline">
               <Link href="/services">All services <ArrowRight className="size-4" /></Link>
