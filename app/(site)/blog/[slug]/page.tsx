@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: shortTitle,
     description: trimDescription(post.seoDesc ?? post.excerpt),
-    authors: [],
+    authors: [{ name: "Drafting Studio", url: absoluteUrl() }],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
@@ -101,15 +101,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     template: post.template,
     meta: post.meta,
     category: post.category ? { name: post.category.name, slug: post.category.slug, color: post.category.color } : null,
-    author: post.author ? { name: post.author.name, image: post.author.image, title: post.author.title } : null,
+    // Blog author is always the studio itself, never the stored placeholder
+    // user. The byline, metadata and JSON-LD all say "Drafting Studio".
+    author: { name: "Drafting Studio", image: null, title: null },
     tags: post.tags.map((t) => ({ slug: t.slug, name: t.name })),
   };
 
   // BlogPosting (not plain Article) with the Organization linked by @id.
-  // No Person author: the stored author is a placeholder and is not shown
-  // on the page, so a Person would be markup for invisible, unverified
-  // content. When real author bios are added to the templates, switch the
-  // author to that Person.
+  // The blog author is Drafting Studio itself (Organization), matching the
+  // visible "By Drafting Studio" byline. Never a Person: the stored author
+  // user is a placeholder and its name is never shown.
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

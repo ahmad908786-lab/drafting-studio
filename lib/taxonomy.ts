@@ -108,7 +108,7 @@ export const BUDGET_RANGES = [
 ] as const;
 
 export const POST_TEMPLATES = [
-  { value: "STANDARD", label: "Standard Article", desc: "Cover hero, sticky table of contents, author card." },
+  { value: "STANDARD", label: "Standard Article", desc: "Cover hero, sticky table of contents, author byline." },
   { value: "TECHNICAL_GUIDE", label: "Technical Guide", desc: "Numbered section nav, spec tables, formula callouts." },
   { value: "CASE_STUDY", label: "Case Study", desc: "Stats banner, challenge/solution/result, drawing gallery." },
   { value: "LISTICLE", label: "Listicle", desc: "Numbered card sections with per-item images." },

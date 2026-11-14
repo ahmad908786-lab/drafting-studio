@@ -211,15 +211,15 @@ async function main() {
     });
   }
 
-  // Author = staff member (created below in users step); create a placeholder author now.
+  // Blog author is the studio itself (also the demo staff login below).
   const author = await prisma.user.create({
     data: {
-      name: "Priya Raman",
+      name: "Drafting Studio",
       email: "priya@draftingstudio.example",
       role: "STAFF",
-      title: "Lead Drafter",
+      title: null,
       passwordHash: await bcrypt.hash("Staff123!", 10),
-      image: writeSvg("avatars", "priya-raman", avatarSvg("Priya Raman")),
+      image: writeSvg("avatars", "priya-raman", avatarSvg("Drafting Studio")),
     },
   });
 

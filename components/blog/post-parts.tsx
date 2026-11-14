@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, Calendar } from "lucide-react";
+import { Clock, Calendar, PenLine } from "lucide-react";
 import { PostCard } from "@/components/shared/post-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { formatDate } from "@/lib/utils";
@@ -15,6 +15,7 @@ export function PostMeta({
 }) {
   return (
     <div className={`flex flex-wrap items-center gap-4 text-sm ${className ?? ""}`}>
+      <span className="inline-flex items-center gap-1.5 text-muted-foreground"><PenLine className="size-4" /> By <span className="font-semibold text-foreground">Drafting Studio</span></span>
       <span className="inline-flex items-center gap-1.5 text-muted-foreground"><Calendar className="size-4" /> {formatDate(publishedAt)}</span>
       <span className="inline-flex items-center gap-1.5 text-muted-foreground"><Clock className="size-4" /> {readMinutes} min read</span>
     </div>
