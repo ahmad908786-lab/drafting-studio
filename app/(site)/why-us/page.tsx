@@ -10,7 +10,7 @@ import { absoluteUrl } from "@/lib/utils";
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/why-us") },
   title: "MEP Drafting Services USA",
-  description: "MEP drafting services in the USA: fast 2D AutoCAD drafting to your CAD standard, permit-ready DWG sets, fixed pricing and quotes in under 24 hours, nationwide.",
+  description: "MEP drafting services in the USA: fast 2D AutoCAD drafting to your CAD standard, permit-ready DWG sets, fixed pricing and quotes in under 24 hours.",
 };
 
 const reasons = [

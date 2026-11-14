@@ -8,12 +8,14 @@ import { Icon } from "@/components/icon";
 import { CtaBand } from "@/components/shared/cta-band";
 import { getServiceCategories, getAllServices } from "@/lib/queries";
 import { absoluteUrl } from "@/lib/utils";
+import { itemListJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/services") },
   title: "AutoCAD Drafting Services",
   description:
-    "AutoCAD drafting services: 13 2D drafting services across electrical, mechanical (HVAC and plumbing), fire protection, and engineering calculations and reports — for new construction and retrofit projects.",
+    "2D AutoCAD drafting services: electrical, mechanical (HVAC and plumbing), fire protection, and calculations, for new construction and retrofit projects.",
 };
 
 export default async function ServicesPage() {
@@ -24,8 +26,19 @@ export default async function ServicesPage() {
     services: services.filter((s) => s.category.slug === c.slug || s.secondaryCategory?.slug === c.slug),
   }));
 
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "2D AutoCAD drafting services",
+    url: absoluteUrl("/services"),
+    hasPart: itemListJsonLd(
+      services.map((s) => ({ name: s.name, url: absoluteUrl(`/services/${s.category.slug}/${s.slug}`) })),
+    ),
+  };
+
   return (
     <>
+      <JsonLd data={collectionJsonLd} />
       <PageHero
         eyebrow="What We Draft"
         title="2D AutoCAD drafting services"

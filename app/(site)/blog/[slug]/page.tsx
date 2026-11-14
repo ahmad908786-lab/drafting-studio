@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getPostBySlug, getRelatedPosts } from "@/lib/queries";
 import { prisma } from "@/lib/db";
 import { absoluteUrl } from "@/lib/utils";
+import { ORG_ID, breadcrumbJsonLd, trimDescription } from "@/lib/seo";
 import type { PostForTemplate, RelatedPost, TemplateProps } from "@/components/blog/templates/types";
 
 export async function generateStaticParams() {
@@ -24,6 +25,8 @@ export async function generateStaticParams() {
 const SHORT_TITLES: Record<string, string> = {
   "clearing-mep-plan-review-corrections": "How to Clear MEP Plan-Review Corrections",
   "commercial-hvac-design-requirements-2026-usa": "2026 Commercial HVAC Design Requirements",
+  // Stored seoTitle renders at 61 chars with the layout template.
+  "electrical-load-calculation-nec-220-walkthrough": "Electrical Load Calculation: NEC 220",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -37,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   );
   return {
     title: shortTitle,
-    description: post.seoDesc ?? post.excerpt,
+    description: trimDescription(post.seoDesc ?? post.excerpt),
     authors: [],
     alternates: { canonical: canonicalUrl },
     openGraph: {
@@ -102,22 +105,47 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     tags: post.tags.map((t) => ({ slug: t.slug, name: t.name })),
   };
 
+  // BlogPosting (not plain Article) with the Organization linked by @id.
+  // No Person author: the stored author is a placeholder and is not shown
+  // on the page, so a Person would be markup for invisible, unverified
+  // content. When real author bios are added to the templates, switch the
+  // author to that Person.
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
-    author: { "@type": "Organization", name: "Drafting Studio" },
-    publisher: { "@type": "Organization", name: "Drafting Studio" },
+    author: { "@id": ORG_ID },
+    publisher: {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "Drafting Studio",
+      logo: absoluteUrl("/logo.png"),
+    },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
     image: post.coverImage ? [absoluteUrl(post.coverImage)] : [],
   };
 
+  // BreadcrumbList: the STANDARD template gets one from PageHero; the other
+  // templates render their own headers, so emit it here for them.
+  const schemas =
+    post.template === "STANDARD"
+      ? [articleJsonLd]
+      : [
+          articleJsonLd,
+          breadcrumbJsonLd([
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.category?.name ?? "Article", href: post.category ? `/blog/category/${post.category.slug}` : "/blog" },
+            { label: post.title },
+          ]),
+        ];
+
   return (
     <>
-      <JsonLd data={articleJsonLd} />
+      <JsonLd data={schemas} />
       <Template post={postData} toc={toc} related={related} />
     </>
   );

@@ -9,7 +9,7 @@ import { OTHER_QUOTE_SERVICES } from "@/lib/taxonomy";
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/request-quote") },
   title: "Request a MEP Drafting Quote",
-  description: "Request a MEP drafting quote: fixed-price 2D AutoCAD drafting in under 24 hours for electrical, HVAC, plumbing and fire protection. Fixed pricing, no meetings.",
+  description: "Request a MEP drafting quote: fixed-price 2D AutoCAD drafting in under 24 hours for electrical, HVAC, plumbing and fire protection. No meetings.",
 };
 
 export default async function RequestQuotePage({

@@ -14,6 +14,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getProjectBySlug, getRelatedProjects } from "@/lib/queries";
 import { prisma } from "@/lib/db";
 import { absoluteUrl, formatSqft } from "@/lib/utils";
+import { ORG_ID } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const projects = await prisma.project.findMany({ where: { isPublic: true }, select: { slug: true } });
@@ -24,11 +25,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
   if (!project) return {};
-  // The layout template appends " | Drafting Studio", so the page title is
-  // just the project title on its own; adding " — Projects" pushed long
-  // titles past the search-result limit.
-  const title = project.title;
-  const description = project.summary ?? undefined;
+  // Absolute title: the layout template would append " | Drafting Studio"
+  // and push these long project titles to 61-72 chars. The title on its
+  // own renders at 42-53 chars.
+  const title = { absolute: project.title };
+  // Summaries run 84-117 chars; pad short ones with a factual clause so
+  // the meta description is a complete 120+ char sentence.
+  const description = project.summary
+    ? project.summary.length < 120
+      ? `${project.summary} Delivered as a permit-ready 2D AutoCAD set by Drafting Studio.`
+      : project.summary
+    : undefined;
   const canonical = absoluteUrl(`/projects/${slug}`);
   const imageUrl = project.coverImage ? absoluteUrl(project.coverImage) : undefined;
   const images = imageUrl ? [imageUrl] : undefined;
@@ -36,8 +43,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description,
     alternates: { canonical },
-    openGraph: { title, description, url: canonical, images },
-    twitter: { card: "summary_large_image", title, description, images },
+    openGraph: { title: project.title, description, url: canonical, images },
+    twitter: { card: "summary_large_image", title: project.title, description, images },
   };
 }
 
@@ -70,11 +77,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     image: project.coverImage ? absoluteUrl(project.coverImage) : undefined,
     ...(project.year ? { dateCreated: String(project.year) } : {}),
     ...(project.industry ? { about: { "@type": "Thing", name: project.industry.name } } : {}),
-    provider: {
-      "@type": "Organization",
-      name: "Drafting Studio",
-      url: absoluteUrl(),
-    },
+    provider: { "@id": ORG_ID },
   };
 
   return (

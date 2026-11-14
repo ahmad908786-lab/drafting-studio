@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { brand } from "@/lib/theme";
 import { absoluteUrl } from "@/lib/utils";
+import { organizationJsonLd } from "@/lib/seo";
 import { Toaster } from "@/components/ui/sonner";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -51,22 +52,9 @@ export const viewport: Viewport = {
   themeColor: "#0a1f44",
 };
 
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: brand.name,
-  description: brand.descriptor,
-  url: absoluteUrl(),
-  email: brand.contact.email,
-  areaServed: "US",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "sales",
-    email: brand.contact.email,
-    areaServed: "US",
-  },
-  sameAs: [brand.socials.linkedin, brand.socials.facebook],
-};
+// Organization entity, defined once in lib/seo.ts and referenced by @id
+// from every other page's structured data.
+const orgJsonLd = organizationJsonLd();
 
 export default function RootLayout({
   children,

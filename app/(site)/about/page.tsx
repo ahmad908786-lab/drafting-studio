@@ -7,13 +7,14 @@ import { VisionMission } from "@/components/marketing/vision-mission";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getSettings } from "@/lib/queries";
 import { absoluteUrl } from "@/lib/utils";
+import { ORG_ID } from "@/lib/seo";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/about") },
   title: "About Our 2D AutoCAD Drafting Studio",
   description:
-    "A US-focused 2D AutoCAD drafting studio for MEP, fire protection and lighting. Engineering firms, contractors and architects trust us for permit-ready drawings.",
+    "A US-focused 2D AutoCAD drafting studio for MEP, fire protection and lighting, delivering permit-ready drawings for firms and contractors.",
 };
 
 const aboutJsonLd = [
@@ -23,6 +24,7 @@ const aboutJsonLd = [
     name: "About Drafting Studio",
     url: absoluteUrl("/about"),
     description: "Learn about Drafting Studio, a US-focused 2D AutoCAD drafting studio for MEP, fire protection and lighting.",
+    mainEntity: { "@id": ORG_ID },
   },
 ];
 

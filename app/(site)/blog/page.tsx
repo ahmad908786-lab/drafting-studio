@@ -11,11 +11,13 @@ import { Badge } from "@/components/ui/badge";
 import { getPosts, getFeaturedPost, getBlogCategories } from "@/lib/queries";
 import type { BlogCardItem } from "@/lib/blog-actions";
 import { formatDate, absoluteUrl } from "@/lib/utils";
+import { itemListJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/blog") },
   title: "MEP Drafting Guides and Case Studies",
-  description: "MEP drafting guides, code walkthroughs and case studies for electrical, HVAC, plumbing, fire protection and lighting, written by the drafters who do the work.",
+  description: "MEP drafting guides, code walkthroughs and case studies for electrical, HVAC, plumbing, fire protection and lighting, from the drafters who do the work.",
 };
 
 type SP = Record<string, string | string[] | undefined>;
@@ -44,8 +46,21 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
       : null,
   }));
 
+  const listedPosts = [
+    ...(featured ? [{ slug: featured.slug, title: featured.title }] : []),
+    ...initialItems.map((p) => ({ slug: p.slug, title: p.title })),
+  ];
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Drafting guides & case studies",
+    url: absoluteUrl("/blog"),
+    hasPart: itemListJsonLd(listedPosts.map((p) => ({ name: p.title, url: absoluteUrl(`/blog/${p.slug}`) }))),
+  };
+
   return (
     <>
+      <JsonLd data={collectionJsonLd} />
       <PageHero
         eyebrow="Blog"
         title="Drafting guides & case studies"

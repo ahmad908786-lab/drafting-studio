@@ -9,6 +9,8 @@ import { Pagination } from "@/components/shared/pagination";
 import { EmptyState } from "@/components/shared/empty-state";
 import { getPosts, getBlogCategories } from "@/lib/queries";
 import { absoluteUrl } from "@/lib/utils";
+import { itemListJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import { prisma } from "@/lib/db";
 
 export async function generateStaticParams() {
@@ -22,7 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!cat) return {};
   return {
     title: CATEGORY_TITLES[slug] ?? `${cat.name} Articles`,
-    description: cat.description ?? undefined,
+    // The stored category descriptions are 38-45 chars; use fuller
+    // code-level descriptions for the meta tag (the short text still
+    // shows as the visible hero description).
+    description: CATEGORY_DESCRIPTIONS[slug] ?? cat.description ?? undefined,
     alternates: { canonical: absoluteUrl(`/blog/category/${slug}`) },
   };
 }
@@ -36,6 +41,22 @@ const CATEGORY_TITLES: Record<string, string> = {
   "fire-protection": "Fire Protection Drafting Guides",
   lighting: "Lighting and Photometric Guides",
   franchise: "Franchise Rollout Drafting Guides",
+};
+
+// Meta descriptions per category (120-155 chars), keyed the same way.
+const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+  "design-drafting":
+    "2D AutoCAD drafting guides: permit-ready drawing sets, CAD standards, layer and sheet setup, and plan-review workflows for MEP drafting teams.",
+  electrical:
+    "Electrical drafting guides: power plans, panel schedules, single-line diagrams, load calculations and lighting design for permit-ready 2D AutoCAD sets.",
+  "hvac-plumbing":
+    "HVAC and plumbing drafting guides: load calculations, ductwork and piping layouts, equipment sizing and coordination for permit-ready drawing sets.",
+  "fire-protection":
+    "Fire protection drafting guides: sprinkler head layouts, hydraulic calculations, standpipes and fire alarm drawings to NFPA 13 and NFPA 72.",
+  lighting:
+    "Lighting and photometric guides: fixture layouts, footcandle studies, controls and dark-sky compliance for permit-ready lighting drawings.",
+  franchise:
+    "Franchise rollout drafting guides: prototype MEP sets, multi-site permit tracking, and site adaptations that keep every location consistent.",
 };
 
 type SP = Record<string, string | string[] | undefined>;
@@ -58,8 +79,18 @@ export default async function CategoryBlogPage({
     getBlogCategories(),
   ]);
 
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${cat.name} Drafting Guides`,
+    url: absoluteUrl(`/blog/category/${slug}`),
+    description: CATEGORY_DESCRIPTIONS[slug] ?? cat.description ?? undefined,
+    hasPart: itemListJsonLd(items.map((p) => ({ name: p.title, url: absoluteUrl(`/blog/${p.slug}`) }))),
+  };
+
   return (
     <>
+      <JsonLd data={collectionJsonLd} />
       <PageHero
         eyebrow="Blog Category"
         title={`${cat.name} Drafting Guides`}

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export type Crumb = { label: string; href?: string };
 
@@ -22,7 +24,11 @@ export function PageHero({
   size?: "default" | "compact";
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-primary text-primary-foreground">
+    <>
+      {/* BreadcrumbList mirrors the visible breadcrumb nav below, so every
+          page using PageHero gets breadcrumb structured data for free. */}
+      {breadcrumbs && breadcrumbs.length > 1 && <JsonLd data={breadcrumbJsonLd(breadcrumbs)} />}
+      <section className="relative overflow-hidden border-b border-border bg-primary text-primary-foreground">
       <div className="absolute inset-0 bg-blueprint-grid opacity-40" aria-hidden />
       <div className={cn("container-page relative", size === "compact" ? "py-10" : "py-14 sm:py-16")}>
         {breadcrumbs && (
@@ -54,6 +60,7 @@ export function PageHero({
           {children && <div className="mt-6">{children}</div>}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

@@ -41,6 +41,10 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
+    // forceMount keeps closed answers in the server-rendered HTML (hidden
+    // until opened), so FAQ text is visible to crawlers that do not run
+    // JavaScript. Without it, Radix unmounts closed content entirely.
+    forceMount
     className="overflow-hidden text-sm data-[state=closed]:animate-[accordion-up_0.2s_ease-out] data-[state=open]:animate-[accordion-down_0.2s_ease-out]"
     {...props}
   >

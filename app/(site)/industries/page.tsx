@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/industries") },
   title: "MEP Drafting Services by Industry",
   description:
-    "MEP drafting services by industry: 2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments and offices.",
+    "MEP drafting services by industry: 2D AutoCAD drafting for franchise, residential, commercial, restaurant, healthcare, salon, hotel, apartments, offices.",
 };
 
 export default async function IndustriesPage() {

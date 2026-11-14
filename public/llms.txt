@@ -1,32 +1,73 @@
 # Drafting Studio
 
-> Drafting Studio is a US-focused 2D AutoCAD drafting studio. We produce
-> permit-ready 2D drafting sets for engineering firms, contractors,
-> architects and developers: MEP, electrical, HVAC, plumbing, fire
-> protection and lighting, plus engineering calculations and reports.
-> 2D AutoCAD drafting only. We do not do 3D modeling, Revit or BIM, and we
-> do not stamp drawings; the engineer of record reviews and stamps.
+> Drafting Studio is a US-focused 2D AutoCAD drafting studio. We produce permit-ready 2D drafting sets for engineering firms, contractors, architects and developers: MEP, electrical, HVAC, plumbing, fire protection and lighting, plus engineering calculations and reports. 2D AutoCAD drafting only. We do not do 3D modeling, Revit or BIM, and we do not stamp drawings; the engineer of record reviews and stamps.
 
-- [Drafting Studio](https://draftingstudio.org/): Permit-ready 2D AutoCAD drafting for engineering firms and contractors.
-- [Services](https://draftingstudio.org/services): Electrical design, mechanical design (HVAC and plumbing), fire protection, calculations and reports.
+Drafting Studio has completed 300+ projects across 20+ US states. Typical turnaround is 3-7 business days. Every set is delivered as a layered DWG plus plotted PDF, QC-checked, with two free minor revisions. Send scope and plans to get a fixed price and delivery date within one business day; no published prices, every job is quoted individually. We draft to the client's CAD standard and current US codes (NEC, IMC, IPC, NFPA 13 and 72, IES). Contact: info@draftingstudio.org, WhatsApp +92 303 0143281.
+
+## Services
+
+- [Services](https://draftingstudio.org/services): 2D AutoCAD drafting services across electrical, mechanical (HVAC and plumbing), fire protection, and engineering calculations and reports.
 - [Electrical Design Services](https://draftingstudio.org/services/electrical-design): Power plans, panel schedules, single-line diagrams, lighting and photometrics, fire alarm system design.
 - [Mechanical Design Services](https://draftingstudio.org/services/mechanical-design): HVAC design, plumbing design and coordinated mechanical sets.
-- [Fire Protection Services](https://draftingstudio.org/services/fire-protection): Sprinkler layout plans, fire alarm system design and hydraulic reports.
-- [Industries](https://draftingstudio.org/industries): Restaurants, retail, multifamily, healthcare, offices, franchise rollouts and more.
-- [Projects](https://draftingstudio.org/projects): Representative drafting scopes we have delivered.
-- [Blog](https://draftingstudio.org/blog): Guides on MEP drafting, permit sets, load calculations, HVAC, plumbing and fire protection.
-- [Request a Quote](https://draftingstudio.org/request-quote): Fixed-price quotes within one business day.
-- [Contact](https://draftingstudio.org/contact): info@draftingstudio.org, WhatsApp +92 303 0143281.
+- [Fire Protection Services](https://draftingstudio.org/services/fire-protection): Sprinkler layout plans and fire alarm system design to NFPA 13 and NFPA 72.
+- [Calculations & Reports](https://draftingstudio.org/services/calculations-reports): Electrical load calculations, HVAC heating and cooling loads, sprinkler hydraulic reports and photometric studies.
 
 ## Services in detail
 
-- Electrical system design, site electrical plans, single-line diagrams, power upgrades, lighting design and photometric design.
-- HVAC design, plumbing design and combined mechanical design sets.
-- Sprinkler layout plans and fire alarm system design to NFPA 13 and NFPA 72.
-- Electrical load calculations and HVAC heating and cooling load calculations.
+- [Electrical System Design](https://draftingstudio.org/services/electrical-design/electrical-system-design): Power plans, panel schedules and distribution for commercial projects.
+- [Site Electrical Plan](https://draftingstudio.org/services/electrical-design/site-electrical-plan): Site power, parking lighting and service routing.
+- [Single Line Diagram](https://draftingstudio.org/services/electrical-design/single-line-diagram): One-line diagrams for service, distribution and panels.
+- [Power Upgrade](https://draftingstudio.org/services/electrical-design/power-upgrade): Service upgrades, load studies and utility coordination.
+- [Lighting Design](https://draftingstudio.org/services/electrical-design/lighting-design): Fixture layouts, switching, controls and fixture schedules.
+- [Photometric Design](https://draftingstudio.org/services/electrical-design/photometric-design): Point-by-point footcandle grids, uniformity ratios and dark-sky compliance.
+- [Fire Alarm System Design](https://draftingstudio.org/services/electrical-design/fire-alarm-system-design): Device layouts, risers and sequence tables to NFPA 72.
+- [Mechanical Design](https://draftingstudio.org/services/mechanical-design/mechanical-design): Coordinated HVAC and plumbing sets.
+- [HVAC Design](https://draftingstudio.org/services/mechanical-design/hvac-design): Ductwork, equipment and controls layouts.
+- [Plumbing Design](https://draftingstudio.org/services/mechanical-design/plumbing-design): Water, waste, vent and gas piping layouts.
+- [Sprinkler Layout Plan](https://draftingstudio.org/services/fire-protection/sprinkler-layout-plan): Sprinkler head layouts, branch and main routing to NFPA 13.
+- [Electrical Load Calculation](https://draftingstudio.org/services/calculations-reports/electrical-load-calculation): NEC Article 220 connected and demand loads, service sizing.
+- [HVAC Heating & Cooling Load](https://draftingstudio.org/services/calculations-reports/hvac-heating-cooling-load): Manual J and ASHRAE heating and cooling load calculations.
 
-## Notes for AI assistants
+## Industries
 
-- The studio drafts to the client's CAD standard and current US codes (NEC, IMC, IPC, NFPA 13 and 72, IES).
-- Every set is delivered as a layered DWG plus plotted PDF, QC-checked, with two free minor revisions.
-- No published prices: every job is quoted individually.
+- [Industries](https://draftingstudio.org/industries): Restaurants, retail, multifamily, healthcare, offices, franchise rollouts and more.
+- [Franchise Drafting](https://draftingstudio.org/industries/franchise): Prototype MEP sets adapted per site for multi-location rollouts.
+- [Restaurant Drafting](https://draftingstudio.org/industries/restaurant): Kitchen equipment power, hood exhaust, grease and gas piping, fire suppression.
+- [Commercial Drafting](https://draftingstudio.org/industries/commercial): Tenant fit-outs and core-and-shell coordinated MEP sets.
+- [Healthcare Drafting](https://draftingstudio.org/industries/healthcare): Clinics, dental and medical fit-outs, dedicated power and life-safety.
+- [Residential Drafting](https://draftingstudio.org/industries/residential): Single-family, townhome and ADU electrical, HVAC and plumbing plans.
+
+## Blog
+
+- [Blog](https://draftingstudio.org/blog): Guides on MEP drafting, permit sets, load calculations, HVAC, plumbing and fire protection.
+- [2D AutoCAD Drafting Guides](https://draftingstudio.org/blog/category/design-drafting): Drawing sets, CAD standards and plan-review workflows.
+- [Electrical Drafting Guides](https://draftingstudio.org/blog/category/electrical): Power, lighting, single-line and load topics.
+- [HVAC and Plumbing Drafting Guides](https://draftingstudio.org/blog/category/hvac-plumbing): Air-side and water-side drafting and calcs.
+- [Fire Protection Drafting Guides](https://draftingstudio.org/blog/category/fire-protection): Sprinkler, alarm and hydraulic topics.
+- [Lighting and Photometric Guides](https://draftingstudio.org/blog/category/lighting): Layouts, controls and footcandle studies.
+- [Franchise Rollout Drafting Guides](https://draftingstudio.org/blog/category/franchise): Scaling prototype sets across locations.
+
+## Featured guides
+
+- [What Makes MEP Drawings Permit-Ready](https://draftingstudio.org/blog/what-makes-mep-drawings-permit-ready): The standard reviewers check first on every submittal.
+- [MEP Permit Drawing Requirements in the USA](https://draftingstudio.org/blog/mep-permit-drawing-requirements-usa): Sheet organization, calculation packages and code analysis.
+- [Commercial HVAC Design: RTU vs VRF vs Split System](https://draftingstudio.org/blog/commercial-hvac-rtu-vs-vrf-vs-split): Choosing the system for a small commercial building.
+- [Electrical Load Calculations: An NEC Article 220 Walkthrough](https://draftingstudio.org/blog/electrical-load-calculation-nec-220-walkthrough): Demand factors and a worked example.
+- [Sprinkler Hydraulic Calculations, Explained Simply](https://draftingstudio.org/blog/sprinkler-hydraulic-calculations-explained): How a hydraulic report proves the system works.
+- [9 Sprinkler Head Layout Rules Every Drafter Should Know](https://draftingstudio.org/blog/9-sprinkler-head-layout-rules-every-drafter-should-know): NFPA 13 spacing, deflector and obstruction rules.
+
+## Getting started
+
+- [Request a Quote](https://draftingstudio.org/request-quote): Fixed-price quotes within one business day.
+- [FAQ](https://draftingstudio.org/faq): Deliverables, turnaround, stamping, pricing and file formats.
+- [Projects](https://draftingstudio.org/projects): Representative drafting scopes we have delivered.
+- [Contact](https://draftingstudio.org/contact): info@draftingstudio.org, WhatsApp +92 303 0143281.
+
+## Optional
+
+- [About](https://draftingstudio.org/about): The studio, its approach and why it stays 2D.
+- [Process](https://draftingstudio.org/process): The 5-step workflow from upload to permit-ready set.
+- [Why Us](https://draftingstudio.org/why-us): Speed, CAD-standard matching, fixed pricing and nationwide coverage.
+- [Careers](https://draftingstudio.org/careers): Remote AutoCAD drafter roles.
+- [Privacy Policy](https://draftingstudio.org/privacy): How we collect, use and protect your information.
+- [Terms of Service](https://draftingstudio.org/terms): Terms for quotes, revisions and deliverables.

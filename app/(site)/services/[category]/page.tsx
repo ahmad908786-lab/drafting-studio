@@ -9,6 +9,8 @@ import { Icon } from "@/components/icon";
 import { getCategoryWithServices } from "@/lib/queries";
 import { prisma } from "@/lib/db";
 import { absoluteUrl } from "@/lib/utils";
+import { itemListJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import { SERVICE_CATEGORIES } from "@/lib/taxonomy";
 
 export async function generateStaticParams() {
@@ -49,8 +51,23 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
   const services = [...cat.services, ...cat.secondaryServices];
 
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${cat.name} Services`,
+    url: absoluteUrl(`/services/${cat.slug}`),
+    description: cat.blurb ?? undefined,
+    hasPart: itemListJsonLd(
+      services.map((s) => ({
+        name: s.name,
+        url: absoluteUrl(`/services/${s.category.slug}/${s.slug}`),
+      })),
+    ),
+  };
+
   return (
     <>
+      <JsonLd data={collectionJsonLd} />
       <PageHero
         eyebrow="Services"
         title={cat.name}

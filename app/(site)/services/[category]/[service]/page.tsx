@@ -16,6 +16,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getServiceBySlug } from "@/lib/queries";
 import { prisma } from "@/lib/db";
 import { absoluteUrl } from "@/lib/utils";
+import { ORG_ID, trimDescription } from "@/lib/seo";
 import { DELIVERABLE_FORMATS } from "@/lib/taxonomy";
 
 export async function generateStaticParams() {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
   const categoryTitle = `${s.category.name} Services`;
   const metaTitle =
     s.seoTitle && s.seoTitle !== categoryTitle ? s.seoTitle : `${s.name} Drafting`;
-  const metaDesc = s.seoDesc ?? s.shortDesc;
+  const metaDesc = trimDescription(s.seoDesc ?? s.shortDesc);
   const images = s.coverImage ? [absoluteUrl(s.coverImage)] : [];
   return {
     title: metaTitle,
@@ -87,28 +88,37 @@ export default async function ServiceDetailPage({
     select: { slug: true, name: true, shortDesc: true },
   });
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: s.name,
     description: s.shortDesc,
-    provider: { "@type": "Organization", name: "Drafting Studio" },
+    serviceType: s.category.name,
+    provider: { "@id": ORG_ID },
     areaServed: "US",
     url: absoluteUrl(`/services/${s.category.slug}/${s.slug}`),
   };
+  // FAQPage only when visible Q&A exists on the page (an empty mainEntity
+  // is invalid markup).
+  const schemas =
+    faqs.length > 0
+      ? [
+          serviceJsonLd,
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]
+      : [serviceJsonLd];
 
   return (
     <>
-      <JsonLd data={[serviceJsonLd, faqJsonLd]} />
+      <JsonLd data={schemas} />
       <PageHero
         eyebrow={s.category.name}
         title={s.name}

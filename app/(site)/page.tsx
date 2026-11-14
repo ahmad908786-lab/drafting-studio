@@ -27,12 +27,14 @@ import {
 } from "@/lib/queries";
 import { brand } from "@/lib/theme";
 import { absoluteUrl } from "@/lib/utils";
+import { websiteJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/") },
-  title: "MEP Drafting Services, 2D AutoCAD Drawings",
+  title: "2D AutoCAD MEP Drafting Services",
   description:
-    "Permit-ready 2D AutoCAD drafting for firms and contractors: MEP, electrical, HVAC, plumbing and fire protection drawings for new construction and retrofit projects, with a 3-7 business day turnaround.",
+    "Permit-ready 2D AutoCAD drafting for firms and contractors: MEP, electrical, HVAC, plumbing and fire protection drawings, delivered in 3-7 business days.",
 };
 
 export default async function HomePage() {
@@ -53,6 +55,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={websiteJsonLd()} />
       <Hero />
 
       {/* Discipline strip */}
