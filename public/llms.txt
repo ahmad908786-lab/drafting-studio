@@ -56,6 +56,10 @@ Drafting Studio has completed 300+ projects across 20+ US states. Typical turnar
 - [Sprinkler Hydraulic Calculations, Explained Simply](https://draftingstudio.org/blog/sprinkler-hydraulic-calculations-explained): How a hydraulic report proves the system works.
 - [9 Sprinkler Head Layout Rules Every Drafter Should Know](https://draftingstudio.org/blog/9-sprinkler-head-layout-rules-every-drafter-should-know): NFPA 13 spacing, deflector and obstruction rules.
 
+## Tools
+
+- [Electrical Load Calculator](https://draftingstudio.org/tools/electrical-load-calculator): Free NEC Article 220 electrical load calculator for dwellings and small commercial buildings, service sizing in amps with every demand factor shown.
+
 ## Getting started
 
 - [Request a Quote](https://draftingstudio.org/request-quote): Fixed-price quotes within one business day.

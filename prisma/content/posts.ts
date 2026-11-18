@@ -175,7 +175,7 @@ The calculation does not live alone. The load summary belongs on the electrical 
 
 Done in this order, electric load calculations stay fast, defensible, and easy to review.
 
-Need the calculation behind your next service? Our [electrical load calculation](/services/calculations-reports/electrical-load-calculation) service produces the NEC Article 220 basis — connected and demand loads, panel schedules, and the utility load letter — and the [single-line diagram](/services/electrical-design/single-line-diagram) turns it into the reviewer's roadmap. [Request a quote](/request-quote) with your equipment list and we will size the service.`,
+Need the calculation behind your next service? Our [electrical load calculation](/services/calculations-reports/electrical-load-calculation) service produces the NEC Article 220 basis — connected and demand loads, panel schedules, and the utility load letter — and the [single-line diagram](/services/electrical-design/single-line-diagram) turns it into the reviewer's roadmap. [Request a quote](/request-quote) with your equipment list and we will size the service. Want a quick estimate first? Our [electrical load calculator](/tools/electrical-load-calculator) runs the same NEC Article 220 standard method in the browser, with every demand factor shown.`,
     meta: { downloadable: "NEC 220 Load-Calc Checklist" },
   },
   {
@@ -1186,7 +1186,7 @@ Every overcurrent device needs an interrupting rating equal to or greater than t
 
 ## 3. Load Totals That Do Not Tie to the Calculation
 
-The schedule totals 184 kVA of demand load while the Article 220 calculation says 211 kVA. The moment the numbers disagree, the reviewer stops trusting both documents and asks for a full reconciliation. We tie the schedule's connected and demand columns directly to the electrical panel load calculation line items, and the totals match to the decimal.
+The schedule totals 184 kVA of demand load while the Article 220 calculation says 211 kVA. The moment the numbers disagree, the reviewer stops trusting both documents and asks for a full reconciliation. We tie the schedule's connected and demand columns directly to the electrical panel load calculation line items, and the totals match to the decimal. Run the same numbers yourself with our [electrical load calculator](/tools/electrical-load-calculator), which follows the NEC Article 220 standard method step by step.
 
 
 ![Rows of breakers and terminations inside a panelboard, where schedule mistakes become field problems.](/generated/blog/inline/panel-schedule-mistakes-that-trigger-plan-review-corrections-1.webp)
