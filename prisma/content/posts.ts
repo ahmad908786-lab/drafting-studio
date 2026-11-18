@@ -95,7 +95,7 @@ The result of choosing 2D deliberately is not a compromise. It is a faster path 
     excerpt: "A practical, step-by-step tour of a standard-method service load calculation — from connected loads to demand factors to feeder sizing.",
     seoTitle: "Electrical Load Calculation: NEC 220 Guide",
     seoDesc: "Electrical load calculation explained step by step: the NEC Article 220 standard method, demand factors, and a worked office example for service sizing.",
-    bodyMdx: `A load calculation answers one question: how big does the service need to be? Get it wrong high and you overpay for gear; get it wrong low and you fail review. Here is the standard-method flow we use on every calc. This electrical load calculation guide follows the NEC Article 220 standard method from connected loads to demand factors to feeder sizing.
+    bodyMdx: `A load calculation answers one question: how big does the service need to be? Get it wrong high and you overpay for gear; get it wrong low and you fail review. Here is the standard-method flow we use on every calc. This electrical load calculation guide follows the NEC Article 220 standard method from connected loads to demand factors to feeder sizing. Whether you call it a load calculation electrical engineers run for service sizing or a demand-load study, the sequence is the same. It applies to electric load calculations on any small commercial building, from a single-tenant office to a restaurant fit-out.
 
 ## Standard method or optional method?
 
@@ -109,7 +109,7 @@ Gather the data from the sources that actually exist: the mechanical engineer's 
 
 ## 2. Apply the right demand factors
 
-Not everything runs at once. NEC Article 220 lets you apply demand factors by category:
+Not everything runs at once. The electrical load calculation table below shows the demand factors NEC Article 220 allows by category:
 
 | Load category | Typical basis |
 | --- | --- |
@@ -130,7 +130,7 @@ Continuous loads are taken at 125%. The largest motor gets an additional 25%. Th
 
 ## 4. Total and size the service
 
-Sum the demand load, convert to amps at the service voltage, and select the next standard service size. Document every assumption — a reviewer wants to trace your number back to the code.
+To calculate electrical load at the service, sum the demand load, convert to amps at the service voltage, and select the next standard service size. Document every assumption — a reviewer wants to trace your number back to the code.
 
 The conversion is straightforward: single-phase amps = VA ÷ volts, three-phase amps = VA ÷ (volts × 1.732). Select the next **standard rating per 240.6** — 100, 225, 400, 600, 800, 1200, 1600, 2000, 2500, 3000 amps — so a 348-amp demand becomes a 400-amp service, not a 350-amp one. Service conductors follow 230.42: 125% of the continuous load plus 100% of the noncontinuous load. One judgment call to handle explicitly is **spare capacity**. Reviewers do not require it, but owners usually want 20–25% for future growth — show it as spare breaker spaces and a noted spare kVA on the panel schedule, not as an oversized service the utility then has to justify.
 
@@ -138,13 +138,13 @@ The conversion is straightforward: single-phase amps = VA ÷ volts, three-phase 
 
 ## 5. Produce the load letter
 
-Utilities and many AHJs want a load letter: connected load, demand load, and service size on one page, ready for your PE to stamp. That single sheet keeps the service application moving.
+When you calculate electrical load for a utility application, the load letter is the deliverable: connected load, demand load, and service size on one page, ready for your PE to stamp. That single sheet keeps the service application moving.
 
 Most utilities have their own load-sheet form asking for connected kW, demand kW, the largest motor (they size their transformer around motor starting), the requested service voltage and phase, and the date power is needed. Fill it from the same calculation — never from a second spreadsheet — and make sure the PE stamp covers the same numbers that appear on the drawings. When the utility planner, the AHJ reviewer, and the field inspector all read the same numbers, the project moves; when they differ, everything stops for reconciliation.
 
 ## Walking through the numbers: a 3,000 sq ft office
 
-A short example ties the method together. Take a small single-tenant office on a 208Y/120 V three-phase service:
+A short example ties the method together. This electrical load calculation table works the numbers for a small single-tenant office on a 208Y/120 V three-phase service:
 
 | Load | Connected | Basis | Demand VA |
 | --- | --- | --- | --- |
@@ -167,13 +167,13 @@ Amps = 25,375 ÷ (208 × 1.732) ≈ 70 amps. The next standard service size per 
 
 ## What the drawing set shows
 
-The calculation does not live alone. The load summary belongs on the electrical cover sheet or the first power sheet, the panel schedules carry the same totals, and the single-line diagram reflects the selected service size with the service disconnect, grounding, and utility metering shown. Add a general note stating the basis — "Service sized per NEC Article 220 standard method; continuous loads at 125%; largest motor at 125% per 430.24" — so the reviewer reads your code path before opening the math. When the note, the summary, and the schedules agree, the electrical review is usually the shortest one in the set.
+The calculation does not live alone. The load summary belongs on the electrical cover sheet or the first power sheet, the panel schedules carry the same totals, and the single-line diagram reflects the selected service size with the service disconnect, grounding, and utility metering shown. Add a general note stating the basis — "Service sized per NEC Article 220 standard method; continuous loads at 125%; largest motor at 125% per 430.24" — so the reviewer reads your code path before opening the math. That note is what turns the calc into a load calculation electrical reviewers can verify without chasing the engineer for the backup sheets. When the note, the summary, and the schedules agree, the electrical review is usually the shortest one in the set.
 
 ## A quick checklist
 
 <Checklist items="Inventory every connected load;Apply Article 220 demand factors;Take continuous loads at 125%;Add 25% for the largest motor;Select the next standard service size;Document assumptions and produce the load letter" />
 
-Done in this order, a standard-method calc is fast, defensible, and easy to review.
+Done in this order, electric load calculations stay fast, defensible, and easy to review.
 
 Need the calculation behind your next service? Our [electrical load calculation](/services/calculations-reports/electrical-load-calculation) service produces the NEC Article 220 basis — connected and demand loads, panel schedules, and the utility load letter — and the [single-line diagram](/services/electrical-design/single-line-diagram) turns it into the reviewer's roadmap. [Request a quote](/request-quote) with your equipment list and we will size the service.`,
     meta: { downloadable: "NEC 220 Load-Calc Checklist" },
@@ -1186,7 +1186,7 @@ Every overcurrent device needs an interrupting rating equal to or greater than t
 
 ## 3. Load Totals That Do Not Tie to the Calculation
 
-The schedule totals 184 kVA of demand load while the Article 220 calculation says 211 kVA. The moment the numbers disagree, the reviewer stops trusting both documents and asks for a full reconciliation. We tie the schedule's connected and demand columns directly to the calculation line items, and the totals match to the decimal.
+The schedule totals 184 kVA of demand load while the Article 220 calculation says 211 kVA. The moment the numbers disagree, the reviewer stops trusting both documents and asks for a full reconciliation. We tie the schedule's connected and demand columns directly to the electrical panel load calculation line items, and the totals match to the decimal.
 
 
 ![Rows of breakers and terminations inside a panelboard, where schedule mistakes become field problems.](/generated/blog/inline/panel-schedule-mistakes-that-trigger-plan-review-corrections-1.webp)
@@ -1206,7 +1206,7 @@ NEC 240.4 requires conductors to be protected against overcurrent in accordance 
 
 ## 7. Connected Load With No Demand Summary
 
-A schedule that lists every load at 100 percent connected kVA with no demand factors applied is technically a load list, not a load calculation. Reviewers need to see Article 220 demand factors — lighting, receptacle, motor, and HVAC diversity — applied and totaled so the service and feeder sizing can be verified. We show connected load, demand factor, and demand load in separate columns with a summary total that feeds the riser.
+A schedule that lists every load at 100 percent connected kVA with no demand factors applied is technically a load list, not a load calculation. Reviewers need to see Article 220 demand factors — lighting, receptacle, motor, and HVAC diversity — applied and totaled so the service and feeder sizing can be verified. A proper electrical panel load calculation shows connected load, demand factor, and demand load in separate columns, with a summary total that feeds the riser.
 
 A clean panel schedule does not just avoid corrections — it shortens review time, because the reviewer spends their effort verifying good work instead of hunting for errors. That is the standard we hold every schedule to before it leaves our desk.
 

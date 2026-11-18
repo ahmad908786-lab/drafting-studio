@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/") },
   title: "2D AutoCAD MEP Drafting Services",
   description:
-    "Permit-ready 2D AutoCAD drafting for firms and contractors: MEP, electrical, HVAC, plumbing and fire protection drawings, delivered in 3-7 business days.",
+    "MEP 2D drafting services for firms and contractors: permit-ready electrical, HVAC, plumbing and fire protection drawings, delivered in 3-7 business days.",
 };
 
 export default async function HomePage() {
@@ -110,7 +110,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="What We Draft"
               title="13 services across 4 disciplines"
-              description="Electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations for new construction and retrofit projects — every one delivered as a clean 2D AutoCAD set."
+              description="Our MEP 2D drafting services cover electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations for new construction and retrofit projects — every one delivered as a clean 2D AutoCAD set."
             />
             <Button asChild variant="outline">
               <Link href="/services">All services <ArrowRight className="size-4" /></Link>
@@ -222,7 +222,7 @@ export default async function HomePage() {
           <AudienceBlock
             icon={<Building2 className="size-6" />}
             title="Engineering firms & architects"
-            copy="Extend your team without hiring. We draft to your CAD standard and title block so your PE reviews, redlines and stamps with almost no cleanup."
+            copy="Extend your team without hiring. Our MEP CAD drafting services follow your CAD standard and title block so your PE reviews, redlines and stamps with almost no cleanup."
             points={["Your layer standard & sheet order", "Load calcs, one-lines & schedules", "Scale capacity up or down per quarter"]}
           />
           <AudienceBlock
