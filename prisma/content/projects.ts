@@ -49,6 +49,16 @@ export const PROJECTS: ProjectSeed[] = [
     scopeNotes: "Panel schedule and circuiting, fixture and lighting plan, supply and waste routing, NEC 220 load calc.",
   },
   {
+    slug: "double-story-double-dwelling-unit-mep",
+    title: "Double-Story Double Dwelling Unit: Complete MEP",
+    industry: "residential",
+    disciplines: ["electrical", "hvac", "plumbing"],
+    services: ["electrical-system-design", "mechanical-design", "plumbing-design", "electrical-load-calculation"],
+    city: "Austin", state: "TX", sizeSqft: 4600, floors: 2, year: 2026, featured: true, sheet: "E-101",
+    summary: "Two-story duplex with two independent dwelling units, each with its own panel, meter, HVAC system and plumbing risers, drafted for permit.",
+    scopeNotes: "Separate 200A panels and meter stacks per unit, split-system HVAC with room-by-room loads, stacked wet walls and risers, shared egress and exterior lighting.",
+  },
+  {
     slug: "adu-hvac-load-and-layout",
     title: "Backyard ADU — HVAC Load & Layout",
     industry: "residential",
