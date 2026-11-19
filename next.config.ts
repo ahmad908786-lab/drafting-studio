@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Hostinger build fix (19 Nov 2026, build 01a1f4f0): the default worker
+    // count is os.cpus().length - 1, which was 47 on Hostinger's build host.
+    // Each "Collecting page data" worker loads a Prisma query engine, and
+    // 47 of them exhausted the sandbox's thread limit (tokio panic: OS
+    // can't spawn worker thread, os error 11), aborting the build. Cap the
+    // build to 4 workers. If it ever fails again the same way, drop to 2.
+    cpus: 4,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
