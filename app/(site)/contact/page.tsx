@@ -4,8 +4,9 @@ import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
+import { WhatsAppButton } from "@/components/site/whatsapp-button";
 import { absoluteUrl } from "@/lib/utils";
-import { whatsappUrl, whatsappDisplay } from "@/lib/whatsapp";
+import { whatsappDisplay } from "@/lib/whatsapp";
 import { brand } from "@/lib/theme";
 
 export const metadata: Metadata = {
@@ -46,14 +47,9 @@ export default function ContactPage() {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-3">
                   <WhatsAppIcon className="size-4 text-[#25D366]" />
-                  <a
-                    href={whatsappUrl("Hi Drafting Studio! I need a quote for 2D CAD drafting.")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary"
-                  >
+                  <WhatsAppButton className="cursor-pointer hover:text-primary">
                     WhatsApp: {whatsappDisplay()}
-                  </a>
+                  </WhatsAppButton>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="size-4 text-primary" />
