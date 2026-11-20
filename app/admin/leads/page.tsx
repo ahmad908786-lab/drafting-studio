@@ -91,8 +91,8 @@ export default async function AdminLeadsPage({ searchParams }: { searchParams: P
                   <TableCell>
                     <span className="inline-block rounded-full bg-secondary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-muted-foreground">{l.type}</span>
                   </TableCell>
-                  <TableCell className="hidden max-w-xs md:table-cell">
-                    <p className="truncate text-sm text-muted-foreground">{l.subject ? `${l.subject}: ` : ""}{l.message ?? "—"}</p>
+                  <TableCell className="hidden max-w-md md:table-cell">
+                    <p className="whitespace-pre-wrap break-words text-sm text-muted-foreground">{l.subject ? `${l.subject}: ` : ""}{l.message ?? "—"}</p>
                   </TableCell>
                   <TableCell className="hidden text-xs text-muted-foreground sm:table-cell">{timeAgo(l.createdAt)}</TableCell>
                   <TableCell><LeadRowActions id={l.id} status={l.status} /></TableCell>
