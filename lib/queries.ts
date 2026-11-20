@@ -57,12 +57,17 @@ export const getAllServices = cache(async () => {
   });
 });
 
-export const getServiceBySlug = cache(async (slug: string) => {
+// NOTE (20 Nov 2026): deliberately NOT wrapped in React cache(). The live
+// site 500s on every on-demand detail render that used these cached
+// single-record lookups, while direct Prisma calls and uncached helpers work
+// on the same live runtime (see /api/diag-500). Plain functions cost one
+// extra query per render (metadata + page) but cannot hit that failure mode.
+export async function getServiceBySlug(slug: string) {
   return prisma.service.findUnique({
     where: { slug },
     include: { category: true, secondaryCategory: true, disciplines: true },
   });
-});
+}
 
 export const getCategoryWithServices = cache(async (slug: string) => {
   return prisma.serviceCategory.findUnique({
@@ -80,9 +85,9 @@ export const getIndustries = cache(async () => {
   return prisma.industry.findMany({ orderBy: { order: "asc" } });
 });
 
-export const getIndustryBySlug = cache(async (slug: string) => {
+export async function getIndustryBySlug(slug: string) {
   return prisma.industry.findUnique({ where: { slug } });
-});
+}
 
 export const getDisciplines = cache(async () => {
   return prisma.discipline.findMany({ orderBy: { order: "asc" } });
@@ -182,7 +187,8 @@ export const getFeaturedProjects = cache(async (take = 6) => {
   });
 });
 
-export const getProjectBySlug = cache(async (slug: string) => {  return prisma.project.findFirst({
+export async function getProjectBySlug(slug: string) {
+  return prisma.project.findFirst({
     where: { slug, isPublic: true },
     include: {
       industry: true,
@@ -191,7 +197,7 @@ export const getProjectBySlug = cache(async (slug: string) => {  return prisma.p
       images: { orderBy: { order: "asc" } },
     },
   });
-});
+}
 
 export const getRelatedProjects = cache(async (disciplineSlugs: string[], excludeSlug: string, take = 3) => {
   return prisma.project.findMany({
@@ -256,13 +262,13 @@ export async function getPosts(filters: PostFilters) {
   return { items, total, page, perPage, pageCount: Math.ceil(total / perPage) };
 }
 
-export const getPostBySlug = cache(async (slug: string) => {
+export async function getPostBySlug(slug: string) {
   const post = await prisma.post.findFirst({
     where: { slug, status: "PUBLISHED" },
     include: { category: true, author: true, tags: true },
   });
   return post ? withLiveCover(post) : post;
-});
+}
 
 export const getRelatedPosts = cache(async (categoryId: string | null, excludeId: string, take = 3) => {
   const posts = await prisma.post.findMany({
