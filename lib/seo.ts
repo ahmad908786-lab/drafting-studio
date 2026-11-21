@@ -15,9 +15,13 @@ export const WEBSITE_ID = absoluteUrl("/#website");
 /**
  * Organization entity (ProfessionalService is the closest schema.org fit;
  * there is no drafting-specific subtype). Address added 21 Nov 2026 from the
- * user-provided office address (P108 Future Tower, Lahore); telephone is the
- * business WhatsApp number already published on the site. No foundingDate:
- * not a verified fact, so it stays out rather than invented. sameAs lists
+ * user-provided office address (P108 Future Tower, Jubilee Town, Lahore);
+ * postalCode 53720 researched the same day: Jubilee Town has no delivery
+ * post office of its own in the Pakistan Post directory, and 53720 (Bahria
+ * Town delivery office, the neighbouring Canal Road society) is the code
+ * used by businesses in Future Tower itself and in Block C Commercial Area.
+ * Telephone is the business WhatsApp number already published on the site.
+ * No foundingDate: not a verified fact, so it stays out rather than invented. sameAs lists
  * only the social profiles we own and have verified (LinkedIn + Facebook);
  * the YouTube handle is unconfirmed.
  */
@@ -37,6 +41,7 @@ export function organizationJsonLd() {
       streetAddress: brand.contact.addressLine1,
       addressLocality: brand.contact.city,
       addressRegion: brand.contact.state,
+      postalCode: brand.contact.zip,
       addressCountry: "PK",
     },
     telephone: "+92 303 0143281",

@@ -28,10 +28,10 @@ export const brand = {
     email: "info@draftingstudio.org",
     supportEmail: "info@draftingstudio.org",
     addressLine1: "P108, Future Tower, Jubilee Town",
-    addressLine2: "Lahore, Pakistan",
+    addressLine2: "Lahore 53720, Pakistan",
     city: "Lahore",
     state: "Punjab",
-    zip: "",
+    zip: "53720",
     hours: "Mon–Fri, 8am–7pm ET",
   },
 
