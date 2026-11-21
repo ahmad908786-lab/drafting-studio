@@ -27,7 +27,7 @@ export const brand = {
     whatsapp: "923030143281",
     email: "info@draftingstudio.org",
     supportEmail: "info@draftingstudio.org",
-    addressLine1: "P108, Future Tower",
+    addressLine1: "P108, Future Tower, Jubilee Town",
     addressLine2: "Lahore, Pakistan",
     city: "Lahore",
     state: "Punjab",
