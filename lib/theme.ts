@@ -18,7 +18,7 @@ export const brand = {
   // The paragraph under the homepage hero headline. Kept separate from the
   // descriptor so marketing copy can change without touching SEO metadata.
   heroSubhead:
-    "Our pre-vetted, US-trained CAD drafters provide MEP CAD drafting services and AutoCAD drafting — for new construction, retrofits and system upgrades — so your design team can concentrate on core work.",
+    "Our pre-vetted, US-trained CAD drafters provide MEP CAD drafting services and AutoCAD drafting services, including electrical drafting, HVAC drafting, plumbing drafting, fire protection drafting and lighting design, for new construction, retrofits and system upgrades, so your design team can concentrate on core work.",
   domain: "draftingstudio.org",
 
   contact: {

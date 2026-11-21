@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, Building2, HardHat, ShieldCheck } from "lucide-react";
 import { Hero } from "@/components/marketing/hero";
+import { FaqAccordion } from "@/components/marketing/faq-accordion";
 import { IndustryGrid } from "@/components/marketing/industry-grid";
 import { LogoMarquee } from "@/components/marketing/logo-marquee";
 import { VisionMission } from "@/components/marketing/vision-mission";
@@ -37,6 +38,38 @@ export const metadata: Metadata = {
     "MEP 2D drafting services for firms and contractors: permit-ready electrical, HVAC, plumbing and fire protection drawings, delivered in 3-7 business days.",
 };
 
+// Homepage FAQs (21 Nov 2026): keyword-rich Q&As targeting commercial-intent
+// queries about MEP drafting services. Rendered visibly below AND as FAQPage
+// JSON-LD. Keep answers factual: fixed pricing, under-24h quotes, 3-7 business
+// day turnaround and two free minor revisions are all stated elsewhere on the
+// site. Never add prices, size limits, or 3D/BIM claims here.
+const HOME_FAQS = [
+  {
+    q: "What do MEP drafting services include?",
+    a: "A complete permit-ready drawing set: electrical drawings (power, lighting, single-line diagrams, panel schedules), HVAC drawings (ductwork, equipment, ventilation), plumbing drawings (water, drainage, gas), fire protection drawings (sprinkler layouts, fire alarm device layouts and risers), plus the calculations behind them: electrical load calculations, HVAC load calculations and sprinkler hydraulic calculations.",
+  },
+  {
+    q: "How much do MEP drafting services cost?",
+    a: "Every project is quoted at a fixed price, based on the scope and the size of the set. Send your plans and scope through the quote form and we reply with a fixed price and a delivery date in under 24 hours, with no meeting and no obligation.",
+  },
+  {
+    q: "How fast can I get permit-ready MEP drawings?",
+    a: "Most drawing sets are delivered in 3 to 7 business days, depending on scope. Every set is delivered as a layered 2D AutoCAD DWG plus a plotted PDF, QC-checked, with two free minor revisions included.",
+  },
+  {
+    q: "Do you provide electrical drafting services?",
+    a: "Yes. Our electrical drafting services cover power plans, lighting plans, single-line diagrams, panel schedules, site electrical plans, EV charging layouts and NEC Article 220 load calculations, drawn to your CAD standard and title block.",
+  },
+  {
+    q: "Do you draft fire sprinkler and fire alarm systems?",
+    a: "Yes. We draft fire sprinkler systems to NFPA 13, 13R and 13D, including hydraulic calculations, and fire alarm systems to NFPA 72, including device layouts, riser diagrams and sequence of operations tables.",
+  },
+  {
+    q: "Can you follow our CAD standards and title block?",
+    a: "Yes. We draft to your layer standard, sheet order, title block and symbols, so your PE reviews, redlines and stamps with almost no cleanup. We also work from your prototype set on franchise and multi-location rollouts.",
+  },
+];
+
 export default async function HomePage() {
   const [services, categories, industries, testimonials, logos, posts, settings, disciplines, featuredProjects] =
     await Promise.all([
@@ -53,9 +86,19 @@ export default async function HomePage() {
 
   const stats = (settings?.stats as { value: string; label: string }[]) ?? brand.stats;
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOME_FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <>
-      <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={[websiteJsonLd(), faqJsonLd]} />
       <Hero />
 
       {/* Discipline strip */}
@@ -89,8 +132,10 @@ export default async function HomePage() {
             </h2>
             <span className="mt-4 block h-1 w-16 rounded-full bg-primary" aria-hidden />
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Industries we serve. We know the code hooks and coordination traps of each
-              building type — and draft around them.
+              MEP drafting for restaurants, retail plazas, offices, apartments, hotels,
+              healthcare clinics, salons, warehouses, franchise rollouts and single-family
+              homes. We know the code hooks and coordination traps of each building type,
+              and draft around them.
             </p>
             <Button asChild variant="outline" className="mt-6">
               <Link href="/industries">All industries <ArrowRight className="size-4" /></Link>
@@ -110,7 +155,7 @@ export default async function HomePage() {
             <SectionHeading
               eyebrow="What We Draft"
               title="13 services across 4 disciplines"
-              description="Our MEP 2D drafting services cover electrical, mechanical (HVAC + plumbing), fire protection, and engineering calculations for new construction and retrofit projects — every one delivered as a clean 2D AutoCAD set."
+              description="Our MEP 2D drafting services cover electrical drafting services, HVAC drafting, plumbing drafting, fire sprinkler and fire alarm drafting, and engineering calculations, including load calculations, single-line diagrams, panel schedules and photometric plans, for new construction and retrofit projects. Every service is delivered as a clean 2D AutoCAD set."
             />
             <Button asChild variant="outline">
               <Link href="/services">All services <ArrowRight className="size-4" /></Link>
@@ -190,7 +235,7 @@ export default async function HomePage() {
                 Get pricing on a new drafting proposal in fewer than 24 hours
               </h2>
               <p className="mt-3 max-w-2xl text-muted-foreground">
-                Send us your plans and scope. We reply with a fixed price and a delivery date — no meetings, no runaround. Two free minor revisions are built into every set.
+                Send us your plans and scope for MEP drafting services. We reply with a fixed price and a delivery date, no meetings, no runaround. Two free minor revisions are built into every set.
               </p>
               <div className="mt-5 flex flex-wrap gap-4 text-sm">
                 {[
@@ -281,6 +326,20 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* Homepage FAQs */}
+      <section className="border-t border-border py-16 sm:py-20">
+        <div className="container-page max-w-3xl">
+          <SectionHeading
+            eyebrow="MEP Drafting FAQs"
+            title="Questions about MEP drafting services"
+            description="What is included, what it costs, how fast it arrives, and how we work with your CAD standards."
+            align="center"
+            className="mb-10"
+          />
+          <FaqAccordion faqs={HOME_FAQS} />
+        </div>
+      </section>
 
       <CtaBand />
     </>
