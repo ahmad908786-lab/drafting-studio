@@ -15,6 +15,15 @@ import { getIndustryBySlug, getServiceCategories, getTestimonials } from "@/lib/
 import { absoluteUrl } from "@/lib/utils";
 import { prisma } from "@/lib/db";
 
+// 21 Nov 2026: the live Hostinger runtime 500s on every on-demand render of
+// this SSG detail route (unknown slugs, new/revalidated industries) while
+// fully-dynamic routes render fine there, and the same code + data works in
+// a local production build. Force dynamic rendering so this page uses the
+// proven request-time path. generateStaticParams below is kept (ignored
+// while dynamic) so static generation can be re-enabled by removing this
+// one line.
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const rows = await prisma.industry.findMany({ select: { slug: true } });
   return rows.map((i) => ({ slug: i.slug }));

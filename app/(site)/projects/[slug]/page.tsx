@@ -16,6 +16,15 @@ import { prisma } from "@/lib/db";
 import { absoluteUrl, formatSqft } from "@/lib/utils";
 import { ORG_ID } from "@/lib/seo";
 
+// 21 Nov 2026: the live Hostinger runtime 500s on every on-demand render of
+// this SSG detail route (unknown slugs, new/revalidated projects) while
+// fully-dynamic routes render fine there, and the same code + data works in
+// a local production build. Force dynamic rendering so this page uses the
+// proven request-time path. generateStaticParams below is kept (ignored
+// while dynamic) so static generation can be re-enabled by removing this
+// one line.
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const projects = await prisma.project.findMany({ where: { isPublic: true }, select: { slug: true } });
   return projects.map((p) => ({ slug: p.slug }));
