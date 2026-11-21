@@ -14,10 +14,12 @@ export const WEBSITE_ID = absoluteUrl("/#website");
 
 /**
  * Organization entity (ProfessionalService is the closest schema.org fit;
- * there is no drafting-specific subtype). No foundingDate / address /
- * telephone: none of those is a verified fact on the site, so they stay out
- * rather than invented. sameAs lists only the social profiles we own and
- * have verified (LinkedIn + Facebook); the YouTube handle is unconfirmed.
+ * there is no drafting-specific subtype). Address added 21 Nov 2026 from the
+ * user-provided office address (P108 Future Tower, Lahore); telephone is the
+ * business WhatsApp number already published on the site. No foundingDate:
+ * not a verified fact, so it stays out rather than invented. sameAs lists
+ * only the social profiles we own and have verified (LinkedIn + Facebook);
+ * the YouTube handle is unconfirmed.
  */
 export function organizationJsonLd() {
   return {
@@ -30,6 +32,14 @@ export function organizationJsonLd() {
     url: absoluteUrl(),
     logo: absoluteUrl("/logo.png"),
     email: brand.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: brand.contact.addressLine1,
+      addressLocality: brand.contact.city,
+      addressRegion: brand.contact.state,
+      addressCountry: "PK",
+    },
+    telephone: "+92 303 0143281",
     areaServed: "US",
     knowsAbout: [
       "2D AutoCAD drafting",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Clock } from "lucide-react";
+import { Mail, Clock, MapPin } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -54,6 +54,14 @@ export default function ContactPage() {
                 <li className="flex items-center gap-3">
                   <Mail className="size-4 text-primary" />
                   <a href={`mailto:${brand.contact.email}`} className="hover:text-primary">{brand.contact.email}</a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span>
+                    {brand.contact.addressLine1}
+                    <br />
+                    {brand.contact.addressLine2}
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Clock className="size-4 text-primary" /> {brand.contact.hours}
