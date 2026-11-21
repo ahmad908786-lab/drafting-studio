@@ -1,6 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // 500-bug fix (22 Nov 2026): next-mdx-remote is on Next.js's DEFAULT
+  // server-external list (dist/lib/server-external-packages.jsonc), so the
+  // App Router externalized it and every detail route did a runtime
+  // import("next-mdx-remote/rsc"). That dynamic import fails on the live
+  // Hostinger runtime (all 4 detail routes + /api/diag-500 returned the
+  // proxy's empty 500; every route without the import works; same code
+  // renders fine locally where node_modules is complete). Listing it here
+  // forces Turbopack to bundle it into the route instead of importing it
+  // at runtime. If the build ever throws about a transpile/external
+  // conflict, the fallback is replacing next-mdx-remote with react-markdown
+  // (see components/mdx/mdx.tsx).
+  transpilePackages: ["next-mdx-remote"],
   experimental: {
     // Hostinger build fix (19 Nov 2026, build 01a1f4f0): the default worker
     // count is os.cpus().length - 1, which was 47 on Hostinger's build host.
