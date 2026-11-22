@@ -80,6 +80,9 @@ export default function ContactPage() {
           <p className="mt-3 text-muted-foreground">
             To get the fastest answer, tell us the project type, the size and location, your timeline, and attach the plans you already have. Floor plans in DWG or PDF, equipment selections, and any local amendments all help. Everything you send stays confidential and is used only to prepare your drafting work.
           </p>
+          <p className="mt-3 text-muted-foreground">
+            Whether you want to get drafting quote details for a single service or request drafting services for a full coordinated set, the form above is the fastest route. Send an AutoCAD drafting enquiry with your plans attached, or ask for MEP drafting support on a scope you are still defining, and we will reply with next steps.
+          </p>
         </div>
       </section>
     </>

@@ -85,6 +85,10 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
           ))}
         </div>
 
+        <p className="mb-8 max-w-3xl text-muted-foreground">
+          Browse electrical drafting guides, HVAC drafting guides, permit drawing guides and fire protection drafting guides, all written by the drafters who do the work.
+        </p>
+
         {/* Featured */}
         {featured && (
           <Link

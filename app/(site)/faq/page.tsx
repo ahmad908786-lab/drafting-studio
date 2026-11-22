@@ -51,6 +51,9 @@ export default function FaqPage() {
           <p className="mt-3 text-muted-foreground">
             The questions below cover deliverables, turnaround, stamping, pricing and what we need to start. If your question is about a specific project, send the plans and a short description through the contact form or the quote wizard, and we will answer with your scope in mind instead of a generic reply.
           </p>
+          <p className="mt-3 text-muted-foreground">
+            These permit drawing FAQs explain our MEP drafting deliverables in plain terms, including drafting turnaround pricing and the DWG PDF deliverables you receive with every set.
+          </p>
           <div className="mt-8">
             <FaqAccordion faqs={FAQS} />
           </div>

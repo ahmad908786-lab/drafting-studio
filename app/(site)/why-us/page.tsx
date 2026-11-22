@@ -32,6 +32,13 @@ export default async function WhyUsPage() {
         description="The advantage of a studio that stays focused: speed, consistency, and drawings that clear review the first time."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Why Us" }]}
       />
+      <section className="pt-14">
+        <div className="container-page max-w-3xl">
+          <p className="text-muted-foreground">
+            We are a permit-ready drafting studio built around fast turnaround drafting and fixed price drafting services. Every set is drawn in 2D AutoCAD to your title block and layer standard, so it drops straight into your submission package.
+          </p>
+        </div>
+      </section>
       <section className="py-14">
         <div className="container-page grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((r) => (

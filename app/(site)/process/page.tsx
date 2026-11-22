@@ -33,6 +33,13 @@ export default function ProcessPage() {
           <ProcessTimeline />
         </div>
       </section>
+      <section className="pb-14">
+        <div className="container-page max-w-3xl">
+          <p className="text-muted-foreground">
+            This permit drawing process is how drafting services work at our studio: a clear AutoCAD drafting workflow from scope to a permit-ready set, with a drawing delivery process that keeps the price, the date and the files predictable on every project.
+          </p>
+        </div>
+      </section>
       <section className="border-y border-border bg-secondary/40 py-14">
         <div className="container-page">
           <SectionHeading eyebrow="Our promise" title="What every project includes" align="center" className="mb-10" />

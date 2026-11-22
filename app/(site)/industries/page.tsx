@@ -40,6 +40,14 @@ export default async function IndustriesPage() {
               plumbing and sprinkler coverage that repeats cleanly from floor to floor.
               We draft around those traps instead of discovering them at plan review.
             </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Our drafting services for restaurants cover kitchen ventilation, gas
+              and grease coordination, while franchise drafting services lock a
+              prototype and adapt it per site. The same team handles
+              commercial building drafting, residential MEP drafting and
+              healthcare drafting services, so one studio covers every sector
+              you build in.
+            </p>
           </div>
 
           <IndustryGrid

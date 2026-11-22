@@ -49,6 +49,9 @@ export default function CareersPage() {
               </div>
             ))}
           </div>
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            Our remote MEP drafter jobs cover every discipline we draft: electrical drafter jobs for power, lighting and one-line sets, HVAC drafter jobs for ductwork and equipment layouts, and fire protection drafter jobs for sprinkler and fire alarm drawings.
+          </p>
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
               <h2 className="font-sans text-xl font-bold text-foreground">How we work</h2>

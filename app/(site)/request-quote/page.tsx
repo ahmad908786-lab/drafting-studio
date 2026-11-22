@@ -75,6 +75,9 @@ export default async function RequestQuotePage({
           <p className="mt-3 text-muted-foreground">
             To get the most accurate price first time, include the architectural floor plans, any equipment selections or schedules, and the applicable local amendments. If you are not sure what applies, send what you have and we will ask for the rest.
           </p>
+          <p className="mt-3 text-muted-foreground">
+            A fixed price drafting quote covers the full scope you describe, whether you need an AutoCAD drafting quote for a single discipline or a permit drawing quote for a coordinated MEP set. Our MEP drafting pricing is quoted per project, so the price you get is the price for your drawings, with a delivery date attached.
+          </p>
         </div>
       </section>
     </>

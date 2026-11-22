@@ -59,6 +59,24 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
     "Franchise rollout drafting guides: prototype MEP sets, multi-site permit tracking, and site adaptations that keep every location consistent.",
 };
 
+// Visible intro paragraph per category, keyed the same way. Each intro
+// carries that category's mapped secondary keywords, once each. A slug
+// with no entry simply renders no intro, as before.
+const CATEGORY_INTROS: Record<string, string> = {
+  "design-drafting":
+    "Permit drafting tips, CAD layer standards and drawing set guides for teams that deliver clean 2D AutoCAD sets. These articles cover sheet setup, layer discipline and the plan-review details that keep a drawing set moving.",
+  electrical:
+    "Electrical load calculation guides, panel schedule guides, single-line diagram guides and NEC drafting guides for permit-ready electrical sets. Each article walks through the calculations and the sheets a plan reviewer expects to see.",
+  "hvac-plumbing":
+    "Manual J guides, ductwork layout guides, plumbing riser guides and HVAC design guides for residential and light-commercial work. These articles cover sizing, layouts and the coordination details that keep mechanical sets clean.",
+  "fire-protection":
+    "Sprinkler layout guides, fire alarm drawing guides, NFPA 13 guides and hydraulic calculation guides for permit-ready fire protection sets. Each article explains the layout rules and the calculations behind them.",
+  lighting:
+    "Photometric study guides, lighting controls guides, egress lighting guides and dark-sky lighting guides for site and interior lighting drawings. These articles cover footcandle targets, controls and the ordinance details reviewers check.",
+  franchise:
+    "Multi-site permit guides, prototype drawing sets and tenant improvement drawing guides for franchise and rollout teams. These articles cover prototype control, site adaptation and keeping every location consistent to the sheet.",
+};
+
 type SP = Record<string, string | string[] | undefined>;
 
 export default async function CategoryBlogPage({
@@ -110,6 +128,9 @@ export default async function CategoryBlogPage({
             </Link>
           ))}
         </div>
+        {CATEGORY_INTROS[slug] && (
+          <p className="mb-8 max-w-3xl text-muted-foreground">{CATEGORY_INTROS[slug]}</p>
+        )}
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
           <div>
             {items.length > 0 ? (
