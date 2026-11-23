@@ -7,7 +7,7 @@ import { CaseStudyTemplate } from "@/components/blog/templates/case-study";
 import { ListicleTemplate } from "@/components/blog/templates/listicle";
 import { EditorialTemplate } from "@/components/blog/templates/editorial";
 import { JsonLd } from "@/components/seo/json-ld";
-import { getPostBySlug, getRelatedPosts } from "@/lib/queries";
+import { getPostBySlug, getRelatedPosts, livePostWhere } from "@/lib/queries";
 import { prisma } from "@/lib/db";
 import { absoluteUrl } from "@/lib/utils";
 import { ORG_ID, breadcrumbJsonLd, trimDescription } from "@/lib/seo";
@@ -23,7 +23,7 @@ import type { PostForTemplate, RelatedPost, TemplateProps } from "@/components/b
 export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
-  const posts = await prisma.post.findMany({ where: { status: "PUBLISHED" }, select: { slug: true } });
+  const posts = await prisma.post.findMany({ where: livePostWhere(), select: { slug: true } });
   return posts.map((p) => ({ slug: p.slug }));
 }
 

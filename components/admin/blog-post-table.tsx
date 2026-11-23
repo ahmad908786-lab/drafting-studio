@@ -26,7 +26,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { bulkDeletePosts, deletePost, setPostsStatus, togglePostFeatured } from "@/app/actions/admin-blog";
 import { POST_TEMPLATES } from "@/lib/taxonomy";
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatDate, formatDateTime } from "@/lib/utils";
 
 export type BlogPostRow = {
   id: string;
@@ -251,7 +251,13 @@ export function BlogPostTable({ posts }: { posts: BlogPostRow[] }) {
                     <span className="inline-flex items-center gap-1"><Eye className="size-3.5" />{p.views.toLocaleString()}</span>
                   </TableCell>
                   <TableCell className="hidden sm:table-cell whitespace-nowrap text-xs text-muted-foreground">
-                    {formatDate(p.publishedAt ?? p.createdAt)}
+                    {p.status === "SCHEDULED" && p.publishedAt ? (
+                      <span title="Scheduled publish time">{formatDateTime(p.publishedAt)}</span>
+                    ) : p.status === "SCHEDULED" ? (
+                      <span className="text-amber-600">No time set</span>
+                    ) : (
+                      formatDate(p.publishedAt ?? p.createdAt)
+                    )}
                   </TableCell>
                   <TableCell>
                     <DropdownMenu>

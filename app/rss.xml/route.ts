@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { livePostWhere } from "@/lib/queries";
 import { absoluteUrl } from "@/lib/utils";
 import { brand } from "@/lib/theme";
 
@@ -10,7 +11,7 @@ function esc(s: string): string {
 
 export async function GET() {
   const posts = await prisma.post.findMany({
-    where: { status: "PUBLISHED" },
+    where: livePostWhere(),
     orderBy: { publishedAt: "desc" },
     take: 30,
     include: { category: true },

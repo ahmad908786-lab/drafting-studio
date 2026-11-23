@@ -27,6 +27,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
     tags: post.tags.map((t) => t.name).join(", "),
     coverImage: post.coverImage ?? "",
     status: post.status,
+    scheduledAt: post.publishedAt ? post.publishedAt.toISOString() : "",
     featured: post.featured,
     seoTitle: post.seoTitle ?? "",
     seoDesc: post.seoDesc ?? "",

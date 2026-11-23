@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/db";
+import { livePostWhere } from "@/lib/queries";
 import { absoluteUrl } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -9,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     prisma.service.findMany({ where: { published: true }, select: { slug: true, category: { select: { slug: true } }, updatedAt: true } }),
     prisma.industry.findMany({ select: { slug: true, updatedAt: true } }),
     prisma.project.findMany({ where: { isPublic: true }, select: { slug: true, updatedAt: true } }),
-    prisma.post.findMany({ where: { status: "PUBLISHED" }, select: { slug: true, updatedAt: true } }),
+    prisma.post.findMany({ where: livePostWhere(), select: { slug: true, updatedAt: true } }),
     prisma.category.findMany({ select: { slug: true } }),
   ]);
 

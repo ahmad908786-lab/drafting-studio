@@ -5,7 +5,7 @@ export const metadata = { title: "New Post" };
 
 const EMPTY: PostFormData = {
   title: "", slug: "", excerpt: "", bodyMdx: "", template: "STANDARD", categorySlug: "", tags: "",
-  coverImage: "", status: "DRAFT", featured: false, seoTitle: "", seoDesc: "",
+  coverImage: "", status: "DRAFT", scheduledAt: "", featured: false, seoTitle: "", seoDesc: "",
 };
 
 export default async function NewPostPage() {

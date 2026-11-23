@@ -36,6 +36,19 @@ export function formatDate(date: Date | string | null | undefined): string {
   });
 }
 
+/** "2026-11-24T09:00:00Z" -> "Nov 24, 2026, 9:00 AM" (viewer-local time) */
+export function formatDateTime(date: Date | string | null | undefined): string {
+  if (!date) return "No date";
+  const d = typeof date === "string" ? new Date(date) : date;
+  return d.toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export function slugify(input: string): string {
   return input
     .toLowerCase()

@@ -1,9 +1,25 @@
 import { cache } from "react";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { parseCsvParam } from "@/lib/utils";
 import { blogPhoto } from "@/prisma/photos";
 
 /* Per-request memoized reads. Admin mutations call revalidatePath to refresh. */
+
+/**
+ * A post is publicly visible once published, or once its scheduled publish
+ * time has passed. Scheduled posts flip live on their own: every public
+ * surface below renders on demand, so no cron job or rebuild is needed.
+ * publishedAt doubles as the scheduled time for SCHEDULED posts.
+ */
+export function livePostWhere(now: Date = new Date()): Prisma.PostWhereInput {
+  return {
+    OR: [
+      { status: "PUBLISHED" },
+      { status: "SCHEDULED", publishedAt: { lte: now } },
+    ],
+  };
+}
 
 /**
  * Stored cover paths can go stale (e.g. a DB seeded before the current cover
@@ -106,7 +122,7 @@ export const getClientLogos = cache(async () => {
 
 export const getLatestPosts = cache(async (take = 3) => {
   return prisma.post.findMany({
-    where: { status: "PUBLISHED" },
+    where: livePostWhere(),
     orderBy: { publishedAt: "desc" },
     take,
     include: { category: true, author: true },
@@ -218,7 +234,7 @@ export const getBlogCategories = cache(async () => {
   const categories = await prisma.category.findMany({ orderBy: { order: "asc" } });
   const counts = await prisma.post.groupBy({
     by: ["categoryId"],
-    where: { status: "PUBLISHED" },
+    where: livePostWhere(),
     _count: { _all: true },
   });
   const countMap = new Map(counts.map((c) => [c.categoryId, c._count._all]));
@@ -227,7 +243,7 @@ export const getBlogCategories = cache(async () => {
 
 export const getFeaturedPost = cache(async () => {
   const post = await prisma.post.findFirst({
-    where: { status: "PUBLISHED", featured: true },
+    where: { ...livePostWhere(), featured: true },
     orderBy: { publishedAt: "desc" },
     include: { category: true, author: true },
   });
@@ -239,13 +255,13 @@ export type PostFilters = { category?: string; q?: string; page?: number; perPag
 export async function getPosts(filters: PostFilters) {
   const perPage = filters.perPage ?? 9;
   const page = filters.page ?? 1;
-  const where: Record<string, unknown> = { status: "PUBLISHED" };
+  const where: Prisma.PostWhereInput = { ...livePostWhere() };
   if (filters.category) where.category = { slug: filters.category };
   if (filters.excludeId) where.id = { not: filters.excludeId };
   if (filters.q) {
-    where.OR = [
-      { title: { contains: filters.q } },
-      { excerpt: { contains: filters.q } },
+    // AND, not OR: the live-post predicate already uses the top-level OR.
+    where.AND = [
+      { OR: [{ title: { contains: filters.q } }, { excerpt: { contains: filters.q } }] },
     ];
   }
   const [rawItems, total] = await Promise.all([
@@ -264,7 +280,7 @@ export async function getPosts(filters: PostFilters) {
 
 export async function getPostBySlug(slug: string) {
   const post = await prisma.post.findFirst({
-    where: { slug, status: "PUBLISHED" },
+    where: { slug, ...livePostWhere() },
     include: { category: true, author: true, tags: true },
   });
   return post ? withLiveCover(post) : post;
@@ -272,7 +288,7 @@ export async function getPostBySlug(slug: string) {
 
 export const getRelatedPosts = cache(async (categoryId: string | null, excludeId: string, take = 3) => {
   const posts = await prisma.post.findMany({
-    where: { status: "PUBLISHED", id: { not: excludeId }, ...(categoryId ? { categoryId } : {}) },
+    where: { ...livePostWhere(), id: { not: excludeId }, ...(categoryId ? { categoryId } : {}) },
     orderBy: { publishedAt: "desc" },
     take,
     include: { category: true, author: true },
@@ -282,7 +298,7 @@ export const getRelatedPosts = cache(async (categoryId: string | null, excludeId
 
 export const getPopularPosts = cache(async (take = 5) => {
   const posts = await prisma.post.findMany({
-    where: { status: "PUBLISHED" },
+    where: livePostWhere(),
     orderBy: { views: "desc" },
     take,
     include: { category: true },

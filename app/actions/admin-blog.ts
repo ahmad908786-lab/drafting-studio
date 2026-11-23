@@ -16,6 +16,7 @@ type PostInput = {
   tags: string[];
   coverImage?: string;
   status: string;
+  scheduledAt?: string; // ISO datetime for SCHEDULED posts; stored in publishedAt.
   featured: boolean;
   seoTitle?: string;
   seoDesc?: string;
@@ -27,7 +28,13 @@ export async function savePost(input: PostInput): Promise<{ ok: boolean; id?: st
 
   const category = input.categorySlug ? await prisma.category.findUnique({ where: { slug: input.categorySlug }, select: { id: true } }) : null;
   const readMinutes = readingMinutes(input.bodyMdx);
-  const publishedAt = input.status === "PUBLISHED" ? new Date() : null;
+  // Scheduling reuses publishedAt as the scheduled time (no new column).
+  // A missing or unparseable datetime means "no time set", never an error,
+  // so autosave never fails on a half-filled schedule.
+  const parsedScheduled = input.scheduledAt ? new Date(input.scheduledAt) : null;
+  const scheduledAt = parsedScheduled && !Number.isNaN(parsedScheduled.getTime()) ? parsedScheduled : null;
+  const publishedAt =
+    input.status === "PUBLISHED" ? new Date() : input.status === "SCHEDULED" ? scheduledAt : null;
 
   const tagConnect = {
     set: [],
@@ -57,7 +64,15 @@ export async function savePost(input: PostInput): Promise<{ ok: boolean; id?: st
       where: { id: input.id },
       data: {
         ...base,
-        publishedAt: input.status === "PUBLISHED" ? existing?.publishedAt ?? publishedAt : input.status === "DRAFT" ? null : existing?.publishedAt,
+        // PUBLISHED keeps its original publish time; DRAFT clears it;
+        // SCHEDULED stores the new time, or keeps the previous one when
+        // the editor did not send a time (e.g. editing body text only).
+        publishedAt:
+          input.status === "PUBLISHED"
+            ? existing?.publishedAt ?? publishedAt
+            : input.status === "DRAFT"
+              ? null
+              : scheduledAt ?? existing?.publishedAt ?? null,
         tags: tagConnect,
       },
     });

@@ -56,6 +56,8 @@ export type PostFormData = {
   tags: string;
   coverImage: string;
   status: string;
+  /** Scheduled publish time as an ISO UTC string, "" when none is set. */
+  scheduledAt: string;
   featured: boolean;
   seoTitle: string;
   seoDesc: string;
@@ -67,6 +69,14 @@ export type PostFormData = {
 type SaveState = "saved" | "dirty" | "saving";
 
 type Tool = { icon: React.ReactNode; label: string; action: () => void };
+
+/** ISO UTC string -> "YYYY-MM-DDTHH:mm" in the browser's local time, for datetime-local inputs. */
+function toLocalInputValue(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
 
 /**
  * Its own component so the tool callbacks — which reach into the body textarea's
@@ -126,6 +136,11 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
     [data, baseline],
   );
 
+  /** Picker change: store the picked local time as a UTC instant. */
+  const onScheduleChange = (v: string) => {
+    set("scheduledAt", v ? new Date(v).toISOString() : "");
+  };
+
   /* Auto-grow title + excerpt. */
   React.useEffect(() => {
     for (const el of [titleRef.current, excerptRef.current]) {
@@ -160,6 +175,7 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
         tags: d.tags.split(",").map((t) => t.trim()).filter(Boolean),
         coverImage: d.coverImage || undefined,
         status: d.status,
+        scheduledAt: d.scheduledAt || undefined,
         featured: d.featured,
         seoTitle: d.seoTitle || undefined,
         seoDesc: d.seoDesc || undefined,
@@ -529,6 +545,25 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
                       </SelectContent>
                     </Select>
                   </div>
+                  {data.status === "SCHEDULED" && (
+                    <div className="space-y-1.5">
+                      <Label htmlFor="publish-on">Publish on</Label>
+                      <Input
+                        id="publish-on"
+                        type="datetime-local"
+                        // Derived during render: the settings sheet only
+                        // mounts client-side once opened, so there is no
+                        // server-rendered value to mismatch hydration.
+                        value={data.scheduledAt ? toLocalInputValue(data.scheduledAt) : ""}
+                        onChange={(e) => onScheduleChange(e.target.value)}
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        {data.scheduledAt
+                          ? "The post goes live at this time, in your local time."
+                          : "Pick a publish time, or this post stays scheduled without going live."}
+                      </p>
+                    </div>
+                  )}
                   <div className="flex items-center justify-between gap-3 rounded-xl border border-border p-3.5">
                     <div>
                       <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
@@ -613,6 +648,19 @@ export function PostEditor({ initial, categories }: { initial: PostFormData; cat
                   </div>
                 </section>
               )}
+            </div>
+            <div className="border-t border-border px-6 py-4">
+              <Button
+                className="w-full"
+                onClick={() => { void doSave(true); setSettingsOpen(false); }}
+                disabled={saveState === "saving"}
+              >
+                {saveState === "saving" ? <Loader2 className="size-4 animate-spin" /> : null}
+                Save post
+              </Button>
+              <p className="mt-2 text-center text-xs text-muted-foreground">
+                Saves with the status shown above. The Publish button always publishes now.
+              </p>
             </div>
           </SheetContent>
         </Sheet>
