@@ -51,7 +51,7 @@ export async function SiteFooter() {
         ))}
 
         <FooterCol title="Industries">
-          {INDUSTRIES.slice(0, 7).map((i) => (
+          {INDUSTRIES.map((i) => (
             <FooterLink key={i.slug} href={`/industries/${i.slug}`}>{i.name}</FooterLink>
           ))}
         </FooterCol>
