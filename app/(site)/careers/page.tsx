@@ -13,12 +13,7 @@ export const metadata: Metadata = {
   description: "Remote AutoCAD drafter jobs at Drafting Studio: electrical, HVAC, plumbing, fire protection and lighting roles in a fast-paced MEP drafting studio.",
 };
 
-const openings = [
-  { title: "Senior Electrical Drafter (AutoCAD)", type: "Full-time · Remote", tags: ["Electrical", "Lighting"], desc: "Draft power, lighting, one-line and load-calc sets for firms nationwide." },
-  { title: "Fire Protection Drafter — NFPA 13/72", type: "Full-time · Remote", tags: ["Fire Protection"], desc: "Sprinkler layouts, hydraulic reports and fire-alarm device plans." },
-  { title: "Mechanical Drafter (HVAC & Plumbing)", type: "Full-time · Remote", tags: ["HVAC", "Plumbing"], desc: "Ductwork, piping and equipment layouts with load-calc support." },
-  { title: "QA / Plan Reviewer", type: "Part-time · Remote", tags: ["QC"], desc: "Review 2D sets against code and CAD standards before delivery." },
-];
+const openings: { title: string; type: string; tags: string[]; desc: string }[] = [];
 
 export default function CareersPage() {
   return (
@@ -32,6 +27,9 @@ export default function CareersPage() {
       <section className="py-14">
         <div className="container-page">
           <SectionHeading eyebrow="Open roles" title="Current openings" className="mb-8" />
+          {openings.length === 0 ? (
+            <p className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">No open roles at the moment. Check back soon, or send us your portfolio through the contact form.</p>
+          ) : (
           <div className="grid gap-4">
             {openings.map((o) => (
               <div key={o.title} className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:flex-row sm:items-center sm:justify-between">
@@ -49,6 +47,7 @@ export default function CareersPage() {
               </div>
             ))}
           </div>
+          )}
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-muted-foreground">
             Our remote MEP drafter jobs cover every discipline we draft: electrical drafter jobs for power, lighting and one-line sets, HVAC drafter jobs for ductwork and equipment layouts, and fire protection drafter jobs for sprinkler and fire alarm drawings.
           </p>
@@ -69,7 +68,7 @@ export default function CareersPage() {
           <div className="mt-6 rounded-2xl border border-border bg-secondary/40 p-6 sm:p-8">
             <h2 className="font-sans text-xl font-bold text-foreground">How to apply</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              Pick a role above, or send your portfolio and a short note about your experience through the contact form. Tell us which discipline is your strongest and include a sample set if you can. We read every application and get back to people whose work fits the way we draft.
+              Send your portfolio and a short note about your experience through the contact form. Tell us which discipline is your strongest and include a sample set if you can. We read every application and get back to people whose work fits the way we draft.
             </p>
           </div>
           <div className="mt-8 rounded-xl border border-dashed border-border bg-secondary/40 p-6 text-center">
