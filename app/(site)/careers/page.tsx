@@ -6,6 +6,9 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { absoluteUrl } from "@/lib/utils";
+import { prisma } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/careers") },
@@ -13,9 +16,17 @@ export const metadata: Metadata = {
   description: "Remote AutoCAD drafter jobs at Drafting Studio: electrical, HVAC, plumbing, fire protection and lighting roles in a fast-paced MEP drafting studio.",
 };
 
-const openings: { title: string; type: string; tags: string[]; desc: string }[] = [];
-
-export default function CareersPage() {
+export default async function CareersPage() {
+  const careers = await prisma.career.findMany({
+    where: { published: true },
+    orderBy: [{ order: "asc" }, { createdAt: "asc" }],
+  });
+  const openings = careers.map((c) => ({
+    title: c.title,
+    type: c.type,
+    tags: c.tags.split(",").map((t) => t.trim()).filter(Boolean),
+    desc: c.desc,
+  }));
   return (
     <>
       <PageHero
